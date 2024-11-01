@@ -17,33 +17,32 @@
 
 # Installation
 + Solidity
-  - Install Git for Windows
+  - Install Git for Windows.
   - `git config --global user.name "John Doe"`
   - `git config --global user.email johndoe@example.com`
 + Foundry
 + JavaScript
-  - Install Node.js
+  - Install Node.js.
   - Check the installed version: `node -v`
-  - Install npm
+  - Install npm.
   - Check the installed version: `npm -v`
 + Code editor
-  - Install Visual Studio Code
+  - Install Visual Studio Code.
   - Install the "solidity" extension by Juan Blanco, which provides syntax highlighting, IntelliSense, and debugging support for Solidity.
-  - Install the "Mark for VS Code" extension to create and view slides directly within VS Code using Marp Markdown.
+  - (Optional) Install the "Mark for VS Code" extension to create and view slides directly within VS Code using Marp Markdown.
 
 # View blockchain information
-	Run Git Bash.
-	Start the test blockchain: anvil
-	Create a folder “Web” and enter this folder.
-	md vieweth
-	cd vieweth
-	Initialize an npm project: npm init
-	Install Web3.js: npm install web3
-	Edit View.js
-	View the result: node View
++ Run Git Bash.
++ Start the test blockchain: `anvil`
++ Create a folder "Web" and enter this folder.
++ `md vieweth`
++ `cd vieweth`
++ Initialize an npm project: `npm init`
++ Install Web3.js: `npm install web3`
++ Edit View.js
++ View the result: `node View`
 
- 
-Example 1: Hello Contract
+# Example 1: Hello Contract
 1.	Run Git Bash.
 2.	Create a folder “Solidity” and enter this folder.
 	md Solidity
