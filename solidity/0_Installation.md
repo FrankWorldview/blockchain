@@ -47,4 +47,8 @@
 + Edit View.js
 + View the result: `node View`
 
+![image](/solidity/img/anvil.png)
+
+![image](/solidity/img/anvil.png)
+
 ![image](https://book.getfoundry.sh/images/foundry-banner.png)
