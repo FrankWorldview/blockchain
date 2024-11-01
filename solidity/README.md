@@ -3,9 +3,9 @@
 + Development framework: [Foundry](https://book.getfoundry.sh/)
 + Development framework: [Hardhat](https://hardhat.org/)
 + Development framework: [Truffle Suite](https://archive.trufflesuite.com/) (sunset) + [Ganache](https://archive.trufflesuite.com/ganache/)
-+ Ethereum basics
-+ Web3.js documents
-+ Console logging in Foundry
++ [Ethereum basics](https://docs.alchemy.com/docs/ethereum-basics)
++ [Web3.js documents](https://docs.web3js.org/)
++ [Console logging in Foundry](https://book.getfoundry.sh/reference/forge-std/console-log)
 * https://www.casper.tw/development/2020/10/16/async-await/
 * https://react.dev/reference/react/useEffect
 
