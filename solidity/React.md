@@ -1,11 +1,10 @@
 The main difference between useState and useEffect in React lies in their purpose and functionality:
-1. Purpose:
 
-    useState: Used to create and manage state within a functional component. It stores values that can change over time, and when you update these values, React re-renders the component to reflect the new state.
-    useEffect: Used to manage side effects in a component, which are operations that don’t directly impact the rendered output but might involve asynchronous work, external interactions, or clean-up actions. Examples include fetching data, setting up subscriptions, updating the DOM, or managing timers.
+1. Purpose:
+!useState: Used to create and manage state within a functional component. It stores values that can change over time, and when you update these values, React re-renders the component to reflect the new state.
+useEffect: Used to manage side effects in a component, which are operations that don’t directly impact the rendered output but might involve asynchronous work, external interactions, or clean-up actions. Examples include fetching data, setting up subscriptions, updating the DOM, or managing timers.
 
 2. Usage:
-
     useState: Defines a state variable and a function to update it.
 
     javascript
