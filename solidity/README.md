@@ -1,19 +1,19 @@
 # Learning Resources
 + [Learn Solidity](https://www.alchemy.com/university/courses/solidity) & [GitHub](https://github.com/alchemyplatform/learn-solidity-presentations)
 + Development framework: [Foundry](https://book.getfoundry.sh/)
-+ Development framework: Hardhat
-+ Development framework: Truffle Suite (sunset) + Ganache
++ Development framework: [Hardhat](https://hardhat.org/)
++ Development framework: [Truffle Suite](https://archive.trufflesuite.com/) (sunset) + [Ganache](https://archive.trufflesuite.com/ganache/)
 + Ethereum basics
 + Web3.js documents
 + Console logging in Foundry
-https://www.casper.tw/development/2020/10/16/async-await/
-https://react.dev/reference/react/useEffect
+* https://www.casper.tw/development/2020/10/16/async-await/
+* https://react.dev/reference/react/useEffect
 
-Software Used in This Class
-1.	Solidity: Foundry + Git for Windows
-2.	JavaScript: Node.js (including npm)
-3.	JavaScript development framework: React
-4.	Code editor: Visual Studio Code
+# Software Used in This Class
++ Solidity: Foundry + Git for Windows
++ JavaScript: Node.js (including npm)
++ JavaScript development framework: React
++ Code editor: Visual Studio Code
 
 
 Installation
