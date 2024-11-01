@@ -10,10 +10,10 @@
 * https://react.dev/reference/react/useEffect
 
 # Software Used in This Class
-+ Solidity: Foundry + Git for Windows
-+ JavaScript: Node.js (including npm)
-+ JavaScript development framework: React
-+ Code editor: Visual Studio Code
++ Solidity: [Foundry](https://book.getfoundry.sh/) + [Git for Windows](https://gitforwindows.org/)
++ JavaScript: [Node.js (including npm)](https://nodejs.org/en/download/prebuilt-installer)
++ JavaScript development framework: [React](https://react.dev/)
++ Code editor: [Visual Studio Code](https://code.visualstudio.com/)
 
 
 Installation
