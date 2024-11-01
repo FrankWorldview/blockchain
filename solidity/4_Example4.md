@@ -1,4 +1,4 @@
-# Send Ether to Friends
+# Example 4: Send Ether to Friends
 
 ![image](/solidity/img/1.png)
 
