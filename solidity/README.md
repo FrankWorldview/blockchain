@@ -6,8 +6,9 @@
 + [Ethereum basics](https://docs.alchemy.com/docs/ethereum-basics)
 + [Web3.js documents](https://docs.web3js.org/)
 + [Console logging in Foundry](https://book.getfoundry.sh/reference/forge-std/console-log)
-+ https://www.casper.tw/development/2020/10/16/async-await/
-+ https://react.dev/reference/react/useEffect
++ JavaScript: [async function & await](https://www.casper.tw/development/2020/10/16/async-await/)
++ React: [useState](https://react.dev/reference/react/useState)
++ React: [userEffect](https://react.dev/reference/react/useEffect)
 
 # Software Used in This Class
 + Solidity: [Foundry](https://book.getfoundry.sh/) + [Git for Windows](https://gitforwindows.org/)
