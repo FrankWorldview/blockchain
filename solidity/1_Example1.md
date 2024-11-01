@@ -32,6 +32,7 @@
 + Edit src/App.js.
 + Make sure the addr variable refers to the contract's deployed address.
 + View the result: `npm start`
+![image](/solidity/img/23590_0.jpg)
 
 ## Exercise 1 (20 Minutes)
 + Add a new function getMyName() in the Hello contract. This function can return a string of your name.
