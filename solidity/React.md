@@ -5,11 +5,11 @@ The main difference between useState and useEffect in React lies in their purpos
    + useEffect: Used to manage side effects in a component, which are operations that don’t directly impact the rendered output but might involve asynchronous work, external interactions, or clean-up actions. Examples include fetching data, setting up subscriptions, updating the DOM, or managing timers.
 
 2. Usage:
-   + useState: Defines a state variable and a function to update it.
++ useState: Defines a state variable and a function to update it.
 ```
 const [value, setValue] = useState(initialValue);
 ```
-   + useEffect: Runs a function when the component mounts, updates, or unmounts. You can specify dependencies to control when the effect should re-run.
++ useEffect: Runs a function when the component mounts, updates, or unmounts. You can specify dependencies to control when the effect should re-run.
 ```
     useEffect(() => {
       // Code that runs after the component mounts or updates
