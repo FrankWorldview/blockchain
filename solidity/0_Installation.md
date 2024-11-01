@@ -19,7 +19,9 @@
 # Installation
 + Solidity
   - Install Git for Windows.
-  - `git config --global user.name "John Doe"`
+  - (Optional) Check "Additional icons (On the Desktop)".
+  - (Optional) Check "Enable symbolic links".
+  - (Optional) `git config --global user.name "John Doe"`
   - `git config --global user.email johndoe@example.com`
 + Foundry
 + JavaScript
