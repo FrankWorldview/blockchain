@@ -84,3 +84,5 @@
 + Add a new function getMyName() in the Hello contract. This function can return a string of your name.
 + Modify Hello.js to interact with getMyName().
 + Modity App.js to interact with getMyName().
+
+![Go!](https://myoctocat.com/assets/images/base-octocat.svg)
