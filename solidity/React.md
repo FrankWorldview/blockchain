@@ -8,40 +8,36 @@ Syntax:
 ```
 const [state, setState] = useState(initialValue);
 ```
-state: The current state value.
-setState: A function to update the state value.
++ state: The current state value.
++ setState: A function to update the state value.
 
 Example:
 ```
 import { useState } from 'react';
 
-    function Counter() {
-      const [count, setCount] = useState(0);
+function Counter() {
+  const [count, setCount] = useState(0);
 
-      return (
-        <div>
-          <p>Count: {count}</p>
-          <button onClick={() => setCount(count + 1)}>Increase</button>
-        </div>
-      );
-    }
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Increase</button>
+    </div>
+  );
+}
 ```
 
 In this example, count is the state variable managed by useState, and setCount updates it. Every time setCount is called, React re-renders the component with the updated count.
 
 `useEffect`
++ Purpose: useEffect is used to handle side effects in functional components, which are tasks that need to happen outside of rendering (such as data fetching, subscriptions, timers, or DOM manipulations).
++ Usage: useEffect takes a function that runs after each render. You can control when the effect runs by providing dependencies in an array as the second argument.
+  - No dependencies ([]): Runs only once on component mount.
+  - With dependencies: Runs whenever specified dependencies change.
+  - No array: Runs on every render.
 
-    Purpose: useEffect is used to handle side effects in functional components, which are tasks that need to happen outside of rendering (such as data fetching, subscriptions, timers, or DOM manipulations).
-
-    Usage: useEffect takes a function that runs after each render. You can control when the effect runs by providing dependencies in an array as the second argument.
-        No dependencies ([]): Runs only once on component mount.
-        With dependencies: Runs whenever specified dependencies change.
-        No array: Runs on every render.
-
-    Syntax:
-
-    javascript
-
+Syntax:
+```
 useEffect(() => {
   // Your code here (e.g., data fetching, setting up subscriptions)
 
@@ -49,11 +45,10 @@ useEffect(() => {
     // Optional cleanup code (e.g., unsubscribing, clearing timers)
   };
 }, [dependencies]);
+```
 
 Example:
-
-javascript
-
+```
     import React, { useState, useEffect } from 'react';
 
     function FetchDataComponent() {
@@ -71,8 +66,10 @@ javascript
         </div>
       );
     }
+```
 
 In this example, useEffect fetches data from an API only once when the component mounts because the dependency array is empty ([]).
+
 Key Differences Between useState and useEffect
 
     Purpose: useState is for managing local state, while useEffect is for handling side effects.
