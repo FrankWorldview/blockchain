@@ -45,3 +45,5 @@
 + Install Web3.js: `npm install web3`
 + Edit View.js
 + View the result: `node View`
+
+![image](https://en.wikipedia.org/wiki/Pepe_the_Frog#/media/File:Feels_good_man.jpg)
