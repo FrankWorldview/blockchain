@@ -31,33 +31,33 @@
   - Install the "solidity" extension by Juan Blanco, which provides syntax highlighting, IntelliSense, and debugging support for Solidity.
   - (Optional) Install the "Mark for VS Code" extension to create and view slides directly within VS Code using Marp Markdown.
 
-# View blockchain information
+# View Blockchain Information
 + Run Git Bash.
 + Start the test blockchain: `anvil`
 + Create a folder "Web" and enter this folder.
-+ `md vieweth`
-+ `cd vieweth`
+  - `md Web`
+  - `cd Web`
++ Create a subfolder "vieweth" and enter this folder.
+  - `md vieweth`
+  - `cd vieweth`
 + Initialize an npm project: `npm init`
 + Install Web3.js: `npm install web3`
 + Edit View.js
 + View the result: `node View`
 
 # Example 1: Hello Contract
-1.	Run Git Bash.
-2.	Create a folder “Solidity” and enter this folder.
-	md Solidity
-	cd Solidity
-3.	Initialize a Foundry project.
-	forge init hello
-4.	Move script/Counter.s.sol elsewhere (e.g. the bak folder).
-5.	Copy src/Counter.sol to Hello.sol. Move Counter.sol elsewhere (e.g. the bak folder) and edit Hello.sol.
-6.	Copy test/Counter.t.sol to Hello.t.sol. Move Counter.t.sol elsewhere (e.g. the bak folder) and edit Hello.t.sol.
-7.	Test the contract.
-	forge test -vv
-8.	Build the contract.
-	forge build
-9.	Deploy the contract.
-	forge create --rpc-url 127.0.0.1:8545 --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 src/Hello.sol:Hello
++ Run Git Bash.
++ Create a folder "Solidity" and enter this folder.
+  - `md Solidity`
+  - `cd Solidity`
++ Initialize a Foundry project: `forge init hello`
++ Enter the new folder: `cd hello`
++ Move src/Counter.sol elsewhere (e.g. the bak folder). Edit Hello.sol.
++ Move test/Counter.t.sol elsewhere (e.g. the bak folder). Edit Hello.t.sol.
++ Move script/Counter.s.sol elsewhere (e.g. the bak folder).
++ Test the contract: `forge test -vv`
++ Build the contract: `forge build`
++ Deploy the contract: `forge create --rpc-url 127.0.0.1:8545 --private-key your_private_key src/Hello.sol:Hello`
 10.	Interact with the contract via Node.js.
 	Enter the “Web” folder.
 	md hello
@@ -77,6 +77,4 @@
 	Make sure the addr variable refers to the contract’s deployed address.
 	View the result: npm start
 
- 
-Exercise 1
-
+# Exercise 1
