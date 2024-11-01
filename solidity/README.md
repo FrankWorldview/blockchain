@@ -80,5 +80,7 @@
 + Make sure the addr variable refers to the contract's deployed address.
 + View the result: `npm start`
 
-# Exercise 1
-
+## Exercise 1 (20 Minutes)
++ Add a new function getMyName() in the Hello contract. This function can return a string of your name.
++ Modify Hello.js to interact with the contract.
++ Modity App.js to interact with the contract.
