@@ -88,7 +88,8 @@ function UpdateMessageOnCountChange() {
 
   useEffect(() => {
     console.log(`Count changed to ${count}`);
-    setMessage(`Count is now ${count}`);
+    setMessage(`Msg: Count is now ${count}`);
+    console.log(message); // Show the old message!
   }, [count]); // Effect depends on `count`.
 
   return (
