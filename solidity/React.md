@@ -9,7 +9,7 @@ The main difference between useState and useEffect in React lies in their purpos
 ```
 const [value, setValue] = useState(initialValue);
 ```
-
+`#000000`
 + useEffect: Runs a function when the component mounts, updates, or unmounts. You can specify dependencies to control when the effect should re-run.
 ```
 useEffect(() => {
