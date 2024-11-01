@@ -34,10 +34,10 @@
 # View Blockchain Information
 + Run Git Bash.
 + Start the test blockchain: `anvil`
-+ Create a folder "Web" and enter this folder.
++ Create a root folder "Web" and enter it.
   - `md Web`
   - `cd Web`
-+ Create a subfolder "vieweth" and enter this folder.
++ Create a folder "vieweth" and enter it.
   - `md vieweth`
   - `cd vieweth`
 + Initialize an npm project: `npm init`
@@ -47,7 +47,7 @@
 
 # Example 1: Hello Contract
 + Run Git Bash.
-+ Create a folder "Solidity" and enter this folder.
++ Create a root folder "Solidity" and enter it.
   - `md Solidity`
   - `cd Solidity`
 + Initialize a Foundry project: `forge init hello`
@@ -58,17 +58,19 @@
 + Test the contract: `forge test -vv`
 + Build the contract: `forge build`
 + Deploy the contract: `forge create --rpc-url 127.0.0.1:8545 --private-key <your_private_key> src/Hello.sol:Hello`
+
 ## Interact with the Contract via Node.js.
-+ Enter the "Web" folder: `cd Web`
-+ Create a subfolder "hello" and enter this folder.
++ Enter the root folder "Web": `cd Web`
++ Create a folder "hello" and enter it.
   - md hello
   - cd hello
 + Initialize an npm project: `npm init`
 + Install Web3.js: `npm install web3`
 + Edit Hello.js
 + View the result: `node Hello`
+
 ## Interact with the Contract via Web3.js.
-+ Enter the "Web" folder: `cd Web`
++ Enter the root folder "Web": `cd Web`
 + Create a React app: `npx create-react-app hello-app`
 + Enter the new folder: `cd hello-app`
 + Install Web3.js: `npm install web3`
