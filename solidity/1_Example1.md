@@ -1,4 +1,6 @@
 # Example 1: Hello Contract
+
+## Create, Test, and Deploy the Contract
 + Run Git Bash.
 + Create a root folder "Solidity" and enter it.
   - `md Solidity`
@@ -12,7 +14,7 @@
 + Build the contract: `forge build`
 + Deploy the contract: `forge create --rpc-url 127.0.0.1:8545 --private-key <your_private_key> src/Hello.sol:Hello`
 
-## Interact with the Contract via Node.js.
+## Interact with the Contract via Node.js
 + Enter the root folder "Web": `cd Web`
 + Create a folder "hello" and enter it.
   - md hello
@@ -22,7 +24,7 @@
 + Edit Hello.js
 + View the result: `node Hello`
 
-## Interact with the Contract via React.
+## Interact with the Contract via React
 + Enter the root folder "Web": `cd Web`
 + Create a React app: `npx create-react-app hello-app`
 + Enter the new folder: `cd hello-app`
