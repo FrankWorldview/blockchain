@@ -19,9 +19,9 @@
 # Installation
 + Solidity
   - Install Git for Windows.
-  - (Optional) Check "Additional icons (On the Desktop)".
+  - (Suggested) Check "Additional icons (On the Desktop)".
   - (Optional) `git config --global user.name "John Doe"`
-  - `git config --global user.email johndoe@example.com`
+  - (Required???) `git config --global user.email johndoe@example.com`
 + Foundry
 + JavaScript
   - Install Node.js.
