@@ -12,13 +12,13 @@ const [value, setValue] = useState(initialValue);
 
 + useEffect: Runs a function when the component mounts, updates, or unmounts. You can specify dependencies to control when the effect should re-run.
 ```
-    useEffect(() => {
-      // Code that runs after the component mounts or updates
-     
-      return () => {
-        // Optional cleanup code for when the component unmounts or dependencies change
-      };
-    }, [dependencies]);
+useEffect(() => {
+  // Code that runs after the component mounts or updates.
+
+  return () => {
+    // Optional cleanup code for when the component unmounts or dependencies change.
+  };
+}, [dependencies]);
 ```
 
 # Behavior:
@@ -35,15 +35,15 @@ Here's a component that uses both useState and useEffect:
 import { useState, useEffect } from 'react';
 
 function ExampleComponent() {
-  // useState to manage a counter state
+  // useState to manage a counter state.
   const [count, setCount] = useState(0);
 
-  // useEffect to log a message to the console whenever count changes
+  // useEffect to log a message to the console whenever count changes.
   useEffect(() => {
-    console.log(`Count updated to: ${count}`);
+    console.log(`Count updated to: ${count}.`);
 
     return () => {
-      console.log('Cleaning up after count change');
+      console.log('Cleaning up after count changed.');
     };
   }, [count]);
 
