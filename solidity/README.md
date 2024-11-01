@@ -85,4 +85,4 @@
 + Modify Hello.js to interact with getMyName().
 + Modity App.js to interact with getMyName().
 
-![Go!](https://myoctocat.com/assets/images/base-octocat.svg)
+![Go!](https://cryptologos.cc/logos/pepe-pepe-logo.svg?v=035)
