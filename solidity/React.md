@@ -74,8 +74,9 @@ function FetchDataOnMount() {
 
 export default FetchDataOnMount;
 ```
-
-In this example, useEffect fetches data from an API only once when the component mounts because the dependency array is empty ([]).
+In this example:
++ useEffect fetches data from an API only once when the component mounts.
++ Since the dependency array is empty ([]), this effect will not run again, even if the component re-renders.
 
 Example 2:
 ```
@@ -100,6 +101,9 @@ function UpdateMessageOnCountChange() {
 
 export default UpdateMessageOnCountChange;
 ```
+In this example:
++ useEffect has count as a dependency. This means the effect will run whenever count changes.
++ When the "Increase Count" button is clicked, count is updated, which triggers useEffect to run again, updating the message state.
 
 # Key Differences Between useState and useEffect
 + Purpose: useState is for managing local state, while useEffect is for handling side effects.
