@@ -21,7 +21,9 @@
   - cd hello
 + Initialize an npm project: `npm init`
 + Install Web3.js: `npm install web3`
-+ Edit Hello.js
++ Copy the contract's ABI file (i.e. Solidity/hello/out/Hello.sol/Hello.json) to Web/hello/abi.
++ Edit Hello.js.
++ Make sure the "addr" variable refers to the contract's deployed address.
 + View the result: `node Hello`
 
 ## Interact with the Contract via React
@@ -32,7 +34,7 @@
 + Copy the contract's ABI file (i.e. Solidity/hello/out/Hello.sol/Hello.json) to Web/hello-app/src/abi.
 + Backup src/App.js to src/App.js.ORIG.
 + Edit src/App.js.
-+ Make sure the addr variable refers to the contract's deployed address.
++ Make sure the "addr" variable refers to the contract's deployed address.
 + View the result: `npm start`
 ![image](/solidity/img/23590_0.jpg)
 
