@@ -1,11 +1,11 @@
-**Learning Resources**
-1.	[Learn Solidity](https://www.alchemy.com/university/courses/solidity) & [GitHub](https://github.com/alchemyplatform/learn-solidity-presentations)
-2.	Development framework: [Foundry](https://book.getfoundry.sh/)
-3.	Development framework: Hardhat
-4.	Development framework: Truffle Suite (sunset) + Ganache
-5.	Ethereum basics
-6.	Web3.js documents
-7.	Console logging in Foundry
+# Learning Resources
++ [Learn Solidity](https://www.alchemy.com/university/courses/solidity) & [GitHub](https://github.com/alchemyplatform/learn-solidity-presentations)
++ Development framework: [Foundry](https://book.getfoundry.sh/)
++ Development framework: Hardhat
++ Development framework: Truffle Suite (sunset) + Ganache
++ Ethereum basics
++ Web3.js documents
++ Console logging in Foundry
 https://www.casper.tw/development/2020/10/16/async-await/
 https://react.dev/reference/react/useEffect
 
