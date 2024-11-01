@@ -103,5 +103,5 @@ export default UpdateMessageOnCountChange;
 
 # Key Differences Between useState and useEffect
 + Purpose: useState is for managing local state, while useEffect is for handling side effects.
-+ Rerenders: useState triggers a re-render when the state changes, whereas useEffect does not cause re-renders by itself but runs after each render if dependencies have changed.
++ Re-renders: useState triggers a re-render when the state changes, whereas useEffect does not cause re-renders by itself but runs after each render if dependencies have changed.
 + Together, useState and useEffect enable powerful, flexible control over data and actions in functional components, making them fundamental for managing state and lifecycle effects in React.
