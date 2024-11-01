@@ -60,4 +60,5 @@ In this example:
 + `useState` handles the count state, which changes when the button is clicked.
 + `useEffect` logs to the console whenever count updates and cleans up by logging a message just before the next effect.
 
-If your Effect's code doesn't use any reactive values, its dependency list should be empty ([]). An Effect with empty dependencies doesn't re-run when any of your component's props or state change.
+Setting the dependencies in useEffect to an empty array ([]) is useful when you want the effect to run only once, when the component mounts. By using [] as the dependency array, you ensure that the effect doesn't re-run on any state or prop updates—just once during the component's initial render. So, setting useEffect with [] dependencies is perfect for effects that need to run just once on mount, such as initial setup, data fetching, or attaching event listeners that will remain constant.
+
