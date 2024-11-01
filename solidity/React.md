@@ -111,4 +111,5 @@ In this example:
 + Re-renders: useState triggers a re-render when the state changes, whereas useEffect does not cause re-renders by itself but runs after each render if dependencies have changed.
 + Together, useState and useEffect enable powerful, flexible control over data and actions in functional components, making them fundamental for managing state and lifecycle effects in React.
 
-Note: In React's [Strict Mode](https://react.dev/reference/react/StrictMode), some functions (specifically certain lifecycle functions passed to hooks like useState or useEffect) are intentionally called twice to help identify potential issues in your application. This behavior aims to improve the reliability and predictability of your code. This is a stress-test and shouldn’t break your code.
+# Note
+In React’s [Strict Mode](https://react.dev/reference/react/StrictMode), some functions (specifically certain lifecycle functions passed to hooks like useState or useEffect) are intentionally called twice to help identify potential issues in your application. This is a stress-test and shouldn’t break your code. This behavior aims to improve the reliability and predictability of your code.
