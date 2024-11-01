@@ -12,24 +12,23 @@
 
 # Software Used in This Class
 + Solidity: [Foundry](https://book.getfoundry.sh/) + [Git for Windows](https://gitforwindows.org/)
-+ JavaScript: [Node.js (including npm)](https://nodejs.org/en/download/prebuilt-installer)
++ JavaScript: [Node.js](https://nodejs.org/en/download/prebuilt-installer)
 + JavaScript development framework: [React](https://react.dev/)
 + Code editor: [Visual Studio Code](https://code.visualstudio.com/)
 
 # Installation
-+ Solidity
-  - Install Git for Windows.
++ [Git for Windows](https://gitforwindows.org/)
   - (Suggested) Check "Additional icons (On the Desktop)".
   - (Optional) `git config --global user.name "John Doe"`
   - (Required???) `git config --global user.email johndoe@example.com`
-+ Foundry
++ [Foundry](https://book.getfoundry.sh/)
 + JavaScript
-  - Install Node.js.
+  - Install [Node.js](https://nodejs.org/en/download/prebuilt-installer).
   - Check the installed version: `node -v`
   - Install npm.
   - Check the installed version: `npm -v`
 + Code editor
-  - Install Visual Studio Code.
+  - Install [Visual Studio Code](https://code.visualstudio.com/).
   - Install the "solidity" extension by Juan Blanco, which provides syntax highlighting, IntelliSense, and debugging support for Solidity.
   - (Optional) Install the "Mark for VS Code" extension to create and view slides directly within VS Code using Marp Markdown.
 
