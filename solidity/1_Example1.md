@@ -25,6 +25,7 @@
 + Edit Hello.js.
 + Make sure the "addr" variable refers to the contract's deployed address.
 + View the result: `node Hello`
+![image](/solidity/img/hello.png)
 
 ## Interact with the Contract via React
 + Enter the root folder "Web": `cd Web`
@@ -36,11 +37,11 @@
 + Edit src/App.js.
 + Make sure the "addr" variable refers to the contract's deployed address.
 + View the result: `npm start`
-![image](/solidity/img/23590_0.jpg)
+![image](/solidity/img/hello-app.png)
 
 ## Exercise 1 (20 Minutes)
-+ Add a new function getMyName() in the Hello contract. This function can return a string of your name.
-+ Modify Hello.js to interact with getMyName().
-+ Modity App.js to interact with getMyName().
++ Add a new function getMaxUint() in the Hello contract. This function can return the maximum of uint256.
++ Modify Hello.js to interact with getMaxUint().
++ Modity App.js to interact with getMaxUint().
 
 ![image](https://myoctocat.com/assets/images/base-octocat.svg)
