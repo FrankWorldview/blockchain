@@ -15,24 +15,23 @@
 + JavaScript development framework: [React](https://react.dev/)
 + Code editor: [Visual Studio Code](https://code.visualstudio.com/)
 
+# Installation
++ Solidity
+  - Install Git for Windows
+  - `git config --global user.name "John Doe"`
+  - `git config --global user.email johndoe@example.com`
++ Foundry
++ JavaScript
+  - Install Node.js
+  - Check the installed version: `node -v`
+  - Install npm
+  - Check the installed version: `npm -v`
++ Code editor
+  - Install Visual Studio Code
+  - Install the "solidity" extension by Juan Blanco, which provides syntax highlighting, IntelliSense, and debugging support for Solidity.
+  - Install the "Mark for VS Code" extension to create and view slides directly within VS Code using Marp Markdown.
 
-Installation
-1.	Solidity
-	Install Git for Windows
-	git config --global user.name "John Doe"
-	git config --global user.email johndoe@example.com
-	Install Foundry
-2.	JavaScript
-	Install Node.js
-	node -v
-	Install npm: 
-	npm -v
-3.	Code editor
-	Install Visual Studio Code
-	Install the “solidity” extension by Juan Blanco, which provides syntax highlighting, IntelliSense, and debugging support for Solidity.
-	Install the “Mark for VS Code” extension to create and view slides directly within VS Code using Marp Markdown.
- 
-View blockchain information
+# View blockchain information
 	Run Git Bash.
 	Start the test blockchain: anvil
 	Create a folder “Web” and enter this folder.
