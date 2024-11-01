@@ -50,5 +50,3 @@
 ![image](/solidity/img/anvil.png)
 
 ![image](/solidity/img/vieweth.png)
-
-![image](https://book.getfoundry.sh/images/foundry-banner.png)
