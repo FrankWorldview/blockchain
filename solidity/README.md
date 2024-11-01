@@ -58,23 +58,24 @@
 + Test the contract: `forge test -vv`
 + Build the contract: `forge build`
 + Deploy the contract: `forge create --rpc-url 127.0.0.1:8545 --private-key <your_private_key> src/Hello.sol:Hello`
-10.	Interact with the contract via Node.js.
-	Enter the “Web” folder.
-	md hello
-	cd hello
-	Initialize an npm project: npm init
-	Install Web3.js: npm install web3
-	Edit Hello.js
-	View the result: node Hello
-11.	Interact with the contract via Web3.js.
-	Enter the “Web” folder.
-	npx create-react-app hello-app
-	cd hello-app
-	Install Web3.js: npm install web3
-	Copy the ABI file (i.e. Solidity/hello/out/Hello.sol/Hello.json) to React/hello-app/src/abi.
-	Backup src/App.js to src/App.js.ORIG.
-	Edit src/App.js.
-	Make sure the addr variable refers to the contract’s deployed address.
-	View the result: npm start
+## Interact with the contract via Node.js.
+  - Enter the "Web" folder.
+  - md hello
+  - cd hello
++ Initialize an npm project: npm init
++ Install Web3.js: npm install web3
++ Edit Hello.js
++ View the result: node Hello
+## Interact with the contract via Web3.js.
++ Enter the “Web” folder.
++ npx create-react-app hello-app
++cd hello-app
+Install Web3.js: npm install web3
+Copy the ABI file (i.e. Solidity/hello/out/Hello.sol/Hello.json) to React/hello-app/src/abi.
+Backup src/App.js to src/App.js.ORIG.
+Edit src/App.js.
+Make sure the addr variable refers to the contract’s deployed address.
+View the result: npm start
 
 # Exercise 1
+
