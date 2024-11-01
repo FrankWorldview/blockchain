@@ -1,10 +1,10 @@
 The main difference between useState and useEffect in React lies in their purpose and functionality:
 
-# Purpose:
+# Purpose
 + `useState`: Used to create and manage state within a functional component. It stores values that can change over time, and when you update these values, React re-renders the component to reflect the new state.
 + `useEffect`: Used to manage side effects in a component, which are operations that don't directly impact the rendered output but might involve asynchronous work, external interactions, or clean-up actions. Examples include fetching data, setting up subscriptions, updating the DOM, or managing timers.
 
-# Usage:
+# Usage
 + `useState`: Defines a state variable and a function to update it.
 ```
 const [value, setValue] = useState(initialValue);
@@ -20,16 +20,17 @@ useEffect(() => {
   };
 }, [dependencies]);
 ```
+Setting the dependencies in useEffect to an empty array ([]) is useful when you want the effect to run only once, when the component mounts. By using [] as the dependency array, you ensure that the effect doesn't re-run on any state or prop updates—just once during the component's initial render. So, setting useEffect with [] dependencies is perfect for effects that need to run just once on mount, such as initial setup, data fetching, or attaching event listeners that will remain constant.
 
-# Behavior:
+# Behavior
 + `useState`: Triggers a re-render of the component each time the state changes. This makes it ideal for dynamic data that should immediately reflect in the UI, like user input.
 + `useEffect`: Does not cause a re-render on its own. It's used to run code after React has already updated the DOM, so you can perform actions in response to state or prop changes without initiating another render loop.
 
-# Examples of When to Use:
+# Examples of When to Use
 + `useState`: For tracking UI changes or data updates within the component, such as a counter, form input, or selection status.
 + `useEffect`: For side effects, like fetching data from an API, setting up event listeners, or manually manipulating the DOM.
 
-# Example Comparison:
+# Example Comparison
 Here's a component that uses both useState and useEffect:
 ```
 import { useState, useEffect } from 'react';
@@ -59,6 +60,3 @@ function ExampleComponent() {
 In this example:
 + `useState` handles the count state, which changes when the button is clicked.
 + `useEffect` logs to the console whenever count updates and cleans up by logging a message just before the next effect.
-
-Setting the dependencies in useEffect to an empty array ([]) is useful when you want the effect to run only once, when the component mounts. By using [] as the dependency array, you ensure that the effect doesn't re-run on any state or prop updates—just once during the component's initial render. So, setting useEffect with [] dependencies is perfect for effects that need to run just once on mount, such as initial setup, data fetching, or attaching event listeners that will remain constant.
-
