@@ -25,6 +25,8 @@ function Counter() {
     </div>
   );
 }
+
+export default Counter;
 ```
 
 In this example, count is the state variable managed by useState, and setCount updates it. Every time setCount is called, React re-renders the component with the updated count.
@@ -39,36 +41,44 @@ In this example, count is the state variable managed by useState, and setCount u
 Syntax:
 ```
 useEffect(() => {
-  // Your code here (e.g., data fetching, setting up subscriptions)
+  // Your code here (e.g., data fetching, setting up subscriptions).
 
   return () => {
-    // Optional cleanup code (e.g., unsubscribing, clearing timers)
+    // Optional cleanup code (e.g., unsubscribing, clearing timers).
   };
 }, [dependencies]);
 ```
 
-Example:
+Example 1:
 ```
-    import React, { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
-    function FetchDataComponent() {
-      const [data, setData] = useState(null);
+function FetchDataOnMount() {
+  const [data, setData] = useState(null);
 
-      useEffect(() => {
-        fetch("https://api.example.com/data")
-          .then(response => response.json())
-          .then(data => setData(data));
-      }, []); // Empty array means this effect runs only once
+  useEffect(() => {
+    console.log("Fetching data on component mount...");
+    fetch("https://api.example.com/data")
+      .then(response => response.json())
+      .then(data => setData(data));
 
-      return (
-        <div>
-          <p>Data: {data ? JSON.stringify(data) : "Loading..."}</p>
-        </div>
-      );
-    }
+    // No dependencies: this effect runs only once when the component mounts.
+  }, []); 
+
+  return (
+    <div>
+      <p>Data: {data ? JSON.stringify(data) : "Loading..."}</p>
+    </div>
+  );
+}
+
+export default FetchDataOnMount;
 ```
 
 In this example, useEffect fetches data from an API only once when the component mounts because the dependency array is empty ([]).
+
+Example 2:
+
 
 # Key Differences Between useState and useEffect
 + Purpose: useState is for managing local state, while useEffect is for handling side effects.
