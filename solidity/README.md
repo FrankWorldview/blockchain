@@ -1,6 +1,6 @@
 **Learning Resources**
 1.	[Learn Solidity](https://www.alchemy.com/university/courses/solidity) & [GitHub](https://github.com/alchemyplatform/learn-solidity-presentations)
-2.	Development framework: Foundry
+2.	Development framework: [Foundry](https://book.getfoundry.sh/)
 3.	Development framework: Hardhat
 4.	Development framework: Truffle Suite (sunset) + Ganache
 5.	Ethereum basics
