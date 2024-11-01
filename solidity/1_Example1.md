@@ -43,5 +43,5 @@
 + Add a new function getMaxUint256() in the Hello contract. This function can return the maximal number of uint256 (i.e. type(uint256).max).
 + Modify Hello.js to interact with getMaxUint256().
 + Modity App.js to interact with getMaxUint256().
-
-![image](https://myoctocat.com/assets/images/base-octocat.svg)
+![image](/solidity/img/hello2.png)
+![image](/solidity/img/hello2-app.png)
