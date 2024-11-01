@@ -58,7 +58,7 @@ function FetchDataOnMount() {
 
   useEffect(() => {
     console.log("Fetching data on component mount...");
-    fetch("https://api.example.com/data")
+    fetch("https://api.thecatapi.com/v1/images/search") // An API to get random cat images.
       .then(response => response.json())
       .then(data => setData(data));
 
