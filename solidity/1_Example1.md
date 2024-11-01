@@ -22,7 +22,7 @@
 + Edit Hello.js
 + View the result: `node Hello`
 
-## Interact with the Contract via Web3.js.
+## Interact with the Contract via React.
 + Enter the root folder "Web": `cd Web`
 + Create a React app: `npx create-react-app hello-app`
 + Enter the new folder: `cd hello-app`
