@@ -82,5 +82,5 @@
 
 ## Exercise 1 (20 Minutes)
 + Add a new function getMyName() in the Hello contract. This function can return a string of your name.
-+ Modify Hello.js to interact with the contract.
-+ Modity App.js to interact with the contract.
++ Modify Hello.js to interact with getMyName().
++ Modity App.js to interact with getMyName().
