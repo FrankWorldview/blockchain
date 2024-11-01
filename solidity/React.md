@@ -112,4 +112,4 @@ In this example:
 + Together, useState and useEffect enable powerful, flexible control over data and actions in functional components, making them fundamental for managing state and lifecycle effects in React.
 
 # Note
-In React’s [Strict Mode](https://react.dev/reference/react/StrictMode), some functions (specifically certain lifecycle functions passed to hooks like useState or useEffect) are intentionally called twice to help identify potential issues in your application. This is a stress-test and shouldn’t break your code. This behavior aims to improve the reliability and predictability of your code.
+In React’s [Strict Mode](https://react.dev/reference/react/StrictMode), certain functions—particularly lifecycle methods and those associated with hooks like useState and useEffect—are intentionally invoked twice to help identify potential issues within your application. This double invocation serves as a stress test and is designed not to break your code. Instead, it enhances the reliability and predictability of your components by encouraging developers to write code that can handle multiple executions without unexpected side effects.
