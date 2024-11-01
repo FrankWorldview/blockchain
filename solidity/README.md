@@ -6,8 +6,8 @@
 + [Ethereum basics](https://docs.alchemy.com/docs/ethereum-basics)
 + [Web3.js documents](https://docs.web3js.org/)
 + [Console logging in Foundry](https://book.getfoundry.sh/reference/forge-std/console-log)
-* https://www.casper.tw/development/2020/10/16/async-await/
-* https://react.dev/reference/react/useEffect
++ https://www.casper.tw/development/2020/10/16/async-await/
++ https://react.dev/reference/react/useEffect
 
 # Software Used in This Class
 + Solidity: [Foundry](https://book.getfoundry.sh/) + [Git for Windows](https://gitforwindows.org/)
@@ -58,24 +58,25 @@
 + Test the contract: `forge test -vv`
 + Build the contract: `forge build`
 + Deploy the contract: `forge create --rpc-url 127.0.0.1:8545 --private-key <your_private_key> src/Hello.sol:Hello`
-## Interact with the contract via Node.js.
-  - Enter the "Web" folder.
+## Interact with the Contract via Node.js.
++ Enter the "Web" folder: `cd Web`
++ Create a subfolder "hello" and enter this folder.
   - md hello
   - cd hello
-+ Initialize an npm project: npm init
-+ Install Web3.js: npm install web3
++ Initialize an npm project: `npm init`
++ Install Web3.js: `npm install web3`
 + Edit Hello.js
-+ View the result: node Hello
-## Interact with the contract via Web3.js.
-+ Enter the “Web” folder.
-+ npx create-react-app hello-app
-+cd hello-app
-Install Web3.js: npm install web3
-Copy the ABI file (i.e. Solidity/hello/out/Hello.sol/Hello.json) to React/hello-app/src/abi.
-Backup src/App.js to src/App.js.ORIG.
-Edit src/App.js.
-Make sure the addr variable refers to the contract’s deployed address.
-View the result: npm start
++ View the result: `node Hello`
+## Interact with the Contract via Web3.js.
++ Enter the "Web" folder: `cd Web`
++ Create a React app: `npx create-react-app hello-app`
++ Enter the new folder: `cd hello-app`
++ Install Web3.js: `npm install web3`
++ Copy the contract's ABI file (i.e. Solidity/hello/out/Hello.sol/Hello.json) to Web/hello-app/src/abi.
++ Backup src/App.js to src/App.js.ORIG.
++ Edit src/App.js.
++ Make sure the addr variable refers to the contract's deployed address.
++ View the result: `npm start`
 
 # Exercise 1
 
