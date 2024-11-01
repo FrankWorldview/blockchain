@@ -25,6 +25,7 @@
 + Edit Hello.js.
 + Make sure the "addr" variable refers to the contract's deployed address.
 + View the result: `node Hello`
+
 ![image](/solidity/img/hello.png)
 
 ## Interact with the Contract via React
@@ -37,6 +38,7 @@
 + Edit src/App.js.
 + Make sure the "addr" variable refers to the contract's deployed address.
 + View the result: `npm start`
+
 ![image](/solidity/img/hello-app.png)
 
 ## Exercise 1 (20 Minutes)
