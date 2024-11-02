@@ -1,7 +1,7 @@
 # Example 4: Send Ether to Friends
 
-![image](/solidity/img/1.png)
+![image](/smart_contracts/img/1.png)
 
-![image](/solidity/img/2.png)
+![image](/smart_contracts/img/2.png)
 
-![image](/solidity/img/3.png)
+![image](/smart_contracts/img/3.png)
