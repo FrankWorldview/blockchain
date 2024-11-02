@@ -24,13 +24,18 @@
     ```
     git config --global user.name "John Doe"
     ```
-  - (Required???) `git config --global user.email johndoe@example.com`
+  - (Required?)
+    ```
+    git config --global user.email johndoe@example.com
+    ```
 + [Foundry](https://book.getfoundry.sh/)
 + JavaScript
   - Install [Node.js](https://nodejs.org/en/download/prebuilt-installer).
-  - Check the installed version: `node -v`
-  - Install npm.
-  - Check the installed version: `npm -v`
+  - Check the installed version.
+    ```
+    node -v
+    npm -v
+    ```
 + Code editor
   - Install [Visual Studio Code](https://code.visualstudio.com/).
   - Install the "solidity" extension by Juan Blanco, which provides syntax highlighting, IntelliSense, and debugging support for Solidity.
@@ -41,15 +46,28 @@
 + Start the test blockchain: `anvil`
 + Run another Git Bash.
 + Create a root folder "Web" and enter it.
-  - `md Web`
-  - `cd Web`
+  ```
+  md Web
+  cd Web
+  ```
 + Create a folder "vieweth" and enter it.
-  - `md vieweth`
-  - `cd vieweth`
-+ Initialize an npm project: `npm init`
-+ Install Web3.js: `npm install web3`
+  ```
+  md vieweth
+  cd vieweth
+  ```
++ Initialize an npm project.
+  ```
+  npm init
+  ```
++ Install Web3.js.
+  ```
+  npm install web3
+  ```
 + Edit View.js
-+ View the result: `node View`
++ View the result.
+  ```
+  node View
+  ```
 
 ![image](/solidity/img/anvil.png)
 
