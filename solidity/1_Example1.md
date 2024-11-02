@@ -11,12 +11,19 @@
   ```
   forge init hello
   ```
-+ Enter the new folder.
++ Enter the new folder and open Visual Studio Code.
   ```
   cd hello
+  code .
   ```
 + Move src/Counter.sol elsewhere (e.g. the bak folder). Edit src/Hello.sol.
+  ```
+  code src/Hello.sol
+  ```
 + Move test/Counter.t.sol elsewhere (e.g. the bak folder). Edit test/Hello.t.sol.
+  ```
+  code test/Hello.t.sol
+  ```
 + Move script/Counter.s.sol elsewhere (e.g. the bak folder).
 + Test the contract.
   ```
@@ -32,16 +39,33 @@
   ```
 
 ## Interact with the Contract via Node.js
-+ Enter the root folder "Web": `cd Web`
++ Enter the root folder "Web".
+  ```
+  cd Web
+  ```
 + Create a folder "hello" and enter it.
-  - md hello
-  - cd hello
-+ Initialize an npm project: `npm init`
-+ Install Web3.js: `npm install web3`
+  ```
+  md hello
+  cd hello
+  ```
++ Initialize an npm project.
+  ```
+  npm init
+  ```
++ Install Web3.js.
+  ```
+  npm install web3
+  ```
 + Copy the contract's ABI file (i.e. Solidity/hello/out/Hello.sol/Hello.json) to Web/hello/abi.
 + Edit Hello.js.
+  ```
+  code Hello.js
+  ```
 + Make sure the "addr" variable refers to the contract's deployed address.
-+ View the result: `node Hello`
++ View the result.
+  ```
+  node Hello
+  ```
 
 ![image](/solidity/img/hello.png)
 
