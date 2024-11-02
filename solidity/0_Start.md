@@ -43,7 +43,10 @@
 
 # View Blockchain Information
 + Run Git Bash.
-+ Start the test blockchain: `anvil`
++ Start the test blockchain.
+  ```
+  anvil
+  ```
 + Run another Git Bash.
 + Create a root folder "Web" and enter it.
   ```
