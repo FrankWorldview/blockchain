@@ -70,15 +70,37 @@
 ![image](/solidity/img/hello.png)
 
 ## Interact with the Contract via React
-+ Enter the root folder "Web": `cd Web`
-+ Create a React app: `npx create-react-app hello-app`
-+ Enter the new folder: `cd hello-app`
-+ Install Web3.js: `npm install web3`
++ Enter the root folder "Web".
+  ```
+  cd Web
+  ```
++ Create a React app.
+  ```
+  npx create-react-app hello-app
+  ```
++ Enter the new folder.
+  ```
+  cd hello-app
+  ```
++ Install Web3.js.
+  ```
+  npm install web3
+  ```
 + Copy the contract's ABI file (i.e. Solidity/hello/out/Hello.sol/Hello.json) to Web/hello-app/src/abi.
 + Backup src/App.js to src/App.js.ORIG.
+  ```
+  move src/App.js src/App.js.ORIG
+  mv src/App.js src/App.js.ORIG
+  ```
 + Edit src/App.js.
+  ```
+  code src/App.js
+  ```
 + Make sure the "addr" variable refers to the contract's deployed address.
-+ View the result: `npm start`
++ View the result.
+  ```
+  npm start
+  ```
 
 ![image](/solidity/img/hello-app.png)
 
