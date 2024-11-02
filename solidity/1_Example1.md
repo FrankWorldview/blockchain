@@ -3,16 +3,33 @@
 ## Create, Test, and Deploy the Contract
 + Run Git Bash.
 + Create a root folder "Solidity" and enter it.
-  - ```md Solidity```
-  - `cd Solidity`
-+ Initialize a Foundry project: `forge init hello`
-+ Enter the new folder: `cd hello`
+  ```
+  md Solidity
+  cd Solidity
+  ```
++ Initialize a Foundry project.
+  ```
+  forge init hello
+  ```
++ Enter the new folder.
+  ```
+  cd hello
+  ```
 + Move src/Counter.sol elsewhere (e.g. the bak folder). Edit src/Hello.sol.
 + Move test/Counter.t.sol elsewhere (e.g. the bak folder). Edit test/Hello.t.sol.
 + Move script/Counter.s.sol elsewhere (e.g. the bak folder).
-+ Test the contract: `forge test -vv`
-+ Build the contract: `forge build`
-+ Deploy the contract: `forge create --rpc-url 127.0.0.1:8545 --private-key <your_private_key> src/Hello.sol:Hello`
++ Test the contract.
+  ```
+  forge test -vv
+  ```
++ Build the contract.
+  ```
+  forge build
+  ```
++ Deploy the contract.
+  ```
+  forge create --rpc-url 127.0.0.1:8545 --private-key <your_private_key> src/Hello.sol:Hello
+  ```
 
 ## Interact with the Contract via Node.js
 + Enter the root folder "Web": `cd Web`
