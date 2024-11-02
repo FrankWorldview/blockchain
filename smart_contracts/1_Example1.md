@@ -67,7 +67,7 @@
   node Hello
   ```
 
-![image](/solidity/img/hello.png)
+![image](/smart_contracts/img/hello.png)
 
 ## Interact with the Contract via React
 + Enter the root folder "Web".
@@ -105,7 +105,7 @@
   npm start
   ```
 
-![image](/solidity/img/hello-app.png)
+![image](/smart_contracts/img/hello-app.png)
 
 ## Exercise 1
 + Add a new function getMaxUint256() in the Hello contract. This function can return the maximal number of uint256 (i.e. type(uint256).max).
@@ -113,6 +113,6 @@
 + Modity App.js to interact with getMaxUint256().
 + Hint: `{number == null ? number : number.toString()}`
 
-![image](/solidity/img/hello2.png)
+![image](/smart_contracts/img/hello2.png)
 
-![image](/solidity/img/hello2-app.png)
+![image](/smart_contracts/img/hello2-app.png)
