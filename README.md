@@ -3,4 +3,4 @@
 
 Please go the [solidity](/solidity) folder.
 
-![image](https://myoctocat.com/assets/images/base-octocat.svg)
+![image](/solidity/img/rocket-ship-svgrepo-com.svg)
