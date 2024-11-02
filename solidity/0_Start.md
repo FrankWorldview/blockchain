@@ -1,5 +1,6 @@
 # Learning Resources
 + [Learn Solidity](https://www.alchemy.com/university/courses/solidity) & [GitHub](https://github.com/alchemyplatform/learn-solidity-presentations)
++ [Solidity cheetsheet](https://docs.soliditylang.org/en/v0.8.28/cheatsheet.html)
 + Development framework: [Foundry](https://book.getfoundry.sh/)
 + Development framework: [Hardhat](https://hardhat.org/)
 + Development framework: [Truffle Suite](https://archive.trufflesuite.com/) (sunset) + [Ganache](https://archive.trufflesuite.com/ganache/)
