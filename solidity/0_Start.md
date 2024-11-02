@@ -20,7 +20,10 @@
 # Installation
 + [Git for Windows](https://gitforwindows.org/)
   - (Suggested) Check "Additional icons (On the Desktop)".
-  - (Optional) `git config --global user.name "John Doe"`
+  - (Optional)
+    ```
+    git config --global user.name "John Doe"
+    ```
   - (Required???) `git config --global user.email johndoe@example.com`
 + [Foundry](https://book.getfoundry.sh/)
 + JavaScript
