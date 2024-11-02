@@ -3,7 +3,7 @@
 ## Create, Test, and Deploy the Contract
 + Run Git Bash.
 + Create a root folder "Solidity" and enter it.
-  - `md Solidity`
+  - ```md Solidity```
   - `cd Solidity`
 + Initialize a Foundry project: `forge init hello`
 + Enter the new folder: `cd hello`
@@ -41,7 +41,7 @@
 
 ![image](/solidity/img/hello-app.png)
 
-## Exercise 1 (20 Minutes)
+## Exercise 1
 + Add a new function getMaxUint256() in the Hello contract. This function can return the maximal number of uint256 (i.e. type(uint256).max).
 + Modify Hello.js to interact with getMaxUint256().
 + Modity App.js to interact with getMaxUint256().
