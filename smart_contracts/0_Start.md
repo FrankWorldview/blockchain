@@ -75,6 +75,6 @@
   node View
   ```
 
-![image](/solidity/img/anvil.png)
+![image](/smart_contracts/img/anvil.png)
 
-![image](/solidity/img/vieweth.png)
+![image](/smart_contracts/img/vieweth.png)
