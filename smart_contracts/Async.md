@@ -71,13 +71,13 @@ Here's how you can use async and await with Promises:
 ```
 async function fetchUserData() {
   try {
-    const user = await fetchData(); // Waits for fetchData to resolve
+    const user = await fetchData(); // Waits for fetchData to resolve.
     console.log(user); // Logs: "Fetched data" after 1 second
 
-    const processedData = await processUserData(user); // Waits for processUserData
-    console.log(processedData); // Logs processed data
+    const processedData = await processUserData(user); // Waits for processUserData.
+    console.log(processedData); // Logs processed data.
   } catch (error) {
-    console.log("Error:", error); // Handles errors
+    console.log("Error:", error); // Handles errors.
   }
 }
 
