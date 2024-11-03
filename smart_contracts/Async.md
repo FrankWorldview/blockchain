@@ -59,7 +59,7 @@ function processFetchedData(data) {
     return `${data} - Processed`; // Simulate processing of fetched data.
 }
 
-// Example usage with improved readability and structure.
+// Chaining Promises.
 fetchData()
     .then(fetchedData => {
         console.log(fetchedData); // Logs: "Fetched data" after 3 seconds.
