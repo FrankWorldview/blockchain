@@ -59,11 +59,11 @@ function processFetchedData(data) {
     return `${data} - Processed`; // Simulate processing of fetched data.
 }
 
-// Example usage with improved readability and structure
+// Example usage with improved readability and structure.
 fetchData()
     .then(fetchedData => {
         console.log(fetchedData); // Logs: "Fetched data" after 3 seconds.
-        return processFetchedData(fetchedData); // Pass data to the next step
+        return processFetchedData(fetchedData); // Pass data to the next step.
     })
     .then(processedData => {
         console.log(processedData); // Logs: "Fetched data - Processed".
@@ -104,17 +104,17 @@ function processFetchedData(data) {
 
 async function fetchDataAndProcess() {
     try {
-        const fetchedData = await fetchData(); // Waits for fetchData to resolve or reject
-        console.log(fetchedData); // Logs: "Fetched data"
+        const fetchedData = await fetchData(); // Waits for fetchData to resolve or reject.
+        console.log(fetchedData); // Logs: "Fetched data".
 
         const processedData = processFetchedData(fetchedData);
-        console.log(processedData); // Logs: "Fetched data - Processed"
+        console.log(processedData); // Logs: "Fetched data - Processed".
     } catch (error) {
-        console.error("Error:", error); // Handles any error in the try block
+        console.error("Error:", error); // Handles any error in the try block.
     }
 }
 
-// Run the async function
+// Run the async function.
 fetchDataAndProcess();
 ```
 
