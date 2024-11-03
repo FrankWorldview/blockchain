@@ -59,7 +59,7 @@
 + Copy the contract's ABI file (i.e. Solidity/hello/out/Hello.sol/Hello.json) to Web/hello/abi.
 + Edit Hello.js.
   ```
-  code Hello.js
+  code .
   ```
 + Make sure the "addr" variable refers to the contract's deployed address.
 + View the result.
@@ -97,7 +97,7 @@
   ```
 + Edit src/App.js.
   ```
-  code src/App.js
+  code .
   ```
 + Make sure the "addr" variable refers to the contract's deployed address.
 + View the result.
