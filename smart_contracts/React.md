@@ -5,14 +5,14 @@
 + Usage: You use useState to store data that may change over time and needs to trigger re-renders when updated. Examples include form inputs, toggles, counters, or any dynamic content.
 
 Syntax:
-```
+```javascript
 const [state, setState] = useState(initialValue);
 ```
 + state: The current state value.
 + setState: A function to update the state value.
 
 Example:
-```
+```javascript
 import { useState } from 'react';
 
 function Counter() {
@@ -39,7 +39,7 @@ In this example, count is the state variable managed by useState, and setCount u
   - No array: Runs on every render.
 
 Syntax:
-```
+```javascript
 useEffect(() => {
   // Your code here (e.g., data fetching, setting up subscriptions).
 
@@ -50,7 +50,7 @@ useEffect(() => {
 ```
 
 Example 1:
-```
+```javascript
 import { useEffect, useState } from 'react';
 
 function FetchDataOnMount() {
@@ -79,7 +79,7 @@ In this example:
 + Since the dependency array is empty ([]), this effect will not run again, even if the component re-renders.
 
 Example 2:
-```
+```javascript
 import { useState, useEffect } from 'react';
 
 function UpdateMessageOnCountChange() {
