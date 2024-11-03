@@ -5,9 +5,9 @@ A Promise in JavaScript is an object that represents the eventual completion (or
 
 ## States of a Promise
 A Promise can be in one of three states:
-+ Pending: The initial state, meaning the operation is still ongoing.
-+ Fulfilled: The operation completed successfully, resulting in a resolved value.
-+ Rejected: The operation failed, resulting in a reason for the failure (an error).
++ `Pending`: The initial state, meaning the operation is still ongoing.
++ `Fulfilled`: The operation completed successfully, resulting in a resolved value.
++ `Rejected`: The operation failed, resulting in a reason for the failure (an error).
 
 ## Creating a Promise
 You can create a Promise using the Promise constructor:
