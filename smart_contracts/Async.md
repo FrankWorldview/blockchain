@@ -73,6 +73,8 @@ fetchData()
     });
 ```
 
+The final .catch() applies to all preceding .then() calls in the chain. It’s a good way to handle any errors that might arise at any point in the chain without needing to place multiple .catch() statements after each .then().
+
 ## Why Do We Need async and await?
 While Promises greatly improved handling asynchronous code, using them often resulted in chaining multiple .then() calls, which could become unwieldy and harder to read. This is where async and await come into play.
 
