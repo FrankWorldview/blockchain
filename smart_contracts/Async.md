@@ -21,7 +21,7 @@ let myPromise = new Promise((resolve, reject) => {
     } else {
       reject("Operation failed."); // Rejected.
     }
-  }, 1000);
+  }, 3000);
 });
 ```
 
@@ -41,22 +41,30 @@ myPromise
 Promises can be chained to perform multiple asynchronous operations in sequence:
 ```
 function fetchData() {
-  return new Promise((resolve) => {
-    setTimeout(() => resolve("Fetched data"), 1000);
-  });
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const success = true; // Change to false to see rejection behavior.
+            if (success) {
+                resolve("Fetched data."); // Resolving the Promise.
+            } else {
+                reject("Error: Failed to fetch data."); // Rejecting the Promise.
+            }
+        }, 3000);
+    });
 }
 
+// Example usage.
 fetchData()
-  .then(data => {
-    console.log(data); // Logs: "Fetched data" after 1 second.
-    return "Processed data";
-  })
-  .then(processedData => {
-    console.log(processedData); // Logs: "Processed data"
-  })
-  .catch(error => {
-    console.log("Error:", error); // Error handling.
-  });
+    .then(data => {
+        console.log(data); // Logs: "Fetched data" after 3 seconds.
+        return "Processed data";
+    })
+    .then(processedData => {
+        console.log(processedData); // Logs: "Processed data".
+    })
+    .catch(error => {
+        console.log("Error:", error); // Error handling.
+    });
 ```
 
 ## Why Do We Need async and await?
@@ -72,7 +80,7 @@ Here's how you can use async and await with Promises:
 async function fetchUserData() {
   try {
     const user = await fetchData(); // Waits for fetchData to resolve.
-    console.log(user); // Logs: "Fetched data" after 1 second.
+    console.log(user); // Logs: "Fetched data" after 3 seconds.
   } catch (error) {
     console.log("Error:", error); // Handles errors.
   }
