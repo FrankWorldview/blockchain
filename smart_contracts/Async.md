@@ -17,7 +17,7 @@ let myPromise = new Promise((resolve, reject) => {
   setTimeout(() => {
     const success = true; // Change to false to see rejection behavior.
     if (success) {
-      resolve("Operation succeeded!"); // Fulfilled.
+      resolve("Operation succeeded!"); // Resolved.
     } else {
       reject("Operation failed."); // Rejected.
     }
