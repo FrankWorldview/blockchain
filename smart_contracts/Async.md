@@ -30,7 +30,7 @@ You can handle the outcome of a Promise using .then() for success and .catch() f
 ```
 myPromise
   .then(result => {
-    console.log(result); // Logs: "Operation succeeded!" after 1 second.
+    console.log(result); // Logs: "Operation succeeded!" after 3 seconds.
   })
   .catch(error => {
     console.log(error); // Logs error if rejected.
