@@ -40,30 +40,36 @@ myPromise
 ## Chaining Promises
 Promises can be chained to perform multiple asynchronous operations in sequence:
 ```
+// Simulate success or failure by toggling this variable.
+const shouldSucceed = true;
+
 function fetchData() {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
-            const success = true; // Change to false to see rejection behavior.
-            if (success) {
-                resolve("Fetched data."); // Resolving the Promise.
+            if (shouldSucceed) {
+                resolve("Fetched data"); // Resolving the Promise.
             } else {
-                reject("Error: Failed to fetch data."); // Rejecting the Promise.
+                reject("Error: Failed to fetch data"); // Rejecting the Promise.
             }
         }, 3000);
     });
 }
 
-// Example usage.
+function processFetchedData(data) {
+    return `${data} - Processed`; // Simulate processing of fetched data.
+}
+
+// Example usage with improved readability and structure
 fetchData()
-    .then(data => {
-        console.log(data); // Logs: "Fetched data" after 3 seconds.
-        return "Processed data";
+    .then(fetchedData => {
+        console.log(fetchedData); // Logs: "Fetched data" after 3 seconds.
+        return processFetchedData(fetchedData); // Pass data to the next step
     })
     .then(processedData => {
-        console.log(processedData); // Logs: "Processed data".
+        console.log(processedData); // Logs: "Fetched data - Processed".
     })
     .catch(error => {
-        console.log("Error:", error); // Error handling.
+        console.error("Error:", error); // Handles any error in the chain.
     });
 ```
 
@@ -77,16 +83,39 @@ While Promises greatly improved handling asynchronous code, using them often res
 ## Example Using async and await
 Here's how you can use async and await with Promises:
 ```
-async function fetchUserData() {
-  try {
-    const user = await fetchData(); // Waits for fetchData to resolve.
-    console.log(user); // Logs: "Fetched data" after 3 seconds.
-  } catch (error) {
-    console.log("Error:", error); // Handles errors.
-  }
+// Simulate success or failure by toggling this variable.
+const shouldSucceed = true;
+
+function fetchData() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (shouldSucceed) {
+                resolve("Fetched data"); // Resolving the Promise.
+            } else {
+                reject("Error: Failed to fetch data"); // Rejecting the Promise.
+            }
+        }, 3000);
+    });
 }
 
-fetchUserData();
+function processFetchedData(data) {
+    return `${data} - Processed`; // Simulate processing of fetched data.
+}
+
+async function fetchDataAndProcess() {
+    try {
+        const fetchedData = await fetchData(); // Waits for fetchData to resolve or reject
+        console.log(fetchedData); // Logs: "Fetched data"
+
+        const processedData = processFetchedData(fetchedData);
+        console.log(processedData); // Logs: "Fetched data - Processed"
+    } catch (error) {
+        console.error("Error:", error); // Handles any error in the try block
+    }
+}
+
+// Run the async function
+fetchDataAndProcess();
 ```
 
 ## Summary
