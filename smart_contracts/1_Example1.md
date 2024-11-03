@@ -105,7 +105,10 @@
 + Add a new function getMaxUint256() in the Hello contract. This function can return the maximal number of uint256 (i.e. type(uint256).max).
 + Modify Hello.js to interact with getMaxUint256().
 + Modity App.js to interact with getMaxUint256().
-+ Hint: `number ? number : number.toString()`
++ Hint:
+```javascript
+number == null ? number : number.toString()
+```
 
 ![image](/smart_contracts/img/hello2.png)
 
