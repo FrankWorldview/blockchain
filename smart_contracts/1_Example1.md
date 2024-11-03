@@ -17,13 +17,7 @@
   code .
   ```
 + Move src/Counter.sol elsewhere (e.g. the bak folder). Edit src/Hello.sol.
-  ```
-  code src/Hello.sol
-  ```
 + Move test/Counter.t.sol elsewhere (e.g. the bak folder). Edit test/Hello.t.sol.
-  ```
-  code test/Hello.t.sol
-  ```
 + Move script/Counter.s.sol elsewhere (e.g. the bak folder).
 + Test the contract.
   ```
