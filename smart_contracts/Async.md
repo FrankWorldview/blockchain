@@ -11,7 +11,7 @@ A Promise can be in one of three states:
 
 ## Creating a Promise
 You can create a Promise using the Promise constructor:
-```
+```javascript
 let myPromise = new Promise((resolve, reject) => {
   // Simulating an asynchronous operation (like fetching data).
   setTimeout(() => {
@@ -27,7 +27,7 @@ let myPromise = new Promise((resolve, reject) => {
 
 ## Consuming a Promise
 You can handle the outcome of a Promise using .then() for success and .catch() for error handling:
-```
+```javascript
 myPromise
   .then(result => {
     console.log(result); // Logs: "Operation succeeded!" after 3 seconds.
@@ -39,7 +39,7 @@ myPromise
 
 ## Chaining Promises
 Promises can be chained to perform multiple asynchronous operations in sequence:
-```
+```javascript
 // Simulate success or failure by toggling this variable.
 const shouldSucceed = true;
 
@@ -84,7 +84,7 @@ While Promises greatly improved handling asynchronous code, using them often res
 
 ## Example Using async and await
 Here's how you can use async and await with Promises:
-```
+```javascript
 // Simulate success or failure by toggling this variable.
 const shouldSucceed = true;
 
