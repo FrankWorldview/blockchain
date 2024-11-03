@@ -89,7 +89,7 @@
 + Copy the contract's ABI file (i.e. Solidity/hello/out/Hello.sol/Hello.json) to Web/hello-app/src/abi.
 + Backup src/App.js to src/App.js.ORIG. Either in Windows:
   ```
-  ren src/App.js src/App.js.ORIG
+  move src/App.js src/App.js.ORIG
   ```
   Or in Git:
   ```
