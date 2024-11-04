@@ -52,10 +52,10 @@
   ```
   anvil
   ```
-+ Run another Git Bash.
++ Run another Git Bash (in Windows) or open another terminal (in Mac).
 + Create a root folder "Web" and enter it.
   ```
-  md Web
+  mkdir Web
   cd Web
   ```
 + Create a folder "vieweth" and enter it.
@@ -71,7 +71,8 @@
   ```
   npm install web3
   ```
-+ Edit View.js
++ Edit View.js.
+  (You could copy this file from smart_contracts/src/web/vieweth/.)
 + View the result.
   ```
   node View
