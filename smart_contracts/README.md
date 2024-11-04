@@ -2,17 +2,18 @@
 + [Learn Solidity](https://www.alchemy.com/university/courses/solidity) & [GitHub](https://github.com/alchemyplatform/learn-solidity-presentations)
 + [Solidity cheetsheet](https://docs.soliditylang.org/en/v0.8.28/cheatsheet.html)
 + Development framework: [Foundry](https://book.getfoundry.sh/)
-+ Development framework: [Hardhat](https://hardhat.org/)
-+ Development framework: [Truffle Suite](https://archive.trufflesuite.com/) (sunset) + [Ganache](https://archive.trufflesuite.com/ganache/)
 + [Ethereum basics](https://docs.alchemy.com/docs/ethereum-basics)
 + [How do smart contracts communicate?](https://docs.alchemy.com/docs/smart-contract-communication)
 + [What are multi-signature contracts?](https://docs.alchemy.com/docs/multi-sig-contracts)
 + [What is an ERC-20 token?](https://docs.alchemy.com/docs/what-is-erc-20)
 + [Web3.js documents](https://docs.web3js.org/)
 + [Console logging in Foundry](https://book.getfoundry.sh/reference/forge-std/console-log)
-+ JavaScript: [async function & await](https://www.casper.tw/development/2020/10/16/async-await/)
 + React: [useState](https://react.dev/reference/react/useState)
 + React: [userEffect](https://react.dev/reference/react/useEffect)
+
+# Supplement
++ [Foundry](https://medium.com/imtoken/foundry-introduction-and-our-experience-sharing-d9d82bf012ae)
++ JavaScript: [async function & await](https://www.casper.tw/development/2020/10/16/async-await/)
 
 # Software Used in This Class
 + Solidity: [Foundry](https://book.getfoundry.sh/) + [Git for Windows](https://gitforwindows.org/)
@@ -23,13 +24,13 @@
 # Installation
 + [Git for Windows](https://gitforwindows.org/)
   - (Suggested) Check "Additional icons (On the Desktop)".
-  - (Optional)
+  - (Optional) Set your name for Git.
     ```
     git config --global user.name "John Doe"
     ```
-  - (Required?)
+  - (Suggested) Set your email for Git.
     ```
-    git config --global user.email johndoe@example.com
+    git config --global user.email <your email>
     ```
 + [Foundry](https://book.getfoundry.sh/)
 + JavaScript
@@ -58,7 +59,7 @@
   ```
 + Create a folder "vieweth" and enter it.
   ```
-  md vieweth
+  mkdir vieweth
   cd vieweth
   ```
 + Initialize an npm project.
