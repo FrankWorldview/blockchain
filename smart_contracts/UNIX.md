@@ -2,7 +2,7 @@ Git for Windows: bash
 
 Mac: zsh
 
-cp - copy files and directories
+cd - change the working directory
 
 pwd - print name of current/working directory
 
