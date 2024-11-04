@@ -1,6 +1,6 @@
 # Example 1: Hello Contract
 
-## Create, Test, and Deploy the Contract
+## Create, Test, and Deploy the Hello Contract
 + Open Git Bash (in Windows) or open a terminal (in Mac).
 + Create a root folder "Solidity" and enter it.
   ```
@@ -34,7 +34,7 @@
   forge create --rpc-url 127.0.0.1:8545 --private-key <your_private_key> src/Hello.sol:Hello
   ```
 
-## Interact with the Contract via Node.js
+## Interact with the Contract via Node.js (hello)
 + Open Git Bash (in Windows) or open a terminal (in Mac).
 + Enter the root folder "Web".
   ```
@@ -67,7 +67,7 @@
 
 ![image](/smart_contracts/img/hello.png)
 
-## Interact with the Contract via React
+## Interact with the Contract via React (hello-app)
 + Open Git Bash (in Windows) or open a terminal (in Mac).
 + Enter the root folder "Web".
   ```
