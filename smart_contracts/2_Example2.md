@@ -1,4 +1,4 @@
-# Example 4: Send Ether to Friends
+# Example 2: Send Ether to Friends
 
 ![image](/smart_contracts/img/1.png)
 
