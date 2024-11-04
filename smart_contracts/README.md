@@ -2,16 +2,16 @@
 + [Learn Solidity](https://www.alchemy.com/university/courses/solidity) & [GitHub](https://github.com/alchemyplatform/learn-solidity-presentations)
 + [Solidity cheetsheet](https://docs.soliditylang.org/en/v0.8.28/cheatsheet.html)
 + Development framework: [Foundry](https://book.getfoundry.sh/)
-+ [Ethereum basics](https://docs.alchemy.com/docs/ethereum-basics)
-+ [How do smart contracts communicate?](https://docs.alchemy.com/docs/smart-contract-communication)
-+ [What are multi-signature contracts?](https://docs.alchemy.com/docs/multi-sig-contracts)
-+ [What is an ERC-20 token?](https://docs.alchemy.com/docs/what-is-erc-20)
 + [Web3.js documents](https://docs.web3js.org/)
 + [Console logging in Foundry](https://book.getfoundry.sh/reference/forge-std/console-log)
 + React: [useState](https://react.dev/reference/react/useState)
 + React: [userEffect](https://react.dev/reference/react/useEffect)
 
 # Supplement
++ [Ethereum basics](https://docs.alchemy.com/docs/ethereum-basics)
++ [How do smart contracts communicate?](https://docs.alchemy.com/docs/smart-contract-communication)
++ [What are multi-signature contracts?](https://docs.alchemy.com/docs/multi-sig-contracts)
++ [What is an ERC-20 token?](https://docs.alchemy.com/docs/what-is-erc-20)
 + [Foundry](https://medium.com/imtoken/foundry-introduction-and-our-experience-sharing-d9d82bf012ae)
 + JavaScript: [async function & await](https://www.casper.tw/development/2020/10/16/async-await/)
 
