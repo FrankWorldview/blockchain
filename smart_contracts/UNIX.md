@@ -2,14 +2,14 @@ Git for Windows: bash
 
 Mac: zsh
 
-cd — change the working directory
+cp - copy files and directories
 
-pwd — print name of current/working directory
+pwd - print name of current/working directory
 
-mkdir — make directories
+mkdir - make directories
 
-cp — copy files and directories
+cp - copy files and directories
 
-mv — move files
+mv - move (rename) files
 
-rm — remove files or directories
+rm - remove files or directories
