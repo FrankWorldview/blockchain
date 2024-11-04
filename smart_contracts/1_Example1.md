@@ -1,10 +1,10 @@
 # Example 1: Hello Contract
 
 ## Create, Test, and Deploy the Contract
-+ Run Git Bash.
++ Open Git Bash (in Windows) or open a terminal (in Mac).
 + Create a root folder "Solidity" and enter it.
   ```
-  md Solidity
+  mkdir Solidity
   cd Solidity
   ```
 + Initialize a Foundry project.
@@ -16,8 +16,8 @@
   cd hello
   code .
   ```
-+ Move src/Counter.sol elsewhere (e.g. the bak folder). Edit src/Hello.sol.
-+ Move test/Counter.t.sol elsewhere (e.g. the bak folder). Edit test/Hello.t.sol.
++ Move src/Counter.sol elsewhere (e.g. the bak folder). Edit "src/Hello.sol".
++ Move test/Counter.t.sol elsewhere (e.g. the bak folder). Edit "test/Hello.t.sol".
 + Move script/Counter.s.sol elsewhere (e.g. the bak folder).
 + Test the contract.
   ```
@@ -33,13 +33,14 @@
   ```
 
 ## Interact with the Contract via Node.js
++ Open Git Bash (in Windows) or open a terminal (in Mac).
 + Enter the root folder "Web".
   ```
   cd Web
   ```
 + Create a folder "hello" and enter it.
   ```
-  md hello
+  mkdir hello
   cd hello
   ```
 + Initialize an npm project.
@@ -50,8 +51,8 @@
   ```
   npm install web3
   ```
-+ Copy the contract's ABI file (i.e. Solidity/hello/out/Hello.sol/Hello.json) to Web/hello/abi.
-+ Edit Hello.js.
++ Copy the contract's ABI file (i.e. "Solidity/hello/out/Hello.sol/Hello.json") to "Web/hello/abi".
++ Edit "Hello.js".
   ```
   code .
   ```
@@ -64,6 +65,7 @@
 ![image](/smart_contracts/img/hello.png)
 
 ## Interact with the Contract via React
++ Open Git Bash (in Windows) or open a terminal (in Mac).
 + Enter the root folder "Web".
   ```
   cd Web
@@ -80,8 +82,8 @@
   ```
   npm install web3
   ```
-+ Copy the contract's ABI file (i.e. Solidity/hello/out/Hello.sol/Hello.json) to Web/hello-app/src/abi.
-+ Backup src/App.js to src/App.js.ORIG. Either in Windows:
++ Copy the contract's ABI file (i.e. "Solidity/hello/out/Hello.sol/Hello.json") to "Web/hello-app/src/abi".
++ Backup "src/App.js" to "src/App.js.ORIG". Either in Windows:
   ```
   move src/App.js src/App.js.ORIG
   ```
@@ -102,9 +104,9 @@
 ![image](/smart_contracts/img/hello-app.png)
 
 ## Exercise 1
-+ Add a new function getMaxUint256() in the Hello contract. This function can return the maximal number of uint256 (i.e. type(uint256).max).
-+ Modify Hello.js to interact with getMaxUint256().
-+ Modity App.js to interact with getMaxUint256().
++ Add a new function `getMaxUint256()` in the Hello contract. This function can return the maximal number of uint256 (i.e. `type(uint256).max`).
++ Modify "Hello.js" to interact with getMaxUint256().
++ Modity "App.js" to interact with getMaxUint256().
 + Hint:
 ```javascript
 number == null ? number : number.toString()
