@@ -1,5 +1,5 @@
-Git for Windows: bash
-Mac: zsh
++ Git for Windows: bash
++ Mac: zsh
 
 cd — change the working directory
 
