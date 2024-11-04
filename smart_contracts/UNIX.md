@@ -1,3 +1,14 @@
-UNIX 常用指令
+Git for Windows: bash
+Mac: zsh
 
-尚未完成
+cd — change the working directory
+
+pwd — print name of current/working directory
+
+mkdir — make directories
+
+cp — copy files and directories
+
+mv — move files
+
+rm — remove files or directories
