@@ -34,7 +34,7 @@
   forge create --rpc-url 127.0.0.1:8545 --private-key <your_private_key> src/Hello.sol:Hello
   ```
 
-## Interact with the Contract via Node.js (hello)
+## Interact with the Hello Contract via Node.js
 + Open Git Bash (in Windows) or open a terminal (in Mac).
 + Enter the root folder "Web".
   ```
@@ -67,7 +67,7 @@
 
 ![image](/smart_contracts/img/hello.png)
 
-## Interact with the Contract via React (hello-app)
+## Interact with the Hello Contract via React
 + Open Git Bash (in Windows) or open a terminal (in Mac).
 + Enter the root folder "Web".
   ```
