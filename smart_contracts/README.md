@@ -7,7 +7,7 @@
 + React: [useState](https://react.dev/reference/react/useState)
 + React: [userEffect](https://react.dev/reference/react/useEffect)
 
-# Supplement
+# Supplements
 + [Ethereum basics](https://docs.alchemy.com/docs/ethereum-basics)
 + [How do smart contracts communicate?](https://docs.alchemy.com/docs/smart-contract-communication)
 + [What are multi-signature contracts?](https://docs.alchemy.com/docs/multi-sig-contracts)
@@ -16,7 +16,8 @@
 + JavaScript: [async function & await](https://www.casper.tw/development/2020/10/16/async-await/)
 
 # Software Used in This Class
-+ Solidity: [Foundry](https://book.getfoundry.sh/) + [Git for Windows](https://gitforwindows.org/)
++ Solidity: [Foundry](https://book.getfoundry.sh/)
++ Git: [Git for Windows](https://gitforwindows.org/) (Mac doesn't need this.)
 + JavaScript: [Node.js](https://nodejs.org/en/download/prebuilt-installer)
 + JavaScript development framework: [React](https://react.dev/)
 + Code editor: [Visual Studio Code](https://code.visualstudio.com/)
