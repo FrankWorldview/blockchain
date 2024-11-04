@@ -13,3 +13,9 @@ cp - copy files and directories
 mv - move (rename) files
 
 rm - remove files or directories
+
+. - current directory
+
+.. - parent directory
+
+/ - root directory
