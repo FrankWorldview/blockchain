@@ -17,7 +17,7 @@
 
 # Software Used in This Class
 + Solidity: [Foundry](https://book.getfoundry.sh/)
-+ Git: [Git for Windows](https://gitforwindows.org/) (Mac doesn't need this.)
++ Git: [Git for Windows](https://gitforwindows.org/) (Mac already has Git and thus does not need to install this.)
 + JavaScript: [Node.js](https://nodejs.org/en/download/prebuilt-installer)
 + JavaScript development framework: [React](https://react.dev/)
 + Code editor: [Visual Studio Code](https://code.visualstudio.com/)
