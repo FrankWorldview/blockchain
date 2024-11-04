@@ -71,7 +71,7 @@
   ```
   npm install web3
   ```
-+ Edit View.js.
++ Edit "View.js".
   (You can copy this file from `/smart_contracts/src/web/vieweth`.)
 + View the result.
   ```
