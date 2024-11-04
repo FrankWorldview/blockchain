@@ -17,7 +17,9 @@
   code .
   ```
 + Move src/Counter.sol elsewhere (e.g. the bak folder). Edit "src/Hello.sol".
+  (You can copy this file from `/smart_contracts/src/solidity/hello/Hello.sol`.)
 + Move test/Counter.t.sol elsewhere (e.g. the bak folder). Edit "test/Hello.t.sol".
+  (You can copy this file from `/smart_contracts/src/solidity/hello/Hello.t.sol`.)
 + Move script/Counter.s.sol elsewhere (e.g. the bak folder).
 + Test the contract.
   ```
@@ -53,6 +55,7 @@
   ```
 + Copy the contract's ABI file (i.e. "Solidity/hello/out/Hello.sol/Hello.json") to the new folder "Web/hello/abi".
 + Edit "Hello.js".
+  (You can copy this file from `/smart_contracts/src/web/hello/Hello.js`.)
   ```
   code .
   ```
@@ -88,6 +91,7 @@
   mv src/App.js src/App.js.ORIG
   ```
 + Edit "src/App.js".
+  (You can copy this file from `/smart_contracts/src/web/hello-app/App.js`.)
   ```
   code .
   ```
