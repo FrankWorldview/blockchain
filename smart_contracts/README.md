@@ -31,7 +31,7 @@
     ```
   - (Suggested) Set your email for Git.
     ```
-    git config --global user.email <your email>
+    git config --global user.email johndoe@example.com
     ```
 + [Foundry](https://book.getfoundry.sh/)
 + JavaScript
