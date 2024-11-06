@@ -29,9 +29,9 @@
   ```
   forge build
   ```
-+ Deploy the contract.
++ Deploy the contract (with your private key).
   ```
-  forge create --rpc-url 127.0.0.1:8545 --private-key <your_private_key> src/Hello.sol:Hello
+  forge create --rpc-url 127.0.0.1:8545 --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 src/Hello.sol:Hello
   ```
 
 ## Interact with the Hello Contract via Node.js
