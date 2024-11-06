@@ -81,7 +81,7 @@
   (You can copy this file from `/smart_contracts/src/web/vieweth/View.js`.)
 + View the result.
   ```
-  node View
+  node Vieweth
   ```
 
 ![image](/smart_contracts/img/anvil.png)
