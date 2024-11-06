@@ -2,6 +2,8 @@ Git for Windows: bash
 
 Mac: zsh
 
+ls - list directory contents
+
 cd - change the working directory
 
 pwd - print name of current/working directory
