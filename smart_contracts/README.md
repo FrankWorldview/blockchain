@@ -29,7 +29,7 @@
     ```
     git config --global user.name "John Doe"
     ```
-  - (Suggested) Set your email for Git.
+  - Set your email for Git.
     ```
     git config --global user.email johndoe@example.com
     ```
