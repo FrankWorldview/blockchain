@@ -36,32 +36,11 @@
 
 ## Interact with the Hello Contract via React
 + Open a Git Bash (in Windows) or open a terminal (in Mac).
-+ Enter the root folder "Web".
++ Enter the folder "Web/transfer-app".
   ```
-  cd Web
+  cd Web/transfer-app
   ```
-+ Create a React app.
-  ```
-  npx create-react-app hello-app
-  ```
-+ Enter the new folder.
-  ```
-  cd hello-app
-  ```
-+ Install Web3.js.
-  ```
-  npm install web3
-  ```
-+ Copy the contract's ABI file (i.e. "Solidity/hello/out/Hello.sol/Hello.json") to the new folder "Web/hello-app/src/abi".
-+ Backup "src/App.js" to "src/App.js.ORIG".
-  ```
-  mv src/App.js src/App.js.ORIG
-  ```
-+ Edit "src/App.js".
-  (You can copy this file from `/smart_contracts/src/web/hello-app/App.js`.)
-  ```
-  code .
-  ```
++ Copy the contract's ABI file (i.e. "Solidity/donation/out/Donation.sol/Donation.json") to the new folder "Web/transfer-app/src/abi".
 + Make sure the "addr" variable refers to the contract's deployed address.
 + View the result.
   ```
