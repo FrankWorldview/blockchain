@@ -28,7 +28,7 @@
   ```
   code .
   ```
-+ View the result.
++ View the web page.
   ```
   npm start
   ```
