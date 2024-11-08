@@ -1,4 +1,4 @@
-# Example 2: Send Ether to Friends
+# Example 2: Send Ether
 
 ## Send Ether via MetaMask and React
 + Create or log in to your MetaMask wallet.
