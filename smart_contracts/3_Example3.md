@@ -46,7 +46,7 @@
   ```
   npm start
   ```
-+ Input the Donation contract address as the recipient.
++ Change the receiver address to the Donation contract address.
 + "Transfer" Ether to the contract address.
 + "Withdraw" Ether from the contract to the beneficiary address.
 
