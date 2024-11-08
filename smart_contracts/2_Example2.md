@@ -32,6 +32,8 @@
   ```
   npm start
   ```
++ Change the recipient address.
++ "Transfer" Ether to the recipient address.
 
 ![image](/smart_contracts/img/transfer_1.png)
 
