@@ -59,7 +59,7 @@
   ```
   code .
   ```
-+ Make sure the "addr" variable refers to the contract's deployed address.
++ Make sure the "helloAddr" variable refers to the contract's deployed address.
 + View the result.
   ```
   node Hello
@@ -95,7 +95,7 @@
   ```
   code .
   ```
-+ Make sure the "addr" variable refers to the contract's deployed address.
++ Make sure the "helloAddr" variable refers to the contract's deployed address.
 + View the web page.
   ```
   npm start
