@@ -33,11 +33,15 @@
   npm start
   ```
 
-![image](/smart_contracts/img/1.png)
+![image](/smart_contracts/img/Transfer_1.png)
 
-![image](/smart_contracts/img/2.png)
+![image](/smart_contracts/img/Transfer_2.png)
 
-![image](/smart_contracts/img/3.png)
+![image](/smart_contracts/img/Transfer_3.png)
+
+![image](/smart_contracts/img/Transfer_4.png)
+
+![image](/smart_contracts/img/Transfer_5.png)
 
 # Note
 When you restart anvil, you may need to restart your browser and clear activity and nonce data in MetaMask: `Settings -> Advanced -> Clear activity tab data`. This can make sure the nonce data in anvil and in your MetaMask are consistent.
