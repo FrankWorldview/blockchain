@@ -46,7 +46,8 @@
   ```
   npm start
   ```
-+ Input the Donation contract's address as the recipient.
-+ Withdraw Ether from the contract to the beneficiary address.
++ Input the Donation contract address as the recipient.
++ "Transfer" Ether to the contract address.
++ "Withdraw" Ether from the contract to the beneficiary address.
 
 ![image](/smart_contracts/img/transfer-4.png)
