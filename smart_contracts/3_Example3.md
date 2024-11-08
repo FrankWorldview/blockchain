@@ -34,7 +34,20 @@
   ```
   (Note: Replace 0x70997970C51812dc3A010C7d01b50e0d17dc79C8 with the beneficiary address you like.)
 
-## Interact with the Hello Contract via React
+## Interact with the Donation Contract via RPC Calls
++ Send 10 Ether to the Donation contract.
+  ```
+  cast send 0x5FbDB2315678afecb367f032d93F642f64180aa3 --rpc-url 127.0.0.1:8545 --value 10ether --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
+  ```
+(Note: Replace 0x5FbDB2315678afecb367f032d93F642f64180aa3 with your contract address.)
+
++ Withdraw Ether from the contract.
+  ```
+  cast send 0x5FbDB2315678afecb367f032d93F642f64180aa3 "withdraw()" --rpc-url 127.0.0.1:8545 --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
+  ```
+(Note: Replace 0x5FbDB2315678afecb367f032d93F642f64180aa3 with your contract address.)
+
+## Interact with the Donation Contract via React
 + Open a Git Bash (in Windows) or open a terminal (in Mac).
 + Enter the folder "Web/transfer-app".
   ```
