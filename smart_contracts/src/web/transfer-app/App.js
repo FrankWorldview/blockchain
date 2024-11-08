@@ -11,16 +11,13 @@ function App() {
     const [senderBalance, setSenderBalance] = useState(0);
     const [receiverWallet, setReceiverWallet] = useState("Receiver's wallet address");
     const [transferAmount, setTransferAmount] = useState(0.01);
-
     const [receiverBalance, setReceiverBalance] = useState(0);
 
-    // https://docs.web3js.org/guides/wallet/metamask-react/
-    // https://docs.web3js.org/guides/wallet/transactions/
     async function requestAccount() {
         console.log("Requesting account...");
 
         if (window.ethereum) {
-            console.log("Metamask wallet detected.");
+            console.log("MetaMask wallet detected.");
 
             try {
                 const w3 = new Web3(window.ethereum);
@@ -32,16 +29,12 @@ function App() {
 
                 setSenderWallet(accounts[0]);
                 setReceiverWallet(accounts[0]);
-
-                /* console.log("AAA" + accounts[0]);
-                console.log("BBB" + senderWallet);
-                console.log("Web3" + web3); */
-            } catch (error) {
-                console.log(error);
-                alert("Error connecting wallet.");
+            } catch (err) {
+                console.log(err);
+                alert("Error occurred when connecting MetaMask wallet.");
             }
         } else {
-            alert("Metamask wallet absent.");
+            alert("MetaMask wallet absent.");
         }
     }
 
@@ -50,8 +43,9 @@ function App() {
             const balanceInWei = await web3.eth.getBalance(senderWallet);
 
             setSenderBalance(balanceInWei);
-        } catch (error) {
-            alert("Error getting sender's balance.");
+        } catch (err) {
+            console.log(err);
+            alert("Error occurred when getting sender balance.");
         }
     }
 
@@ -60,29 +54,70 @@ function App() {
             const balanceInWei = await web3.eth.getBalance(receiverWallet);
 
             setReceiverBalance(balanceInWei);
-        } catch (error) {
-            alert("Error getting receiver's balance.");
+        } catch (err) {
+            console.log(err);
+            alert("Error occurred when getting receiver balance.");
         }
     }
 
     async function transfer() {
         try {
-            await web3.eth.sendTransaction({
+            const receipt = await web3.eth.sendTransaction({
                 from: senderWallet,
                 to: receiverWallet,
-                value: web3.utils.toWei(transferAmount, "ether")
-            }).then(function (receipt) {
-                console.log(receipt);
-
-                getSenderBalance();
-
-                getReceiverBalance();
+                value: web3.utils.toWei(transferAmount, "ether"),
+                gas: 100000
             });
-        } catch (error) { alert(error); }
+
+            console.log(receipt);
+
+            // Not perfect here. alert() may show beforehand.
+            await getSenderBalance();
+            await getReceiverBalance();
+
+            alert("Transfer has been successful.");
+        } catch (err) {
+            console.log(err);
+            alert("Transfer failed: " + err.message);
+        }
+    }
+
+    async function withdraw() {
+        try {
+            const donationABI = require('./abi/Donation.json').abi;
+
+            const donationAddr = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+
+            const donation = new web3.eth.Contract(donationABI, donationAddr);
+
+            // Simulate the call first to check for revert reasons.
+            await donation.methods.withdraw().call({ from: senderWallet });
+
+            // If no error, send the actual transaction.
+            await donation.methods.withdraw().send({ from: senderWallet });
+
+            alert("Withdrawal from the Donation contract has been successful.");
+        }
+        catch (err) {
+            // Handle error and check for revert reason within error.data.
+            if (err.data) {
+                const revertReason = err.data.message;
+
+                if (revertReason.includes("No funds to withdraw.")) {
+                    alert("Error: No funds available for withdrawal.");
+                } else {
+                    console.log("Revert reason:", revertReason);
+                    alert("Unknown revert error: " + revertReason);
+                }
+            } else {
+                console.log(err);
+                alert("Unexpected error: " + err.message);
+            }
+        }
     }
 
     useEffect(() => {
-        console.log("Sender's balance has changed to: " + senderBalance);
+        console.log("Sender balance has changed to:", senderBalance);
     }, [senderBalance]);
 
     return (
@@ -94,9 +129,10 @@ function App() {
                 <button onClick={getSenderBalance}>Get my balance</button>
                 <p>My balance: {senderBalance.toString()} Wei = {(web3 == null) ? 0 : Math.round(web3.utils.fromWei(senderBalance, 'ether') * 100) / 100} Ether</p>
                 <button onClick={transfer}>Transfer</button>
-                <p>Receiver's wallet address: <input value={receiverWallet} onChange={(event) => setReceiverWallet(event.target.value)}></input></p>
+                <p>Receiver wallet address: <input value={receiverWallet} onChange={(event) => setReceiverWallet(event.target.value)}></input></p>
                 <p>Transfer amount (Ether): <input value={transferAmount} onChange={(event) => setTransferAmount(event.target.value)}></input></p>
-                <p>Receiver's balance: {receiverBalance.toString()} Wei = {(web3 == null) ? 0 : Math.round(web3.utils.fromWei(receiverBalance, 'ether') * 100) / 100} Ether</p>
+                <p>Receiver balance: {receiverBalance.toString()} Wei = {(web3 == null) ? 0 : Math.round(web3.utils.fromWei(receiverBalance, 'ether') * 100) / 100} Ether</p>
+                <button onClick={withdraw}>Withdraw</button>
             </header>
         </div>
     );
