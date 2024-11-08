@@ -10,9 +10,10 @@
   ```
   forge init donation
   ```
-+ Enter the new folder and open Visual Studio Code.
++ Enter the new folder, install openzeppelin-contracts, and open Visual Studio Code.
   ```
   cd donation
+  forge install --no-commit OpenZeppelin/openzeppelin-contracts
   code .
   ```
 + Move src/Counter.sol elsewhere (e.g. the bak folder). Edit "src/Donation.sol".
