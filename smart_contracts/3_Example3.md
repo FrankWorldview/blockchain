@@ -41,10 +41,12 @@
   cd Web/transfer-app
   ```
 + Copy the contract's ABI file (i.e. "Solidity/donation/out/Donation.sol/Donation.json") to the new folder "Web/transfer-app/src/abi".
-+ Make sure the "addr" variable refers to the contract's deployed address.
++ Make sure the donationAddr" variable refers to the contract's deployed address.
 + View the web page.
   ```
   npm start
   ```
++ Input the Donation contract's address as the recipient.
++ Withdraw Ether from the contract to the beneficiary address.
 
 ![image](/smart_contracts/img/transfer-4.png)
