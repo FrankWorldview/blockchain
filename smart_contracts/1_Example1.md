@@ -96,7 +96,7 @@
   code .
   ```
 + Make sure the "addr" variable refers to the contract's deployed address.
-+ View the result.
++ View the web page.
   ```
   npm start
   ```
