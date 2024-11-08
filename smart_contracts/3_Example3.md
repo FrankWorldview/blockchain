@@ -42,7 +42,7 @@
   ```
 + Copy the contract's ABI file (i.e. "Solidity/donation/out/Donation.sol/Donation.json") to the new folder "Web/transfer-app/src/abi".
 + Make sure the "addr" variable refers to the contract's deployed address.
-+ View the result.
++ View the web page.
   ```
   npm start
   ```
