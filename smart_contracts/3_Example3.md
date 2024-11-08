@@ -65,4 +65,10 @@
 + "Withdraw" Ether from the contract to the beneficiary address.
 + Check the beneficiary balance using Vieweth.
 
-![image](/smart_contracts/img/transfer-4.png)
+![image](/smart_contracts/img/transfer-5.png)
+
+![image](/smart_contracts/img/transfer-6.png)
+
+![image](/smart_contracts/img/transfer-7.png)
+
+![image](/smart_contracts/img/transfer-8.png)
