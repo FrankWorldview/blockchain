@@ -63,5 +63,6 @@
 + Change the receiver address to the Donation contract address.
 + "Transfer" Ether to the contract address.
 + "Withdraw" Ether from the contract to the beneficiary address.
++ Check the beneficiary balance using Vieweth.
 
 ![image](/smart_contracts/img/transfer-4.png)
