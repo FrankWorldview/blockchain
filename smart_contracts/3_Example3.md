@@ -1,4 +1,4 @@
-# Send Ether to a Contract
+# Example 3: Send Ether to a Contract
 
 ## Create, Test, and Deploy the Donation Contract
 + Open a Git Bash (in Windows) or open a terminal (in Mac).
