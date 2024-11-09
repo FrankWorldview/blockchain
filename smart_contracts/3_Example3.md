@@ -1,7 +1,7 @@
 # Example 3: Send Ether to a Contract
 
 ## Create, Test, and Deploy the Donation Contract
-+ Open a Git Bash (in Windows) or open a terminal (in Mac).
++ Open a Git Bash (in Windows) or a terminal (in Mac).
 + Enter the root folder "Solidity".
   ```
   cd Solidity
@@ -49,7 +49,7 @@
 (Note: Replace 0x5FbDB2315678afecb367f032d93F642f64180aa3 with your contract address.)
 
 ## Interact with the Donation Contract via React
-+ Open a Git Bash (in Windows) or open a terminal (in Mac).
++ Open a Git Bash (in Windows) or a terminal (in Mac).
 + Enter the folder "Web/transfer-app".
   ```
   cd Web/transfer-app
