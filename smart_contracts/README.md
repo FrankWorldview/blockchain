@@ -34,7 +34,7 @@
     git config --global user.email johndoe@example.com
     ```
 + [Foundry](https://book.getfoundry.sh/)
-  - Open a Git Bash (in Windows) or open a terminal (in Mac).
+  - Open a Git Bash (in Windows) or a terminal (in Mac).
     ```
     curl -L https://foundry.paradigm.xyz | bash
     ```
@@ -53,12 +53,12 @@
   - (Optional) Install the "Mark for VS Code" extension to create and view slides directly within VS Code using Marp Markdown.
 
 # View Blockchain Information
-+ Open a Git Bash (in Windows) or open a terminal (in Mac).
++ Open a Git Bash (in Windows) or a terminal (in Mac).
 + Start the test blockchain.
   ```
   anvil
   ```
-+ Open another Git Bash (in Windows) or open another terminal (in Mac).
++ Open another Git Bash (in Windows) or another terminal (in Mac).
 + Create a root folder "Web" and enter it.
   ```
   mkdir Web
