@@ -16,11 +16,11 @@
   cd hello
   code .
   ```
-+ Move src/Counter.sol elsewhere (e.g. the bak folder). Edit "src/Hello.sol".
++ Move src/Counter.sol elsewhere (e.g., the bak folder). Edit "src/Hello.sol".
   (You can copy this file from `/smart_contracts/src/solidity/hello/Hello.sol`.)
-+ Move test/Counter.t.sol elsewhere (e.g. the bak folder). Edit "test/Hello.t.sol".
++ Move test/Counter.t.sol elsewhere (e.g., the bak folder). Edit "test/Hello.t.sol".
   (You can copy this file from `/smart_contracts/src/solidity/hello/Hello.t.sol`.)
-+ Move script/Counter.s.sol elsewhere (e.g. the bak folder).
++ Move script/Counter.s.sol elsewhere (e.g., the bak folder).
 + Test the contract.
   ```
   forge test -vv
