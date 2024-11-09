@@ -16,11 +16,11 @@
   forge install --no-commit OpenZeppelin/openzeppelin-contracts
   code .
   ```
-+ Move src/Counter.sol elsewhere (e.g. the bak folder). Edit "src/Donation.sol".
++ Move src/Counter.sol elsewhere (e.g., the bak folder). Edit "src/Donation.sol".
   (You can copy this file from `/smart_contracts/src/solidity/donation/Donation.sol`.)
-+ Move test/Counter.t.sol elsewhere (e.g. the bak folder). Edit "test/Donation.t.sol".
++ Move test/Counter.t.sol elsewhere (e.g., the bak folder). Edit "test/Donation.t.sol".
   (You can copy this file from `/smart_contracts/src/solidity/donation/Donation.t.sol`.)
-+ Move script/Counter.s.sol elsewhere (e.g. the bak folder).
++ Move script/Counter.s.sol elsewhere (e.g., the bak folder).
 + Test the contract.
   ```
   forge test -vv
