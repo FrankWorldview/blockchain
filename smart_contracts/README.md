@@ -38,7 +38,7 @@
     ```
     curl -L https://foundry.paradigm.xyz | bash
     ```
-  - Remember to exit the Git Bash or the terminal.
+  - Exit the Git Bash or the terminal. Then, open it again.
   - Install Foundry
     ```
     foundryup
