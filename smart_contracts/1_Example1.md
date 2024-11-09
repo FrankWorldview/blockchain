@@ -1,7 +1,7 @@
 # Example 1: Hello Contract
 
 ## Create, Test, and Deploy the Hello Contract
-+ Open a Git Bash (in Windows) or open a terminal (in Mac).
++ Open a Git Bash (in Windows) or a terminal (in Mac).
 + Create a root folder "Solidity" and enter it.
   ```
   mkdir Solidity
@@ -35,7 +35,7 @@
   ```
 
 ## Interact with the Hello Contract via Node.js
-+ Open a Git Bash (in Windows) or open a terminal (in Mac).
++ Open a Git Bash (in Windows) or a terminal (in Mac).
 + Enter the root folder "Web".
   ```
   cd Web
@@ -68,7 +68,7 @@
 ![image](/smart_contracts/img/hello.png)
 
 ## Interact with the Hello Contract via React
-+ Open a Git Bash (in Windows) or open a terminal (in Mac).
++ Open a Git Bash (in Windows) or a terminal (in Mac).
 + Enter the root folder "Web".
   ```
   cd Web
