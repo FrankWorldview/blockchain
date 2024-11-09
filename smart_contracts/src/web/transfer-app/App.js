@@ -84,9 +84,16 @@ function App() {
 
     async function withdraw() {
         try {
-            const donationABI = require('./abi/Donation.json').abi;
-
             const donationAddr = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+
+            // Check if the Donation contract exists.
+            const code = await web3.eth.getCode(donationAddr);
+            if (code === '0x') {
+                alert("No donation contract deployed.");
+                return;
+            }
+
+            const donationABI = require('./abi/Donation.json').abi;
 
             const donation = new web3.eth.Contract(donationABI, donationAddr);
 
