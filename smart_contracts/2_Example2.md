@@ -2,7 +2,7 @@
 
 ## Send Ether via MetaMask and React
 + Create or log in to your MetaMask wallet.
-+ Open a Git Bash (in Windows) or open a terminal (in Mac).
++ Open a Git Bash (in Windows) or a terminal (in Mac).
 + Enter the root folder "Web".
   ```
   cd Web
