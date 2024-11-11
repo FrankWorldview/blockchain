@@ -1,7 +1,7 @@
 # Example 2: Send Ether
 
 ## Send Ether via MetaMask and React
-+ Create or log in to your MetaMask wallet. Create a test network and connect it:
++ Create or log in to your MetaMask wallet. Create a test network and connect to it:
   ![image](/smart_contracts/img/testnet.png)
 + Open a Git Bash (in Windows) or a terminal (in Mac).
 + Enter the root folder "Web".
