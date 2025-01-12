@@ -21,3 +21,5 @@ rm - remove files or directories
 .. - parent directory
 
 / - root directory
+
+~ - home directory
