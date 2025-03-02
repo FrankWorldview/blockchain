@@ -53,7 +53,7 @@
   ```
   npm install web3
   ```
-+ Copy the contract's ABI file (i.e. "Solidity/hello/out/hello.sol/hello.json") to the new folder "Web/hello/abi".
++ Copy the contract's ABI file (i.e. "Solidity/hello/out/Hello.sol/Hello.json") to the new folder "Web/hello/abi".
 + Edit "hello.js".
   (You can copy this file from `/smart_contracts/src/web/hello/hello.js`.)
   ```
@@ -85,7 +85,7 @@
   ```
   npm install web3
   ```
-+ Copy the contract's ABI file (i.e. "Solidity/hello/out/hello.sol/hello.json") to the new folder "Web/hello-app/src/abi".
++ Copy the contract's ABI file (i.e. "Solidity/hello/out/Hello.sol/Hello.json") to the new folder "Web/hello-app/src/abi".
 + Backup "src/App.js" to "src/App.js.ORIG".
   ```
   mv src/App.js src/App.js.ORIG
