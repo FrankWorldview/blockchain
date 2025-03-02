@@ -81,11 +81,11 @@
   ```
   npm install web3
   ```
-+ Edit "View.js".
-  (You can copy this file from `/smart_contracts/src/web/vieweth/Vieweth.js`.)
++ Edit "vieweth.js".
+  (You can copy this file from `/smart_contracts/src/web/vieweth/vieweth.js`.)
 + View the result.
   ```
-  node Vieweth
+  node vieweth
   ```
 
 ![image](/smart_contracts/img/anvil.png)
