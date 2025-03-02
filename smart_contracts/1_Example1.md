@@ -53,16 +53,16 @@
   ```
   npm install web3
   ```
-+ Copy the contract's ABI file (i.e. "Solidity/hello/out/Hello.sol/Hello.json") to the new folder "Web/hello/abi".
-+ Edit "Hello.js".
-  (You can copy this file from `/smart_contracts/src/web/hello/Hello.js`.)
++ Copy the contract's ABI file (i.e. "Solidity/hello/out/hello.sol/hello.json") to the new folder "Web/hello/abi".
++ Edit "hello.js".
+  (You can copy this file from `/smart_contracts/src/web/hello/hello.js`.)
   ```
   code .
   ```
 + Make sure the "helloAddr" variable refers to the contract's deployed address.
 + View the result.
   ```
-  node Hello
+  node hello
   ```
 
 ![image](/smart_contracts/img/hello.png)
@@ -85,7 +85,7 @@
   ```
   npm install web3
   ```
-+ Copy the contract's ABI file (i.e. "Solidity/hello/out/Hello.sol/Hello.json") to the new folder "Web/hello-app/src/abi".
++ Copy the contract's ABI file (i.e. "Solidity/hello/out/hello.sol/hello.json") to the new folder "Web/hello-app/src/abi".
 + Backup "src/App.js" to "src/App.js.ORIG".
   ```
   mv src/App.js src/App.js.ORIG
@@ -104,8 +104,8 @@
 ![image](/smart_contracts/img/hello-app.png)
 
 ## Exercise 1
-+ Add a new function `getMaxUint256()` in the Hello contract. This function can return the maximal number of uint256 (i.e. `type(uint256).max`).
-+ Modify "Hello.js" to interact with getMaxUint256().
++ Add a new function `getMaxUint256()` in the Hello contract. This function can return the maximal number of uint256 (i.e., `type(uint256).max`).
++ Modify "hello.js" to interact with getMaxUint256().
 + Modity "App.js" to interact with getMaxUint256().
 + Hint:
 ```javascript
