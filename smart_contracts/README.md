@@ -1,5 +1,6 @@
 # Learning Resources
 + [Learn Solidity](https://www.alchemy.com/university/courses/solidity) & [GitHub](https://github.com/alchemyplatform/learn-solidity-presentations)
++ [Solidity](https://soliditylang.org/)
 + [CryptoZombies](https://cryptozombies.io/)
 + [Solidity cheetsheet](https://docs.soliditylang.org/en/v0.8.28/cheatsheet.html)
 + Development framework: [Foundry](https://book.getfoundry.sh/)
