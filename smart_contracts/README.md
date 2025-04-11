@@ -2,7 +2,7 @@
 + [Learn Solidity](https://www.alchemy.com/university/courses/solidity) & [GitHub](https://github.com/alchemyplatform/learn-solidity-presentations)
 + [Solidity (Official)](https://soliditylang.org/)
 + [Foundry](https://book.getfoundry.sh/)
-+ [Foundry Full Course](https://soliditylang.org/)
++ [Foundry Full Course](https://github.com/Cyfrin/foundry-full-course-cu)
 + [Console logging in Foundry](https://book.getfoundry.sh/reference/forge-std/console-log)
 + [Solidity cheetsheet](https://docs.soliditylang.org/en/v0.8.28/cheatsheet.html)
 + [Web3.js documents](https://docs.web3js.org/)
