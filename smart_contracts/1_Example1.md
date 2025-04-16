@@ -16,11 +16,13 @@
   cd hello
   code .
   ```
-+ Move src/Counter.sol elsewhere (e.g., the bak folder). Edit "src/Hello.sol".
-  (You can copy this file from `/smart_contracts/src/solidity/hello/Hello.sol`.)
-+ Move test/Counter.t.sol elsewhere (e.g., the bak folder). Edit "test/Hello.t.sol".
-  (You can copy this file from `/smart_contracts/src/solidity/hello/Hello.t.sol`.)
-+ Move script/Counter.s.sol elsewhere (e.g., the bak folder).
++ Move src/Counter.sol elsewhere (e.g., the orig folder). Edit `src/Hello.sol`.
+  (You can copy this file from `/smart_contracts/code/solidity/hello/src/Hello.sol`.)
++ Move test/Counter.t.sol elsewhere (e.g., the orig folder). Edit `test/Hello.t.sol`.
+  (You can copy this file from `/smart_contracts/code/solidity/hello/test/Hello.t.sol`.)
++ Move test/Counter.s.sol elsewhere (e.g., the orig folder). Edit `script/Hello.s.sol`.
+  (You can copy this file from `/smart_contracts/code/solidity/hello/script/Hello.s.sol`.)
+
 + Test the contract.
   ```
   forge test -vv
@@ -29,9 +31,13 @@
   ```
   forge build
   ```
-+ Deploy the contract (with your private key).
++ Deploy the contract using command.
   ```
-  forge create --rpc-url 127.0.0.1:8545 --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 --broadcast src/Hello.sol:Hello
+  forge create src/Hello.sol:Hello --rpc-url 127.0.0.1:8545 --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 --broadcast
+  ```
++ Deploy the contract using deployment script.
+  ```
+  forge script script/Hello.s.sol --rpc-url 127.0.0.1:8545 --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 --broadcast
   ```
 
 ## Interact with the Hello Contract via Node.js
@@ -53,13 +59,11 @@
   ```
   npm install web3
   ```
-+ Copy the contract's ABI file (i.e. "Solidity/hello/out/Hello.sol/Hello.json") to the new folder "Web/hello/abi".
-+ Edit "hello.js".
-  (You can copy this file from `/smart_contracts/src/web/hello/hello.js`.)
++ Edit `hello.js`.
+  (You can copy this file from `/smart_contracts/code/web/hello/hello.js`.)
   ```
   code .
   ```
-+ Make sure the "helloAddr" variable refers to the contract's deployed address.
 + View the result.
   ```
   node hello
