@@ -6,7 +6,7 @@ Asynchronous lines, like:
 
     fetch()
 
-    async/await
+    async
 
     Promise.then()
 
