@@ -16,11 +16,11 @@
   cd hello
   code .
   ```
-+ Move src/Counter.sol elsewhere (e.g., the orig folder). Edit `src/Hello.sol`.
++ Move src/Counter.sol elsewhere (e.g., the `orig` folder). Edit `src/Hello.sol`.
   (You can copy this file from `/smart_contracts/code/solidity/hello/src/Hello.sol`.)
-+ Move test/Counter.t.sol elsewhere (e.g., the orig folder). Edit `test/Hello.t.sol`.
++ Move test/Counter.t.sol elsewhere (e.g., the `orig` folder). Edit `test/Hello.t.sol`.
   (You can copy this file from `/smart_contracts/code/solidity/hello/test/Hello.t.sol`.)
-+ Move test/Counter.s.sol elsewhere (e.g., the orig folder). Edit `script/Hello.s.sol`.
++ Move test/Counter.s.sol elsewhere (e.g., the `orig` folder). Edit `script/Hello.s.sol`.
   (You can copy this file from `/smart_contracts/code/solidity/hello/script/Hello.s.sol`.)
 
 + Test the contract.
@@ -90,14 +90,17 @@
   ```
   npm install web3
   ```
-+ Backup "src/App.js" to "src/App.js.ORIG".
-  ```
-  mv src/App.js src/App.js.ORIG
-  ```
++ Backup `src/App.js` to `src/App.js.ORIG`.
 + Edit "src/App.js".
-  (You can copy this file from `/smart_contracts/src/web/hello-app/App.js`.)
+  (You can copy this file from `/smart_contracts/code/web/hello-app/src/App.js`.)
   ```
   code .
+  ```
++ Put `go.cjs` into the `src` folder.
+  (You can copy this file from `/smart_contracts/code/web/hello-app/go.cjs`.)
++ Run `go.cjs` to extract the contract's ABI and address.
+  ```
+  node go.cjs
   ```
 + View the web page.
   ```
