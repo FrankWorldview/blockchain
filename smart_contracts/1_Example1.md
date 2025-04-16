@@ -68,6 +68,12 @@
   ```
   node hello
   ```
++ Interact with the contract uisng the `cast` command.
+  ```
+  cast call <contract-address> "greet()(string)" --rpc-url 127.0.0.1:8545
+  cast call <contract-address> "getMaxUint256()(uint256)" --rpc-url 127.0.0.1:8545
+  cast call <contract-address> "sumUpTo(uint256)(uint256)" 100 --rpc-url 127.0.0.1:8545
+  ```
 
 ![image](/smart_contracts/img/hello.png)
 
@@ -96,7 +102,7 @@
   ```
   code .
   ```
-  (Run this command at the root folder of hello-app)
+  (Run the editor at the root folder of hello-app.)
 + Put `go.cjs` into the `src` folder.
   (You can copy this file from `/smart_contracts/code/web/hello-app/go.cjs`.)
 + Run `go.cjs` to extract the contract's ABI and address.
