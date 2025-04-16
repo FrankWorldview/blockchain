@@ -19,8 +19,8 @@ function App() {
   // Initialize state variables to hold values returned by smart contract functions
   const [text, setText] = useState('');     // greet()
   const [name, setName] = useState('');     // getMyName()
-  const [number, setNumber] = useState(''); // getMaxUint256()
-  const [sum, setSum] = useState('');       // sumUpTo()
+  const [number, setNumber] = useState(0); // getMaxUint256()
+  const [sum, setSum] = useState(0);       // sumUpTo()
 
   // Async function to load data from the smart contrac
   async function fetchContractData() {

@@ -20,8 +20,8 @@ function App() {
     const [contractData, setContractData] = useState({
         text: '',    // greet()
         name: '',    // getMyName()
-        number: '',  // getMaxUint256()
-        sum: '',     // sumUpTo()
+        number: 0,  // getMaxUint256()
+        sum: 0,     // sumUpTo()
     });
 
     // useEffect() to trigger contract data fetching when the component mounts
