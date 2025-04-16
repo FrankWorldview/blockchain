@@ -1,3 +1,25 @@
+# Asynchronous Code
+
+Asynchronous lines, like:
+
+    setTimeout()
+
+    fetch()
+
+    async/await
+
+    Promise.then()
+
+    event listeners
+
+…are not executed immediately in the same step. Instead, they’re deferred, often pushed to:
+
+    The microtask queue (e.g., .then(), await)
+
+    The macrotask queue (e.g., setTimeout, I/O)
+
+These deferred tasks only run after the synchronous code and the current call stack is empty.
+
 ```javascript
 function run() {
   console.log("1"); // sync
