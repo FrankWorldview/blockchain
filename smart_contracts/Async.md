@@ -33,7 +33,7 @@ myPromise
     console.log(result); // success is true: Log "Operation succeeded!" after 3 seconds
   })
   .catch(error => {
-    console.log(error); // success if false: Log "Operation failed!" after 3 seconds
+    console.log(error); // success is false: Log "Operation failed!" after 3 seconds
   });
 ```
 
