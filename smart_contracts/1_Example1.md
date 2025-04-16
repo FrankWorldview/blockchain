@@ -77,19 +77,19 @@
   ```
   cd Web
   ```
-+ Create a React app.
++ Create a React app (React + Vite).
   ```
-  npx create-react-app hello-app
+  npm create vite@latest my-app -- --template react
   ```
-+ Enter the new folder.
++ Enter the new folder and install Vite.
   ```
   cd hello-app
+  npm install
   ```
 + Install Web3.js.
   ```
   npm install web3
   ```
-+ Copy the contract's ABI file (i.e. "Solidity/hello/out/Hello.sol/Hello.json") to the new folder "Web/hello-app/src/abi".
 + Backup "src/App.js" to "src/App.js.ORIG".
   ```
   mv src/App.js src/App.js.ORIG
@@ -99,22 +99,16 @@
   ```
   code .
   ```
-+ Make sure the "helloAddr" variable refers to the contract's deployed address.
 + View the web page.
   ```
-  npm start
+  npm run dev
   ```
 
-![image](/smart_contracts/img/hello-app.png)
+Notes:
++ Install the `React Developer Tools` plugin in your browser for advanced debugging.
++ `forge clean` can remove the build artifacts and cache directories.
 
-## Exercise 1
-+ Add a new function `getMaxUint256()` in the Hello contract. This function can return the maximal number of uint256 (i.e., `type(uint256).max`).
-+ Modify "hello.js" to interact with getMaxUint256().
-+ Modity "App.js" to interact with getMaxUint256().
-+ Hint:
-```javascript
-number == null ? number : number.toString()
-```
+![image](/smart_contracts/img/hello-app.png)
 
 ![image](/smart_contracts/img/hello2.png)
 
