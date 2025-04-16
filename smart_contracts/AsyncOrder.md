@@ -1,4 +1,4 @@
-```
+```javascript
 function run() {
   console.log("1"); // sync
 
