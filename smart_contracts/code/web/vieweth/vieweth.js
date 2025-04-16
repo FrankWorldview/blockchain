@@ -31,7 +31,7 @@ async function getBlockchainInfo() {
         const balance = await web3.eth.getBalance(targetAddress);
         console.log(`Balance of ${targetAddress}: ${balance} wei (${web3.utils.fromWei(balance, 'ether')} ETH)`);
     } catch (error) {
-        console.error("Error fetching blockchain information:", error.message);
+        console.error("Error fetching blockchain information:", error);
     }
 }
 
@@ -54,7 +54,7 @@ async function getAllAccountBalances() {
             console.log(`${account}: ${balance} wei (${web3.utils.fromWei(balance, 'ether')} ETH)`);
         }
     } catch (error) {
-        console.error("Error fetching account balances:", error.message);
+        console.error("Error fetching account balances:", error);
     }
 }
 

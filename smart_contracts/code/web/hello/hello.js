@@ -46,7 +46,7 @@ async function main() {
         const sum = await helloContract.methods.sumUpTo(100).call();
         console.log("Sum from 1 to 100:", sum);
     } catch (error) {
-        console.error("Error interacting with the contract:", error.message);
+        console.error("Error interacting with the contract:", error);
     }
 }
 
