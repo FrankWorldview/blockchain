@@ -13,13 +13,13 @@ A Promise can be in one of three states:
 You can create a Promise using the Promise constructor:
 ```javascript
 let myPromise = new Promise((resolve, reject) => {
-  // Simulating an asynchronous operation (like fetching data)
+  // Simulate an asynchronous operation (like fetching data)
   setTimeout(() => {
     const success = true; // Change to false to see rejection behavior
     if (success) {
       resolve("Operation succeeded!"); // Resolved
     } else {
-      reject("Operation failed."); // Rejected
+      reject("Operation failed!"); // Rejected
     }
   }, 3000);
 });
@@ -33,7 +33,7 @@ myPromise
     console.log(result); // success is true: Log "Operation succeeded!" after 3 seconds
   })
   .catch(error => {
-    console.log(error); // success if false: Log "Operation failed." after 3 seconds
+    console.log(error); // success if false: Log "Operation failed!" after 3 seconds
   });
 ```
 
@@ -47,9 +47,9 @@ function fetchData() {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             if (shouldSucceed) {
-                resolve("Fetched data"); // Resolving the Promise
+                resolve("Fetched data"); // Resolve the Promise
             } else {
-                reject("Error: Failed to fetch data"); // Rejecting the Promise
+                reject("Error: Failed to fetch data"); // Reject the Promise
             }
         }, 3000);
     });
@@ -62,14 +62,14 @@ function processFetchedData(data) {
 // Chaining Promises.
 fetchData()
     .then(fetchedData => {
-        console.log(fetchedData); // Logs: "Fetched data" after 3 seconds
+        console.log(fetchedData); // Log "Fetched data" after 3 seconds
         return processFetchedData(fetchedData); // Pass data to the next step
     })
     .then(processedData => {
-        console.log(processedData); // Logs: "Fetched data - Processed"
+        console.log(processedData); // Log "Fetched data - Processed"
     })
     .catch(error => {
-        console.error("Error:", error); // Handles any error in the chain
+        console.error("Error:", error); // Handle any error in the chain
     });
 ```
 
@@ -92,9 +92,9 @@ function fetchData() {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             if (shouldSucceed) {
-                resolve("Fetched data"); // Resolving the Promise
+                resolve("Fetched data"); // Resolve the Promise
             } else {
-                reject("Error: Failed to fetch data"); // Rejecting the Promise
+                reject("Error: Failed to fetch data"); // Reject the Promise
             }
         }, 3000);
     });
@@ -106,13 +106,13 @@ function processFetchedData(data) {
 
 async function fetchDataAndProcess() {
     try {
-        const fetchedData = await fetchData(); // Waits for fetchData to resolve or reject.
-        console.log(fetchedData); // Logs: "Fetched data"
+        const fetchedData = await fetchData(); // Wait for fetchData to resolve or reject
+        console.log(fetchedData); // Log "Fetched data"
 
         const processedData = processFetchedData(fetchedData);
-        console.log(processedData); // Logs: "Fetched data - Processed"
+        console.log(processedData); // Log "Fetched data - Processed"
     } catch (error) {
-        console.error("Error:", error); // Handles any error in the try block
+        console.error("Error:", error); // Handle any error in the try block
     }
 }
 
