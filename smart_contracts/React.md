@@ -32,7 +32,7 @@ export default Counter;
 In this example, count is the state variable managed by useState, and setCount updates it. Every time setCount is called, React re-renders the component with the updated count.
 
 # useEffect
-+ Purpose: useEffect is used to handle side effects in functional components, which are tasks that need to happen outside of rendering (such as data fetching, subscriptions, timers, or DOM manipulations).
++ Purpose: useEffect is used to handle side effects in functional components, which are tasks that need to happen outside of rendering (such as fetching data from an API, subscribing to events (like WebSocket or keyboard listeners), setting a timer, manipulating DOM elemnts, or interacting with local storage).
 + Usage: useEffect takes a function that runs after each render. You can control when the effect runs by providing dependencies in an array as the second argument.
   - No dependencies ([]): Runs only once on component mount.
   - With dependencies: Runs whenever specified dependencies change.
