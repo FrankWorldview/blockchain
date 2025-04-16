@@ -36,14 +36,6 @@ run();
 
 What will the output be?
 
-1
-
-4
-
-3
-
-2
-
 Asynchronous lines are deferred, so they don’t block the synchronous ones — but how they're deferred (microtask vs. macrotask) affects when they run afterward.
 
 Want a quick memory trick?
