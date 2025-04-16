@@ -119,7 +119,3 @@ Notes:
 + `forge clean` can remove the build artifacts and cache directories.
 
 ![image](/smart_contracts/img/hello-app.png)
-
-![image](/smart_contracts/img/hello2.png)
-
-![image](/smart_contracts/img/hello2-app.png)
