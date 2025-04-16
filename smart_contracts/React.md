@@ -41,10 +41,10 @@ In this example, count is the state variable managed by useState, and setCount u
 Syntax:
 ```javascript
 useEffect(() => {
-  // Your code here (e.g., data fetching, setting up subscriptions).
+  // Your code here (e.g., data fetching, setting up subscriptions)
 
   return () => {
-    // Optional cleanup code (e.g., unsubscribing, clearing timers).
+    // Optional cleanup code (e.g., unsubscribing, clearing timers)
   };
 }, [dependencies]);
 ```
@@ -58,11 +58,11 @@ function FetchDataOnMount() {
 
   useEffect(() => {
     console.log("Fetching data on component mount...");
-    fetch("https://api.thecatapi.com/v1/images/search") // An API to get random cat images.
+    fetch("https://api.thecatapi.com/v1/images/search") // An API to get random cat images
       .then(response => response.json())
       .then(data => setData(data));
 
-    // No dependencies: this effect runs only once when the component mounts.
+    // No dependencies: this effect runs only once when the component mounts
   }, []); 
 
   return (
@@ -90,7 +90,7 @@ function UpdateMessageOnCountChange() {
     console.log(`Count changed to ${count}`);
     setMessage(`Msg: Count is now ${count}`);
     console.log(message); // Show the old message!
-  }, [count]); // Effect depends on `count`.
+  }, [count]); // Effect depends on `count`
 
   return (
     <div>
