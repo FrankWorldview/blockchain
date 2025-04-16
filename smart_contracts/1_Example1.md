@@ -79,7 +79,7 @@
   ```
 + Create a React app (React + Vite).
   ```
-  npm create vite@latest my-app -- --template react
+  npm create vite@latest hello-app -- --template react
   ```
 + Enter the new folder and install Vite.
   ```
@@ -96,6 +96,7 @@
   ```
   code .
   ```
+  (Run this command at the root folder of hello-app)
 + Put `go.cjs` into the `src` folder.
   (You can copy this file from `/smart_contracts/code/web/hello-app/go.cjs`.)
 + Run `go.cjs` to extract the contract's ABI and address.
