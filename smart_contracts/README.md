@@ -85,7 +85,7 @@
   npm install web3
   ```
 + Edit "vieweth.js".
-  (You can copy this file from `/smart_contracts/src/web/vieweth/vieweth.js`.)
+  (You can copy this file from `/smart_contracts/code/web/vieweth/vieweth.js`.)
 + View the result.
   ```
   node vieweth
