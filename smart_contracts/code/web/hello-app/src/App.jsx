@@ -35,6 +35,9 @@ function App() {
                 // Create a contract instance using ABI and deployed addresses
                 const hello = new web3.eth.Contract(helloABI, helloAddr.address);
 
+                // Promise.all() is a static method on the Promise object that takes an array of promises and returns a single promise.
+                // It resolves when all the input promises resolve, or rejects as soon as one fails.
+
                 // Perform multiple read-only smart contract calls in parallel
                 // Each .call() executes a view or pure function without modifying blockchain state
                 // Promise.all() fetches all values concurrently to improve performance
