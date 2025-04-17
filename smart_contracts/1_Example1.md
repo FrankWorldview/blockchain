@@ -97,7 +97,7 @@
   npm install web3
   ```
 + Backup `src/App.js` to `src/App.js.ORIG`.
-+ Edit "src/App.js".
++ Edit `src/App.js`.
   (You can copy this file from `/smart_contracts/code/web/hello-app/src/App.js`.)
   ```
   code .
