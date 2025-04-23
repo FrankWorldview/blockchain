@@ -52,6 +52,7 @@
   ```
   cd fundraising-app
   npm install
+  code .
   ```
 + Install reuqired libraries.
   ```
@@ -59,7 +60,7 @@
   ```
 + Backup `src/App.js` to `src/App.js.ORIG`.
 + Copy all files from `/smart_contracts/code/web/fundraising-app` to your `fundraising-app` folder.
-+ Put `go.cjs` into the `src` folder.
++ Put `go.cjs` into your `src` folder.
   (You can copy this file from `/smart_contracts/code/web/fundraising-app/go.cjs`.)
 + Run `go.cjs` to extract the contract's ABI and address.
   ```
