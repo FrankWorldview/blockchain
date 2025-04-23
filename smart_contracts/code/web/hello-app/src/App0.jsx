@@ -17,8 +17,8 @@ const rpcURL = 'http://127.0.0.1:8545';
 
 function App() {
   // Initialize state variables to hold values returned by smart contract functions
-  const [text, setText] = useState('');     // greet()
-  const [name, setName] = useState('');     // getMyName()
+  const [text, setText] = useState('');    // greet()
+  const [name, setName] = useState('');    // getMyName()
   const [number, setNumber] = useState(0); // getMaxUint256()
   const [sum, setSum] = useState(0);       // sumUpTo()
 
@@ -32,10 +32,10 @@ function App() {
       const hello = new web3.eth.Contract(helloABI, helloAddr.address);
 
       // Call view/pure functions from the smart contract (read-only)
-      const text = await hello.methods.greet().call();            // Returns greeting string
-      const name = await hello.methods.getMyName().call();        // Returns name string
-      const number = await hello.methods.getMaxUint256().call();  // Returns uint256 max value
-      const sum = await hello.methods.sumUpTo(100).call();        // Returns sum from 1 to 100
+      const text = await hello.methods.greet().call();           // Returns greeting string
+      const name = await hello.methods.getMyName().call();       // Returns name string
+      const number = await hello.methods.getMaxUint256().call(); // Returns uint256 max value
+      const sum = await hello.methods.sumUpTo(100).call();       // Returns sum from 1 to 100
 
       // Update component state with values from the contract
       setText(text);

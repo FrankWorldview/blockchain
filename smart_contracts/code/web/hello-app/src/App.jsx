@@ -18,10 +18,10 @@ const rpcURL = 'http://127.0.0.1:8545';
 function App() {
     // Initialize state variables to hold values returned by smart contract functions
     const [contractData, setContractData] = useState({
-        text: '',    // greet()
-        name: '',    // getMyName()
-        number: 0,  // getMaxUint256()
-        sum: 0,     // sumUpTo()
+        text: '',  // greet()
+        name: '',  // getMyName()
+        number: 0, // getMaxUint256()
+        sum: 0,    // sumUpTo()
     });
 
     // useEffect() to trigger contract data fetching when the component mounts
