@@ -20,11 +20,11 @@
   ```
   npm install web3
   ```
-+ Backup "src/App.js" to "src/App.js.ORIG".
++ Backup "src/App.jsx" to "src/App.jsx.ORIG".
   ```
-  mv src/App.js src/App.js.ORIG
+  mv src/App.jsx src/App.jsx.ORIG
   ```
-+ Edit "src/App.js".
++ Edit "src/App.jsx".
   (You can copy this file from `/smart_contracts/code/web/transfer-app/App.js`.)
   ```
   code .
