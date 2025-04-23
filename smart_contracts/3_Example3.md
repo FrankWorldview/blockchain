@@ -58,7 +58,7 @@
   npm install react-router-dom @mui/material @emotion/react @emotion/styled web3 cryptocompare big-integer
   ```
 + Backup `src/App.js` to `src/App.js.ORIG`.
-+ Copy all files from `/smart_contracts/code/web/fundraising` to your `fundraising-app` folder.
++ Copy all files from `/smart_contracts/code/web/fundraising-app` to your `fundraising-app` folder.
 + Put `go.cjs` into the `src` folder.
   (You can copy this file from `/smart_contracts/code/web/fundraising-app/go.cjs`.)
 + Run `go.cjs` to extract the contract's ABI and address.
