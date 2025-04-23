@@ -75,6 +75,9 @@ Notes:
 + Install the `React Developer Tools` plugin in your browser for advanced debugging.
 + `forge clean` can remove the build artifacts and cache directories.
 
+Creidts:
+The React app code is based on the work of [RedSquirrelTech](https://github.com/RedSquirrelTech/hoscdev).
+
 ![image](/smart_contracts/img/fundraising-1.png)
 
 ![image](/smart_contracts/img/fundraising-2.png)
