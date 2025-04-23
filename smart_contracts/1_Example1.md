@@ -2,7 +2,7 @@
 
 ## Create, Test, and Deploy the Hello Contract
 + Open a Git Bash (in Windows) or a terminal (in Mac).
-+ Create a root folder `Solidity` and enter it.
++ Create a folder `Solidity` and enter it.
   ```
   mkdir Solidity
   cd Solidity
@@ -42,7 +42,7 @@
 
 ## Interact with the Hello Contract via Node.js
 + Open a Git Bash (in Windows) or a terminal (in Mac).
-+ Enter the root folder `Web`.
++ Enter the folder `Web`.
   ```
   cd Web
   ```
@@ -79,11 +79,11 @@
 
 ## Interact with the Hello Contract via React
 + Open a Git Bash (in Windows) or a terminal (in Mac).
-+ Enter the root folder `Web`.
++ Enter the folder `Web`.
   ```
   cd Web
   ```
-+ Create a React app (React + Vite).
++ Create a React + Vite app.
   ```
   npm create vite@latest hello-app -- --template react
   ```
