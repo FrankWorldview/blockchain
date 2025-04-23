@@ -57,9 +57,13 @@
   ```
   npm install react-router-dom @mui/material @emotion/react @emotion/styled web3 cryptocompare big-integer
   ```
++ Open Visual Studio Code.
+  ```
+  code .
+  ```
 + Backup `src/App.js` to `src/App.js.ORIG`.
-+ Copy all files from `/smart_contracts/code/web/fundraising` to your `fundraising-app` folder.
-+ Put `go.cjs` into the `src` folder.
++ Copy all files from `/smart_contracts/code/web/fundraising-app` to your `fundraising-app` folder.
++ Put `go.cjs` into your `src` folder.
   (You can copy this file from `/smart_contracts/code/web/fundraising-app/go.cjs`.)
 + Run `go.cjs` to extract the contract's ABI and address.
   ```
@@ -75,4 +79,10 @@ Notes:
 + Install the `React Developer Tools` plugin in your browser for advanced debugging.
 + `forge clean` can remove the build artifacts and cache directories.
 
-![image](/smart_contracts/img/hello-app.png)
+Creidts:
+The code of this example is based on the work of [RedSquirrelTech](https://github.com/RedSquirrelTech/hoscdev).
+
+![image](/smart_contracts/img/fundraising-1.png)
+
+![image](/smart_contracts/img/fundraising-2.png)
+
