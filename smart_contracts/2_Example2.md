@@ -25,7 +25,7 @@
   mv src/App.jsx src/App.jsx.ORIG
   ```
 + Edit "src/App.jsx".
-  (You can copy this file from `/smart_contracts/code/web/transfer-app/App.js`.)
+  (You can copy this file from `/smart_contracts/code/web/transfer-app/App.jsx`.)
   ```
   code .
   ```
