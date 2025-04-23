@@ -1,4 +1,4 @@
-# Example 1: Hello Contract
+# Example 1: Hello
 
 ## Create, Test, and Deploy the Hello Contract
 + Open a Git Bash (in Windows) or a terminal (in Mac).
@@ -22,7 +22,6 @@
   (You can copy this file from `/smart_contracts/code/solidity/hello/test/Hello.t.sol`.)
 + Move test/Counter.s.sol elsewhere (e.g., the `orig` folder). Edit `script/Hello.s.sol`.
   (You can copy this file from `/smart_contracts/code/solidity/hello/script/Hello.s.sol`.)
-
 + Test the contract.
   ```
   forge test -vv

@@ -37,13 +37,7 @@
 + Change the receiver address.
 + "Transfer" Ether to the receiver address.
 
-![image](/smart_contracts/img/transfer_1.png)
-
-![image](/smart_contracts/img/transfer_2.png)
-
-![image](/smart_contracts/img/transfer_3.png)
-
-![image](/smart_contracts/img/transfer_4.png)
+![image](/smart_contracts/img/transfer.png)
 
 # Note
 When you restart anvil, you may need to restart your browser and clear activity and nonce data in MetaMask: `Settings -> Advanced -> Clear activity tab data`. This can make sure the nonce data in anvil and in your MetaMask are consistent.
