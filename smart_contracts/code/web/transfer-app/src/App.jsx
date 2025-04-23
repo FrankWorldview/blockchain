@@ -16,27 +16,33 @@ function App() {
     const [receiverBalance, setReceiverBalance] = useState(0); // Receiver's balance in Wei
 
     // Connect to MetaMask wallet
-    const connectWallet = async () => {
+    async function connectWallet() {
+        // This is the injected Ethereum provider object that MetaMask (or similar wallets) makes available in the browser. If MetaMask is installed, it adds this to the window object.
         if (!window.ethereum) {
             alert('MetaMask not installed');
             return;
         }
-        try {
-            const web3Instance = new Web3(window.ethereum); // Create Web3 instance using MetaMask provider
-            setWeb3(web3Instance);
 
+        try {
+            // This is the standard JSON-RPC call to request access to the user's accounts. It triggers the MetaMask extension to pop up a prompt asking the user to approve the connection.
             const userAccounts = await window.ethereum.request({
                 method: 'eth_requestAccounts',
             });
 
-            setSenderWallet(userAccounts[0]); // Set user's wallet address
+            if (userAccounts.length > 0) {
+                const web3Instance = new Web3(window.ethereum); // Create Web3 instance using MetaMask provider
+                setWeb3(web3Instance);
+                setSenderWallet(userAccounts[0]); // Set user's wallet address
+            } else {
+                throw new Error('No accounts returned. MetaMask might be locked or not connected.');
+            }
         } catch (error) {
-            console.error('User denied account access:', error);
+            console.error('MetaMask not connected:', error);
         }
     };
 
-    // Get balance of sender wallet
-    async function getSenderBalance() {
+    // Refresh balance of sender wallet
+    async function refreshSenderBalance() {
         try {
             const balanceInWei = await web3.eth.getBalance(senderWallet);
             setSenderBalance(balanceInWei);
@@ -46,8 +52,8 @@ function App() {
         }
     }
 
-    // Get balance of receiver wallet
-    async function getReceiverBalance() {
+    // Refresh balance of receiver wallet
+    async function refreshReceiverBalance() {
         try {
             const balanceInWei = await web3.eth.getBalance(receiverWallet);
             setReceiverBalance(balanceInWei);
@@ -66,19 +72,19 @@ function App() {
 
         // Optional: validate input amount
         if (isNaN(transferAmount) || transferAmount <= 0) {
-            alert("Please enter a valid transfer amount.");
+            alert("Please enter a valid transfer amount");
             return;
         }
 
         try {
-            // Estimate gas for the transaction
+            // Estimate gas for the transaction (No signature required)
             const gas = await web3.eth.estimateGas({
                 from: senderWallet,
                 to: receiverWallet,
                 value: web3.utils.toWei(transferAmount.toString(), 'ether')
             });
 
-            // Send the transaction
+            // Send the transaction (Signature required)
             const receipt = await web3.eth.sendTransaction({
                 from: senderWallet,
                 to: receiverWallet,
@@ -86,11 +92,12 @@ function App() {
                 gas: gas
             });
 
+            // A transaction receipt is a detailed confirmation returned by the Ethereum network after a transaction is included in a block. It's your proof of execution — your "blockchain receipt."
             console.log('Receipt:', receipt);
 
-            // Update balances after transaction
-            await getSenderBalance();
-            await getReceiverBalance();
+            // Refresh balances after transaction
+            await refreshSenderBalance();
+            await refreshReceiverBalance();
 
             alert('Transfer has been successful');
         } catch (error) {
@@ -117,12 +124,16 @@ function App() {
         window.ethereum.on('accountsChanged', handleAccountsChanged);
 
         // Cleanup listener on component unmount
+        // Without the return function, you would be stacking up listeners every time the component mounts, which causes memory leaks
+        // Because [] is passed:
+        // The return function runs once when the component unmounts
+        // It will not run on re-renders, because the effect never re-runs
         return () => {
             window.ethereum.removeListener('accountsChanged', handleAccountsChanged);
         };
     }, []);
 
-    // --- JSX Rendering ---
+    // --- JSX rendering ---
     return (
         <>
             {/* Logo section */}
@@ -143,12 +154,14 @@ function App() {
 
                 <p>My Wallet Address: {senderWallet}</p>
 
-                <button onClick={getSenderBalance} disabled={!senderWallet}>
-                    Get My Balance
+                <button onClick={refreshSenderBalance} disabled={!senderWallet || !web3}>
+                    Refresh My Balance
                 </button>
                 <p>
+                    {/* {' '} is JSX syntax for explicitly rendering a space character. */}
                     My Balance: {senderBalance} Wei ={' '}
-                    {web3 == null ? 0 : parseFloat(web3.utils.fromWei(senderBalance, 'ether')).toFixed(4)} Ether
+                    {web3 == null ? 0 : parseFloat(web3.utils.fromWei(senderBalance.toString(), 'ether')).toFixed(4)} Ether
+                    {/* This is converting the sender's balance from wei (smallest ETH unit) into Ether, then rounding it to 4 decimal places for display. */}
                 </p>
 
                 <button onClick={transfer} disabled={!senderWallet || !web3}>
@@ -171,13 +184,13 @@ function App() {
                     />
                 </p>
 
-                <button onClick={getReceiverBalance} disabled={!receiverWallet || !web3}>
-                    Get Receiver Balance
+                <button onClick={refreshReceiverBalance} disabled={!receiverWallet || !web3}>
+                    Refresh Receiver Balance
                 </button>
 
                 <p>
                     Receiver Balance: {receiverBalance} Wei ={' '}
-                    {web3 == null ? 0 : parseFloat(web3.utils.fromWei(receiverBalance, 'ether')).toFixed(4)} Ether
+                    {web3 == null ? 0 : parseFloat(web3.utils.fromWei(receiverBalance.toString(), 'ether')).toFixed(4)} Ether
                 </p>
             </div>
         </>
