@@ -52,11 +52,14 @@
   ```
   cd fundraising-app
   npm install
-  code .
   ```
 + Install reuqired libraries.
   ```
   npm install react-router-dom @mui/material @emotion/react @emotion/styled web3 cryptocompare big-integer
+  ```
++ Open Visual Studio Code.
+  ```
+  code .
   ```
 + Backup `src/App.js` to `src/App.js.ORIG`.
 + Copy all files from `/smart_contracts/code/web/fundraising-app` to your `fundraising-app` folder.
