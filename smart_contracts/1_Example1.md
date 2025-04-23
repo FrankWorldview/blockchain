@@ -22,7 +22,6 @@
   (You can copy this file from `/smart_contracts/code/solidity/hello/test/Hello.t.sol`.)
 + Move test/Counter.s.sol elsewhere (e.g., the `orig` folder). Edit `script/Hello.s.sol`.
   (You can copy this file from `/smart_contracts/code/solidity/hello/script/Hello.s.sol`.)
-
 + Test the contract.
   ```
   forge test -vv
