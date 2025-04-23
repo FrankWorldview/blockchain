@@ -37,71 +37,30 @@
   forge script script/FundraiserFactory.s.sol --rpc-url 127.0.0.1:8545 --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 --broadcast
   ```
 
-## Interact with the Hello Contract via Node.js
+## Interact with the FundraiserFactory and Fundraiser Contracts via React
 + Open a Git Bash (in Windows) or a terminal (in Mac).
-+ Enter the folder `Web`.
++ Create a folder `Web` and enter it.
   ```
-  cd Web
-  ```
-+ Create a folder `hello` and enter it.
-  ```
-  mkdir hello
-  cd hello
-  ```
-+ Initialize an npm project.
-  ```
-  npm init
-  ```
-+ Install Web3.js.
-  ```
-  npm install web3
-  ```
-+ Edit `hello.js`.
-  (You can copy this file from `/smart_contracts/code/web/hello/hello.js`.)
-  ```
-  code .
-  ```
-+ View the result.
-  ```
-  node hello
-  ```
-+ Interact with the contract uisng the `cast` command.
-  ```
-  cast call <contract-address> "greet()(string)" --rpc-url 127.0.0.1:8545
-  cast call <contract-address> "getMaxUint256()(uint256)" --rpc-url 127.0.0.1:8545
-  cast call <contract-address> "sumUpTo(uint256)(uint256)" 100 --rpc-url 127.0.0.1:8545
-  ```
-
-![image](/smart_contracts/img/hello.png)
-
-## Interact with the Hello Contract via React
-+ Open a Git Bash (in Windows) or a terminal (in Mac).
-+ Enter the folder `Web`.
-  ```
+  mkdir Web
   cd Web
   ```
 + Create a React + Vite app.
   ```
-  npm create vite@latest hello-app -- --template react
+  npm create vite@latest fundraising-app -- --template react
   ```
 + Enter the new folder and install Vite.
   ```
-  cd hello-app
+  cd fundraising-app
   npm install
   ```
-+ Install Web3.js.
++ Install reuqired libraries.
   ```
-  npm install web3
+  npm install react-router-dom @mui/material @emotion/react @emotion/styled web3 cryptocompare big-integer
   ```
 + Backup `src/App.js` to `src/App.js.ORIG`.
-+ Edit `src/App.js`.
-  (You can copy this file from `/smart_contracts/code/web/hello-app/src/App.js`.)
-  ```
-  code .
-  ```
-  (Run the editor at the root folder of hello-app.)
++ Copy all files from `/smart_contracts/code/web/fundraising` to your `fundraising-app` folder.
 + Put `go.cjs` into the `src` folder.
-  (You can copy this file from `/smart_contracts/code/web/hello-app/go.cjs`.)
+  (You can copy this file from `/smart_contracts/code/web/fundraising-app/go.cjs`.)
 + Run `go.cjs` to extract the contract's ABI and address.
   ```
   mkdir src/abi
