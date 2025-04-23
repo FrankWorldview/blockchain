@@ -105,10 +105,10 @@ function App() {
         <>
             <div>
                 <a>
-                    <img src={logoETH} className="logo" alt="Ethereum logo" />
+                    <img src={LogoETH} className="logo" alt="Ethereum logo" />
                 </a>
                 <a>
-                    <img src={logoPepe} className="logo react" alt="Pepe logo" />
+                    <img src={LogoPepe} className="logo react" alt="Pepe logo" />
                 </a>
             </div>
             <h1>Transfer Ether</h1>
