@@ -29,7 +29,9 @@ contract Fundraiser is Ownable {
     }
 
     // Mapping from donor address to a list of their donations
-    // In Solidity, a leading underscore is often used to indicate: "This is a private/internal variable — don't access it directly from outside."
+    // In Solidity, the leading underscore (_) is a naming convention used to indicate that a variable is internal, private, or a function parameter — i.e., not meant to be accessed or modified externally unless explicitly exposed.
+    // In Solidity, _ is a way of reminding humans: "Hey, this isn't for public use."
+    // But the compiler doesn't care — visibility keywords (public, internal, private) are what actually enforce access.
     mapping(address => Donation[]) private _donations;
 
     // Aggregate fundraising metrics
@@ -92,7 +94,7 @@ contract Fundraiser is Ownable {
         require(msg.value > 0, "Donation must be greater than 0");
 
         // Record the donation
-        // You create a struct simply by calling it like a function literal — no new keyword is needed.
+        // Create a struct simply by calling it like a function literal — no new keyword is needed.
         // msg.value: The amount of Ether (in wei) that was sent along with the current transaction or call.
         // block.timestamp: The current UNIX timestamp (in seconds) of the block being mined. It's not perfectly accurate, but is close enough for tracking when things happen.
         _donations[msg.sender].push(Donation(msg.value, block.timestamp));
@@ -141,8 +143,7 @@ contract Fundraiser is Ownable {
         uint256 balance = address(this).balance;
         require(balance > 0, "No funds available");
 
-        // Use low-level call to transfer ETH to beneficiary
-        // "Hey EVM, send balance ETH from this contract to the beneficiary address."
+        // The Fundraiser contract says: "Hey Ethereum Virtual Machine, send all the ETH (balance) from me to this beneficiary address. I don't care about calling any function there (the beneficiary address), just push the money."
         // beneficiary: an address payable, meaning it is allowed to receive ETH.
         // .call{value: balance}(""): a low-level call that sends balance in wei to that address.
         // {value: balance} = this is how much ETH sending.
@@ -153,7 +154,7 @@ contract Fundraiser is Ownable {
         // (bool success, bytes memory data) = target.call(...);
         // success: a bool indicating whether the call succeeded.
         // data: raw return data (bytes) — like the function's return value if there is one.
-        // I only care about the success value — ignore the return data.
+        // "I only care about the success value — ignore the return data."
         (bool success, ) = beneficiary.call{value: balance}("");
         require(success, "Withdrawal failed");
 
