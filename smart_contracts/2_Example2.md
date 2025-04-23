@@ -4,13 +4,13 @@
 + Create or log in to your MetaMask wallet. Create a test network and connect to it:
   ![image](/smart_contracts/img/testnet.png)
 + Open a Git Bash (in Windows) or a terminal (in Mac).
-+ Enter the root folder "Web".
++ Enter the folder `Web`.
   ```
   cd Web
   ```
-+ Create a React app.
++ Create a React + Vite app.
   ```
-  npx create-react-app transfer-app
+  npm create vite@latest transfer-app -- --template react
   ```
 + Enter the new folder.
   ```
@@ -25,13 +25,13 @@
   mv src/App.js src/App.js.ORIG
   ```
 + Edit "src/App.js".
-  (You can copy this file from `/smart_contracts/src/web/transfer-app/App.js`.)
+  (You can copy this file from `/smart_contracts/code/web/transfer-app/App.js`.)
   ```
   code .
   ```
 + View the web page.
   ```
-  npm start
+  npm run dev
   ```
 + Change the receiver address.
 + "Transfer" Ether to the receiver address.
