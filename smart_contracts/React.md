@@ -106,6 +106,13 @@ In this example:
 + useEffect has count as a dependency. This means the effect will run whenever count changes.
 + When the "Increase Count" button is clicked, count is updated, which triggers useEffect to run again, updating the message state.
 
+The actual lifecycle flow:
+1. User clicks -> setCount(...)
+2. React re-renders with new count
+3. useEffect runs after paint (count changed)
+4. Inside useEffect: setMessage(...) is called
+5. React re-renders again with new message
+
 # Key Differences Between useState and useEffect
 + Purpose: useState is for managing local state, while useEffect is for handling side effects.
 + Re-renders: useState triggers a re-render when the state changes, whereas useEffect does not cause re-renders by itself but runs after each render if dependencies have changed.
