@@ -12,9 +12,10 @@
   ```
   npm create vite@latest transfer-app -- --template react
   ```
-+ Enter the new folder.
++ Enter the new folder and install Vite.
   ```
   cd transfer-app
+  npm install
   ```
 + Install Web3.js.
   ```
