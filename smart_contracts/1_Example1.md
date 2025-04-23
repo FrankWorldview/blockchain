@@ -107,6 +107,7 @@
   (You can copy this file from `/smart_contracts/code/web/hello-app/go.cjs`.)
 + Run `go.cjs` to extract the contract's ABI and address.
   ```
+  mkdir src/abi
   node go.cjs
   ```
 + View the web page.
