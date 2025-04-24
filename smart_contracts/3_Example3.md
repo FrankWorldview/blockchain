@@ -57,7 +57,10 @@
   ```
   code .
   ```
-+ Backup `src/App.js` to `src/App.js.ORIG`.
++ Backup `src/App.jsx` to `src/App.jsx.ORIG`.
+  ```
+  mv src/App.jsx src/App.jsx.ORIG
+  ```
 + Copy all files from `/smart_contracts/code/web/fundraising-app` to your `fundraising-app` folder.
 + Put `go.cjs` into your `src` folder.
   (You can copy this file from `/smart_contracts/code/web/fundraising-app/go.cjs`.)
