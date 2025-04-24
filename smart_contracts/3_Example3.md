@@ -24,10 +24,6 @@
   ```
   forge install OpenZeppelin/openzeppelin-contracts --no-commit
   ```
-+ Test the contract.
-  ```
-  forge test -vv
-  ```
 + Build the contract.
   ```
   forge build
