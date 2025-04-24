@@ -99,8 +99,8 @@
   ```
   mv src/App.jsx src/App.jsx.ORIG
   ```
-+ Edit `src/App.js`.
-  (You can copy this file from `/smart_contracts/code/web/hello-app/src/App.js`.)
++ Edit `src/App.jsx`.
+  (You can copy this file from `/smart_contracts/code/web/hello-app/src/App.jsx`.)
   ```
   code .
   ```
