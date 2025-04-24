@@ -36,6 +36,7 @@
   ```
 + Change the receiver address.
 + "Transfer" Ether to the receiver address.
++ Use the utility program `vieweth` to examine account balances.
 
 ![image](/smart_contracts/img/transfer.png)
 
