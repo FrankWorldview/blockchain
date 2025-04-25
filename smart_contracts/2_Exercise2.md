@@ -1,4 +1,4 @@
-# Example 2: Send Ether
+# Exercise 2: Send Ether
 
 ## Send Ether via MetaMask and React
 + Create or log in to your MetaMask wallet. Create a test network and connect to it:
