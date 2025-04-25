@@ -1,4 +1,4 @@
-# Example 1: Hello
+# Exercise 1: Hello
 
 ## Create, Test, and Deploy the Hello Contract
 + Open a Git Bash (in Windows) or a terminal (in Mac).
