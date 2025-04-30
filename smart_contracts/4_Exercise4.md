@@ -2,12 +2,6 @@
 
 ## Goal: Deploy your own ERC‑20 contract on Sepolia (an Ethereum testnet)
 
-## Prerequisites
-1. Install a MetaMask wallet and generate a new account. (Use this account in this exercise.)
-2. Visit [Ethereum Sepolia Faucet](https://cloud.google.com/application/web3/faucet/ethereum/sepolia) to obtain Sepolia ETH (Ethereum test tokens).
-   - You can obtain only 0.05 Sepolia ETH per day.
-   - If there is any error, try to use another Google account.
-   - 
 ## Create, Test, and Deploy Your ERC‑20 Contract on Anvil
 + Initialize a Foundry project.
    ```
@@ -43,6 +37,16 @@
   ```
 + Import your SH*T tokens into your wallet.
 
+
+
+
+
+## Prerequisites
+1. Install a MetaMask wallet and generate a new account. (Use this account in this exercise.)
+2. Visit [Ethereum Sepolia Faucet](https://cloud.google.com/application/web3/faucet/ethereum/sepolia) to obtain Sepolia ETH (Ethereum test tokens).
+   - You can obtain only 0.05 Sepolia ETH per day.
+   - If there is any error, try to use another Google account.
+   - 
 ### 4. Delete all example contracts
 - Delete `Counter.s.sol` in `script` directory
 - Delete `Counter.sol` in `src` directory
