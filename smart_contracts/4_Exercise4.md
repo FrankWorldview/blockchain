@@ -1,5 +1,6 @@
 # Exercise 4: Create Your Own Tokens
-# Deploy Your Own ERC‑20 Contract on Sepolia (an Ethereum testnet)
+
+## Goal: Deploy your own ERC‑20 contract on Sepolia (an Ethereum testnet)
 
 ## Prerequisites
 1. Install a MetaMask wallet and generate a new account. (Use this account in this exercise.)
