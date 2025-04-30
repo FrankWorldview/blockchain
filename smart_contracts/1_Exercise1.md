@@ -32,11 +32,11 @@
   ```
 + Deploy the contract using command (and using your private key).
   ```
-  forge create src/Hello.sol:Hello --rpc-url 127.0.0.1:8545 --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 --broadcast
+  forge create src/Hello.sol:Hello --rpc-url http://127.0.0.1:8545 --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 --broadcast
   ```
 + Deploy the contract using deployment script (and using your private key).
   ```
-  forge script script/Hello.s.sol --rpc-url 127.0.0.1:8545 --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 --broadcast
+  forge script script/Hello.s.sol --rpc-url http://127.0.0.1:8545 --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 --broadcast
   ```
 
 ## Interact with the Hello Contract via Node.js
@@ -69,9 +69,9 @@
   ```
 + Interact with the contract uisng the `cast` command.
   ```
-  cast call <contract-address> "greet()(string)" --rpc-url 127.0.0.1:8545
-  cast call <contract-address> "getMaxUint256()(uint256)" --rpc-url 127.0.0.1:8545
-  cast call <contract-address> "sumUpTo(uint256)(uint256)" 100 --rpc-url 127.0.0.1:8545
+  cast call <contract-address> "greet()(string)" --rpc-url http://127.0.0.1:8545
+  cast call <contract-address> "getMaxUint256()(uint256)" --rpc-url http://127.0.0.1:8545
+  cast call <contract-address> "sumUpTo(uint256)(uint256)" 100 --rpc-url http://127.0.0.1:8545
   ```
 
 ![image](/smart_contracts/img/hello.png)
