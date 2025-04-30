@@ -1,4 +1,5 @@
 # Exercise 4: Create Your Own Tokens
+# Deploy Your Own ERC‑20 Contract on Sepolia (an Ethereum testnet)
 
 ## Prerequisites
 1. Install a MetaMask wallet and generate a new account. (Use this account in this exercise.)
@@ -6,8 +7,8 @@
    - You can obtain only 0.05 Sepolia ETH per day.
    - If there is any error, try to use another Google account. 
 
-##  ERC-20
-In this lab, you will use your own wallet to deploy your own ERC‑20 token on the Sepolia testnet.
+##  ERC-20 Contract
+You will deploy your own ERC‑20 contract on Sepolia.
 
 During the lab, if you have any questions or issues, feel free to ask the teacher or TA.
 
