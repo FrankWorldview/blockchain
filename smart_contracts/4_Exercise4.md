@@ -1,7 +1,7 @@
 # Exercise 4: Create Your Own Tokens
 
 ## Prerequisites
-1. Install a MetaMask wallet and generate a new account.
+1. Install a MetaMask wallet and generate a new account. (Use this account in this exercise.)
 2. Visit [Ethereum Sepolia Faucet](https://cloud.google.com/application/web3/faucet/ethereum/sepolia) to obtain Sepolia ETH (Ethereum test tokens).
    - You can obtain only 0.05 Sepolia ETH per day.
    - If there is any error, try to use another Google account. 
