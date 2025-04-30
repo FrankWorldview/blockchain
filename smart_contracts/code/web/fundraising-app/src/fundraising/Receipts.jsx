@@ -1,9 +1,7 @@
 // Import the big-integer library for handling large integers
 import bigInt from 'big-integer';
-
 // Import useLocation hook to access route state data
 import { useLocation } from 'react-router';
-
 // React hooks for state management and lifecycle effects
 import { useState, useEffect } from 'react';
 
