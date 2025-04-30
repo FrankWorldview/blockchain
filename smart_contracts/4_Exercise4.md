@@ -44,14 +44,18 @@
      - You can obtain only 0.05 Sepolia ETH per day.
      - If there is any error, try to use another Google account.
 + For security reasons, do not reveal your private key in commnad line interface. So, set your private key as an environmental varaible.
-  `export PRIVATE_KEY=<your_private_key>`
+  ```
+  export PRIVATE_KEY=<your_private_key>
+  ```
 + Deploy your ERC-20 contract onto Sepolia. (Your could change the RPC URL to other Sepolia RPC URLs, such as Infura and Alchemy.)
   `forge script script/MyToken.s.sol --rpc-url https://ethereum-sepolia-rpc.publicnode.com --private-key $PRIVATE_KEY --broadcast`
 + Check the deployed contract on [Etherscan Sepolia](https://sepolia.etherscan.io/) by typing your contract address.
 + Import your tokens into your wallet.
 + Transfer your tokens to your friends.
 + Set your contract address as an environmental varaible.
-  `export CONTRACT_ADDRESS=<your_contract_address>`
+  ```
+  export CONTRACT_ADDRESS=<your_contract_address>
+  ```
 + Query the supply of your tokens.
   ```
   cast call $CONTRACT_ADDRESS "totalSupply()(uint256)" --rpc-url https://ethereum-sepolia-rpc.publicnode.com
@@ -68,12 +72,12 @@
   ```
   cast call $CONTRACT_ADDRESS "decimals()(uint8)" --rpc-url https://ethereum-sepolia-rpc.publicnode.com
   ```
-+ Mint new tokens.
++ Mint new tokens. (Change the amount as you wish. But remember to multiply it by the number of decimals.)
   ```
-  cast send $CONTRACT_ADDRESS "mint(address,uint256)" 0x5300447D9A3d35D51E053F84F362Ae47Bf9DEC68 1000000000000000000000 --rpc-url https://ethereum-sepolia-rpc.publicnode.com --private-key $PRIVATE_KEY
+  cast send $CONTRACT_ADDRESS "mint(address,uint256)" <recipient_address> 1000000000000000000000 --rpc-url https://ethereum-sepolia-rpc.publicnode.com --private-key $PRIVATE_KEY
   ```
-+ Transfer tokens.
++ Transfer tokens. (Change the amount as you wish. But remember to multiply it by the number of decimals.)
   ```
-  cast send 0xC92fa3cA7FD3D163147F672300a7d5bfAF374112 "transfer(address,uint256)" 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266 1000000000000000000000 --rpc-url https://ethereum-sepolia-rpc.publicnode.com --private-key $PRIVATE_KEY
+  cast send 0xC92fa3cA7FD3D163147F672300a7d5bfAF374112 "transfer(address,uint256)" <recipient_address> 1000000000000000000000 --rpc-url https://ethereum-sepolia-rpc.publicnode.com --private-key $PRIVATE_KEY
   ```
 + Fill in the [form](xxx): <your_student_id>, <your_token_name>, <your_token_symbol>, <your_contract_address>.
