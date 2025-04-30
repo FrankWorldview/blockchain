@@ -1,6 +1,6 @@
 # Exercise 4: Create Your Own Tokens
 
-## Goal: Deploy your own ERC‑20 contract on Sepolia (an Ethereum testnet)
+
 
 ## Create, Test, and Deploy Your ERC‑20 Contract on Anvil
 + Initialize a Foundry project.
@@ -39,7 +39,7 @@
 
 
 
-
+## Goal: Deploy your own ERC‑20 contract on Sepolia (an Ethereum testnet)
 
 ## Prerequisites
 1. Install a MetaMask wallet and generate a new account. (Use this account in this exercise.)
