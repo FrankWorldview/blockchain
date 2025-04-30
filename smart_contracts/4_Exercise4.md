@@ -50,12 +50,24 @@
 + Check the deployed contract on [Etherscan Sepolia](https://sepolia.etherscan.io/) by typing your contract address.
 + Import your tokens into your wallet.
 + Transfer your tokens to your friends.
-+ Query the supply of your tokens:
-  `cast call 0xC92fa3cA7FD3D163147F672300a7d5bfAF374112 "totalSupply()(uint256)" --rpc-url https://ethereum-sepolia-rpc.publicnode.com`
-+ Query the XXX:
-  `cast call 0xC92fa3cA7FD3D163147F672300a7d5bfAF374112 "totalSupply()(uint256)" --rpc-url https://ethereum-sepolia-rpc.publicnode.com`
-+ Mint new tokens:
-  `cast send 0xC92fa3cA7FD3D163147F672300a7d5bfAF374112 "mint(address,uint256)" 0x5300447D9A3d35D51E053F84F362Ae47Bf9DEC68 1000000000000000000000 --rpc-url https://ethereum-sepolia-rpc.publicnode.com --private-key $PRIVATE_KEY`
-+ Transfer tokens:
-  `cast send 0xC92fa3cA7FD3D163147F672300a7d5bfAF374112 "transfer(address,uint256)" 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266 1000000000000000000000 --rpc-url https://ethereum-sepolia-rpc.publicnode.com --private-key $PRIVATE_KEY`
++ Query the supply of your tokens.
+  ```
+  cast call 0xC92fa3cA7FD3D163147F672300a7d5bfAF374112 "totalSupply()(uint256)" --rpc-url https://ethereum-sepolia-rpc.publicnode.com
+  ```
++ Query the token name.
+  ```
+  cast call 0xC92fa3cA7FD3D163147F672300a7d5bfAF374112 "totalSupply()(uint256)" --rpc-url https://ethereum-sepolia-rpc.publicnode.com
+  ```
++ Query the token symbol.
+  ```
+  cast call 0xC92fa3cA7FD3D163147F672300a7d5bfAF374112 "totalSupply()(uint256)" --rpc-url https://ethereum-sepolia-rpc.publicnode.com
+  ```
++ Mint new tokens.
+  ```
+  cast send 0xC92fa3cA7FD3D163147F672300a7d5bfAF374112 "mint(address,uint256)" 0x5300447D9A3d35D51E053F84F362Ae47Bf9DEC68 1000000000000000000000 --rpc-url https://ethereum-sepolia-rpc.publicnode.com --private-key $PRIVATE_KEY
+  ```
++ Transfer tokens.
+  ```
+  cast send 0xC92fa3cA7FD3D163147F672300a7d5bfAF374112 "transfer(address,uint256)" 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266 1000000000000000000000 --rpc-url https://ethereum-sepolia-rpc.publicnode.com --private-key $PRIVATE_KEY
+  ```
 + Fill in the [form](xxx): <your_student_id>, <your_token_name>, <your_token_symbol>, <your_contract_address>.
