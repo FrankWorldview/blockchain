@@ -1,7 +1,5 @@
 # Exercise 4: Create Your Own Tokens
 
-
-
 ## Create, Test, and Deploy Your ERC‑20 Contract on Anvil
 + Initialize a Foundry project.
    ```
@@ -19,6 +17,7 @@
 + Copy the contract file from `/smart_contracts/code/solidity/erc20/src/MyToken.sol` to your `src` folder.
 + Copy the test script file from `/smart_contracts/code/solidity/erc20/test/MyToken.t.sol` to your `test` folder.
 + Copy the deployment script file from `/smart_contracts/code/solidity/erc20/script/MyToken.s.sol` to your `script` folder.
++ `anvil`
 + Build the contract.
   ```
   forge build
@@ -31,81 +30,18 @@
   ```
   forge create src/MyToken.sol:MyToken --rpc-url http://127.0.0.1:8545 --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 --broadcast --constructor-args "MyToken" "MTK" 1000
   ```
-+ Deploy the contract using deployment script (and using your private key).
++ Alternatively, deploy the contract using deployment script (and using your private key).
   ```
   forge script script/MyToken.s.sol --rpc-url http://127.0.0.1:8545 --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 --broadcast
   ```
 + Import your SH*T tokens into your wallet.
 
-
-
-## Goal: Deploy your own ERC‑20 contract on Sepolia (an Ethereum testnet)
-
-## Prerequisites
+## Deploy your own ERC‑20 contract on Sepolia (an Ethereum testnet)
++ Prerequisites
 1. Install a MetaMask wallet and generate a new account. (Use this account in this exercise.)
 2. Visit [Ethereum Sepolia Faucet](https://cloud.google.com/application/web3/faucet/ethereum/sepolia) to obtain Sepolia ETH (Ethereum test tokens).
    - You can obtain only 0.05 Sepolia ETH per day.
    - If there is any error, try to use another Google account.
-   - 
-### 4. Delete all example contracts
-- Delete `Counter.s.sol` in `script` directory
-- Delete `Counter.sol` in `src` directory
-- Delete `Counter.t.sol` in `test` directory
-
-### 5. Implement ERC-20 contract
-- Create a new Solidity file in `src` directory.
-- In the file you just created, paste the following code.
-    ```
-    // SPDX-License-Identifier: MIT
-    pragma solidity ^0.8.20;
-
-    import {ERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-    import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
-
-    contract MyToken is ERC20, Ownable {
-        constructor(uint INITIAL_SUPPLY) ERC20("MyToken", "MTK") Ownable(msg.sender) {
-            _mint(msg.sender, INITIAL_SUPPLY);
-        }
-
-        function mint(address to, uint256 amount) external onlyOwner {
-            _mint(to, amount);
-        }
-    }
-    ```
-- Try to modify the contract name, initial supply amount, token name and token symbol to whatever you like.
-
-### 6. Local Test
-- Activating Anvil environment in bash.
-    ```
-    anvil
-    ```
-- In `test` directory, create a new `.t.sol` file with the same name as erc20 contract file in `test` directory (e.g. `MyToken.t.sol`).
-- Paste the following code in the test file.
-    ```
-    // SPDX-License-Identifier: MIT
-    pragma solidity ^0.8.0;
-
-    import "forge-std/Test.sol";
-    import "../src/MyToken.sol";
-
-    contract MyTokenTest is Test {
-        MyToken token;
-
-        function setUp() public {
-            token = new MyToken(1_000 * 10**18);
-        }
-
-        function testInitialSupply() public {
-            assertEq(token.totalSupply(), 1_000 * 10**18);
-            assertEq(token.balanceOf(address(this)), 1_000 * 10**18);
-        }
-    }
-    ```
-- Modify `MyToken` to the name of your ERC-20 contract.
-- Run the test:
-    ```
-    forge test -vv
-    ```
 
 ### 7. Deploy ERC-20 contract to Sepolia testnet
 - In `script` directory, create a new `.s.sol` file with the same name as erc20 contract file in `script` directory (e.g. `MyToken.s.sol`).
