@@ -86,6 +86,9 @@ Notes:
 + Install the `React Developer Tools` plugin in your browser for advanced debugging.
 + `forge clean` can remove the build artifacts and cache directories.
 
+Thank:
+How to automatically update fundraiser cards after a fundraising campaign is updated (e.g., donated)?
+
 Credits:
 The code of this example is based on the work of [RedSquirrelTech](https://github.com/RedSquirrelTech/hoscdev).
 
