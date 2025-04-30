@@ -50,21 +50,27 @@
 + Check the deployed contract on [Etherscan Sepolia](https://sepolia.etherscan.io/) by typing your contract address.
 + Import your tokens into your wallet.
 + Transfer your tokens to your friends.
++ Set your contract address as an environmental varaible.
+  `export CONTRACT_ADDRESS=<your_contract_address>`
 + Query the supply of your tokens.
   ```
-  cast call 0xC92fa3cA7FD3D163147F672300a7d5bfAF374112 "totalSupply()(uint256)" --rpc-url https://ethereum-sepolia-rpc.publicnode.com
+  cast call $CONTRACT_ADDRESS "totalSupply()(uint256)" --rpc-url https://ethereum-sepolia-rpc.publicnode.com
   ```
-+ Query the token name.
++ Query your token name.
   ```
-  cast call 0xC92fa3cA7FD3D163147F672300a7d5bfAF374112 "totalSupply()(uint256)" --rpc-url https://ethereum-sepolia-rpc.publicnode.com
+  cast call $CONTRACT_ADDRESS "name()(string)" --rpc-url https://ethereum-sepolia-rpc.publicnode.com
   ```
-+ Query the token symbol.
++ Query your token symbol.
   ```
-  cast call 0xC92fa3cA7FD3D163147F672300a7d5bfAF374112 "totalSupply()(uint256)" --rpc-url https://ethereum-sepolia-rpc.publicnode.com
+  cast call $CONTRACT_ADDRESS "symbol()(string)" --rpc-url https://ethereum-sepolia-rpc.publicnode.com
+  ```
++ Query the number of your token decimals.
+  ```
+  cast call $CONTRACT_ADDRESS "decimals()(uint8)" --rpc-url https://ethereum-sepolia-rpc.publicnode.com
   ```
 + Mint new tokens.
   ```
-  cast send 0xC92fa3cA7FD3D163147F672300a7d5bfAF374112 "mint(address,uint256)" 0x5300447D9A3d35D51E053F84F362Ae47Bf9DEC68 1000000000000000000000 --rpc-url https://ethereum-sepolia-rpc.publicnode.com --private-key $PRIVATE_KEY
+  cast send $CONTRACT_ADDRESS "mint(address,uint256)" 0x5300447D9A3d35D51E053F84F362Ae47Bf9DEC68 1000000000000000000000 --rpc-url https://ethereum-sepolia-rpc.publicnode.com --private-key $PRIVATE_KEY
   ```
 + Transfer tokens.
   ```
