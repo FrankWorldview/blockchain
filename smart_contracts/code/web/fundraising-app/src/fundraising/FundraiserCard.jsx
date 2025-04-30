@@ -105,7 +105,7 @@ const FundraiserCard = ({ fundraiser }) => {
       });
 
       try {
-        const prices = await cc.price('ETH', ['USD']);
+        const prices = await cc.price('ETH', ['USD']); // Fetch the current exchange rate of ETH to USD
         setExchangeRate(prices.USD);
         const eth = web3Instance.utils.fromWei(fundTotalDonationsWei, 'ether');
         setTotalDonations((prices.USD * eth).toFixed(2));
