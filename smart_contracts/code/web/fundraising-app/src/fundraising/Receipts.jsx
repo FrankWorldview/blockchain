@@ -28,11 +28,14 @@ const Receipts = (props) => {
 
   // useEffect hook runs when the component mounts or when location.state changes
   useEffect(() => {
-    if (!location.state) return;
+    if (!location.state) {
+      console.warn('location.state is null');
+      return;
+    }
 
     // Destructure fund, date, and money from the state passed via route
     const { fund: newFund, date: newDate, money: newMoney } = location.state;
-    console.log(newFund); // Debug: log the fund name
+    // console.log(newFund); // Debug: log the fund name
 
     // Convert UNIX timestamp (in seconds) to JavaScript Date (in milliseconds)
     // UNIX timestamps in Solidity are usually in seconds, but JavaScript Date expects milliseconds. Multiply by 1000 to convert.
