@@ -70,7 +70,7 @@
   mv src/main.jsx src/main.jsx.ORIG
   ```
 + Copy all files from `/smart_contracts/code/web/fundraising-app` to your `fundraising-app` folder.
-+ Put `go.cjs` into your folder's root (i.e., fundraising-app).
++ Put `go.cjs` into your app root (i.e., fundraising-app).
   (You can copy this file from `/smart_contracts/code/web/fundraising-app/go.cjs`.)
 + Run `go.cjs` to extract the contract's ABI and address.
   ```
