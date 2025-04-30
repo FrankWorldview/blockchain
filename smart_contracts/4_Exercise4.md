@@ -78,6 +78,6 @@
   ```
 + Transfer tokens. (Change the amount as you wish. But remember to multiply it by the number of decimals.)
   ```
-  cast send 0xC92fa3cA7FD3D163147F672300a7d5bfAF374112 "transfer(address,uint256)" <recipient_address> 1000000000000000000000 --rpc-url https://ethereum-sepolia-rpc.publicnode.com --private-key $PRIVATE_KEY
+  cast send $CONTRACT_ADDRESS "transfer(address,uint256)" <recipient_address> 1000000000000000000000 --rpc-url https://ethereum-sepolia-rpc.publicnode.com --private-key $PRIVATE_KEY
   ```
 + Fill in the [form](xxx): <your_student_id>, <your_token_name>, <your_token_symbol>, <your_contract_address>.
