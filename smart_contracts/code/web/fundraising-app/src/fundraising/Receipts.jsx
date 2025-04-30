@@ -28,16 +28,19 @@ const Receipts = (props) => {
 
   // useEffect hook runs when the component mounts or when location.state changes
   useEffect(() => {
+    if (!location.state) return;
+
     // Destructure fund, date, and money from the state passed via route
     const { fund: newFund, date: newDate, money: newMoney } = location.state;
     console.log(newFund); // Debug: log the fund name
 
     // Convert UNIX timestamp (in seconds) to JavaScript Date (in milliseconds)
-    const formattedDate = new Date(parseInt(bigInt(newDate).toJSNumber() * 1000, 10));
+    // UNIX timestamps in Solidity are usually in seconds, but JavaScript Date expects milliseconds. Multiply by 1000 to convert.
+    const formattedDate = new Date(bigInt(newDate).toJSNumber() * 1000);
 
     // Set the received values into component state
     setFund(newFund);
-    setDate(formattedDate.toString()); // Convert date object to string
+    setDate(formattedDate.toLocaleString()); // Convert date object to string
     setMoney(newMoney);
   }, [location.state]);
 
@@ -61,7 +64,7 @@ const Receipts = (props) => {
                 Date of Donation: {date}
               </Typography>
               <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                Donation Value: ${money}
+                Donation Value: ${parseFloat(money).toFixed(2)}
               </Typography>
             </CardContent>
           </CardActionArea>
