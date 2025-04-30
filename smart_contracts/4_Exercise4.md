@@ -50,7 +50,9 @@
 + Deploy your ERC-20 contract onto Sepolia. (Your could change the RPC URL to other Sepolia RPC URLs, such as Infura and Alchemy.)
   `forge script script/MyToken.s.sol --rpc-url https://ethereum-sepolia-rpc.publicnode.com --private-key $PRIVATE_KEY --broadcast`
 
-  
++ Check the contract on Etherscan (for Sepolia).
+
+
 cast call 0xC92fa3cA7FD3D163147F672300a7d5bfAF374112 "totalSupply()(uint256)" --rpc-url https://ethereum-sepolia-rpc.publicnode.com
 
 cast call 0xC92fa3cA7FD3D163147F672300a7d5bfAF374112 "totalSupply()(uint256)" --rpc-url https://ethereum-sepolia-rpc.publicnode.com
@@ -62,29 +64,7 @@ cast send 0xC92fa3cA7FD3D163147F672300a7d5bfAF374112 "transfer(address,uint256)"
 
 
 
-
-
-### 8. Check the contract
-- Goto https://sepolia.etherscan.io/address/<TOKEN_CONTRACT_ADDRESS> to check your contract.
-    ![image](/img/etherscan.jpg)
-- Check total supply of your token.
-    ```
-    cast call <CONTRACT_ADDRESS> "totalSupply()" \
-        --rpc-url Sepolia
-    ```
-
-### 9. Import token in Metamask.
-
-### 10. Transfer token with your classmates!
-- Goto [ERC‑20 Collaboration Form](https://docs.google.com/spreadsheets/d/1tCwMNnZe6jjMBQVB9Nb7c0JYvaNeSEe5X2ZiKn6xMJI/edit?usp=sharing). Add you name, wallet address, ERC-20 contract address and token symbol to the form.
-
-- Mint token to specific wallet address.
-    ```
-    cast send <CONTRACT_ADDRESS> \
-        "mint(address,uint256)" <recipient_address> <amount> \
-        --rpc-url Sepolia \
-        --private-key $PRIVATE_KEY
-    ```
-
-- Try to mint or transfer the token to your classmates in the form.
-- After you mint token to others, check if the total supply of your token changed?
++ Check the contract on [Etherscan Sepolia](https://sepolia.etherscan.io/) by typing your contract address.
++ Import your tokens into your wallet.
++ Transfer your tokens to your friends.
++ Fill in the [form](xxx): <your_student_id>, <your_token_name>, <your_token_symbol>, <your_contract_address>.
