@@ -39,32 +39,23 @@
 
 ## Deploy Your ERC‑20 Contract on Sepolia (an Ethereum Testnet)
 + Prerequisites
-1. Install a MetaMask wallet and generate a new account. (Use THIS account in the follwoing exercise!)
-2. Visit [Ethereum Sepolia Faucet](https://cloud.google.com/application/web3/faucet/ethereum/sepolia) to obtain Sepolia ETH (Ethereum test tokens).
-   - You can obtain only 0.05 Sepolia ETH per day.
-   - If there is any error, try to use another Google account.
-
+  1. Install a MetaMask wallet and generate a new account. (Use THIS account in the follwoing exercise!)
+  2. Visit [Ethereum Sepolia Faucet](https://cloud.google.com/application/web3/faucet/ethereum/sepolia) to obtain Sepolia ETH (Ethereum test tokens).
+     - You can obtain only 0.05 Sepolia ETH per day.
+     - If there is any error, try to use another Google account.
 + For security reasons, do not reveal your private key in commnad line interface. So, set your private key as an environmental varaible.
   `export PRIVATE_KEY=<your_private_key>`
-
 + Deploy your ERC-20 contract onto Sepolia. (Your could change the RPC URL to other Sepolia RPC URLs, such as Infura and Alchemy.)
   `forge script script/MyToken.s.sol --rpc-url https://ethereum-sepolia-rpc.publicnode.com --private-key $PRIVATE_KEY --broadcast`
-
-+ Check the contract on Etherscan (for Sepolia).
-
-
-cast call 0xC92fa3cA7FD3D163147F672300a7d5bfAF374112 "totalSupply()(uint256)" --rpc-url https://ethereum-sepolia-rpc.publicnode.com
-
-cast call 0xC92fa3cA7FD3D163147F672300a7d5bfAF374112 "totalSupply()(uint256)" --rpc-url https://ethereum-sepolia-rpc.publicnode.com
-
-cast send 0xC92fa3cA7FD3D163147F672300a7d5bfAF374112 "mint(address,uint256)" 0x5300447D9A3d35D51E053F84F362Ae47Bf9DEC68 1000000000000000000000 --rpc-url https://ethereum-sepolia-rpc.publicnode.com --private-key $PRIVATE_KEY
-
-cast send 0xC92fa3cA7FD3D163147F672300a7d5bfAF374112 "transfer(address,uint256)" 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266 1000000000000000000000 --rpc-url https://ethereum-sepolia-rpc.publicnode.com --private-key $PRIVATE_KEY
-
-
-
-
-+ Check the contract on [Etherscan Sepolia](https://sepolia.etherscan.io/) by typing your contract address.
++ Check the deployed contract on [Etherscan Sepolia](https://sepolia.etherscan.io/) by typing your contract address.
 + Import your tokens into your wallet.
 + Transfer your tokens to your friends.
++ Query the supply of your tokens:
+  `cast call 0xC92fa3cA7FD3D163147F672300a7d5bfAF374112 "totalSupply()(uint256)" --rpc-url https://ethereum-sepolia-rpc.publicnode.com`
++ Query the XXX:
+  `cast call 0xC92fa3cA7FD3D163147F672300a7d5bfAF374112 "totalSupply()(uint256)" --rpc-url https://ethereum-sepolia-rpc.publicnode.com`
++ Mint new tokens:
+  `cast send 0xC92fa3cA7FD3D163147F672300a7d5bfAF374112 "mint(address,uint256)" 0x5300447D9A3d35D51E053F84F362Ae47Bf9DEC68 1000000000000000000000 --rpc-url https://ethereum-sepolia-rpc.publicnode.com --private-key $PRIVATE_KEY`
++ Transfer tokens:
+  `cast send 0xC92fa3cA7FD3D163147F672300a7d5bfAF374112 "transfer(address,uint256)" 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266 1000000000000000000000 --rpc-url https://ethereum-sepolia-rpc.publicnode.com --private-key $PRIVATE_KEY`
 + Fill in the [form](xxx): <your_student_id>, <your_token_name>, <your_token_symbol>, <your_contract_address>.
