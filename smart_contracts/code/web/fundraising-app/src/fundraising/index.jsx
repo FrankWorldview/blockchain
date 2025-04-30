@@ -50,7 +50,7 @@ const Fundraising = () => {
     }
   };
 
-  // 🔍 Silent check on page load to see if wallet is already connected
+  // Silent check on page load to see if wallet is already connected
   useEffect(() => {
     initWeb3();
 
