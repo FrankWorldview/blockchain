@@ -1,11 +1,10 @@
-# NCCU Blockchain Course - 2025 Spring
-![image](/img/pepe.png)
+# Exercise 4: Create Your Own Tokens
+
 ## Prerequisites
-1. Get a Metamask wallet and remember your private key.
-    - Do NOT use private keys from Foundry.
-2. Go to [Ethereum Sepolia Faucet](https://cloud.google.com/application/web3/faucet/ethereum/sepolia) to obtain Sepolia ETH.
-    - Note: You can obtain 0.05 Sepolia ETH every 24 hours each wallet address.
-    - If there is any error, try to use another Google account. 
+1. Install a MetaMask wallet and generate a new account.
+2. Visit [Ethereum Sepolia Faucet](https://cloud.google.com/application/web3/faucet/ethereum/sepolia) to obtain Sepolia ETH (Ethereum test tokens).
+   - You can obtain only 0.05 Sepolia ETH per day.
+   - If there is any error, try to use another Google account. 
 
 ##  ERC-20
 In this lab, you will use your own wallet to deploy your own ERC‑20 token on the Sepolia testnet.
