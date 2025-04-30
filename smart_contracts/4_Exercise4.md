@@ -43,6 +43,7 @@
   2. Visit [Ethereum Sepolia Faucet](https://cloud.google.com/application/web3/faucet/ethereum/sepolia) to obtain Sepolia ETH (Ethereum test tokens).
      - You can obtain only 0.05 Sepolia ETH per day.
      - If there is any error, try to use another Google account.
++ Select "Sepolia" as your network.
 + For security reasons, do not reveal your private key in commnad line interface. So, set your private key as an environmental varaible.
   ```
   export PRIVATE_KEY=<your_private_key>
