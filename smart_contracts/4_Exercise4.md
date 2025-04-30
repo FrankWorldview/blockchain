@@ -83,4 +83,4 @@
   ```
   cast send $CONTRACT_ADDRESS "transfer(address,uint256)" <recipient_address> 1000000000000000000000 --rpc-url https://ethereum-sepolia-rpc.publicnode.com --private-key $PRIVATE_KEY
   ```
-+ Fill in the [form](xxx): <your_student_id>, <your_token_name>, <your_token_symbol>, <your_contract_address>.
++ Fill in the [form](https://docs.google.com/spreadsheets/d/1-6Ama4HYhlYUBPEs7wdl-BoQjvAEOBHF/edit?usp=sharing&ouid=112978878957332661587&rtpof=true&sd=true).
