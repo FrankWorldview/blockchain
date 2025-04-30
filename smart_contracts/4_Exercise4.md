@@ -49,7 +49,9 @@
   export PRIVATE_KEY=<your_private_key>
   ```
 + Deploy your ERC-20 contract onto Sepolia. (Your could change the RPC URL to other Sepolia RPC URLs, such as Infura and Alchemy.)
-  `forge script script/MyToken.s.sol --rpc-url https://ethereum-sepolia-rpc.publicnode.com --private-key $PRIVATE_KEY --broadcast`
+  ```
+  forge script script/MyToken.s.sol --rpc-url https://ethereum-sepolia-rpc.publicnode.com --private-key $PRIVATE_KEY --broadcast
+  ```
 + Check the deployed contract on [Etherscan Sepolia](https://sepolia.etherscan.io/) by typing your contract address.
 + Import your tokens into your wallet.
 + Transfer your tokens to your friends.
