@@ -84,6 +84,7 @@ const Fundraising = () => {
 
     window.ethereum.on('accountsChanged', handleAccountsChanged);
 
+    // Cleanup listener on component unmount
     // Without the return function, you would be stacking up listeners every time the component mounts, which causes memory leaks
     // Because [] is passed:
     // The return function runs once when the component unmounts
