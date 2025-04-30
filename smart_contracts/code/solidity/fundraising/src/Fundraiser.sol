@@ -1,9 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.28;
 
-// Import for Foundry debugging only — remove before deployment to production
-import {console} from "forge-std/console.sol";
-
 // Inherits ownership functionality from OpenZeppelin
 import "@openzeppelin/contracts/access/Ownable.sol";
 
@@ -24,7 +21,7 @@ contract Fundraiser is Ownable {
 
     // Internal struct to store individual donation records
     struct Donation {
-        uint256 value; // Amount of ETH donated
+        uint256 value; // Amount of ETH donated (in wei)
         uint256 date; // Timestamp of the donation
     }
 
@@ -35,7 +32,7 @@ contract Fundraiser is Ownable {
     mapping(address => Donation[]) private _donations;
 
     // Aggregate fundraising metrics
-    uint256 public totalDonations; // Total ETH received
+    uint256 public totalDonations; // Total ETH received (in wei)
     uint256 public donationsCount; // Total number of donation transactions
 
     // Events
@@ -67,7 +64,11 @@ contract Fundraiser is Ownable {
         description = _description;
         beneficiary = _beneficiary;
 
-        // Transfer ownership from deployer to designated custodian
+        // Give control to the real campaign owner, not just the deployer.
+        // Transfer ownership from the deployer (FundraiserFactory) to the designated custodian (EOA).
+        // When a contract creates another contract using new, the msg.sender inside the new contract's constructor is the contract that created it.
+        // _custodian: EOA
+        // msg.sender here: the deployer (FundraiserFactory)
         transferOwnership(_custodian);
     }
 
