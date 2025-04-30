@@ -66,7 +66,7 @@
   (You can copy this file from `/smart_contracts/code/web/fundraising-app/go.cjs`.)
 + Run `go.cjs` to extract the contract's ABI and address.
   ```
-  mkdir src/abi
+  mkdir src/fundraising/abi
   node go.cjs
   ```
 + View the web page.
