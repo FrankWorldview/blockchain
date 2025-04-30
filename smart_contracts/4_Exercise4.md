@@ -6,30 +6,42 @@
 1. Install a MetaMask wallet and generate a new account. (Use this account in this exercise.)
 2. Visit [Ethereum Sepolia Faucet](https://cloud.google.com/application/web3/faucet/ethereum/sepolia) to obtain Sepolia ETH (Ethereum test tokens).
    - You can obtain only 0.05 Sepolia ETH per day.
-   - If there is any error, try to use another Google account. 
-
-##  ERC-20 Contract
-You will deploy your own ERC‑20 contract on Sepolia.
-
-During the lab, if you have any questions or issues, feel free to ask the teacher or TA.
-
-### 1. Initialize a Foundry project
-```
-forge init erc20-lab
-cd erc20-lab
-```
-### 2. Install OpenZeppelin Library
-After installing the OpenZeppelin library, you can import it into your contract.
-```
-forge install OpenZeppelin/openzeppelin-contracts
-```
-
-### 3. Set rpc endpoint in `foundry.toml`
-- Add the following content at the bottom of the `foundry.toml`
-    ```
-    [rpc_endpoints]
-    Sepolia = "https://ethereum-sepolia-rpc.publicnode.com"
-    ```
+   - If there is any error, try to use another Google account.
+   - 
+## Create, Test, and Deploy Your ERC‑20 Contract on Anvil
++ Initialize a Foundry project.
+   ```
+   forge init erc20
+   cd erc20
+   ```
++ Install OpenZeppelin
+  ```
+  forge install OpenZeppelin/openzeppelin-contracts --no-commit
+  ```
++ Move src/Counter.sol elsewhere (e.g., the `orig` folder).
++ Move test/Counter.t.sol elsewhere (e.g., the `orig` folder).
++ Move test/Counter.s.sol elsewhere (e.g., the `orig` folder).
++ `code .`
++ Copy the contract file from `/smart_contracts/code/solidity/erc20/src/MyToken.sol` to your `src` folder.
++ Copy the test script file from `/smart_contracts/code/solidity/erc20/test/MyToken.t.sol` to your `test` folder.
++ Copy the deployment script file from `/smart_contracts/code/solidity/erc20/script/MyToken.s.sol` to your `script` folder.
++ Build the contract.
+  ```
+  forge build
+  ```
++ Test the contract.
+  ```
+  forge test -vv
+  ```
++ Deploy the contract using command (and using your private key).
+  ```
+  forge create src/MyToken.sol:MyToken --rpc-url http://127.0.0.1:8545 --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 --broadcast --constructor-args "MyToken" "MTK" 1000
+  ```
++ Deploy the contract using deployment script (and using your private key).
+  ```
+  forge script script/MyToken.s.sol --rpc-url http://127.0.0.1:8545 --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 --broadcast
+  ```
++ Import your SH*T tokens into your wallet.
 
 ### 4. Delete all example contracts
 - Delete `Counter.s.sol` in `script` directory
