@@ -34,7 +34,7 @@
   ```
   forge create src/Hello.sol:Hello --rpc-url http://127.0.0.1:8545 --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 --broadcast
   ```
-+ Alternatively, deploy the contract using deployment script (and using your private key).
++ Alternatively, deploy the contract using deployment script (and using your private key). (Please use this method.)
   ```
   forge script script/Hello.s.sol --rpc-url http://127.0.0.1:8545 --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 --broadcast
   ```
