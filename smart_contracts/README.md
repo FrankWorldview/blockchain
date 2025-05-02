@@ -3,21 +3,20 @@
 + [Solidity (Official)](https://soliditylang.org/)
 + [Foundry](https://book.getfoundry.sh/)
 + [Foundry Full Course](https://github.com/Cyfrin/foundry-full-course-cu)
-+ [Console logging in Foundry](https://book.getfoundry.sh/reference/forge-std/console-log)
 + [WTF Solidity](https://github.com/AmazingAng/WTF-Solidity)
 + [Solidity cheetsheet](https://docs.soliditylang.org/en/v0.8.28/cheatsheet.html)
 + [Web3.js documents](https://docs.web3js.org/)
 + [CryptoZombies](https://cryptozombies.io/)
-+ React: [useState](https://react.dev/reference/react/useState)
-+ React: [userEffect](https://react.dev/reference/react/useEffect)
 
 # Supplements
 + [Ethereum basics](https://docs.alchemy.com/docs/ethereum-basics)
 + [How do smart contracts communicate?](https://docs.alchemy.com/docs/smart-contract-communication)
 + [What are multi-signature contracts?](https://docs.alchemy.com/docs/multi-sig-contracts)
 + [What is an ERC-20 token?](https://docs.alchemy.com/docs/what-is-erc-20)
-+ [Foundry](https://medium.com/imtoken/foundry-introduction-and-our-experience-sharing-d9d82bf012ae)
++ [Console logging in Foundry](https://book.getfoundry.sh/reference/forge-std/console-log)
 + JavaScript: [async function & await](https://www.casper.tw/development/2020/10/16/async-await/)
++ React: [useState](https://react.dev/reference/react/useState)
++ React: [userEffect](https://react.dev/reference/react/useEffect)
 
 # Software Used in This Class
 + Solidity: [Foundry](https://book.getfoundry.sh/)
