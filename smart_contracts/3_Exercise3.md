@@ -94,5 +94,3 @@ The code of this example is based on the work of [RedSquirrelTech](https://githu
 
 ![image](/smart_contracts/img/fundraising-1.png)
 
-![image](/smart_contracts/img/fundraising-2.png)
-
