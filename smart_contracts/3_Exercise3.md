@@ -92,5 +92,4 @@ How to automatically update fundraiser cards after a fundraising campaign is upd
 Credits:
 The code of this example is based on the work of [RedSquirrelTech](https://github.com/RedSquirrelTech/hoscdev).
 
-![image](/smart_contracts/img/fundraising-1.png)
-
+![image](/smart_contracts/img/fundraising.png)
