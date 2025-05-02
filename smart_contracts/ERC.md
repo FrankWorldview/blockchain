@@ -1,6 +1,3 @@
-# Generate the full tutorial document as a GitHub Markdown file
-
-tutorial_md_content = """
 # 🚀 Ethereum Token Standards Tutorial: ERC-20 & ERC-721
 
 Welcome to this tutorial on Ethereum's two most widely-used token standards: **ERC-20** for fungible tokens and **ERC-721** for non-fungible tokens (NFTs). This guide is designed for students and developers looking to understand how these standards work and how they are used in decentralised applications.
