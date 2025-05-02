@@ -1,43 +1,80 @@
-# 🎓 Ethereum Token Standards: ERC-20 and ERC-721
+# Generate the full tutorial document as a GitHub Markdown file
 
-This tutorial introduces two key Ethereum token standards: **ERC-20** (fungible tokens) and **ERC-721** (non-fungible tokens, aka NFTs). These standards define how tokens behave and interact with smart contracts, wallets, and dApps.
+tutorial_md_content = """
+# 🚀 Ethereum Token Standards Tutorial: ERC-20 & ERC-721
+
+Welcome to this tutorial on Ethereum's two most widely-used token standards: **ERC-20** for fungible tokens and **ERC-721** for non-fungible tokens (NFTs). This guide is designed for students and developers looking to understand how these standards work and how they are used in decentralised applications.
 
 ---
 
-## 🔹 ERC-20: The Fungible Token Standard
+## 🪙 Part 1: ERC-20 — The Fungible Token Standard
 
-### 📌 What is ERC-20?
+### 🔍 What is ERC-20?
 
-ERC-20 defines a **standard interface** for fungible tokens. Fungible means that **each unit is the same as every other unit** (just like money).
+ERC-20 defines a **standard interface** for fungible tokens on Ethereum. Each token unit is **identical, divisible, and interchangeable**.
 
-> 🪙 Example: 1 USDC = 1 USDC, no matter who owns it.
+> 📌 Example: 1 USDC = 1 USDC, regardless of who owns it.
 
-### 🔧 Core Functions
+### 🛠️ Key Functions
 
 | Function | Description |
-|---------|-------------|
+|----------|-------------|
 | `totalSupply()` | Total number of tokens in circulation |
-| `balanceOf(address)` | Returns token balance of an address |
-| `transfer(address to, uint256 amount)` | Sends tokens to another address |
-| `approve(address spender, uint256 amount)` | Authorizes someone to spend tokens on your behalf |
-| `allowance(address owner, address spender)` | Shows how much `spender` can spend from `owner` |
-| `transferFrom(address from, address to, uint256 amount)` | Sends tokens after approval |
+| `balanceOf(address)` | Token balance of a specific address |
+| `transfer(address to, uint256 amount)` | Send tokens to another address |
+| `approve(address spender, uint256 amount)` | Authorise another address to spend tokens |
+| `allowance(owner, spender)` | View remaining allowance for a spender |
+| `transferFrom(from, to, amount)` | Send tokens on someone’s behalf (after approval) |
 
-### 📢 Events
+### 🪄 Events
 
-- `Transfer(address from, address to, uint256 value)`
-- `Approval(address owner, address spender, uint256 value)`
+- `Transfer(from, to, value)`
+- `Approval(owner, spender, value)`
 
-### 📘 Use Cases
+### 📦 Use Cases
 
-- Stablecoins (USDC, USDT)
-- DeFi tokens (UNI, AAVE)
-- Staking, rewards, and governance
+- Stablecoins like USDC, USDT
+- DeFi tokens for lending, liquidity
+- Governance tokens for voting
 
 ---
 
-## 🎨 ERC-721: The Non-Fungible Token Standard
+## 🎨 Part 2: ERC-721 — The Non-Fungible Token Standard
 
-### 📌 What is ERC-721?
+### 🔍 What is ERC-721?
 
-ERC-721 defines a standard for **non-f**
+ERC-721 defines a standard for **non-fungible tokens** — each token is **unique**, **indivisible**, and represents something specific.
+
+> 📌 Example: An NFT artwork or a CryptoKitty collectible.
+
+### 🛠️ Key Functions
+
+| Function | Description |
+|----------|-------------|
+| `balanceOf(owner)` | Number of NFTs owned |
+| `ownerOf(tokenId)` | Returns owner of a specific token |
+| `safeTransferFrom(from, to, tokenId)` | Securely transfers ownership |
+| `transferFrom(from, to, tokenId)` | Basic transfer (less safe) |
+| `approve(to, tokenId)` | Approves someone to transfer a specific token |
+| `setApprovalForAll(operator, approved)` | Grants or revokes access to all tokens |
+| `getApproved(tokenId)` | Approved address for single token |
+| `isApprovedForAll(owner, operator)` | Checks global approval status |
+
+### 🪄 Events
+
+- `Transfer(from, to, tokenId)`
+- `Approval(owner, approved, tokenId)`
+- `ApprovalForAll(owner, operator, approved)`
+
+---
+
+## 🖼️ ERC-721 Metadata Extension
+
+Allows each NFT to carry descriptive metadata like images and attributes.
+
+### Functions
+
+```solidity
+function name() external view returns (string memory);
+function symbol() external view returns (string memory);
+function tokenURI(uint256 tokenId) external view returns (string memory);
