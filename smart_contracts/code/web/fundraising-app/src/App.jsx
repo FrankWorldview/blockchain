@@ -48,8 +48,8 @@ function App() {
         </Routes>
 
         {/* <Stack direction="row" spacing={2} justifyContent="center" alignItems="center">
-          <img src={SustainableMemeLab1} className="logo" style={{ height: '350px' }} alt="SustainableMemeLab1" />
-          <img src={SustainableMemeLab2} className="logo" style={{ height: '350px' }} alt="SustainableMemeLab2" />
+          <img src={SustainableMemeLab1} className="logo" alt="Sustainable Meme Lab 1" style={{ height: '350px' }} />
+          <img src={SustainableMemeLab2} className="logo" alt="Sustainable Meme Lab 2" style={{ height: '350px' }} />
         </Stack> */}
       </div>
     </>
