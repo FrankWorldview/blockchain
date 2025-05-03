@@ -12,8 +12,8 @@ import LogoPepe from './assets/logo-pepe.svg';
 import PageViewFundraiser from './fundraising';
 import PageReceipts from './fundraising/Receipts';
 import PageCreateFundraiser from './fundraising/CreateFundraiser';
-// import SustainableMemeLab1 from './assets/SustainableMemeLab1.png'
-// import SustainableMemeLab2 from './assets/SustainableMemeLab2.png'
+// import SustainableMemeLab1 from './assets/sustainable-meme-lab-1.png'
+// import SustainableMemeLab2 from './assets/sustainable-meme-lab-2.png'
 
 function App() {
   return (
