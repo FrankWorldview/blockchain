@@ -11,7 +11,6 @@ import java.util.concurrent.locks.ReentrantLock;
  * 3. ReentrantLock + Condition
  */
 public class DiningPhilosophersDemo {
-
     public static final int NUM_PHILOSOPHERS = 5;
     public static final int THINKING_TIME = 2000; // Max thinking time in ms
     public static final int EATING_TIME = 1000; // Max eating time in ms
