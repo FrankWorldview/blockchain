@@ -9,6 +9,8 @@ import java.util.concurrent.locks.ReentrantLock;
  * 1. synchronized
  * 2. Semaphores
  * 3. ReentrantLock + Condition
+ * 
+ * Author: Frank Chuang
  */
 public class DiningPhilosophersDemo {
     public static final int NUM_PHILOSOPHERS = 5;
