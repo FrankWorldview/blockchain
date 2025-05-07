@@ -91,12 +91,12 @@ NFTs are more than just ownership—they come with data. Each ERC-721 token can 
 
 ```json
 {
-  "name": "Cool NFT #1",
+  "name": "Pepe NFT #1",
   "description": "A rare digital asset",
   "image": "https://example.com/nft/1.png",
   "attributes": [
     {
-      "name": "Pepe",
+      "color": "green",
       "power": "999"
     }
   ]
