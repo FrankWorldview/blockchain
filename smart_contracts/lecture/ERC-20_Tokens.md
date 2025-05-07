@@ -40,6 +40,3 @@ event Approval(address indexed owner, address indexed spender, uint256 value);
 ## Real-World Analogy
 
 ERC-20 tokens are like arcade tokens: each one is interchangeable, and they follow a common system so all machines can accept them.
-
----
-
