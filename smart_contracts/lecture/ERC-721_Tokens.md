@@ -217,3 +217,5 @@ Example of a problematic metadata JSON:
 Fully decentralized NFTs maintain their integrity over time, ensuring collectors and marketplaces see consistent content.
 
 ---
+
+
