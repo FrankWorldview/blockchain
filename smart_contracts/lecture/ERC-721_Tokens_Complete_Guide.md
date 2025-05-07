@@ -49,7 +49,7 @@ function isApprovedForAll(address owner, address operator) external view returns
 
 ---
 
-## Example: Mint and Burn NFTs
+## Example: Minting and Burning NFTs
 
 ```solidity
 // SPDX-License-Identifier: MIT
@@ -88,8 +88,8 @@ ERC-721 tokens support metadata, typically returned via the `tokenURI` function.
   "image": "https://example.com/nft/1.png",
   "attributes": [
     {
-      "trait_type": "Rarity",
-      "value": "Epic"
+      "name": "Pepe",
+      "power": "999"
     }
   ]
 }
@@ -135,39 +135,6 @@ contract DynamicNFT is ERC721 {
     }
 }
 ```
-
----
-
-## Example of Setting and Getting Dynamic tokenURI
-
-```solidity
-function setBaseURI(string memory newBaseURI) public onlyOwner {
-    baseURI = newBaseURI;
-}
-
-function tokenURI(uint256 tokenId) public view override returns (string memory) {
-    return string(abi.encodePacked(baseURI, Strings.toString(tokenId), ".json"));
-}
-```
-
----
-
-## Example of Setting and Getting Static tokenURI
-
-```solidity
-function mintWithURI(address to, string memory tokenURI) public onlyOwner {
-    uint256 tokenId = nextTokenId;
-    _safeMint(to, tokenId);
-    _setTokenURI(tokenId, tokenURI);
-    nextTokenId++;
-}
-
-function tokenURI(uint256 tokenId) public view override returns (string memory) {
-    return super.tokenURI(tokenId);
-}
-```
-
----
 
 ## References
 
