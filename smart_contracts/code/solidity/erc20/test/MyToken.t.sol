@@ -10,7 +10,7 @@ contract MyTokenTest is Test {
     address user;
 
     function setUp() public {
-        token = new MyToken("MyToken", "MTK", 1000); // Initial supply to owner
+        token = new MyToken("CoolToken", "COOL", 1000); // Initial supply to owner
         owner = address(this); // The test contract is the deployer
         user = address(0xABCD); // A dummy user
     }
