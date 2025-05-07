@@ -136,6 +136,10 @@ contract DynamicNFT is ERC721 {
 }
 ```
 
+###  Use Cases of Static and Dynamic Metadata
+
+---
+
 ## References
 
 - [ERC-721 Specification – EIP-721](https://eips.ethereum.org/EIPS/eip-721)
