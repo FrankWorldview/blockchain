@@ -90,3 +90,9 @@ You can deploy this contract and use it as your own custom cryptocurrency.
 - ERC-20 tokens are fungible and interoperable across the Ethereum ecosystem.
 - They follow a standardized interface for ease of use.
 - You can create your own token with just a few lines of code using OpenZeppelin’s library.
+
+---
+
+## References
+
+- [ERC-20 Token Standard – EIP-20](https://eips.ethereum.org/EIPS/eip-20)
