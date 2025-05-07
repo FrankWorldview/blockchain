@@ -4,7 +4,7 @@
 
 ERC-721 is the first widely adopted standard for creating **non-fungible tokens (NFTs)** on the Ethereum blockchain. Unlike ERC-20 tokens, which are identical and interchangeable (fungible), each ERC-721 token is **unique**, **indivisible**, and **distinct**.
 
-This standard provides a structured way to represent ownership of digital assets that are one-of-a-kind—such as digital art, collectibles, game items, and virtual real estate. Each token has its own identifier (`tokenId`) and can link to rich metadata via the `tokenURI` function, allowing developers to assign detailed descriptions, images, and attributes to each asset.
+This standard provides a structured way to represent ownership of digital assets that are one-of-a-kind—such as digital art, collectibles, game items, and virtual real estate. Each token has its own identifier (`tokenId`) and can link to rich metadata via the `tokenURI()` function, allowing developers to assign detailed descriptions, images, and attributes to each asset.
 
 ERC-721 has become the foundation of the modern NFT ecosystem, enabling transparent, verifiable ownership and trading of unique digital content across decentralized marketplaces.
 
@@ -110,11 +110,11 @@ NFTs are more than just ownership—they come with data. Each ERC-721 token can 
 
 ## Static vs Dynamic `tokenURI`
 
-ERC-721 tokens expose metadata through the `tokenURI()` function. This section compares static and dynamic implementations of `tokenURI`.
+ERC-721 tokens expose metadata through the `tokenURI()` function. This section compares static and dynamic implementations of `tokenURI()`.
 
 ### Static tokenURI
 
-The tokenURI is immutable and stored on IPFS or a centralized server. Once set, it doesn't change over time.
+The `tokenURI` is immutable and stored on IPFS or a centralized server. Once set, it doesn't change over time.
 
 ```solidity
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
