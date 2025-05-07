@@ -73,6 +73,3 @@ contract MyToken is ERC20 {
 | Not emitting `Transfer` or `Approval` events | Breaks compatibility with dApps and explorers. |
 | Incorrect use of `approve()` | Can lead to double-spending. Use `increaseAllowance()` / `decreaseAllowance()` instead. |
 | Manually tracking balances | Prone to bugs and security issues. Let OpenZeppelin handle it. |
-
-## Reference
-- [ERC-20: Token Standard](https://eips.ethereum.org/EIPS/eip-20)
