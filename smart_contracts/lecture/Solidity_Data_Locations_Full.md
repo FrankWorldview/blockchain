@@ -11,12 +11,14 @@ In Solidity, **data locations** define where reference-type variables (like arra
 - **Mutable**: ✅ Yes  
 - **Used For**: State variables, mappings, and arrays stored on the blockchain  
 
+```
     uint[] public numbers;
 
     function update(uint index, uint newValue) public {
         uint[] storage nums = numbers;
         nums[index] = newValue; // Changes persist on-chain
     }
+```
 
 ---
 
