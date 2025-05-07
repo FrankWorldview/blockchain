@@ -161,13 +161,6 @@ contract DynamicNFT is ERC721 {
 
 ---
 
-## References
-
-- [ERC-721 Standard – EIP-721](https://eips.ethereum.org/EIPS/eip-721)
-- [OpenZeppelin ERC721 Documentation](https://docs.openzeppelin.com/contracts/4.x/api/token/erc721)
-
----
-
 ## Caution: Updating Metadata URIs
 
 While `_setTokenURI()` allows you to define a metadata URI per token, it can be called multiple times for the same `tokenId`, thereby updating the URI.
@@ -181,7 +174,6 @@ Although technically permitted, updating a token’s metadata URI after minting 
 - If you need dynamic metadata, consider overriding `tokenURI()` instead of storing mutable URIs.
 
 ---
-
 
 ## Best Practices for NFT Storage and Decentralization Pitfalls
 
@@ -217,3 +209,8 @@ Example of a problematic metadata JSON:
 Fully decentralized NFTs maintain their integrity over time, ensuring collectors and marketplaces see consistent content.
 
 ---
+
+## References
+
+- [ERC-721 Standard – EIP-721](https://eips.ethereum.org/EIPS/eip-721)
+- [OpenZeppelin ERC721 Documentation](https://docs.openzeppelin.com/contracts/4.x/api/token/erc721)
