@@ -107,7 +107,7 @@ NFTs are more than just ownership—they come with metadata. Each ERC-721 token 
 
 ## Static vs. Dynamic Metadata URI
 
-ERC-721 tokens expose metadata via the `tokenURI()` function. There are two primary approaches to managing the metadata URI: static and dynamic.
+ERC-721 tokens expose metadata via the `tokenURI()` function. There are two primary approaches to managing metadata URIs: static and dynamic.
 
 ### Static Metadata URI
 
@@ -165,3 +165,55 @@ contract DynamicNFT is ERC721 {
 
 - [ERC-721 Standard – EIP-721](https://eips.ethereum.org/EIPS/eip-721)
 - [OpenZeppelin ERC721 Documentation](https://docs.openzeppelin.com/contracts/4.x/api/token/erc721)
+
+---
+
+## Caution: Updating Metadata URIs
+
+While `_setTokenURI()` allows you to define a metadata URI per token, it can be called multiple times for the same `tokenId`, thereby updating the URI.
+
+Although technically permitted, updating a token’s metadata URI after minting can damage trust, especially in cases where immutability is expected (e.g., digital art, certificates, or collectibles). 
+
+**Recommendations:**
+
+- Avoid calling `_setTokenURI()` more than once per token unless your NFT is explicitly meant to evolve.
+- Protect any function that calls `_setTokenURI()` with access control (`onlyOwner`, `onlyMinter`, etc.).
+- If you need dynamic metadata, consider overriding `tokenURI()` instead of storing mutable URIs.
+
+---
+
+
+## Best Practices for NFT Storage and Decentralization Pitfalls
+
+Storing your metadata URI on IPFS doesn't automatically make your NFT fully decentralized. It’s common to see IPFS metadata JSON files that reference centralized media files (e.g., images hosted on traditional web servers).
+
+Example of a problematic metadata JSON:
+```json
+{
+  "name": "Partially Decentralized NFT",
+  "image": "https://myserver.com/image1.png"
+}
+```
+
+**Issues:**
+
+- The image can be changed or removed by the server owner.
+- The NFT’s visual identity becomes mutable and unreliable.
+
+**Recommendations:**
+
+- Host **both** metadata JSON **and** media files (e.g., images, audio, video) on decentralized storage like IPFS or Arweave.
+- Reference media using `ipfs://` URIs for full immutability:
+  
+```json
+{
+  "name": "Fully Decentralized NFT",
+  "image": "ipfs://Qm.../image1.png"
+}
+```
+
+- Avoid pointing to assets on centralized servers unless your project explicitly supports dynamic or mutable media.
+
+Fully decentralized NFTs maintain their integrity over time, ensuring collectors and marketplaces see consistent content.
+
+---
