@@ -1,46 +1,6 @@
 # ERC-721 Tokens
 
-ERC-721 is 
-
-## Minting and Burning NFTs
-
-The process of **minting** creates a new NFT, assigns it a unique `tokenId`, and transfers ownership to a specified address. **Burning** destroys the token, permanently removing it from the blockchain.
-
-Here's a simple implementation:
-
-```solidity
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
-
-import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
-
-contract SimpleMintBurn is ERC721, Ownable {
-    uint256 public nextTokenId;
-
-    constructor() ERC721("SimpleNFT", "SNFT") {}
-
-    // Mint a new NFT to a specified address
-    function mint(address to) public onlyOwner {
-        _safeMint(to, nextTokenId);
-        nextTokenId++;
-    }
-
-    // Burn an existing NFT (only by the owner of the token)
-    function burn(uint256 tokenId) public {
-        require(ownerOf(tokenId) == msg.sender, "You are not the owner of this token");
-        _burn(tokenId);
-    }
-}
-```
-
-### Notes
-
-- `_safeMint` ensures the recipient can handle ERC-721 tokens.
-- `_burn` removes the token from circulation and clears approvals.
-- Only the token owner is allowed to burn their NFT.
-
-a standard interface for non-fungible tokens (NFTs), which are unique and cannot be interchanged like fungible tokens (e.g., ERC-20). Each ERC-721 token has a unique identifier and can represent ownership of a unique asset, such as digital art, collectibles, or even real estate.
+ERC-721 is a standard interface for non-fungible tokens (NFTs), which are unique and cannot be interchanged like fungible tokens (e.g., ERC-20). Each ERC-721 token has a unique identifier and can represent ownership of a unique asset, such as digital art, collectibles, or even real estate.
 
 ## Key Characteristics
 
