@@ -77,7 +77,7 @@ contract MyNFT is ERC721, Ownable {
 
 ---
 
-## Metadata and Example
+## Metadata
 
 ERC-721 tokens support metadata, typically returned via the `tokenURI` function. The metadata is usually a JSON file following this structure:
 
