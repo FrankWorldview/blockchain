@@ -2,12 +2,9 @@
 
 ## What is ERC-721?
 
-ERC-721 is the first widely adopted standard for creating **non-fungible tokens (NFTs)** on the Ethereum blockchain. Unlike ERC-20 tokens, which are identical and interchangeable (fungible), each ERC-721 token is **unique**, **indivisible**, and **distinct**.
+ERC-721 is a widely adopted standard for **non-fungible tokens (NFTs)** on the Ethereum blockchain. Unlike ERC-20 tokens, which are interchangeable and identical (fungible), each ERC-721 token is **unique**, **indivisible**, and **distinguishable** from all others.
 
-This standard provides a structured way to represent ownership of digital assets that are one-of-a-kind—such as digital art, collectibles, game items, and virtual real estate. Each token has its own identifier (`tokenId`) and can link to rich metadata via the `tokenURI()` function, allowing developers to assign detailed descriptions, images, and attributes to each asset.
-
-ERC-721 has become the foundation of the modern NFT ecosystem, enabling transparent, verifiable ownership and trading of unique digital content across decentralized marketplaces.
-
+This uniqueness makes ERC-721 ideal for representing digital collectibles, art, game assets, domain names, and other **one-of-a-kind digital property**. Each token has its own identifier and can carry its own metadata, giving creators the flexibility to assign rich, meaningful content to each asset.
 
 ---
 
@@ -16,7 +13,7 @@ ERC-721 has become the foundation of the modern NFT ecosystem, enabling transpar
 - 🎯 **Uniqueness**: Each token has a unique `tokenId` and cannot be replaced or subdivided.
 - 👤 **Ownership Tracking**: The Ethereum blockchain maintains a public, tamper-proof record of ownership.
 - 🔄 **Transferability**: Tokens can be securely transferred between accounts or smart contracts.
-- 🧾 **Metadata Support**: Every token can be linked to a JSON metadata file that describes its properties.
+- 🧾 **Metadata Support**: Each token is associated with a metadata URI pointing to descriptive JSON data.
 - 🔗 **Interoperability**: Compatible with wallets, marketplaces (like OpenSea), and dApps that support the ERC-721 standard.
 
 ---
@@ -26,31 +23,14 @@ ERC-721 has become the foundation of the modern NFT ecosystem, enabling transpar
 ERC-721 defines the following core functions to manage ownership and interactions with NFTs:
 
 ```solidity
-// Returns the number of NFTs owned by a specific address
 function balanceOf(address owner) external view returns (uint256 balance);
-
-// Returns the address currently owning the given tokenId
 function ownerOf(uint256 tokenId) external view returns (address owner);
-
-// Safely transfers tokenId from one address to another, checking for ERC721Receiver compliance
 function safeTransferFrom(address from, address to, uint256 tokenId) external;
-
-// Overloaded version of safeTransferFrom, allowing additional data to be sent with the transfer
 function safeTransferFrom(address from, address to, uint256 tokenId, bytes calldata data) external;
-
-// Transfers tokenId from one address to another (unsafe version – may break if recipient is not a smart contract)
 function transferFrom(address from, address to, uint256 tokenId) external;
-
-// Grants permission to another address to transfer a specific tokenId
 function approve(address to, uint256 tokenId) external;
-
-// Approves or removes another address as an operator for all tokens owned by the caller
 function setApprovalForAll(address operator, bool _approved) external;
-
-// Returns the address currently approved to transfer a specific tokenId
 function getApproved(uint256 tokenId) external view returns (address operator);
-
-// Checks if an operator is approved to manage all tokens owned by a given address
 function isApprovedForAll(address owner, address operator) external view returns (bool);
 ```
 
@@ -90,7 +70,7 @@ contract MyNFT is ERC721, Ownable {
 
 ## Metadata in ERC-721
 
-NFTs are more than just ownership—they come with data. Each ERC-721 token can reference metadata, typically returned by the `tokenURI()` function. This metadata is usually a JSON file with information like the name, description, image, and traits:
+NFTs are more than just ownership—they come with metadata. Each ERC-721 token can reference a metadata URI, typically returned by the `tokenURI()` function. This metadata is usually a JSON file containing fields such as name, description, image, and attributes:
 
 ```json
 {
@@ -108,13 +88,13 @@ NFTs are more than just ownership—they come with data. Each ERC-721 token can 
 
 ---
 
-## Static vs Dynamic `tokenURI`
+## Static vs. Dynamic `tokenURI()`
 
-ERC-721 tokens expose metadata through the `tokenURI()` function. This section compares static and dynamic implementations of `tokenURI()`.
+ERC-721 tokens expose metadata via the `tokenURI()` function. There are two primary approaches to managing the metadata URI: static and dynamic.
 
-### Static tokenURI
+### Static Metadata URI
 
-The `tokenURI` is immutable and stored on IPFS or a centralized server. Once set, it doesn't change over time.
+In this model, the metadata URI is immutable and typically stored on IPFS or a web server. Once set, it does not change.
 
 ```solidity
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
@@ -130,9 +110,11 @@ contract StaticNFT is ERC721URIStorage {
 }
 ```
 
-### Dynamic tokenURI
+Here, the `uri` parameter refers to the metadata URI assigned to the token.
 
-In this model, the `tokenURI` is generated at runtime. It can reflect evolving properties—ideal for gamified or upgradable NFTs.
+### Dynamic Metadata URI
+
+In a dynamic approach, the metadata URI returned by `tokenURI()` is generated at runtime. It can reflect real-time data or evolving states—ideal for interactive or gamified NFTs.
 
 ```solidity
 import "@openzeppelin/contracts/utils/Strings.sol";
@@ -153,12 +135,12 @@ contract DynamicNFT is ERC721 {
 
 ---
 
-## Use Cases for Static and Dynamic tokenURI
+## Use Cases for Static and Dynamic Metadata
 
-| tokenURI Type | Description | Use Cases |
-|---------------|-------------|-----------|
-| **Static**    | Fixed JSON files stored on IPFS or web server. | Art NFTs, certificates, tickets |
-| **Dynamic**   | `tokenURI` computed based on on-chain/off-chain logic. | Game items, evolving artwork, real-world integration |
+| Approach          | Description                                             | Use Cases                              |
+|-------------------|---------------------------------------------------------|----------------------------------------|
+| **Static URI**    | Fixed metadata URI, usually IPFS-hosted                | Art NFTs, certificates, tickets        |
+| **Dynamic URI**   | `tokenURI()` computes metadata URI based on conditions | Game items, evolving art, real-world data integration |
 
 ---
 
@@ -166,4 +148,3 @@ contract DynamicNFT is ERC721 {
 
 - [ERC-721 Standard – EIP-721](https://eips.ethereum.org/EIPS/eip-721)
 - [OpenZeppelin ERC721 Documentation](https://docs.openzeppelin.com/contracts/4.x/api/token/erc721)
-
