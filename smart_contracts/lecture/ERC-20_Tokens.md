@@ -43,4 +43,3 @@ ERC-20 tokens are like arcade tokens: each one is interchangeable, and they foll
 
 ---
 
-*This content is intended for student instruction and follows American English conventions.*
