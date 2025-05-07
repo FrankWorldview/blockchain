@@ -11,13 +11,13 @@ In Solidity, **data locations** define where reference-type variables (like arra
 - **Mutable**: ✅ Yes  
 - **Used For**: State variables, mappings, and arrays stored on the blockchain  
 
-```
-    uint[] public numbers;
+```solidity
+uint[] public numbers;
 
-    function update(uint index, uint newValue) public {
-        uint[] storage nums = numbers;
-        nums[index] = newValue; // Changes persist on-chain
-    }
+function update(uint index, uint newValue) public {
+    uint[] storage nums = numbers;
+    nums[index] = newValue; // Changes persist on-chain
+}
 ```
 
 ---
@@ -29,13 +29,15 @@ In Solidity, **data locations** define where reference-type variables (like arra
 - **Mutable**: ✅ Yes  
 - **Used For**: Temporary variables, local arrays, function return values  
 
-    function double(uint[] memory input) public pure returns (uint[] memory) {
-        uint[] memory result = new uint[](input.length);
-        for (uint i = 0; i < input.length; i++) {
-            result[i] = input[i] * 2;
-        }
-        return result;
+```solidity
+function double(uint[] memory input) public pure returns (uint[] memory) {
+    uint[] memory result = new uint[](input.length);
+    for (uint i = 0; i < input.length; i++) {
+        result[i] = input[i] * 2;
     }
+    return result;
+}
+```
 
 ---
 
@@ -46,11 +48,13 @@ In Solidity, **data locations** define where reference-type variables (like arra
 - **Mutable**: ❌ No (read-only)  
 - **Used For**: Parameters in `external` functions (especially arrays, strings)  
 
-    function greet(string[] calldata names) external {
-        for (uint i = 0; i < names.length; i++) {
-            emit Greeting(names[i]);
-        }
+```solidity
+function greet(string[] calldata names) external {
+    for (uint i = 0; i < names.length; i++) {
+        emit Greeting(names[i]);
     }
+}
+```
 
 ---
 
@@ -97,12 +101,14 @@ You **do not need to specify** location for value types:
 - `uint`, `int`, `bool`, `address`, `bytes32`, `enum`
 
 **Incorrect:**
-
-    function setName(string name) public { ... } // Compiler error!
+```solidity
+function setName(string name) public { ... } // Compiler error!
+```
 
 **Correct:**
-
-    function setName(string memory name) public { ... }
+```solidity
+function setName(string memory name) public { ... }
+```
 
 ---
 
