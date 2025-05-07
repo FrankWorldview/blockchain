@@ -109,9 +109,9 @@ NFTs are more than just ownership—they come with data. Each ERC-721 token can 
 
 ERC-721 tokens expose metadata through the `tokenURI()` function. This section compares static and dynamic implementations of `tokenURI`.
 
-### Static Metadata
+### Static tokenURI
 
-The metadata is immutable and stored on IPFS or a centralized server. Once set, it doesn't change over time.
+The tokenURI is immutable and stored on IPFS or a centralized server. Once set, it doesn't change over time.
 
 ```solidity
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
@@ -127,7 +127,7 @@ contract StaticNFT is ERC721URIStorage {
 }
 ```
 
-### Dynamic Metadata
+### Dynamic tokenURI
 
 In this model, the `tokenURI` is generated at runtime. It can reflect evolving properties—ideal for gamified or upgradable NFTs.
 
@@ -150,9 +150,9 @@ contract DynamicNFT is ERC721 {
 
 ---
 
-## Use Cases for Static and Dynamic Metadata
+## Use Cases for Static and Dynamic tokenURI
 
-| Metadata Type | Description | Use Cases |
+| tokenURI Type | Description | Use Cases |
 |---------------|-------------|-----------|
 | **Static**    | Fixed JSON files stored on IPFS or web server. | Art NFTs, certificates, tickets |
 | **Dynamic**   | `tokenURI` computed based on on-chain/off-chain logic. | Game items, evolving artwork, real-world integration |
