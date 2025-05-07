@@ -161,8 +161,4 @@ contract DynamicNFT is ERC721 {
 
 - [ERC-721 Standard – EIP-721](https://eips.ethereum.org/EIPS/eip-721)
 - [OpenZeppelin ERC721 Documentation](https://docs.openzeppelin.com/contracts/4.x/api/token/erc721)
-- [NFT School](https://nftschool.dev)
 
----
-
-> ERC-721 brought uniqueness to Ethereum. Every token tells a different story—and some might just be memes with powers of 999.
