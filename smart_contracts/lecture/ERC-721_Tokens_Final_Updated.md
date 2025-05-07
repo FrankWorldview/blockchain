@@ -105,7 +105,7 @@ NFTs are more than just ownership—they come with metadata. Each ERC-721 token 
 
 ---
 
-## Static vs. Dynamic `tokenURI()`
+## Static vs. Dynamic Metadata URI
 
 ERC-721 tokens expose metadata via the `tokenURI()` function. There are two primary approaches to managing the metadata URI: static and dynamic.
 
