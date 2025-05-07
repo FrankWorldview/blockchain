@@ -114,7 +114,7 @@ ERC-721 tokens expose metadata through the `tokenURI()` function. This section c
 
 ### Static tokenURI
 
-The tokenURI is immutable and stored on IPFS or a centralized server. Once set, it doesn't change over time.
+The `tokenURI` is immutable and stored on IPFS or a centralized server. Once set, it doesn't change over time.
 
 ```solidity
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
