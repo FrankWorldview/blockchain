@@ -97,7 +97,7 @@ ERC-721 tokens support metadata, typically returned via the `tokenURI` function.
 
 ---
 
-## Dynamic and Static Metadata
+## Static and Dynamic Metadata
 
 ### Static Metadata
 
