@@ -6,6 +6,16 @@ ERC-20 is a technical standard for fungible tokens on the Ethereum blockchain. I
 
 ---
 
+## Features of ERC-20 Tokens
+
+- **Fungibility**: Each token is identical and interchangeable with another token of the same type.
+- **Interoperability**: Compatible with wallets, decentralized exchanges (DEXs), and DeFi platforms.
+- **Standardization**: Simplifies token creation and ensures uniform behavior across applications.
+- **Event Tracking**: Emits events (`Transfer` and `Approval`) for off-chain monitoring and UI updates.
+- **Allowance Mechanism**: Enables delegated token transfers via `approve` and `transferFrom`.
+
+---
+
 ## Key Functions
 
 ERC-20 tokens must implement the following functions:
