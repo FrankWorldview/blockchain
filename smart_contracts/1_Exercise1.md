@@ -74,7 +74,7 @@
   cast call <contract-address> "sumUpTo(uint256)(uint256)" 100 --rpc-url http://127.0.0.1:8545
   ```
 
-![image](/smart_contracts/img/hello.png)
+![image](/smart_contracts/image/hello.png)
 
 ## Interact with the Hello Contract via React
 + Open a Git Bash (in Windows) or a terminal (in Mac).
