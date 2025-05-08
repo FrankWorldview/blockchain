@@ -121,4 +121,4 @@ Notes:
 + Install the `React Developer Tools` plugin in your browser for advanced debugging.
 + `forge clean` can remove the build artifacts and cache directories.
 
-![image](/smart_contracts/img/hello-app.png)
+![image](/smart_contracts/image/hello-app.png)
