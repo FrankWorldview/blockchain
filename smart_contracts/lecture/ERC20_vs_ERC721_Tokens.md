@@ -74,5 +74,5 @@ ERC-721 is the standard for **non-fungible tokens (NFTs)** — each token is uni
 
 - [ERC-20: Token Standard](https://eips.ethereum.org/EIPS/eip-20)
 - [ERC-721: Non-Fungible Token Standard](https://eips.ethereum.org/EIPS/eip-721)
-- [OpenZeppelin ERC-20 Guide](https://docs.openzeppelin.com/contracts/4.x/erc20)
-- [OpenZeppelin ERC-721 Guide](https://docs.openzeppelin.com/contracts/4.x/erc721)
+- [OpenZeppelin ERC-20 Guide](https://docs.openzeppelin.com/contracts/5.x/erc20)
+- [OpenZeppelin ERC-721 Guide](https://docs.openzeppelin.com/contracts/5.x/erc721)
