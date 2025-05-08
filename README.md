@@ -3,4 +3,4 @@
 
 Please go the [smart_contracts](/smart_contracts) folder.
 
-![image](/smart_contracts/img/WR.webp)
+![image](/smart_contracts/image/WR.webp)
