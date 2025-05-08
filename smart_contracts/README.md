@@ -91,6 +91,6 @@
   node vieweth
   ```
 
-![image](/smart_contracts/img/anvil.png)
+![image](/smart_contracts/image/anvil.png)
 
-![image](/smart_contracts/img/vieweth.png)
+![image](/smart_contracts/image/vieweth.png)
