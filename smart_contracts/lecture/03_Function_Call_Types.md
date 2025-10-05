@@ -29,7 +29,7 @@ receive() external payable {
   - Direct jump in bytecode (cheap)
 - **External Call via `this.`**:
   - ABI-encoded, higher gas cost
-- **Can Use**: `memory` (for internal calls), `storage` (for internal calls), `calldata` (for external calls)
+- **Can Use**: `memory` (for both internal and external calls), `storage` (only in internal calls), `calldata` (only for external calls)
 
 ```solidity
 function doSomething(uint x) public {
