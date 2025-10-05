@@ -13,7 +13,7 @@ Visibility modifiers control **where** functions and state variables can be acce
 | Modifier     | Applies To            | Description                                                  |
 |--------------|------------------------|--------------------------------------------------------------|
 | `public`     | Functions, Variables   | Accessible externally and internally. Creates a getter for variables. |
-| `external`   | Functions              | Callable only from outside the contract. Slightly more gas efficient. |
+| `external`   | Functions              | Callable only from outside the contract. |
 | `internal`   | Functions, Variables   | Accessible only from this contract and its derived contracts. |
 | `private`    | Functions, Variables   | Accessible only from this contract.                          |
 
