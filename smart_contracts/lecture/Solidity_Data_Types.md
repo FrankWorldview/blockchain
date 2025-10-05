@@ -12,8 +12,8 @@ Value types are stored directly in memory or on the stack. They are copied when 
 
 | Type         | Description                                 | Example                            |
 |--------------|---------------------------------------------|------------------------------------|
-| `uint`       | Unsigned integer (default: uint256)         | `uint x = 42;`                     |
-| `int`        | Signed integer (default: int256)            | `int y = -42;`                     |
+| `uint`       | Unsigned integer, from 8 bits to 256 bits, in steps of 8 (default: uint256)         | `uint x = 42;`                     |
+| `int`        | Signed integer, from 8 bits to 256 bits, in steps of 8 (default: int256)            | `int y = -42;`                     |
 | `bool`       | Boolean value (`true` or `false`)           | `bool isActive = true;`           |
 | `address`    | Ethereum address                            | `address owner = msg.sender;`     |
 | `bytes1`–`bytes32` | Fixed-size byte arrays               | `bytes32 hash = keccak256(...);`  |
