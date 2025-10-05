@@ -87,8 +87,8 @@ doSomething(x);        // internal call — fast
 this.doSomething(x);   // external call — ABI-encoded, more gas
 ```
 
-For functions invoked from outside the contract, external visibility can yield slightly lower gas cost than public, because it can skip an internal data copy in some cases.
+For functions invoked from outside the contract, `external` visibility can yield slightly lower gas cost than `public`, because it can skip an internal data copy in some cases.
 
-However, when called from within the same contract, public is clearly cheaper — it performs a direct internal jump — while calling an external function internally (this.functionName(...)) adds extra ABI encoding overhead.
+However, when called from within the same contract, `public` is clearly cheaper — it performs a direct internal jump — while calling an `external` function internally (`this.functionName(...)`) adds extra ABI encoding overhead.
 
-👉 In short: external functions are only slightly more gas-efficient when they’re called from outside.
+👉 In short: `external` functions are only slightly more gas-efficient when they’re called from outside.
