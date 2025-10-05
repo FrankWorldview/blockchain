@@ -84,6 +84,10 @@
   ```
   npm install web3
   ```
++ Optional: Install Ethers.js.
+  ```
+  npm install ethers@6
+  ```
 + Edit "vieweth.js".
   (You can copy this file from `/smart_contracts/code/web/vieweth/vieweth.js`.)
 + View the result.
