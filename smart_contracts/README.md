@@ -81,7 +81,7 @@
   ```
   npm init
   ```
-+ Deprecated: Install Web3.js.
++ Deprecated: (Install Web3.js.)
   ```
   (npm install web3)
   ```
