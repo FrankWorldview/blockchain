@@ -5,11 +5,11 @@ const { ethers } = require("ethers");
 // RPC endpoint for your local Ethereum test node (e.g., Anvil, Ganache, Hardhat)
 const rpcURL = "http://127.0.0.1:8545";
 
-// The target Ethereum address for which we want to check the balance
-const targetAddress = "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266";
-
 // Create a new provider instance that connects to the RPC endpoint
 const provider = new ethers.JsonRpcProvider(rpcURL);
+
+// The target Ethereum address for which we want to check the balance
+const targetAddress = "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266";
 
 /**
  * Retrieve and display general blockchain information:
