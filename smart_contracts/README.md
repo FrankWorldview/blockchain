@@ -81,11 +81,11 @@
   ```
   npm init
   ```
-+ Install Web3.js.
++ Deprecated: Install Web3.js.
   ```
-  npm install web3
+  (npm install web3)
   ```
-+ Optional: Install Ethers.js.
++ Install Ethers.js.
   ```
   npm install ethers@6
   ```
