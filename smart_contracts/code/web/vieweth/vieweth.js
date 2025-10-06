@@ -33,6 +33,8 @@ async function getBlockchainInfo() {
         const feeData = await provider.getFeeData();
 
         // Pick gas price or max fee per gas, whichever exists
+        // The ?? operator (Nullish Coalescing)
+        // ?? means “use the next value if the left side is null or undefined.”
         const gasPriceLike = feeData.gasPrice ?? feeData.maxFeePerGas ?? 0n;
 
         // Display gas price in both wei and gwei units
