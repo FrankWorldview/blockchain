@@ -87,7 +87,7 @@
   ```
 + Install Ethers.js.
   ```
-  npm install ethers@6
+  npm install ethers
   ```
 + Edit "vieweth.js".
   (You can copy this file from `/smart_contracts/code/web/vieweth/vieweth.js`.)
