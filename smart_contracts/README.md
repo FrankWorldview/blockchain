@@ -1,5 +1,5 @@
 # Learning Resources
-+ [Learn Solidity](https://www.alchemy.com/university/courses/solidity) & [GitHub](https://github.com/alchemyplatform/learn-solidity-presentations)
++ [Learn Solidity](https://www.alchemy.com/university/courses/solidity) & [GitHub](https://github.com/alchemyplatform/learn-solidity-presentations) <== 本週自修作業
 + [Solidity (Official)](https://soliditylang.org/)
 + [Foundry](https://book.getfoundry.sh/)
 + [Foundry Full Course](https://github.com/Cyfrin/foundry-full-course-cu)
