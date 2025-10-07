@@ -17,8 +17,10 @@
 + [Console logging in Foundry](https://book.getfoundry.sh/reference/forge-std/console-log)
 + JavaScript: [async function & await](https://www.casper.tw/development/2020/10/16/async-await/) <== 本週自修作業
 + [React 是什麼？2025 完整新手學習指南](https://www.thisweb.dev/post/what-is-react) <== 本週自修作業
-+ React: [useState](https://react.dev/reference/react/useState) <== 本週自修作業
-+ React: [userEffect](https://react.dev/reference/react/useEffect) <== 本週自修作業
++ [useState 教學 - React 的狀態與更新](https://www.thisweb.dev/post/react-usestate) <== 本週自修作業
++ [useEffect 教學 - React 的副作用管理](https://www.thisweb.dev/post/react-useeffect) <== 本週自修作業
++ [React: useState](https://react.dev/reference/react/useState) <== 本週自修作業
++ [React: userEffect](https://react.dev/reference/react/useEffect) <== 本週自修作業
 
 # Software Used in This Class
 + Solidity: [Foundry](https://book.getfoundry.sh/)
