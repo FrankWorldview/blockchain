@@ -54,9 +54,9 @@
   ```
   npm init
   ```
-+ Install Web3.js.
++ Install Ethers.js.
   ```
-  npm install web3
+  npm install ethers
   ```
 + Edit `hello.js`.
   (You can copy this file from `/smart_contracts/code/web/hello/hello.js`.)
