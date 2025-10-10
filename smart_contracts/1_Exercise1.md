@@ -91,6 +91,7 @@
 + Create a React + Vite app.
   ```
   npm create vite@latest hello-app -- --template react
+  (Install with npm and start now? Choose "No".)
   ```
 + Enter the new folder and install Vite.
   ```
