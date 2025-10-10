@@ -69,12 +69,13 @@
   ```
 + Interact with the contract uisng the `cast` command.
   ```
-  cast call <CONTRACT_ADDR> "greet()(string)" --rpc-url http://127.0.0.1:8545
-  cast call <CONTRACT_ADDR> "getMaxUint256()(uint256)" --rpc-url http://127.0.0.1:8545
-  cast call <CONTRACT_ADDR> "sumUpTo(uint256)(uint256)" 100 --rpc-url http://127.0.0.1:8545
-  cast call <CONTRACT_ADDR> "sumUpTo(uint256)(uint256)" 100 --rpc-url http://127.0.0.1:8545
-  cast send <CONTRACT_ADDR> "setMyName(string)" "Frank" --rpc-url http://127.0.0.1:8545 --from 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266 --unlocked
-  cast send <CONTRACT_ADDR> "setMyName(string)" "Frank" --rpc-url http://127.0.0.1:8545 --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
+  CONTRACT_ADDR=0x1234567890abcdef1234567890abcdef12345678
+  cast call $CONTRACT_ADDR "greet()(string)" --rpc-url http://127.0.0.1:8545
+  cast call $CONTRACT_ADDR "getMaxUint256()(uint256)" --rpc-url http://127.0.0.1:8545
+  cast call $CONTRACT_ADDR "sumUpTo(uint256)(uint256)" 100 --rpc-url http://127.0.0.1:8545
+  cast call $CONTRACT_ADDR "getMyName(string)" --rpc-url http://127.0.0.1:8545
+  cast send $CONTRACT_ADDR "setMyName(string)" "Frank" --rpc-url http://127.0.0.1:8545 --from 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266 --unlocked
+  cast send $CONTRACT_ADDR "setMyName(string)" "Frank" --rpc-url http://127.0.0.1:8545 --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
   ```
 
 ![image](/smart_contracts/image/hello.png)
