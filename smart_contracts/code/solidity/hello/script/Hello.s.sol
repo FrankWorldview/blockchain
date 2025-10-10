@@ -2,7 +2,7 @@
 pragma solidity ^0.8.28;
 
 // Import Foundry's scripting utilities and console for logging
-import {Script, console} from "forge-std/Script.sol";
+import {Script} from "forge-std/Script.sol";
 
 // Import the Hello contract to be deployed
 import {Hello} from "../src/Hello.sol";

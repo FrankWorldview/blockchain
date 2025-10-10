@@ -2,7 +2,7 @@
 pragma solidity ^0.8.28;
 
 // Import Foundry's Test framework and console for debugging
-import {Test, console} from "forge-std/Test.sol";
+import {Test} from "forge-std/Test.sol";
 
 // Import the contract to be tested
 import {Hello} from "../src/Hello.sol";
