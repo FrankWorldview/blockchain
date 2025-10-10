@@ -69,7 +69,7 @@
   ```
 + Interact with the contract uisng the `cast` command.
   ```
-  CONTRACT_ADDR=<YOUR_CONTRACT_ADDRESS>
+  export CONTRACT_ADDR=<YOUR_CONTRACT_ADDRESS>
   cast call $CONTRACT_ADDR "greet()(string)" --rpc-url http://127.0.0.1:8545
   cast call $CONTRACT_ADDR "getMaxUint256()(uint256)" --rpc-url http://127.0.0.1:8545
   cast call $CONTRACT_ADDR "sumUpTo(uint256)(uint256)" 100 --rpc-url http://127.0.0.1:8545
