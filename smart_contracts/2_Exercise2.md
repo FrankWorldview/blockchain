@@ -17,9 +17,9 @@
   cd transfer-app
   npm install
   ```
-+ Install Web3.js.
++ Install Ethers.js.
   ```
-  npm install web3
+  npm install ethers
   ```
 + Backup "src/App.jsx" to "src/App.jsx.ORIG".
   ```
