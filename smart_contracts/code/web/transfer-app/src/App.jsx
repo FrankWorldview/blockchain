@@ -11,13 +11,20 @@ function App() {
     const [signer, setSigner] = useState(null);
     const [senderWallet, setSenderWallet] = useState('');
     const [senderBalance, setSenderBalance] = useState('0');
-    const [receiverWallet, setReceiverWallet] = useState(''); // use placeholder instead of a fake address
+    const [receiverWallet, setReceiverWallet] = useState('');
     const [receiverBalance, setReceiverBalance] = useState('0');
     const [transferAmount, setTransferAmount] = useState(1);
 
-    // Helper guards / formatters
-    const hasProvider = typeof window !== 'undefined' && !!window.ethereum;
+    // typeof window !== 'undefined':
+    // Ensure we're running in a browser.
+    // !!window.ethereum:
+    // Coerce the presence of an injected Ethereum provider into a boolean (true if available, false if not).
+    const hasProvider = (typeof window !== 'undefined') && (!!window.ethereum);
+
+    // Helper guards
     const isValidAddress = (addr) => ethers.isAddress(addr);
+
+    // Formatters
     const fmtEth = (weiStr) => {
         try { return parseFloat(ethers.formatEther(weiStr)).toFixed(4); }
         catch { return '0.0000'; }
@@ -38,12 +45,12 @@ function App() {
                 throw new Error('No accounts found. MetaMask might be locked.');
             }
 
-            const signerInstance = await ethProvider.getSigner();
+            const signer = await ethProvider.getSigner();
 
             setProvider(ethProvider);
-            setSigner(signerInstance);
+            setSigner(signer);
 
-            const addr = await signerInstance.getAddress();
+            const addr = await signer.getAddress();
             setSenderWallet(addr);
 
             // Auto-refresh sender balance immediately after connecting
@@ -59,6 +66,7 @@ function App() {
     async function refreshSenderBalance() {
         try {
             if (!provider || !isValidAddress(senderWallet)) return;
+
             const balance = await provider.getBalance(senderWallet);
             setSenderBalance(balance.toString());
         } catch (error) {
@@ -71,6 +79,7 @@ function App() {
     async function refreshReceiverBalance() {
         try {
             if (!provider || !isValidAddress(receiverWallet)) return;
+
             const balance = await provider.getBalance(receiverWallet);
             setReceiverBalance(balance.toString());
         } catch (error) {
@@ -124,67 +133,72 @@ function App() {
         }
     }
 
-    // Log sender balance when updated (dev visibility)
+    // Log sender balance when updated
     useEffect(() => {
         console.log('Sender balance:', senderBalance);
     }, [senderBalance]);
 
-    // ✅ Robust MetaMask account change handling (fixes "page not updating on account switch")
-    // - Register exactly once (empty deps)
-    // - Rebuild BrowserProvider and Signer on every account change to avoid stale closures
-    // - Always read the address from signer.getAddress() (source of truth)
-    // - Also self-sync on page reload if already authorized (eth_accounts)
+    // Listen for MetaMask account changes and sync app state accordingly
     useEffect(() => {
+        // If there is no injected provider (e.g., no MetaMask), do nothing
         if (!hasProvider) return;
 
+        // Handler runs whenever MetaMask emits "accountsChanged"
         const handleAccountsChanged = async (accounts) => {
-            console.log('Account changed:', accounts);
+            try {
+                console.log('Account changed:', accounts);
 
-            // No accounts: MetaMask locked or disconnected
-            if (!accounts || accounts.length === 0) {
-                setSenderWallet('');
-                setSigner(null);
-                setSenderBalance('0');
-                return;
+                // If no accounts are connected to this site (locked / disconnected),
+                // reset local app state back to "not connected"
+                if (!accounts || accounts.length === 0) {
+                    setSigner(null);
+                    setSenderWallet('');
+                    setSenderBalance('0');
+                    return;
+                }
+
+                // Recreate fresh provider/signer each time to avoid stale references
+                const nextProvider = new ethers.BrowserProvider(window.ethereum);
+                const nextSigner = await nextProvider.getSigner();
+
+                // Use signer as the single source of truth for the active address
+                const addr = await nextSigner.getAddress();
+
+                // Update app state with the new provider/signer/address
+                setProvider(nextProvider);
+                setSigner(nextSigner);
+                setSenderWallet(addr);
+
+                // Fetch and store the latest balance for the new address
+                const bal = await nextProvider.getBalance(addr);
+                setSenderBalance(bal.toString());
+            } catch (e) {
+                // Don’t crash the app if the RPC/provider hiccups; just log a warning
+                console.warn('accountsChanged handler error:', e);
             }
-
-            // Recreate provider and signer to ensure fresh instances
-            const nextProvider = new ethers.BrowserProvider(window.ethereum);
-            const nextSigner = await nextProvider.getSigner();
-            const addr = await nextSigner.getAddress();
-
-            setProvider(nextProvider);
-            setSigner(nextSigner);
-            setSenderWallet(addr);
-
-            // Auto-refresh sender balance after account change
-            const bal = await nextProvider.getBalance(addr);
-            setSenderBalance(bal.toString());
         };
 
-        // Listen for account changes
+        // Subscribe to MetaMask account change events
         window.ethereum.on('accountsChanged', handleAccountsChanged);
 
-        // Self-sync immediately on mount (covers page reload when already connected)
-        window.ethereum.request({ method: 'eth_accounts' })
-            .then((acc) => handleAccountsChanged(acc))
-            .catch(console.warn);
-
-        // Cleanup listener on unmount
+        // Unsubscribe on cleanup to avoid memory leaks / duplicate handlers
         return () => {
             window.ethereum.removeListener('accountsChanged', handleAccountsChanged);
         };
+
+        // Depend on hasProvider so we (re)register if the provider appears after mount
     }, [hasProvider]);
 
     // Auto-refresh receiver balance whenever a valid address is entered/changed
     useEffect(() => {
         if (!provider) return;
+
         if (!isValidAddress(receiverWallet)) {
             setReceiverBalance('0');
             return;
         }
+
         refreshReceiverBalance();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [receiverWallet, provider]);
 
     return (
