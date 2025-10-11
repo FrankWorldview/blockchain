@@ -17,19 +17,20 @@
   cd transfer-app
   npm install
   ```
-+ Install Web3.js.
++ Install Ethers.js.
   ```
-  npm install web3
+  npm install ethers
   ```
 + Backup "src/App.jsx" to "src/App.jsx.ORIG".
   ```
   mv src/App.jsx src/App.jsx.ORIG
   ```
 + Edit "src/App.jsx".
-  (You can copy this file from `/smart_contracts/code/web/transfer-app/App.jsx`.)
+  (You can copy this file from `/smart_contracts/code/web/transfer-app/src/App.jsx`.)
   ```
   code .
   ```
++ Copy images assets to "src". (You can copy the assets from `/smart_contracts/code/web/transfer-app/src/assets`.)
 + View the web page.
   ```
   npm run dev
