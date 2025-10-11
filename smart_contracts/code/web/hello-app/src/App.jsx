@@ -1,6 +1,3 @@
-// SPDX-License-Identifier: MIT
-// React + Ethers v6 version (read-only)
-
 import { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
 
