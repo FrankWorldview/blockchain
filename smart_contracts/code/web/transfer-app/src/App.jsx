@@ -11,13 +11,21 @@ function App() {
     const [signer, setSigner] = useState(null);
     const [senderWallet, setSenderWallet] = useState('');
     const [senderBalance, setSenderBalance] = useState('0');
-    const [receiverWallet, setReceiverWallet] = useState('Receiver Wallet Address');
-    const [transferAmount, setTransferAmount] = useState(1);
+    const [receiverWallet, setReceiverWallet] = useState(''); // use placeholder instead of a fake address
     const [receiverBalance, setReceiverBalance] = useState('0');
+    const [transferAmount, setTransferAmount] = useState(1);
+
+    // Helper guards / formatters
+    const hasProvider = typeof window !== 'undefined' && !!window.ethereum;
+    const isValidAddress = (addr) => ethers.isAddress(addr);
+    const fmtEth = (weiStr) => {
+        try { return parseFloat(ethers.formatEther(weiStr)).toFixed(4); }
+        catch { return '0.0000'; }
+    };
 
     // Connect to MetaMask wallet
     async function connectWallet() {
-        if (!window.ethereum) {
+        if (!hasProvider) {
             alert('MetaMask not installed');
             return;
         }
@@ -26,23 +34,31 @@ function App() {
             const ethProvider = new ethers.BrowserProvider(window.ethereum);
             const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
 
-            if (accounts.length === 0) {
+            if (!accounts || accounts.length === 0) {
                 throw new Error('No accounts found. MetaMask might be locked.');
             }
 
             const signerInstance = await ethProvider.getSigner();
+
             setProvider(ethProvider);
             setSigner(signerInstance);
-            setSenderWallet(await signerInstance.getAddress());
+
+            const addr = await signerInstance.getAddress();
+            setSenderWallet(addr);
+
+            // Auto-refresh sender balance immediately after connecting
+            const bal = await ethProvider.getBalance(addr);
+            setSenderBalance(bal.toString());
         } catch (error) {
             console.error('MetaMask not connected:', error);
             alert('Failed to connect MetaMask');
         }
     }
 
-    // Refresh balance of sender wallet
+    // Refresh balance of sender wallet (used by effects and after tx)
     async function refreshSenderBalance() {
         try {
+            if (!provider || !isValidAddress(senderWallet)) return;
             const balance = await provider.getBalance(senderWallet);
             setSenderBalance(balance.toString());
         } catch (error) {
@@ -51,9 +67,10 @@ function App() {
         }
     }
 
-    // Refresh balance of receiver wallet
+    // Refresh balance of receiver wallet (used by effects and after tx)
     async function refreshReceiverBalance() {
         try {
+            if (!provider || !isValidAddress(receiverWallet)) return;
             const balance = await provider.getBalance(receiverWallet);
             setReceiverBalance(balance.toString());
         } catch (error) {
@@ -64,72 +81,115 @@ function App() {
 
     // Send Ether
     async function transfer() {
-        if (!signer || !senderWallet || !receiverWallet) {
-            alert("Wallet not connected or addresses not ready");
+        if (!signer || !senderWallet) {
+            alert('Wallet not connected');
             return;
         }
-
-        if (isNaN(transferAmount) || transferAmount <= 0) {
-            alert("Please enter a valid transfer amount");
+        if (!isValidAddress(receiverWallet)) {
+            alert('Receiver address is invalid');
+            return;
+        }
+        if (typeof transferAmount !== 'number' || !isFinite(transferAmount) || transferAmount <= 0) {
+            alert('Please enter a valid transfer amount');
             return;
         }
 
         try {
             const tx = {
                 to: receiverWallet,
-                value: ethers.parseEther(transferAmount.toString())
+                value: ethers.parseEther(transferAmount.toString()),
             };
 
-            // Estimate gas
-            const gasEstimate = await provider.estimateGas({
+            // Estimate gas (simulation requires explicit `from`)
+            const gasEstimate = await (provider ?? new ethers.BrowserProvider(window.ethereum)).estimateGas({
                 ...tx,
-                from: senderWallet
+                from: senderWallet,
             });
-
             console.log('Estimated gas:', gasEstimate.toString());
 
-            // Send transaction
+            // Send transaction via signer
             const txResponse = await signer.sendTransaction({ ...tx, gasLimit: gasEstimate });
             console.log('Transaction sent:', txResponse.hash);
 
             const receipt = await txResponse.wait();
             console.log('Transaction confirmed:', receipt);
 
+            // Auto-refresh balances after transaction
             await refreshSenderBalance();
             await refreshReceiverBalance();
             alert('Transfer successful!');
         } catch (error) {
             console.error(error);
-            alert('Transfer failed: ' + error.message);
+            alert('Transfer failed: ' + (error?.shortMessage || error?.message || 'Unknown error'));
         }
     }
 
-    // Log sender balance when updated
+    // Log sender balance when updated (dev visibility)
     useEffect(() => {
         console.log('Sender balance:', senderBalance);
     }, [senderBalance]);
 
-    // Handle MetaMask account changes
+    // ✅ Robust MetaMask account change handling (fixes "page not updating on account switch")
+    // - Register exactly once (empty deps)
+    // - Rebuild BrowserProvider and Signer on every account change to avoid stale closures
+    // - Always read the address from signer.getAddress() (source of truth)
+    // - Also self-sync on page reload if already authorized (eth_accounts)
     useEffect(() => {
-        if (!window.ethereum) return;
+        if (!hasProvider) return;
 
-        const handleAccountsChanged = async (newAccounts) => {
-            console.log('Account changed:', newAccounts);
-            setSenderWallet(newAccounts[0]);
-            if (provider) {
-                const signerInstance = await provider.getSigner();
-                setSigner(signerInstance);
+        const handleAccountsChanged = async (accounts) => {
+            console.log('Account changed:', accounts);
+
+            // No accounts: MetaMask locked or disconnected
+            if (!accounts || accounts.length === 0) {
+                setSenderWallet('');
+                setSigner(null);
+                setSenderBalance('0');
+                return;
             }
+
+            // Recreate provider and signer to ensure fresh instances
+            const nextProvider = new ethers.BrowserProvider(window.ethereum);
+            const nextSigner = await nextProvider.getSigner();
+            const addr = await nextSigner.getAddress();
+
+            setProvider(nextProvider);
+            setSigner(nextSigner);
+            setSenderWallet(addr);
+
+            // Auto-refresh sender balance after account change
+            const bal = await nextProvider.getBalance(addr);
+            setSenderBalance(bal.toString());
         };
 
+        // Listen for account changes
         window.ethereum.on('accountsChanged', handleAccountsChanged);
+
+        // Self-sync immediately on mount (covers page reload when already connected)
+        window.ethereum.request({ method: 'eth_accounts' })
+            .then((acc) => handleAccountsChanged(acc))
+            .catch(console.warn);
+
+        // Cleanup listener on unmount
         return () => {
             window.ethereum.removeListener('accountsChanged', handleAccountsChanged);
         };
-    }, [provider]);
+    }, [hasProvider]);
+
+    // Auto-refresh receiver balance whenever a valid address is entered/changed
+    useEffect(() => {
+        if (!provider) return;
+        if (!isValidAddress(receiverWallet)) {
+            setReceiverBalance('0');
+            return;
+        }
+        refreshReceiverBalance();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [receiverWallet, provider]);
 
     return (
         <>
+            {/* Logo section */}
             <div>
                 <a>
                     <img src={LogoETH} className="logo" alt="Ethereum logo" />
@@ -141,20 +201,20 @@ function App() {
 
             <h1>Transfer Ether</h1>
 
+            {/* Main UI Card */}
             <div className="card">
                 <button onClick={connectWallet}>Connect MetaMask Wallet</button>
 
-                <p>My Wallet Address: {senderWallet}</p>
+                <p>My Wallet Address: {senderWallet || '(not connected)'}</p>
 
-                <button onClick={refreshSenderBalance} disabled={!senderWallet || !provider}>
-                    Refresh My Balance
-                </button>
                 <p>
-                    My Balance: {senderBalance} Wei ={' '}
-                    {provider == null ? 0 : parseFloat(ethers.formatEther(senderBalance)).toFixed(4)} ETH
+                    My Balance: {senderBalance} Wei = {fmtEth(senderBalance)} ETH
                 </p>
 
-                <button onClick={transfer} disabled={!signer}>
+                <button
+                    onClick={transfer}
+                    disabled={!signer || !isValidAddress(receiverWallet) || !(transferAmount > 0)}
+                >
                     Transfer
                 </button>
 
@@ -162,7 +222,8 @@ function App() {
                     Receiver Wallet Address:{' '}
                     <input
                         value={receiverWallet}
-                        onChange={(event) => setReceiverWallet(event.target.value)}
+                        onChange={(e) => setReceiverWallet(e.target.value.trim())}
+                        placeholder="0x… receiver address"
                     />
                 </p>
 
@@ -170,17 +231,15 @@ function App() {
                     Transfer Amount (Ether):{' '}
                     <input
                         value={transferAmount}
-                        onChange={(event) => setTransferAmount(Number(event.target.value))}
+                        onChange={(e) => setTransferAmount(Number(e.target.value))}
+                        type="number"
+                        min="0"
+                        step="0.0001"
                     />
                 </p>
 
-                <button onClick={refreshReceiverBalance} disabled={!receiverWallet || !provider}>
-                    Refresh Receiver Balance
-                </button>
-
                 <p>
-                    Receiver Balance: {receiverBalance} Wei ={' '}
-                    {provider == null ? 0 : parseFloat(ethers.formatEther(receiverBalance)).toFixed(4)} ETH
+                    Receiver Balance: {receiverBalance} Wei = {fmtEth(receiverBalance)} ETH
                 </p>
             </div>
         </>
