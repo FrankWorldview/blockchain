@@ -22,7 +22,7 @@
 + Copy all files from `/smart_contracts/code/solidity/fundraising` to your `fundraising` folder.
 + Install OpenZeppelin
   ```
-  forge install OpenZeppelin/openzeppelin-contracts --no-commit
+  forge install OpenZeppelin/openzeppelin-contracts
   ```
 + Build the contract.
   ```
@@ -51,7 +51,7 @@
   ```
 + Install reuqired libraries.
   ```
-  npm install react-router-dom @mui/material @emotion/react @emotion/styled web3 cryptocompare big-integer
+  npm install react-router-dom @mui/material @emotion/react @emotion/styled ethers cryptocompare
   ```
 + Open Visual Studio Code.
   ```
