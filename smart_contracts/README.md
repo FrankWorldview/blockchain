@@ -80,7 +80,7 @@
   mkdir vieweth
   cd vieweth
   ```
-+ Initialize an npm project.
++ Initialize a Node.js project.
   ```
   npm init
   ```
