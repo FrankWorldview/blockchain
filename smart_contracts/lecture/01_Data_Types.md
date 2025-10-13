@@ -26,8 +26,6 @@ Value types are stored directly in memory or on the stack. They are copied when 
 
 Reference types store references to the actual data in memory or storage.
 
-Reference types include:
-
 | Type         | Description                                 | Example                            |
 |--------------|---------------------------------------------|------------------------------------|
 | `string`     | Dynamic UTF-8 encoded text                  | `string name = "Alice";`          |
