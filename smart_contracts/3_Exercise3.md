@@ -19,11 +19,11 @@
 + Move src/Counter.sol elsewhere (e.g., the `orig` folder).
 + Move test/Counter.t.sol elsewhere (e.g., the `orig` folder).
 + Move test/Counter.s.sol elsewhere (e.g., the `orig` folder).
-+ Copy all files from `/smart_contracts/code/solidity/fundraising` to your `fundraising` folder.
 + Install OpenZeppelin
   ```
-  forge install OpenZeppelin/openzeppelin-contracts --no-commit
+  forge install OpenZeppelin/openzeppelin-contracts
   ```
++ Copy all files from `/smart_contracts/code/solidity/fundraising` to your `fundraising` folder.
 + Build the contract.
   ```
   forge build
@@ -51,7 +51,7 @@
   ```
 + Install reuqired libraries.
   ```
-  npm install react-router-dom @mui/material @emotion/react @emotion/styled web3 cryptocompare big-integer
+  npm install react-router-dom @mui/material @emotion/react @emotion/styled ethers cryptocompare
   ```
 + Open Visual Studio Code.
   ```
