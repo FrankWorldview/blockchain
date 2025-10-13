@@ -24,7 +24,15 @@ Value types are stored directly in memory or on the stack. They are copied when 
 
 ## 2. Reference Types
 
-Reference types store references to the actual data in memory or storage.
+Reference types store references to the actual data in memory or storage. Reference types do not store their data directly. Instead, they **store a reference (a pointer)** to where the data resides. However, **whether they are passed by reference or by value depends on their data location**:
+
+| Data Location | Behaviour | Description |
+|----------------|------------|--------------|
+| **storage** | 🔗 by reference | Points to the same persistent data stored on the blockchain. Modifying one reference changes the original data. |
+| **memory** | 📋 by value | Creates a temporary copy of the data when passed between functions. Modifications do not affect the original. |
+| **calldata** | 🔒 by reference (read-only) | References external input data directly without copying. Cannot be modified. |
+
+Reference types include:
 
 | Type         | Description                                 | Example                            |
 |--------------|---------------------------------------------|------------------------------------|
