@@ -20,13 +20,13 @@ console.log("Contract address:", address);
 // Write the ABI to a JSON file for frontend use (e.g., React, Web3.js, Ethers.js)
 // The ABI file allows your frontend app to understand how to interact with the deployed contract
 fs.writeFileSync(
-  path.join(__dirname, './src/abi/Hello-abi.json'), // Target path relative to current file
-  JSON.stringify(abi, null, 2)                      // Convert ABI object to pretty-printed JSON
+    path.join(__dirname, './src/abi/Hello-abi.json'), // Target path relative to current file
+    JSON.stringify(abi, null, 2)                      // Convert ABI object to pretty-printed JSON
 );
 
 // Write the contract address to a separate JSON file
 // This helps the frontend know which address to use when instantiating the contract
 fs.writeFileSync(
-  path.join(__dirname, './src/abi/Hello-addr.json'), // Target path for address file
-  JSON.stringify({ address }, null, 2)               // Save the address inside an object for clarity and extensibility
+    path.join(__dirname, './src/abi/Hello-addr.json'), // Target path for address file
+    JSON.stringify({ address }, null, 2)               // Save the address inside an object for clarity and extensibility
 );
