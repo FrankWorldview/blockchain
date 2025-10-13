@@ -50,7 +50,7 @@ this.doSomething(123);
 - **Access**: Only from within the same contract or derived contracts
 - **Encoding**: No ABI encoding
 - **Efficiency**: Most gas-efficient
-- **Can Use**: `memory` (pass by value), `storage` (pass by reference)
+- **Can Use**: `memory`: passed by value (copied when calling functions), `storage` (directly points to state variables)
 
 ```solidity
 function internalProcess(uint[] memory input) internal pure returns (uint) {
