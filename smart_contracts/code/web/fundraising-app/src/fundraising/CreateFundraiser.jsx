@@ -1,4 +1,3 @@
-// CreateFundraiser.jsx — ethers v6 rewrite
 import { useState } from 'react';
 import { ethers } from 'ethers';
 

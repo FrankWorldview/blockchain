@@ -1,4 +1,3 @@
-// Fundraising.jsx — ethers v6 version
 import { useState, useEffect, useMemo } from 'react';
 import { ethers } from 'ethers';
 
@@ -43,8 +42,8 @@ const Fundraising = () => {
       const list = await factory.fundraisers(10n, 0n);
       // list is address[]; store as-is
       setFunds(list);
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      console.error(error);
       alert('Failed to load contract or fundraisers (ethers).');
     }
   };
@@ -83,8 +82,8 @@ const Fundraising = () => {
           setSigner(s);
           setAccounts(existing);
         }
-      } catch (e) {
-        console.error('Silent wallet check failed:', e);
+      } catch (error) {
+        console.error('Silent wallet check failed:', error);
       }
     };
 

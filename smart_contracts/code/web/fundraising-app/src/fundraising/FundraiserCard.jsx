@@ -1,4 +1,3 @@
-// FundraiserCard.jsx — ethers v6 (fixed myDonations sender + imageURL compat)
 import { useState, useEffect, useMemo } from 'react';
 import { ethers } from 'ethers';
 import cc from 'cryptocompare';
@@ -30,8 +29,8 @@ const FundraiserCard = ({ fundraiser }) => {
   // contract data
   const [contractData, setContractData] = useState({
     fundName: '',
-    fundURL: '',
-    fundImageURL: '',
+    fundUrl: '',
+    fundImageUrl: '',
     fundDescription: '',
     fundBeneficiary: '',
     fundTotalDonationsWei: '0',
@@ -93,27 +92,17 @@ const FundraiserCard = ({ fundraiser }) => {
       // 有 signer 就用 signer 綁定合約（讀寫皆可），否則用只讀合約
       const c = s ? getWriteContract(s) : getReadContract(providerForReads);
 
-      // 讀取 metadata（先試 imageURL，大寫 L；失敗再退回 imageUrl）
-      let fundImageURL;
-      try {
-        fundImageURL = await c.imageURL();
-      } catch {
-        try {
-          fundImageURL = await c.imageUrl();
-        } catch {
-          fundImageURL = '';
-        }
-      }
-
       const [
         fundName,
-        fundURL,
+        fundUrl,
+        fundImageUrl,
         fundDescription,
         fundBeneficiary,
         fundTotalDonationsWei,
       ] = await Promise.all([
         c.name(),
         c.url(),
+        c.imageUrl(),
         c.description(),
         c.beneficiary(),
         c.totalDonations(),
@@ -121,8 +110,8 @@ const FundraiserCard = ({ fundraiser }) => {
 
       setContractData({
         fundName,
-        fundURL,
-        fundImageURL,
+        fundUrl,
+        fundImageUrl,
         fundDescription,
         fundBeneficiary,
         fundTotalDonationsWei: fundTotalDonationsWei.toString(),
@@ -162,13 +151,12 @@ const FundraiserCard = ({ fundraiser }) => {
       }
     } catch (error) {
       console.error(error);
-      alert('Failed to initialise ethers or contract');
+      alert('Failed to initialize ethers or contract');
     }
   };
 
   useEffect(() => {
     if (fundraiser) init();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fundraiser]);
 
   useEffect(() => {
@@ -182,7 +170,6 @@ const FundraiserCard = ({ fundraiser }) => {
     return () => {
       window.ethereum.removeListener('accountsChanged', handleAccountsChanged);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleOpen = () => setOpen(true);
@@ -313,9 +300,9 @@ const FundraiserCard = ({ fundraiser }) => {
         <DialogTitle>Donate to {contractData.fundName}</DialogTitle>
         <DialogContent>
           <Box display="flex" flexDirection="column" gap={2}>
-            {contractData.fundImageURL && (
+            {contractData.fundImageUrl && (
               <img
-                src={contractData.fundImageURL}
+                src={contractData.fundImageUrl}
                 width="200"
                 height="130"
                 alt={contractData.fundName}
@@ -364,11 +351,11 @@ const FundraiserCard = ({ fundraiser }) => {
 
       {/* Fundraiser summary card */}
       <Card sx={{ maxWidth: 400 }}>
-        {contractData.fundImageURL && (
+        {contractData.fundImageUrl && (
           <CardMedia
             component="img"
             height="250"
-            image={contractData.fundImageURL}
+            image={contractData.fundImageUrl}
             alt="Fundraiser Image"
             onClick={handleOpen}
           />
@@ -382,7 +369,7 @@ const FundraiserCard = ({ fundraiser }) => {
               Description: {contractData.fundDescription}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              URL: {contractData.fundURL}
+              URL: {contractData.fundUrl}
             </Typography>
             <Typography variant="body2" color="text.secondary">
               Total Donations: ${totalDonations}
