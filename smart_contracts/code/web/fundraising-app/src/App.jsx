@@ -12,8 +12,8 @@ import LogoPepe from './assets/logo-pepe.svg';
 import PageViewFundraiser from './fundraising';
 import PageReceipts from './fundraising/Receipts';
 import PageCreateFundraiser from './fundraising/CreateFundraiser';
-// import SustainableMemeLab1 from './assets/sustainable-meme-lab-1.png'
-// import SustainableMemeLab2 from './assets/sustainable-meme-lab-2.png'
+// import SustainableSystemsLab1 from './assets/sustainable-systems-lab-1.png'
+// import SustainableSystemsLab2 from './assets/sustainable-systems-lab-2.png'
 
 function App() {
   return (
@@ -48,8 +48,8 @@ function App() {
         </Routes>
 
         {/* <Stack direction="row" spacing={2} justifyContent="center" alignItems="center">
-          <img src={SustainableMemeLab1} className="logo" alt="Sustainable Meme Lab 1" style={{ height: '350px' }} />
-          <img src={SustainableMemeLab2} className="logo" alt="Sustainable Meme Lab 2" style={{ height: '350px' }} />
+          <img src={SustainableSystemsLab1} className="logo" alt="Sustainable Systems Lab 1" style={{ height: '350px' }} />
+          <img src={SustainableSystemsLab2} className="logo" alt="Sustainable Systems Lab 2" style={{ height: '350px' }} />
         </Stack> */}
       </div>
     </>
