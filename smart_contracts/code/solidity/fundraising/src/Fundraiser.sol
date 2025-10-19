@@ -5,7 +5,7 @@ import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 
 /**
  * @title Fundraiser
- * @dev A smart contract for managing decentralised fundraising campaigns.
+ * @dev A smart contract for managing decentralized fundraising campaigns.
  * Each fundraiser tracks donations per donor and allows withdrawal by the owner.
  */
 contract Fundraiser is Ownable {
