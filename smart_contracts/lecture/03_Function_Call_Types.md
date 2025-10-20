@@ -1,6 +1,6 @@
 # Function Call Types in Solidity
 
-In Solidity, the way a function is called — `external`, `public`, or `internal` — affects how data is passed, how gas is used, and how the function is accessed. This distinction is crucial for writing efficient and secure smart contracts.
+In Solidity, the way a function is called — `external`, `public`, or `internal` — affects **how data is passed, how gas is used, and how accessible** the function is. Understanding these distinctions is essential for writing efficient and secure smart contracts.
 
 ---
 
@@ -8,53 +8,97 @@ In Solidity, the way a function is called — `external`, `public`, or `internal
 
 - **Called by**: External contracts or externally owned accounts (EOAs)
 - **Encoding**: ABI-encoded
-- **Data Passed Via**: `calldata`
-- **Gas Cost**: High (due to encoding and memory copying)
+- **Data Passed Via**: `calldata` (read-only input area, no copying)
+- **Gas Cost**: Moderate to high (encoding overhead but no memory copy)
 - **Restrictions**:
   - ✅ Must use `calldata` for dynamic parameters (e.g., `uint[] calldata`)
   - ❌ Cannot use `memory` or `storage` as input parameter types
 
 ```solidity
-receive() external payable {
-    // Accepts plain ETH transfers
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.28;
+
+contract ExternalExample {
+    // External function — parameters are read directly from calldata
+    function sum(uint[] calldata values) external pure returns (uint total) {
+        for (uint i = 0; i < values.length; i++) {
+            total += values[i];
+        }
+    }
 }
+```
+
+### 🧠 Key Insight
+- `calldata` is **read-only** and more gas-efficient than `memory` for external calls.
+- Ideal for **large arrays** or **structs** that don't need to be modified.
+
+### ⚙️ Ethers.js Example
+```javascript
+import { ethers } from "ethers";
+
+const provider = new ethers.BrowserProvider(window.ethereum);
+const signer = await provider.getSigner();
+
+const contract = new ethers.Contract(contractAddress, abi, signer);
+const result = await contract.sum([1, 2, 3, 4, 5]);
+
+console.log("Sum:", result.toString());
 ```
 
 ---
 
 ## 🔹 `public` Function Calls
 
-- **Dual Access**: Can be called internally or externally
-- **Internal Call**:
-  - Direct jump in bytecode (cheap)
-- **External Call via `this.`**:
-  - ABI-encoded, higher gas cost
-- **Can Use**: `memory` (for both internal and external calls), `storage` (only in internal calls), `calldata` (only for external calls)
+- **Dual Access**: Can be called both **internally** (cheap) and **externally** (ABI-encoded)
+- **Internal Call**: Direct jump in bytecode → **no ABI encoding**
+- **External Call**: `this.functionName()` → **ABI-encoded**
+- **Can Use**:
+  - `memory` (for both internal and external calls)
+  - `storage` (for internal use only)
+  - `calldata` (if explicitly declared for external call optimization)
 
 ```solidity
-function doSomething(uint x) public {
-    // Logic
+contract PublicExample {
+    function double(uint x) public pure returns (uint) {
+        return x * 2;
+    }
+
+    function testCalls(uint y) public view returns (uint) {
+        uint internalResult = double(y);      // internal call (cheap)
+        uint externalResult = this.double(y); // external call (ABI-encoded)
+        return internalResult + externalResult;
+    }
 }
-
-// Internal call: efficient
-doSomething(123);
-
-// External call: ABI-encoded
-this.doSomething(123);
 ```
+
+### 🧩 Notes
+- When called externally, `public` behaves like `external` — ABI-encoded.
+- When called internally, it’s a direct call — no gas wasted on encoding.
 
 ---
 
 ## 🔹 `internal` Function Calls
 
 - **Access**: Only from within the same contract or derived contracts
-- **Encoding**: No ABI encoding
+- **Encoding**: No ABI encoding (direct jump)
 - **Efficiency**: Most gas-efficient
-- **Can Use**: `memory`: passed by value (copied when calling functions), `storage` (directly points to state variables)
+- **Data Passing**:
+  - `memory`: passed by value (copied when calling)
+  - `storage`: passed by reference (directly points to state variable)
 
 ```solidity
-function internalProcess(uint[] memory input) internal pure returns (uint) {
-    return input[0];
+contract InternalExample {
+    uint[] internal data = [10, 20, 30];
+
+    function _sum(uint[] storage arr) internal view returns (uint total) {
+        for (uint i = 0; i < arr.length; i++) {
+            total += arr[i]; // Accesses storage directly
+        }
+    }
+
+    function getTotal() public view returns (uint) {
+        return _sum(data); // Internal call — efficient
+    }
 }
 ```
 
@@ -62,33 +106,33 @@ function internalProcess(uint[] memory input) internal pure returns (uint) {
 
 ## 🧠 Summary Table
 
-| Call Type   | ABI Encoded? | Can use `memory`/`storage`? | Callable by Other Contracts? | Gas Cost |
-|-------------|--------------|------------------------------|-------------------------------|----------|
-| `external`  | ✅ Yes        | ❌ No (must use `calldata`)  | ✅ Yes                        | High     |
-| `public`    | ✅ / ❌ Mixed | ✅ Yes (if internal)         | ✅ Yes                        | Medium   |
-| `internal`  | ❌ No         | ✅ Yes                       | ❌ No                         | Low      |
+| Call Type   | ABI Encoded? | Parameter Location | Callable by Other Contracts? | Mutability | Gas Cost |
+|--------------|--------------|--------------------|------------------------------|-------------|----------|
+| `external`  | ✅ Yes        | `calldata` (read-only) | ✅ Yes | ❌ Cannot modify inputs | Moderate–High |
+| `public`    | ✅ / ❌ Mixed | `memory` / `calldata` / `storage` | ✅ Yes | ✅ Yes (if memory or storage) | Medium |
+| `internal`  | ❌ No         | `memory` / `storage` | ❌ No | ✅ Yes | Low |
 
 ---
 
 ## ✅ Use Cases
 
-- **Use `external`** for public-facing APIs, especially if called by dApps or other contracts.
-- **Use `public`** if the function needs to be available both internally and externally.
-- **Use `internal`** for library-style logic or internal business rules that should not be exposed.
+- **Use `external`** when exposing functions to dApps, other contracts, or EOAs — especially if passing large arrays or structs (saves gas with `calldata`).
+- **Use `public`** when the function must be usable both internally and externally.
+- **Use `internal`** for logic encapsulation or reusable internal computations.
 
 ---
 
 ## ⚠️ Gotcha: ABI Encoding in `this.functionName()`
 
-Using `this.functionName()` triggers an **external-style ABI-encoded call**:
+Using `this.functionName()` always triggers an **external-style ABI-encoded call** — even inside the same contract.
 
 ```solidity
 doSomething(x);        // internal call — fast
-this.doSomething(x);   // external call — ABI-encoded, more gas
+this.doSomething(x);   // external call — ABI-encoded, slower
 ```
 
-For functions invoked from outside the contract, `external` visibility can yield slightly lower gas cost than `public`, because it can skip an internal data copy in some cases.
+💡 So:
+- For **internal logic**, prefer `public` or `internal` direct calls.
+- For **external APIs**, use `external` with `calldata` to avoid unnecessary copying.
 
-However, when called from within the same contract, `public` is clearly cheaper — it performs a direct internal jump — while calling an `external` function internally (`this.functionName(...)`) adds extra ABI encoding overhead.
-
-👉 In short: `external` functions are only slightly more gas-efficient when they’re called from outside.
+---
