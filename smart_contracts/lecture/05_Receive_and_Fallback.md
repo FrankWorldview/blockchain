@@ -1,4 +1,4 @@
-# `receive()` and `fallback()` in Solidity
+# `receive()` and `fallback()` in Solidity (Ethers.js Edition)
 
 Smart contracts in Solidity can accept Ether (ETH) through two special functions: `receive()` and `fallback()`. These functions define how a contract responds when it receives a transaction that does not explicitly call a known function.
 
@@ -16,15 +16,22 @@ receive() external payable {
 }
 ```
 
-### ✅ Web3.js Example: Trigger `receive()`
+### ✅ Ethers.js Example: Trigger `receive()`
 
 ```javascript
-await web3.eth.sendTransaction({
-  from: senderWallet,
+import { ethers } from "ethers";
+
+// Connect to MetaMask or local RPC
+const provider = new ethers.BrowserProvider(window.ethereum);
+const signer = await provider.getSigner();
+
+const tx = await signer.sendTransaction({
   to: contractAddress,
-  value: web3.utils.toWei("1", "ether")
+  value: ethers.parseEther("1.0") // 1 ETH
   // ❌ No data field
 });
+
+console.log("Transaction hash:", tx.hash);
 ```
 
 ---
@@ -44,25 +51,37 @@ fallback() external payable {
 }
 ```
 
-### ✅ Web3.js Example: Trigger `fallback()` with ETH + data
+### ✅ Ethers.js Example: Trigger `fallback()` with ETH + data
 
 ```javascript
-await web3.eth.sendTransaction({
-  from: senderWallet,
+import { ethers } from "ethers";
+
+const provider = new ethers.BrowserProvider(window.ethereum);
+const signer = await provider.getSigner();
+
+const tx = await signer.sendTransaction({
   to: contractAddress,
-  value: web3.utils.toWei("0.5", "ether"),
+  value: ethers.parseEther("0.5"),
   data: "0x12345678" // Invalid or unrecognized selector
 });
+
+console.log("Fallback with ETH + data:", tx.hash);
 ```
 
-### ✅ Web3.js Example: Trigger `fallback()` with data only
+### ✅ Ethers.js Example: Trigger `fallback()` with data only
 
 ```javascript
-await web3.eth.sendTransaction({
-  from: senderWallet,
+import { ethers } from "ethers";
+
+const provider = new ethers.BrowserProvider(window.ethereum);
+const signer = await provider.getSigner();
+
+const tx = await signer.sendTransaction({
   to: contractAddress,
-  data: "0xdeadbeef" // Garbage data, no value
+  data: "0xdeadbeef" // Garbage data, no ETH value
 });
+
+console.log("Fallback with data only:", tx.hash);
 ```
 
 ---
@@ -95,4 +114,28 @@ await web3.eth.sendTransaction({
 
 ## 🔐 Security Tip
 
-Avoid letting `fallback()` silently accept ETH unless you log the transaction or verify the sender. This can prevent hidden or malicious ETH transfers into your contract.
+Avoid letting `fallback()` silently accept ETH unless you log the transaction or verify the sender.  
+This can prevent hidden or malicious ETH transfers into your contract.
+
+---
+
+## ⚙️ Quick Test Tips (Hardhat or Anvil)
+
+If you’re testing locally with **Anvil**, you can simulate calls like:
+
+```bash
+cast send <CONTRACT_ADDR> --value 1ether
+# Triggers receive()
+
+cast send <CONTRACT_ADDR> --value 0.5ether --data 0x12345678
+# Triggers fallback()
+```
+
+Or from your JS test:
+
+```javascript
+await signer.sendTransaction({ to: contractAddress, value: ethers.parseEther("1") }); // receive()
+await signer.sendTransaction({ to: contractAddress, data: "0x12345678" }); // fallback()
+```
+
+---
