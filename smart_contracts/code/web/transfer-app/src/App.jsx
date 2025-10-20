@@ -117,10 +117,10 @@ function App() {
             console.log('Estimated gas:', gasEstimate.toString());
 
             // Send transaction via signer
-            const txResponse = await signer.sendTransaction({ ...tx, gasLimit: gasEstimate });
+            const txResponse = await signer.sendTransaction({ ...tx, gasLimit: gasEstimate }); // 交易已送出，但未確認
             console.log('Transaction sent:', txResponse.hash);
 
-            const receipt = await txResponse.wait();
+            const receipt = await txResponse.wait(); // 交易已確認上鏈
             console.log('Transaction confirmed:', receipt);
 
             // Auto-refresh balances after transaction
@@ -158,19 +158,19 @@ function App() {
                 }
 
                 // Recreate fresh provider/signer each time to avoid stale references
-                const nextProvider = new ethers.BrowserProvider(window.ethereum);
-                const nextSigner = await nextProvider.getSigner();
+                const newProvider = new ethers.BrowserProvider(window.ethereum);
+                const newSigner = await newProvider.getSigner();
 
                 // Use signer as the single source of truth for the active address
-                const addr = await nextSigner.getAddress();
+                const addr = await newSigner.getAddress();
 
                 // Update app state with the new provider/signer/address
-                setProvider(nextProvider);
-                setSigner(nextSigner);
+                setProvider(newProvider);
+                setSigner(newSigner);
                 setSenderWallet(addr);
 
                 // Fetch and store the latest balance for the new address
-                const bal = await nextProvider.getBalance(addr);
+                const bal = await newProvider.getBalance(addr);
                 setSenderBalance(bal.toString());
             } catch (e) {
                 // Don’t crash the app if the RPC/provider hiccups; just log a warning
