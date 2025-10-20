@@ -1,4 +1,4 @@
-# `receive()` and `fallback()` in Solidity (Ethers.js Edition)
+# `receive()` and `fallback()` in Solidity
 
 Smart contracts in Solidity can accept Ether (ETH) through two special functions: `receive()` and `fallback()`. These functions define how a contract responds when it receives a transaction that does not explicitly call a known function.
 
