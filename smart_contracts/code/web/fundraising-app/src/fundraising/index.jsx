@@ -42,8 +42,8 @@ const Fundraising = () => {
       const list = await factory.fundraisers(10n, 0n);
       // list is address[]; store as-is
       setFunds(list);
-    } catch (error) {
-      console.error(error);
+    } catch (err) {
+      console.error(err);
       alert('Failed to load contract or fundraisers (ethers).');
     }
   };
@@ -62,8 +62,8 @@ const Fundraising = () => {
       const addr = await s.getAddress();
       setAccounts([addr]);
       setSigner(s);
-    } catch (error) {
-      console.error('User denied account access:', error);
+    } catch (err) {
+      console.error('User denied account access:', err);
     }
   };
 
@@ -82,8 +82,8 @@ const Fundraising = () => {
           setSigner(s);
           setAccounts(existing);
         }
-      } catch (error) {
-        console.error('Silent wallet check failed:', error);
+      } catch (err) {
+        console.error('Silent wallet check failed:', err);
       }
     };
 

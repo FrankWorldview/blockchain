@@ -56,8 +56,8 @@ function App() {
             // Auto-refresh sender balance immediately after connecting
             const bal = await ethProvider.getBalance(addr);
             setSenderBalance(bal.toString());
-        } catch (error) {
-            console.error('MetaMask not connected:', error);
+        } catch (err) {
+            console.error('MetaMask not connected:', err);
             alert('Failed to connect MetaMask');
         }
     }
@@ -69,8 +69,8 @@ function App() {
 
             const balance = await provider.getBalance(senderWallet);
             setSenderBalance(balance.toString());
-        } catch (error) {
-            console.error(error);
+        } catch (err) {
+            console.error(err);
             alert('Error occurred when getting sender balance');
         }
     }
@@ -82,8 +82,8 @@ function App() {
 
             const balance = await provider.getBalance(receiverWallet);
             setReceiverBalance(balance.toString());
-        } catch (error) {
-            console.error(error);
+        } catch (err) {
+            console.error(err);
             alert('Error occurred when getting receiver balance');
         }
     }
@@ -127,9 +127,9 @@ function App() {
             await refreshSenderBalance();
             await refreshReceiverBalance();
             alert('Transfer successful!');
-        } catch (error) {
-            console.error(error);
-            alert('Transfer failed: ' + (error?.shortMessage || error?.message || 'Unknown error'));
+        } catch (err) {
+            console.error(err);
+            alert('Transfer failed: ' + (err?.shortMessage || err?.message || 'Unknown error'));
         }
     }
 
@@ -172,9 +172,9 @@ function App() {
                 // Fetch and store the latest balance for the new address
                 const bal = await newProvider.getBalance(addr);
                 setSenderBalance(bal.toString());
-            } catch (e) {
+            } catch (err) {
                 // Don’t crash the app if the RPC/provider hiccups; just log a warning
-                console.warn('accountsChanged handler error:', e);
+                console.warn('accountsChanged handler error:', err);
             }
         };
 

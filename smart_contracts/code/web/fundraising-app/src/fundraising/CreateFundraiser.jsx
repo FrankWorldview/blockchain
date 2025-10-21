@@ -66,13 +66,13 @@ const CreateFundraiser = () => {
       setFundImageURL('');
       setFundDescription('');
       setFundBeneficiary('');
-    } catch (error) {
-      console.error('Fundraiser creation error:', error);
+    } catch (err) {
+      console.error('Fundraiser creation error:', err);
       // ethers v6 常見錯誤訊息欄位：shortMessage / info.error / message
       const msg =
-        error?.shortMessage ||
-        error?.info?.error?.message ||
-        error?.message ||
+        err?.shortMessage ||
+        err?.info?.error?.message ||
+        err?.message ||
         'Failed to create fundraiser';
       alert(msg);
     } finally {
