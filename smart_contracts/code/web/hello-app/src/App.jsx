@@ -42,11 +42,11 @@ function App() {
                 const nameResult = await hello.getMyName();
                 setName(nameResult);
 
-                const numberBN = await hello.getMaxUint256();
-                setNumber(numberBN.toString());
+                const numberResult = await hello.getMaxUint256();
+                setNumber(numberResult.toString());
 
-                const sumBN = await hello.sumUpTo(100n);
-                setSum(sumBN.toString());
+                const sumResult = await hello.sumUpTo(100n);
+                setSum(sumResult.toString());
 
                 // Alternative approach
                 // 3) Parallel read calls (ethers v6 returns BigInt for uint256)
