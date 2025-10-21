@@ -26,48 +26,48 @@ function App() {
         sum: '0',   // sumUpTo() as string
     }); */
 
+    const fetchContractData = async () => {
+        try {
+            // 1) Provider
+            const provider = new ethers.JsonRpcProvider(rpcURL);
+
+            // 2) Contract (read-only -> provider is enough)
+            const hello = new ethers.Contract(helloAddr.address, helloABI, provider);
+
+            // 3) Sequential read calls
+            const textResult = await hello.greet();
+            setText(textResult);
+
+            const nameResult = await hello.getMyName();
+            setName(nameResult);
+
+            const numberResult = await hello.getMaxUint256();
+            setNumber(numberResult.toString());
+
+            const sumResult = await hello.sumUpTo(100n);
+            setSum(sumResult.toString());
+
+            // Alternative approach
+            // 3) Parallel read calls (ethers v6 returns BigInt for uint256)
+            /* const [text, name, numberBN, sumBN] = await Promise.all([
+                hello.greet(),
+                hello.getMyName(),
+                hello.getMaxUint256(),
+                hello.sumUpTo(100n),
+            ]);
+
+            setContractData({
+                text,
+                name,
+                number: numberBN.toString(),
+                sum: sumBN.toString(),
+            }); */
+        } catch (err) {
+            console.error('Error fetching contract data (ethers v6):', err);
+        }
+    };
+
     useEffect(() => {
-        const fetchContractData = async () => {
-            try {
-                // 1) Provider
-                const provider = new ethers.JsonRpcProvider(rpcURL);
-
-                // 2) Contract (read-only -> provider is enough)
-                const hello = new ethers.Contract(helloAddr.address, helloABI, provider);
-
-                // 3) Sequential read calls
-                const textResult = await hello.greet();
-                setText(textResult);
-
-                const nameResult = await hello.getMyName();
-                setName(nameResult);
-
-                const numberResult = await hello.getMaxUint256();
-                setNumber(numberResult.toString());
-
-                const sumResult = await hello.sumUpTo(100n);
-                setSum(sumResult.toString());
-
-                // Alternative approach
-                // 3) Parallel read calls (ethers v6 returns BigInt for uint256)
-                /* const [text, name, numberBN, sumBN] = await Promise.all([
-                    hello.greet(),
-                    hello.getMyName(),
-                    hello.getMaxUint256(),
-                    hello.sumUpTo(100n),
-                ]);
-
-                setContractData({
-                    text,
-                    name,
-                    number: numberBN.toString(),
-                    sum: sumBN.toString(),
-                }); */
-            } catch (err) {
-                console.error('Error fetching contract data (ethers v6):', err);
-            }
-        };
-
         fetchContractData();
     }, []);
 
