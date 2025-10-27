@@ -212,4 +212,4 @@ Fully decentralized NFTs maintain their integrity over time, ensuring collectors
 
 ## References
 
-- [ERC-721 Standard – EIP-721](https://eips.ethereum.org/EIPS/eip-721)
+- [ERC-721: Non-Fungible Token Standard](https://eips.ethereum.org/EIPS/eip-721)
