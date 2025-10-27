@@ -97,6 +97,5 @@ console.log(ethers.formatUnits(balance, 6)); // "2.5"
 ---
 
 **References**
-- [Ethereum Units and Wei](https://ethereum.org/en/developers/docs/units/)
 - [OpenZeppelin ERC20 Implementation](https://docs.openzeppelin.com/contracts/5.x/api/token/erc20)
-- [Ethers.js Docs: parseUnits / formatUnits](https://docs.ethers.org/v6/api/utils/function/parseUnits/)
+- [Ethers.js Docs: formatUnits / parseUnits](https://docs.ethers.org/v6/api/utils/#about-units)
