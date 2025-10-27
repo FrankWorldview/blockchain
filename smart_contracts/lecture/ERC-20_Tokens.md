@@ -96,4 +96,4 @@ You can deploy this contract and use it as your own custom cryptocurrency.
 ## References
 
 - [ERC-20: Non-Fungible Token Standard](https://eips.ethereum.org/EIPS/eip-20)
-- [OpenZeppelin ERC20 Implementation](https://docs.openzeppelin.com/contracts/5.x/api/token/erc20)
+- [OpenZeppelin ERC-20 Implementation](https://docs.openzeppelin.com/contracts/5.x/api/token/erc20)
