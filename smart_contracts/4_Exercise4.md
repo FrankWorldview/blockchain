@@ -8,7 +8,7 @@
    ```
 + Install OpenZeppelin
   ```
-  forge install OpenZeppelin/openzeppelin-contracts --no-commit
+  forge install OpenZeppelin/openzeppelin-contracts
   ```
 + Move src/Counter.sol elsewhere (e.g., the `orig` folder).
 + Move test/Counter.t.sol elsewhere (e.g., the `orig` folder).
