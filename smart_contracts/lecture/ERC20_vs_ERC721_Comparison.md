@@ -45,5 +45,5 @@ Ethereum supports several token standards to represent assets digitally. Among t
 
 ## References
 
-- [ERC-20 Specification](https://eips.ethereum.org/EIPS/eip-20)
-- [ERC-721 Specification](https://eips.ethereum.org/EIPS/eip-721)
+- [ERC-20: Fungible Token Standard](https://eips.ethereum.org/EIPS/eip-20)
+- [ERC-721: Non-Fungible Token Standard](https://eips.ethereum.org/EIPS/eip-721)
