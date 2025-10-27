@@ -6,7 +6,7 @@ In Solidity, the way a function is called — `external`, `public`, or `internal
 
 ## 🔹 `external` Function Calls
 
-- **Called by**: External contracts or externally owned accounts (EOAs)
+- **Called by**: External contracts or externally owned accounts (EOAs)（當你用 cast call、前端 dApp、或其他合約呼叫此函示。）
 - **Encoding**: ABI-encoded
 - **Data Passed Via**: `calldata` (read-only input area, no copying)
 - **Gas Cost**: Moderate to high (encoding overhead but no memory copy)
