@@ -213,3 +213,4 @@ Fully decentralized NFTs maintain their integrity over time, ensuring collectors
 ## References
 
 - [ERC-721: Non-Fungible Token Standard](https://eips.ethereum.org/EIPS/eip-721)
+- [OpenZeppelin ERC721 Implementation](https://docs.openzeppelin.com/contracts/5.x/api/token/erc721)
