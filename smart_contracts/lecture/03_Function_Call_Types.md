@@ -13,8 +13,8 @@ In Solidity, the way a function is called — `external`, `public`, or `internal
 
 ## Internal 呼叫
 
-指「由本合約自身或繼承的合約」在程式內部直接呼叫函式。Internal 呼叫**只能在合約內部或繼承的合約之間發生，外部帳戶（EOA）無法直接進行 internal call**。
-這種呼叫不經過 **ABI** 處理，而是以 **EVM 的跳轉指令（JUMP）** 在同一個執行上下文中執行，速度較快，也不會改變 `msg.sender`。
+指「由本合約自身或繼承的合約」在程式內部直接呼叫函式。
+這種呼叫不經過 **ABI** 處理，而是以 **EVM 的跳轉指令（JUMP）** 在同一個執行上下文中執行，速度較快，也不會改變 `msg.sender`。Internal 呼叫**只能在合約內部或繼承的合約之間發生，外部帳戶（EOA）無法直接進行 internal call**。
 
 ---
 
