@@ -5,8 +5,8 @@ In Solidity, the way a function is called — `external`, `public`, or `internal
 ---
 ## External 呼叫
 
-指透過「`cast call`、前端 dApp、或其他合約」等外部介面呼叫函式。  
-這類呼叫必須經過 **ABI 編碼與解碼**，因為它是透過以太坊的 **RPC 介面** 或 **跨合約訊息傳遞** 進行的。  
+指透過「`cast call`、前端 dApp、或其他合約」等外部介面呼叫函式。
+這類呼叫必須經過 **ABI 編碼與解碼**，因為它是透過以太坊的 **RPC 介面** 或 **跨合約訊息傳遞** 進行的。
 **External call** 會建立新的呼叫上下文（context），因此 `msg.sender` 會變成這次呼叫的發出者（例如外部帳戶 EOA 或另一個合約）。
 
 ---
