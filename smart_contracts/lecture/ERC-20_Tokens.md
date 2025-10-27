@@ -43,13 +43,13 @@ function allowance(address owner, address spender) external view returns (uint25
 
 // Sets an allowance so that the spender can transfer tokens on the owner’s behalf
 // 授權 spender 可以代替你（msg.sender）花費最多 amount 的 token。成功後會觸發 Approval 事件，供前端追蹤。
-function approve(address spender, uint256 amount) external returns (bool);
 // 💡 你告訴銀行：「我允許 spender 代我支付最高 X 元。」
+function approve(address spender, uint256 amount) external returns (bool);
 
 // Transfers tokens from one address to another using the allowance mechanism
 // 讓 spender（呼叫這個函式的人）代表 sender，把 amount token 從 sender 帳戶轉給 recipient。這必須在 sender 先用 approve() 授權後才能進行。
-function transferFrom(address sender, address recipient, uint256 amount) external returns (bool);
 // 💡 Spender 代花別人的錢，但前提是已得到對方授權。
+function transferFrom(address sender, address recipient, uint256 amount) external returns (bool);
 ```
 
 These functions provide a standardized way of transferring tokens, checking balances, and managing allowances.
