@@ -3,10 +3,30 @@
 In Solidity, the way a function is called — `external`, `public`, or `internal` — affects **how data is passed, how gas is used, and how accessible** the function is. Understanding these distinctions is essential for writing efficient and secure smart contracts.
 
 ---
+## External 呼叫
+
+指透過「`cast call`、前端 dApp、或其他合約」等外部介面呼叫函式。  
+這類呼叫必須經過 **ABI 編碼與解碼**，因為它是透過以太坊的 **RPC 介面** 或 **跨合約訊息傳遞** 進行的。  
+**External call** 會建立新的呼叫上下文（context），因此 `msg.sender` 會變成這次呼叫的發出者（例如外部帳戶 EOA 或另一個合約）。
+
+---
+
+## Internal 呼叫
+
+指「由本合約自身或繼承的合約」在程式內部直接呼叫函式。  
+這種呼叫不經過 **ABI** 處理，而是以 **EVM 的跳轉指令（JUMP）** 在同一個執行上下文中執行，速度較快，也不會改變 `msg.sender`。
+
+---
+
+✅ **總結**
+> **External call**：建立新上下文，`msg.sender` 變成呼叫者。  
+> **Internal call**：同上下文執行，`msg.sender` 保持不變。
+
+---
 
 ## 🔹 `external` Function Calls
 
-- **Called by**: External contracts or externally owned accounts (EOAs)（「External」意指當你用「cast call、前端 dApp、或其他合約呼叫此函示。」）
+- **Called by**: External contracts or externally owned accounts (EOAs)
 - **Encoding**: ABI-encoded
 - **Data Passed Via**: `calldata` (read-only input area, no copying)
 - **Gas Cost**: Moderate to high (encoding overhead but no memory copy)
