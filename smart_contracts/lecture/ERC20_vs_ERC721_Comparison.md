@@ -47,4 +47,3 @@ Ethereum supports several token standards to represent assets digitally. Among t
 
 - [ERC-20 Specification](https://eips.ethereum.org/EIPS/eip-20)
 - [ERC-721 Specification](https://eips.ethereum.org/EIPS/eip-721)
-- [OpenZeppelin Documentation](https://docs.openzeppelin.com/contracts/)
