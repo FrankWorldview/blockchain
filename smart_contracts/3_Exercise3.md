@@ -18,7 +18,7 @@
   ```
 + Move src/Counter.sol elsewhere (e.g., the `orig` folder).
 + Move test/Counter.t.sol elsewhere (e.g., the `orig` folder).
-+ Move test/Counter.s.sol elsewhere (e.g., the `orig` folder).
++ Move script/Counter.s.sol elsewhere (e.g., the `orig` folder).
 + Install OpenZeppelin
   ```
   forge install OpenZeppelin/openzeppelin-contracts
