@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
-import {Test, console} from "forge-std/Test.sol";
+import {Test} from "forge-std/Test.sol";
 import {MyToken} from "../src/MyToken.sol";
 
 contract MyTokenTest is Test {
@@ -28,7 +28,10 @@ contract MyTokenTest is Test {
 
     function testTransfer() public {
         uint256 transferAmount = 100 * 10 ** token.decimals();
-        token.transfer(user, transferAmount);
+
+        bool ok = token.transfer(user, transferAmount);
+        assertTrue(ok, "Transfer should return true");
+
         assertEq(token.balanceOf(user), transferAmount);
         assertEq(token.balanceOf(owner), 900 * 10 ** token.decimals());
     }
