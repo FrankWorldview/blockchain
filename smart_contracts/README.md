@@ -53,11 +53,14 @@
   - Note: If you use Mac (especially Intel CPU models), you may encounter the error message when installing Foundry: `Library not loaded: /usr/local/opt/libusb/lib/libusb-1.0.0.dylib`. You can type `brew install libusb` to solve this issue.
 + JavaScript
   - Install [Node.js](https://nodejs.org/en/download/prebuilt-installer). (Or use [nvm](https://github.com/nvm-sh/nvm) or [nvm-windows](https://github.com/coreybutler/nvm-windows).)
+  - If you use nvm:
+    ```
+    nvm install lts
+    nvm list
+    nvm use <version>
+    ```
   - Check the installed version.
     ```
-    nvm install lts # If you use nvm
-    nvm list # If you use nvm
-    nvm use lts # If you use nvm
     node -v
     npm -v
     ```
