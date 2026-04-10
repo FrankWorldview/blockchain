@@ -14,6 +14,7 @@
 + [How do smart contracts communicate?](https://docs.alchemy.com/docs/smart-contract-communication)
 + [What are multi-signature contracts?](https://docs.alchemy.com/docs/multi-sig-contracts)
 + [What is an ERC-20 token?](https://docs.alchemy.com/docs/what-is-erc-20)
++ [Application Binary Interfaces](https://docs.ethers.org/v6/basics/abi/)
 + [Console logging in Foundry](https://book.getfoundry.sh/reference/forge-std/console-log)
 + JavaScript: [async function & await](https://www.casper.tw/development/2020/10/16/async-await/)
 + [React 是什麼？2025 完整新手學習指南](https://www.thisweb.dev/post/what-is-react)
