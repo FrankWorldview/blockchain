@@ -99,10 +99,10 @@ async function getAllAccountBalances() {
  * - Then prints all local accounts and balances
  */
 async function main() {
-    console.log("=== Blockchain Info ===");
+    console.log("==== Blockchain Info ====");
     await getBlockchainInfo();
 
-    console.log("\n=== Account Info ===");
+    console.log("\n==== Account Info ====");
     await getAllAccountBalances();
 }
 
