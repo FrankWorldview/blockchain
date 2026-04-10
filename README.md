@@ -5,9 +5,7 @@
 + [Foundry Full Course](https://github.com/Cyfrin/foundry-full-course-cu)
 + [WTF Solidity](https://github.com/AmazingAng/WTF-Solidity)
 + [Solidity cheetsheet](https://docs.soliditylang.org/en/v0.8.28/cheatsheet.html)
-+ [Web3.js documents](https://docs.web3js.org/)
 + [Ethers.js documents](https://docs.ethers.org/v6/)
-+ [CryptoZombies](https://cryptozombies.io/)
 
 # Supplements
 + [Ethereum basics](https://docs.alchemy.com/docs/ethereum-basics)
