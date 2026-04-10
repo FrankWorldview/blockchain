@@ -67,7 +67,6 @@
 + Code editor
   - Install [Visual Studio Code](https://code.visualstudio.com/).
   - Install the "solidity" extension by Juan Blanco, which provides syntax highlighting, IntelliSense, and debugging support for Solidity.
-  - (Optional) Install the "Mark for VS Code" extension to create and view slides directly within VS Code using Marp Markdown.
 
 # View Blockchain Information
 + Open a Git Bash (in Windows) or a terminal (in Mac).
