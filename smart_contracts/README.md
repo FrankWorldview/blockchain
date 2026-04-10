@@ -55,9 +55,9 @@
   - Install [Node.js](https://nodejs.org/en/download/prebuilt-installer). (Or use [nvm](https://github.com/nvm-sh/nvm) or [nvm-windows](https://github.com/coreybutler/nvm-windows).)
   - Check the installed version.
     ```
-    nvm install lts
-    nvm list
-    nvm use lts
+    nvm install lts # If you use nvm
+    nvm list # If you use nvm
+    nvm use lts # If you use nvm
     node -v
     npm -v
     ```
