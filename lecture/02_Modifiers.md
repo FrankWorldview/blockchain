@@ -79,7 +79,7 @@ function withdraw() public onlyOwner {
 }
 ```
 
-#### Execution Flow
+### Execution Flow
 
 When `withdraw()` is called:
 
@@ -88,7 +88,7 @@ When `withdraw()` is called:
 3. If **true** → continue to function body  
 4. If **false** → revert with error message  
 
-## How `_` Works (Very Important)
+### How `_` Works (Very Important)
 
 The `_` symbol represents **where the function body is inserted**.
 
@@ -100,7 +100,7 @@ modifier example() {
 }
 ```
 
-## Improved Version (Gas Efficient)
+### Improved Version (Gas Efficient)
 
 Using **custom errors** instead of strings saves gas:
 
@@ -113,7 +113,7 @@ modifier onlyOwner() {
 }
 ```
 
-## Example: Transfer Ownership
+### Example: Transfer Ownership
 
 ```solidity
 function transferOwnership(address newOwner) public onlyOwner {
