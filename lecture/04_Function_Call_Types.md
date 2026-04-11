@@ -317,47 +317,6 @@ msg.sender = address(this)
 
 ---
 
-# ⚠️ 8. Gotcha: `this.functionName()`
-
-```solidity
-doSomething(x);        // internal call — fast
-this.doSomething(x);   // external call — slower
-```
-
----
-
-### 🧠 What happens?
-
-- `doSomething(x)`  
-  → JUMP → same context  
-
-- `this.doSomething(x)`  
-  → CALL → new context  
-  → msg.sender = address(this)  
-
----
-
-# 🎯 Final Takeaway
-
-> Internal call = JUMP  
-> External call = CALL  
-> Public = both behaviors depending on usage  
-
----
-
-# 💡 Teaching One-Liner
-
-> “Public is flexible — it can behave like internal or external depending on how you call it.”
-
----
-
-# 🚀 Pro Tip
-
-> If you see `this.` in Solidity,  
-> 🚨 you are making an external call — and changing `msg.sender`
-
----
-
 ## 中文解釋
 
 ### `external` Calls
