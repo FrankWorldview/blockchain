@@ -255,7 +255,7 @@ msg.sender = B
 👉 Not A  
 👉 Not the original EOA  
 
-## ⚙️ What’s Happening Under the Hood
+### ⚙️ What’s Happening Under the Hood
 
 Each step creates a new **message call (CALL opcode)**:
 
@@ -265,7 +265,7 @@ Each step creates a new **message call (CALL opcode)**:
 
 At each step, the caller changes.
 
-### 🧠 Key Insight
+### 🔑 Key Insight
 
 > `msg.sender` is always the **immediate caller**, not the original transaction sender.
 
