@@ -2,7 +2,7 @@
 
 ## 📘 Introduction
 
-In Solidity, the way a function is called — **external, public, or internal** — affects:
+In Solidity, the way a function is called — **external, internal, or public** — affects:
 
 - how data is passed  
 - how gas is consumed  
