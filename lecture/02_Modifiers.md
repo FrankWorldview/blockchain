@@ -1,4 +1,4 @@
-# Solidity Modifiers: A Complete Overview
+# Modifiers in Solidity
 
 ## Introduction
 
