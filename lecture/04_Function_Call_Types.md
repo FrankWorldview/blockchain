@@ -233,12 +233,11 @@ msg.sender = address(this)
 ```
 
 👉 Because a new execution context is created, the contract becomes the caller.
-
 👉 Because a new message call (CALL opcode) is created, the caller becomes address(this).
 
 ---
 
-## 🔁 Cross-Contract Calls and `msg.sender`
+## Cross-Contract Calls and `msg.sender`
 
 Consider the call chain:
 
@@ -255,37 +254,19 @@ msg.sender = B
 👉 Not A  
 👉 Not the original EOA  
 
----
-
-## 🧠 Key Insight
-
-> `msg.sender` is always the **immediate caller**, not the original transaction sender.
-
----
-
 ## ⚙️ What’s happening under the hood
 
 Each step creates a new **message call (CALL opcode)**:
 
-1. EOA calls A  
-2. A calls B  
-3. B calls C  
+1. EOA calls A  → In contract A → `msg.sender = EOA`  
+2. A calls B  → In contract B → `msg.sender = A` 
+3. B calls C  In contract C → `msg.sender = B` 
 
 At each step, the caller changes.
 
----
+### 🧠 Key Insight
 
-## 🎯 Takeaway
-
-- In contract A → `msg.sender = EOA`  
-- In contract B → `msg.sender = A`  
-- In contract C → `msg.sender = B`  
-
----
-
-## 💡 Teaching One-Liner
-
-> “`msg.sender` tells you who called you — not who started everything.”
+> `msg.sender` is always the **immediate caller**, not the original transaction sender.
 
 ---
 
