@@ -63,7 +63,7 @@ function FetchDataOnMount() {
       .then(data => setData(data));
 
     // No dependencies: this effect runs only once when the component mounts
-  }, []); 
+  }, []);
 
   return (
     <div>
