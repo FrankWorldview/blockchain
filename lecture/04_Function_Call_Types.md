@@ -22,7 +22,7 @@ Solidity provides three main function visibility types:
 
 ---
 
-# 🔹 1. External Function Calls（外部呼叫）
+# 🔹 External Function Calls（外部呼叫）
 
 ### 📌 Definition
 
@@ -85,7 +85,7 @@ contract ExternalExample {
 
 ---
 
-# 🔹 2. Internal Function Calls（內部呼叫）
+# 🔹 Internal Function Calls（內部呼叫）
 
 ### 📌 Definition
 
@@ -150,7 +150,7 @@ contract InternalExample {
 
 ---
 
-# 🔹 3. Public Function Calls（公開函式）
+# 🔹 Public Function Calls（公開函式）
 
 ### 📌 Definition
 
@@ -228,7 +228,7 @@ contract PublicExample {
 
 ---
 
-# 🔥 4. Key Difference: `msg.sender`
+# 🔥 Key Difference: `msg.sender`
 
 ```solidity
 contract Test {
@@ -266,7 +266,7 @@ msg.sender = address(this)
 
 ---
 
-# 🧠 6. Comparison
+# 🧠 Comparison
 
 - Internal call → same program flow
 - External call → message passing
@@ -280,7 +280,7 @@ msg.sender = address(this)
 
 ---
 
-# ✅ 7. Use Cases
+# ✅ Use Cases
 
 ### 🔹 Use `external`
 
