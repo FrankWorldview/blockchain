@@ -266,14 +266,10 @@ msg.sender = address(this)
 
 ---
 
-# 🧠 5. Intuition
+# 🧠 6. Comparison
 
-- Internal call → same program flow  
-- External call → message passing  
-
----
-
-# 🧠 6. Final Comparison
+- Internal call → same program flow
+- External call → message passing
 
 | Feature | Internal | External | Public |
 |--------|---------|---------|--------|
