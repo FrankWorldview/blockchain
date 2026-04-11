@@ -51,13 +51,13 @@ Modifiers provide a clean and reusable way to enforce such restrictions.
 
 ---
 
-### 🔐 Basic Idea
+### Basic Idea
 
 A **modifier** acts like a gatekeeper. It checks conditions **before** (and optionally after) a function runs.
 
 ---
 
-### ✏️ Example: `onlyOwner`
+### Example: `onlyOwner`
 
 ```solidity
 // State variable to store the owner address
@@ -77,7 +77,7 @@ modifier onlyOwner() {
 
 ---
 
-### 🚀 Usage
+### Usage
 
 ```solidity
 function withdraw() public onlyOwner {
@@ -96,7 +96,7 @@ When `withdraw()` is called:
 
 ---
 
-## 🧠 How `_` Works (Very Important)
+## How `_` Works (Very Important)
 
 The `_` symbol represents **where the function body is inserted**.
 
@@ -125,7 +125,7 @@ modifier onlyOwner() {
 
 ---
 
-## 🔄 Best Practice: Transfer Ownership
+## Example: Transfer Ownership
 
 ```solidity
 function transferOwnership(address newOwner) public onlyOwner {
