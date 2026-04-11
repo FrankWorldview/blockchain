@@ -12,6 +12,7 @@
 + [How do smart contracts communicate?](https://docs.alchemy.com/docs/smart-contract-communication)
 + [Application Binary Interfaces](https://docs.ethers.org/v6/basics/abi/)
 + [Introduction to Smart Contracts](https://docs.soliditylang.org/en/develop/introduction-to-smart-contracts.html)
++ [Solidity by Example](https://docs.soliditylang.org/en/develop/solidity-by-example.html)
 + [What are multi-signature contracts?](https://docs.alchemy.com/docs/multi-sig-contracts)
 + [What is an ERC-20 token?](https://docs.alchemy.com/docs/what-is-erc-20)
 + [Console logging in Foundry](https://book.getfoundry.sh/reference/forge-std/console-log)
