@@ -1,4 +1,4 @@
-# Solidity Data Locations
+# Data Locations in Solidity
 
 In Solidity, data locations tell the compiler where variables reside — whether they are stored persistently on the blockchain or temporarily in memory. Choosing the right location affects **gas efficiency, mutability**, and **security**. Solidity requires that reference types (like arrays, structs, and strings) specify a data location explicitly.
 
