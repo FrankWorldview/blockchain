@@ -261,8 +261,8 @@ msg.sender = EOA
 msg.sender = address(this)
 ```
 
-👉 Because a new execution context is created  
-👉 The contract becomes the caller  
+👉 Because a new execution context is created, the contract becomes the caller.
+👉 Because a new message call (CALL opcode) is created, the caller becomes address(this).
 
 ---
 
