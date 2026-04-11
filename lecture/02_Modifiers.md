@@ -49,13 +49,9 @@ These are used when writing **inheritable contracts and methods**.
 In smart contracts, **access control** is critical -- not every function should be callable by anyone.  
 Modifiers provide a clean and reusable way to enforce such restrictions.
 
----
-
 ### Basic Idea
 
 A **modifier** acts like a gatekeeper. It checks conditions **before** (and optionally after) a function runs.
-
----
 
 ### Example: `onlyOwner`
 
@@ -75,8 +71,6 @@ modifier onlyOwner() {
 }
 ```
 
----
-
 ### Usage
 
 ```solidity
@@ -94,8 +88,6 @@ When `withdraw()` is called:
 3. If **true** → continue to function body  
 4. If **false** → revert with error message  
 
----
-
 ## How `_` Works (Very Important)
 
 The `_` symbol represents **where the function body is inserted**.
@@ -108,9 +100,7 @@ modifier example() {
 }
 ```
 
----
-
-## 🧩 Improved Version (Gas Efficient)
+## Improved Version (Gas Efficient)
 
 Using **custom errors** instead of strings saves gas:
 
@@ -122,8 +112,6 @@ modifier onlyOwner() {
     _;
 }
 ```
-
----
 
 ## Example: Transfer Ownership
 
