@@ -17,11 +17,11 @@
   code .
   ```
 + Move src/Counter.sol elsewhere (e.g., the `orig` folder). Edit `src/Hello.sol`.
-  (You can copy this file from `/smart_contracts/code/solidity/hello/src/Hello.sol`.)
+  (You can copy this file from `/code/solidity/hello/src/Hello.sol`.)
 + Move test/Counter.t.sol elsewhere (e.g., the `orig` folder). Edit `test/Hello.t.sol`.
-  (You can copy this file from `/smart_contracts/code/solidity/hello/test/Hello.t.sol`.)
+  (You can copy this file from `/code/solidity/hello/test/Hello.t.sol`.)
 + Move test/Counter.s.sol elsewhere (e.g., the `orig` folder). Edit `script/Hello.s.sol`.
-  (You can copy this file from `/smart_contracts/code/solidity/hello/script/Hello.s.sol`.)
+  (You can copy this file from `/code/solidity/hello/script/Hello.s.sol`.)
 + Test the contract.
   ```
   forge test -vv
@@ -59,7 +59,7 @@
   npm install ethers
   ```
 + Edit `hello.js`.
-  (You can copy this file from `/smart_contracts/code/web/hello/hello.js`.)
+  (You can copy this file from `/code/web/hello/hello.js`.)
   ```
   code .
   ```
@@ -80,7 +80,7 @@
   cast call $CONTRACT_ADDR "getMyName()(string)" --rpc-url http://127.0.0.1:8545
   ```
 
-![image](/smart_contracts/image/hello.png)
+![image](/image/hello.png)
 
 ## Interact with the Hello Contract via React
 + Open a Git Bash (in Windows) or a terminal (in Mac).
@@ -106,13 +106,13 @@
   mv src/App.jsx src/App.jsx.ORIG
   ```
 + Edit `src/App.jsx`.
-  (You can copy this file from `/smart_contracts/code/web/hello-app/src/App.jsx`.)
+  (You can copy this file from `/code/web/hello-app/src/App.jsx`.)
   ```
   code .
   ```
   (Run the editor at the root folder of hello-app.)
 + Put `go.cjs` into your app root (i.e., hello-app).
-  (You can copy this file from `/smart_contracts/code/web/hello-app/go.cjs`.)
+  (You can copy this file from `/code/web/hello-app/go.cjs`.)
 + Run `go.cjs` to extract the contract's ABI and address.
   ```
   mkdir src/abi
@@ -127,4 +127,4 @@ Notes:
 + Install the `React Developer Tools` plugin in your browser for advanced debugging.
 + `forge clean` can remove the build artifacts and cache directories.
 
-![image](/smart_contracts/image/hello-app.png)
+![image](/image/hello-app.png)

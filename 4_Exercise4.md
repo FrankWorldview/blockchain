@@ -14,9 +14,9 @@
 + Move test/Counter.t.sol elsewhere (e.g., the `orig` folder).
 + Move script/Counter.s.sol elsewhere (e.g., the `orig` folder).
 + `code .`
-+ Copy the contract file from `/smart_contracts/code/solidity/erc20/src/MyToken.sol` to your `src` folder.
-+ Copy the test script file from `/smart_contracts/code/solidity/erc20/test/MyToken.t.sol` to your `test` folder.
-+ Copy the deployment script file from `/smart_contracts/code/solidity/erc20/script/MyToken.s.sol` to your `script` folder.
++ Copy the contract file from `/code/solidity/erc20/src/MyToken.sol` to your `src` folder.
++ Copy the test script file from `/code/solidity/erc20/test/MyToken.t.sol` to your `test` folder.
++ Copy the deployment script file from `/code/solidity/erc20/script/MyToken.s.sol` to your `script` folder.
 + `anvil`
 + Build the contract.
   ```

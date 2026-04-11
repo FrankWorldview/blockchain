@@ -23,7 +23,7 @@
   ```
   forge install OpenZeppelin/openzeppelin-contracts
   ```
-+ Copy all files from `/smart_contracts/code/solidity/fundraising` to your `fundraising` folder.
++ Copy all files from `/code/solidity/fundraising` to your `fundraising` folder.
 + Build the contract.
   ```
   forge build
@@ -69,9 +69,9 @@
   ```
   mv src/main.jsx src/main.jsx.ORIG
   ```
-+ Copy all files from `/smart_contracts/code/web/fundraising-app` to your `fundraising-app` folder.
++ Copy all files from `/code/web/fundraising-app` to your `fundraising-app` folder.
 + Put `go.cjs` into your app root (i.e., fundraising-app).
-  (You can copy this file from `/smart_contracts/code/web/fundraising-app/go.cjs`.)
+  (You can copy this file from `/code/web/fundraising-app/go.cjs`.)
 + Run `go.cjs` to extract the contract's ABI and address.
   ```
   mkdir src/fundraising/abi
@@ -92,4 +92,4 @@ How to automatically update fundraiser cards after a fundraising campaign is upd
 Credits:
 The code of this example is based on the work of [RedSquirrelTech](https://github.com/RedSquirrelTech/hoscdev).
 
-![image](/smart_contracts/image/fundraising.png)
+![image](/image/fundraising.png)

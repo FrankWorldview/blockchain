@@ -2,7 +2,7 @@
 
 ## Send Ether via MetaMask and React
 + Create or log in to your MetaMask wallet. Create a test network and connect to it:
-  ![image](/smart_contracts/image/testnet.png)
+  ![image](/image/testnet.png)
 + Open a Git Bash (in Windows) or a terminal (in Mac).
 + Enter the folder `Web`.
   ```
@@ -26,11 +26,11 @@
   mv src/App.jsx src/App.jsx.ORIG
   ```
 + Edit "src/App.jsx".
-  (You can copy this file from `/smart_contracts/code/web/transfer-app/src/App.jsx`.)
+  (You can copy this file from `/code/web/transfer-app/src/App.jsx`.)
   ```
   code .
   ```
-+ Copy images assets to "src". (You can copy the assets from `/smart_contracts/code/web/transfer-app/src/assets`.)
++ Copy images assets to "src". (You can copy the assets from `/code/web/transfer-app/src/assets`.)
 + View the web page.
   ```
   npm run dev
@@ -39,7 +39,7 @@
 + "Transfer" Ether to the receiver address.
 + Use the utility program `vieweth` to examine account balances.
 
-![image](/smart_contracts/image/transfer.png)
+![image](/image/transfer.png)
 
 ## Note
 When you restart anvil, you may need to restart your browser and clear activity and nonce data in MetaMask: `Settings -> Advanced -> Clear activity tab data`. This can make sure the nonce data in anvil and in your MetaMask are consistent.
