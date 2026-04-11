@@ -22,7 +22,7 @@ Solidity provides three main function visibility types:
 
 ---
 
-# 🔹 External Function Calls（外部呼叫）
+## 🔹 External Function Calls（外部呼叫）
 
 ### 📌 Definition
 
@@ -40,15 +40,11 @@ function A() public {
 }
 ```
 
----
-
 ### ⚙️ How It Works
 
 - Executed via EVM **CALL opcode**
 - Creates a **new execution context**
 - Requires **ABI encoding/decoding**
-
----
 
 ### 🔑 Key Properties
 
@@ -59,8 +55,6 @@ function A() public {
 | ABI | Required |
 | Gas | Higher |
 
----
-
 ### ⚙️ Data Location: `calldata`
 
 - Read-only
@@ -68,8 +62,6 @@ function A() public {
 - More gas-efficient
 
 👉 Ideal for large arrays or structs that do not need modification
-
----
 
 ### Example
 
@@ -85,7 +77,7 @@ contract ExternalExample {
 
 ---
 
-# 🔹 Internal Function Calls（內部呼叫）
+## 🔹 Internal Function Calls（內部呼叫）
 
 ### 📌 Definition
 
@@ -100,15 +92,11 @@ function A() public {
 }
 ```
 
----
-
 ### ⚙️ How It Works
 
 - Compiled into EVM **JUMP**
 - Same execution context
 - No ABI encoding
-
----
 
 ### 🔑 Key Properties
 
@@ -119,16 +107,12 @@ function A() public {
 | ABI | Not used |
 | Gas | Lower |
 
----
-
 ### ⚙️ Data Passing
 
 | Type | Behavior |
 |------|--------|
 | memory | Passed by value (copied) |
 | storage | Passed by reference |
-
----
 
 ### Example
 
@@ -150,7 +134,7 @@ contract InternalExample {
 
 ---
 
-# 🔹 Public Function Calls（公開函式）
+## 🔹 Public Function Calls（公開函式）
 
 ### 📌 Definition
 
@@ -161,7 +145,6 @@ A **public function** can be called:
 
 👉 It behaves differently depending on how it is invoked.
 
----
 
 ### 🔑 Key Insight
 
@@ -172,7 +155,6 @@ A **public function** can be called:
 | Internal (`f(x)`) | JUMP (cheap) |
 | External (`this.f(x)`) | CALL (ABI-encoded) |
 
----
 
 ### ⚙️ Behavior Breakdown
 
@@ -198,7 +180,6 @@ this.double(y);
 - ABI encoding required  
 - Higher gas cost  
 
----
 
 ### ⚙️ Data Location Rules
 
@@ -207,8 +188,6 @@ this.double(y);
 | memory | ✅ yes |
 | calldata | ✅ yes |
 | storage | ❌ not for parameters |
-
----
 
 ### Example
 
@@ -228,7 +207,7 @@ contract PublicExample {
 
 ---
 
-# 🔥 Key Difference: `msg.sender`
+## 🔥 Key Difference: `msg.sender`
 
 ```solidity
 contract Test {
@@ -243,7 +222,7 @@ contract Test {
 }
 ```
 
-#### Internal call
+### Internal call
 
 ```text
 msg.sender = EOA
@@ -251,7 +230,7 @@ msg.sender = EOA
 
 ---
 
-#### External call
+### External call
 
 ```text
 msg.sender = address(this)
@@ -312,10 +291,9 @@ At each step, the caller changes.
 
 > “`msg.sender` tells you who called you — not who started everything.”
 
-
 ---
 
-# 🧠 Comparison
+## 🧠 Comparison
 
 - Internal call → same program flow
 - External call → message passing
@@ -329,7 +307,7 @@ At each step, the caller changes.
 
 ---
 
-# ✅ Use Cases
+## ✅ Use Cases
 
 ### 🔹 Use `external`
 
