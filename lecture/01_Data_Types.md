@@ -1,4 +1,4 @@
-# Solidity Data Types Overview
+# Solidity Data Types
 
 ## Introduction
 
