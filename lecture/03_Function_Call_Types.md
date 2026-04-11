@@ -24,7 +24,7 @@ Solidity provides three main function visibility types:
 
 # 🔹 1. External Function Calls（外部呼叫）
 
-### 📌 Definition（定義）
+### 📌 Definition
 
 An **external call** occurs when a function is invoked via:
 
@@ -42,7 +42,7 @@ function A() public {
 
 ---
 
-### ⚙️ How it works（運作方式）
+### ⚙️ How It Works
 
 - Executed via EVM **CALL opcode**
 - Creates a **new execution context**
@@ -50,7 +50,7 @@ function A() public {
 
 ---
 
-### 🔑 Key Properties（特性）
+### 🔑 Key Properties
 
 | Property | Description |
 |----------|------------|
@@ -87,7 +87,7 @@ contract ExternalExample {
 
 # 🔹 2. Internal Function Calls（內部呼叫）
 
-### 📌 Definition（定義）
+### 📌 Definition
 
 An **internal call** occurs when a function is invoked:
 
@@ -102,7 +102,7 @@ function A() public {
 
 ---
 
-### ⚙️ How it works（運作方式）
+### ⚙️ How It Works
 
 - Compiled into EVM **JUMP**
 - Same execution context
@@ -110,7 +110,7 @@ function A() public {
 
 ---
 
-### 🔑 Key Properties（特性）
+### 🔑 Key Properties
 
 | Property | Description |
 |----------|------------|
@@ -152,7 +152,7 @@ contract InternalExample {
 
 # 🔹 3. Public Function Calls（公開函式）
 
-### 📌 Definition（定義）
+### 📌 Definition
 
 A **public function** can be called:
 
@@ -266,14 +266,14 @@ msg.sender = address(this)
 
 ---
 
-# 🧠 5. Intuition（直覺）
+# 🧠 5. Intuition
 
 - Internal call → same program flow  
 - External call → message passing  
 
 ---
 
-# 🧠 6. Final Comparison（總結）
+# 🧠 6. Final Comparison
 
 | Feature | Internal | External | Public |
 |--------|---------|---------|--------|
@@ -284,7 +284,7 @@ msg.sender = address(this)
 
 ---
 
-# ✅ 7. Use Cases（使用情境）
+# ✅ 7. Use Cases
 
 ### 🔹 Use `external`
 
