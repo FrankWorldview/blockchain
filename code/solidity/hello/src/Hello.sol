@@ -42,6 +42,7 @@ contract Hello {
 
     function sumUpTo(uint256 n) public pure returns (uint256) {
         require(n > 0, "Input must be greater than 0");
+
         return (n * (n + 1)) / 2;
     }
 }
