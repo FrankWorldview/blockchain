@@ -315,13 +315,7 @@ At each step, the caller changes.
 - Especially when:
   - passing large arrays or structs  
 
-👉 More efficient with `calldata`
-
-### 🔹 Use `public`
-
-- When a function must be:
-  - internally reusable  
-  - externally accessible  
+👉 More efficient with `calldata` 
 
 ### 🔹 Use `internal`
 
@@ -329,6 +323,12 @@ At each step, the caller changes.
   - internal logic
   - helper functions
   - encapsulation  
+
+### 🔹 Use `public`
+
+- When a function must be:
+  - internally reusable  
+  - externally accessible
 
 ---
 
