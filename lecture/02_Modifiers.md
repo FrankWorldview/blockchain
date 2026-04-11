@@ -46,7 +46,7 @@ These are used when writing **inheritable contracts and methods**.
 
 ## 4. Access Control Modifiers (Custom)
 
-In smart contracts, **access control** is critical — not every function should be callable by anyone.  
+In smart contracts, **access control** is critical — not every function should be callable by anyone.
 Modifiers provide a clean and reusable way to enforce such restrictions.
 
 ### Basic Idea
@@ -83,10 +83,10 @@ function withdraw() public onlyOwner {
 
 When `withdraw()` is called:
 
-1. Solidity first executes the `onlyOwner` modifier  
-2. It checks `msg.sender == owner`  
-3. If **true** → continue to function body  
-4. If **false** → revert with error message  
+1. Solidity first executes the `onlyOwner` modifier
+2. It checks `msg.sender == owner`
+3. If **true** → continue to function body
+4. If **false** → revert with error message
 
 ### How `_` Works
 

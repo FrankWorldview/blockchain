@@ -165,7 +165,7 @@ contract DynamicNFT is ERC721 {
 
 While `_setTokenURI()` allows you to define a metadata URI per token, it can be called multiple times for the same `tokenId`, thereby updating the URI.
 
-Although technically permitted, updating a token’s metadata URI after minting can damage trust, especially in cases where immutability is expected (e.g., digital art, certificates, or collectibles). 
+Although technically permitted, updating a token’s metadata URI after minting can damage trust, especially in cases where immutability is expected (e.g., digital art, certificates, or collectibles).
 
 **Recommendations:**
 
@@ -196,7 +196,7 @@ Example of a problematic metadata JSON:
 
 - Host **both** metadata JSON **and** media files (e.g., images, audio, video) on decentralized storage like IPFS or Arweave.
 - Reference media using `ipfs://` URIs for full immutability:
-  
+
 ```json
 {
   "name": "Fully Decentralized NFT",

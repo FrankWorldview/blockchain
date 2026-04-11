@@ -6,10 +6,10 @@ In Solidity, data locations tell the compiler where variables reside — whether
 
 ## 🔹 `storage`
 
-- **Location**: Contract’s persistent on-chain storage  
-- **Lifetime**: Permanent (until modified or deleted)  
-- **Mutable**: ✅ Yes  
-- **Used For**: State variables and persistent data structures  
+- **Location**: Contract’s persistent on-chain storage
+- **Lifetime**: Permanent (until modified or deleted)
+- **Mutable**: ✅ Yes
+- **Used For**: State variables and persistent data structures
 
 ```solidity
 uint[] public numbers;
@@ -24,10 +24,10 @@ function update(uint index, uint newValue) public {
 
 ## 🔹 `memory`
 
-- **Location**: Temporary RAM during function execution  
-- **Lifetime**: Exists only during the current function call  
-- **Mutable**: ✅ Yes  
-- **Used For**: Temporary variables and return values  
+- **Location**: Temporary RAM during function execution
+- **Lifetime**: Exists only during the current function call
+- **Mutable**: ✅ Yes
+- **Used For**: Temporary variables and return values
 
 ```solidity
 function double(uint[] memory input) public pure returns (uint[] memory) {
@@ -43,10 +43,10 @@ function double(uint[] memory input) public pure returns (uint[] memory) {
 
 ## 🔹 `calldata`
 
-- **Location**: Read-only, external function arguments  
-- **Lifetime**: Temporary, tied to the function call  
-- **Mutable**: ❌ No (read-only)  
-- **Used For**: `external` function parameters, especially arrays and strings  
+- **Location**: Read-only, external function arguments
+- **Lifetime**: Temporary, tied to the function call
+- **Mutable**: ❌ No (read-only)
+- **Used For**: `external` function parameters, especially arrays and strings
 
 ```solidity
 function greet(string[] calldata names) external {

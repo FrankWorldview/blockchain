@@ -6,7 +6,7 @@ Smart contracts in Solidity can accept Ether (ETH) through two special functions
 
 ## 🔹 `receive()` Function
 
-- **Purpose**: Handles plain ETH transfers with **no calldata**  
+- **Purpose**: Handles plain ETH transfers with **no calldata**
 - **Trigger**: ETH is sent to the contract with **no function signature or data**
 
 ```solidity
@@ -38,11 +38,11 @@ console.log("Transaction hash:", tx.hash);
 
 ## 🔹 `fallback()` Function
 
-- **Purpose**: Handles calls with unknown data or incorrect function selectors  
-- **Trigger**:  
-  - ETH + unrecognized function selector  
-  - Data only (e.g., garbage or incorrect input)  
-  - No matching function in the ABI  
+- **Purpose**: Handles calls with unknown data or incorrect function selectors
+- **Trigger**:
+  - ETH + unrecognized function selector
+  - Data only (e.g., garbage or incorrect input)
+  - No matching function in the ABI
 
 ```solidity
 fallback() external payable {
@@ -114,7 +114,7 @@ console.log("Fallback with data only:", tx.hash);
 
 ## 🔐 Security Tip
 
-Avoid letting `fallback()` silently accept ETH unless you log the transaction or verify the sender.  
+Avoid letting `fallback()` silently accept ETH unless you log the transaction or verify the sender.
 This can prevent hidden or malicious ETH transfers into your contract.
 
 ---

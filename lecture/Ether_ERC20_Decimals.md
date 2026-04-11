@@ -1,6 +1,6 @@
 # Understanding `decimals` in Ether and ERC-20 Tokens
 
-When dealing with Ether and ERC-20 tokens on Ethereum, values are not stored in fractional form.  
+When dealing with Ether and ERC-20 tokens on Ethereum, values are not stored in fractional form.
 They are **integers** representing the smallest indivisible unit:
 
 - **Ether’s smallest unit:** `wei`
@@ -22,7 +22,7 @@ Ether uses **18 decimal places**, meaning:
 
 So, `1 ETH = 10^18 wei`.
 
-All EVM operations and balances are stored in `wei`.  
+All EVM operations and balances are stored in `wei`.
 Human-readable unit conversions are done **off-chain** using libraries such as **ethers.js**.
 
 ---
@@ -90,8 +90,8 @@ console.log(ethers.formatUnits(balance, 6)); // "2.5"
 
 ---
 
-> 💡 **Pro tip:**  
-> Always handle values in the smallest unit (integer) when interacting with smart contracts.  
+> 💡 **Pro tip:**
+> Always handle values in the smallest unit (integer) when interacting with smart contracts.
 > Perform formatting and user-facing conversions **in JavaScript or your front-end code**, not in Solidity.
 
 ---

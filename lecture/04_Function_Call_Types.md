@@ -4,9 +4,9 @@
 
 In Solidity, the way a function is called — **external, internal, or public** — affects:
 
-- how data is passed  
-- how gas is consumed  
-- how accessible the function is  
+- how data is passed
+- how gas is consumed
+- how accessible the function is
 
 Understanding these distinctions is essential for writing **efficient and secure smart contracts**.
 
@@ -174,9 +174,9 @@ double(y);
 this.double(y);
 ```
 
-- New execution context  
-- ABI encoding required  
-- Higher gas cost  
+- New execution context
+- ABI encoding required
+- Higher gas cost
 
 
 ### ⚙️ Data Location Rules
@@ -252,8 +252,8 @@ When execution reaches contract **C**:
 msg.sender = B
 ```
 
-👉 Not A  
-👉 Not the original EOA  
+👉 Not A
+👉 Not the original EOA
 
 ### ⚙️ What’s Happening Under the Hood
 
@@ -292,24 +292,24 @@ At each step, the caller changes.
 - For:
   - dApps
   - other contracts
-  - EOAs  
+  - EOAs
 
 - Especially when:
-  - passing large arrays or structs  
+  - passing large arrays or structs
 
-👉 More efficient with `calldata` 
+👉 More efficient with `calldata`
 
 ### 🔹 Use `internal`
 
 - For:
   - internal logic
   - helper functions
-  - encapsulation  
+  - encapsulation
 
 ### 🔹 Use `public`
 
 - When a function must be:
-  - internally reusable  
+  - internally reusable
   - externally accessible
 
 ---
@@ -325,5 +325,5 @@ At each step, the caller changes.
 指「由本合約自身或繼承的合約」在程式內部直接呼叫函式。這種呼叫不經過 **ABI** 處理，而是以 **EVM 的跳轉指令（JUMP）** 在同一個執行上下文中執行，速度較快，也不會改變 `msg.sender`。Internal 呼叫 **只能在合約內部或繼承的合約之間發生，外部帳戶（EOA）無法直接進行 internal call**。
 
 ### Summary
-> **External call**：建立新上下文，`msg.sender` 變成呼叫者。  
+> **External call**：建立新上下文，`msg.sender` 變成呼叫者。
 > **Internal call**：同上下文執行，`msg.sender` 保持不變。
