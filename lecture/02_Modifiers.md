@@ -46,14 +46,14 @@ These are used when writing **inheritable contracts and methods**.
 
 ## 4. Access Control Modifiers (Custom)
 
-In smart contracts, **access control** is critical -- not every function should be callable by anyone.  
+In smart contracts, **access control** is critical — not every function should be callable by anyone.  
 Modifiers provide a clean and reusable way to enforce such restrictions.
 
 ### Basic Idea
 
-A **modifier** acts like a gatekeeper. It checks conditions **before** (and optionally after) a function runs.
+An access control modifier acts like a gatekeeper. It checks conditions **before** (and optionally after) a function runs.
 
-### Example: `onlyOwner`
+### Example: onlyOwner
 
 ```solidity
 // State variable to store the owner address
@@ -88,7 +88,7 @@ When `withdraw()` is called:
 3. If **true** → continue to function body  
 4. If **false** → revert with error message  
 
-### How `_` Works (Very Important)
+### How `_` Works
 
 The `_` symbol represents **where the function body is inserted**.
 
