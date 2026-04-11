@@ -46,20 +46,91 @@ These are used when writing **inheritable contracts and methods**.
 
 ## 4. Access Control Modifiers (Custom)
 
-Custom modifiers are often used to restrict **who** can execute a function.
+In smart contracts, **access control** is critical -- not every function should be callable by anyone.  
+Modifiers provide a clean and reusable way to enforce such restrictions.
+
+---
+
+### 🔐 Basic Idea
+
+A **modifier** acts like a gatekeeper. It checks conditions **before** (and optionally after) a function runs.
+
+---
+
+### ✏️ Example: `onlyOwner`
 
 ```solidity
+// State variable to store the owner address
+address public owner;
+
+// Set the deployer as the initial owner
+constructor() {
+    owner = msg.sender;
+}
+
+// Modifier definition
 modifier onlyOwner() {
     require(msg.sender == owner, "Not the contract owner");
     _;
 }
 ```
 
-You can then use it like:
+---
+
+### 🚀 Usage
 
 ```solidity
 function withdraw() public onlyOwner {
     // withdraw logic
+}
+```
+
+#### Execution Flow
+
+When `withdraw()` is called:
+
+1. Solidity first executes the `onlyOwner` modifier  
+2. It checks `msg.sender == owner`  
+3. If **true** → continue to function body  
+4. If **false** → revert with error message  
+
+---
+
+## 🧠 How `_` Works (Very Important)
+
+The `_` symbol represents **where the function body is inserted**.
+
+```solidity
+modifier example() {
+    // Code BEFORE function execution
+    _;
+    // Code AFTER function execution (optional)
+}
+```
+
+---
+
+## 🧩 Improved Version (Gas Efficient)
+
+Using **custom errors** instead of strings saves gas:
+
+```solidity
+error NotOwner();
+
+modifier onlyOwner() {
+    if (msg.sender != owner) revert NotOwner();
+    _;
+}
+```
+
+---
+
+## 🔄 Best Practice: Transfer Ownership
+
+```solidity
+function transferOwnership(address newOwner) public onlyOwner {
+    require(newOwner != address(0), "Invalid address");
+    owner = newOwner;
 }
 ```
 
