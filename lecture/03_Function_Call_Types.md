@@ -3,22 +3,93 @@
 In Solidity, the way a function is called — `external`, `public`, or `internal` — affects **how data is passed, how gas is used, and how accessible** the function is. Understanding these distinctions is essential for writing efficient and secure smart contracts.
 
 ---
-## External 呼叫
+
+## `external` vs. `internal` Function Calls
+
+### `external` Calls
 
 指透過「`cast call`、前端 dApp、或其他合約」等外部介面呼叫函式。這類呼叫必須經過 **ABI 編碼與解碼**，因為它是透過以太坊的 **RPC 介面** 或 **跨合約訊息傳遞** 進行的。**External call** 會建立新的呼叫上下文（context），因此 `msg.sender` 會變成這次呼叫的發出者（例如外部帳戶 EOA 或另一個合約）。
 
----
-
-## Internal 呼叫
+### `internal` Calls
 
 指「由本合約自身或繼承的合約」在程式內部直接呼叫函式。這種呼叫不經過 **ABI** 處理，而是以 **EVM 的跳轉指令（JUMP）** 在同一個執行上下文中執行，速度較快，也不會改變 `msg.sender`。Internal 呼叫 **只能在合約內部或繼承的合約之間發生，外部帳戶（EOA）無法直接進行 internal call**。
 
----
-
-✅ **總結**
+### Summary
 > **External call**：建立新上下文，`msg.sender` 變成呼叫者。  
 > **Internal call**：同上下文執行，`msg.sender` 保持不變。
 
+---
+## 🔥 Key Difference: `msg.sender`
+
+Let’s look at the core example:
+
+```solidity
+contract Test {
+    function A() public {
+        B();          // internal call
+        this.B();     // external call
+    }
+
+    function B() public view returns (address) {
+        return msg.sender;
+    }
+}
+```
+
+---
+
+## 🧪 Scenario: You (EOA) call `A()`
+
+### 1️⃣ Internal Call: `B()`
+
+```text
+msg.sender = you (EOA)
+```
+
+👉 Because the execution stays in the **same context**
+
+- No new call is created  
+- No ABI encoding  
+- Just a direct jump inside the contract  
+
+---
+
+### 2️⃣ External Call: `this.B()`
+
+```text
+msg.sender = the contract itself
+```
+
+👉 Because:
+
+> The contract is now making a **new external call to itself**
+
+- A new execution context is created  
+- The caller becomes the contract (`address(this)`)  
+- ABI encoding/decoding is involved  
+
+---
+
+## 🧠 Intuition
+
+- **Internal call (`B()`)**  
+  → Like calling a function in the same program  
+
+- **External call (`this.B()`)**  
+  → Like sending a message to another contract (even if it's yourself)
+
+---
+
+## 🎯 Takeaway
+
+> **Internal call → same context → `msg.sender` unchanged**  
+> **External call → new context → `msg.sender` becomes the caller (contract itself)**
+
+---
+
+## 💡 One-liner (for teaching)
+
+> “Internal call is a jump. External call is a message call.”
 ---
 
 ## 🔹 `external` Function Calls
