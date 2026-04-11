@@ -232,7 +232,8 @@ msg.sender = EOA
 msg.sender = address(this)
 ```
 
-👉 Because a new execution context is created, the contract becomes the caller
+👉 Because a new execution context is created, the contract becomes the caller.
+
 👉 Because a new message call (CALL opcode) is created, the caller becomes address(this).
 
 ---
@@ -254,13 +255,13 @@ msg.sender = B
 👉 Not A  
 👉 Not the original EOA  
 
-## ⚙️ What’s happening under the hood
+## ⚙️ What’s Happening Under the Hood
 
 Each step creates a new **message call (CALL opcode)**:
 
-1. EOA calls A  → In contract A → `msg.sender = EOA`  
-2. A calls B  → In contract B → `msg.sender = A` 
-3. B calls C  In contract C → `msg.sender = B` 
+1. EOA calls A: In contract A → `msg.sender = EOA`
+2. A calls B: In contract B → `msg.sender = A`
+3. B calls C: In contract C → `msg.sender = B`
 
 At each step, the caller changes.
 
