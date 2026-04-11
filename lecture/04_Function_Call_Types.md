@@ -164,11 +164,9 @@ A **public function** can be called:
 double(y);
 ```
 
-- Same execution context  
-- No ABI encoding  
-- Low gas cost  
-
----
+- Same execution context
+- No ABI encoding
+- Low gas cost
 
 #### ✅ External Call
 
@@ -227,8 +225,6 @@ contract Test {
 ```text
 msg.sender = EOA
 ```
-
----
 
 ### External call
 
@@ -321,15 +317,11 @@ At each step, the caller changes.
 
 👉 More efficient with `calldata`
 
----
-
 ### 🔹 Use `public`
 
 - When a function must be:
   - internally reusable  
   - externally accessible  
-
----
 
 ### 🔹 Use `internal`
 
