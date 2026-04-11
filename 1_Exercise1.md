@@ -67,6 +67,16 @@
   ```
   node hello
   ```
++ Edit `listen.js`. (Subscribe to the NameChanged event.)
+  (You can copy this file from `/code/web/hello/listen.js`.)
+  ```
+  code .
+  ```
++ View the result.
+  ```
+  node hello
+  node listen
+  ```
 + Interact with the contract uisng the `cast` command.
   ```
   export CONTRACT_ADDR=<YOUR_CONTRACT_ADDRESS>
