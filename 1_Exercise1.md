@@ -67,11 +67,7 @@
   ```
   node hello
   ```
-+ Edit `listen.js`. (Subscribe to the NameChanged event.)
-  (You can copy this file from `/code/web/hello/listen.js`.)
-  ```
-  code .
-  ```
++ Edit `listen.js`. (Subscribe to the NameChanged event.) (You can copy this file from `/code/web/hello/listen.js`.)
 + View the result.
   ```
   node hello
