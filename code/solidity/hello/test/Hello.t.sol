@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.28;
+pragma solidity ^0.8.33;
 
 // Import Foundry's Test framework and console for debugging
 import {Test} from "forge-std/Test.sol";
@@ -19,12 +19,12 @@ contract HelloTest is Test {
 
     // Test if greet() returns the expected greeting string
     function testGreet() public view {
-        assertEq(hello.greet(), "Hello World!");
+        assertEq(hello.greet(), "Hello, Pepe!");
     }
 
     // Test if getMyName() returns the hardcoded name "Pepe"
-    function testGetMyName() public view {
-        assertEq(hello.getMyName(), "Pepe");
+    function testGetName() public view {
+        assertEq(hello.getName(), "Pepe");
     }
 
     // Test if getMaxUint256() returns the maximum uint256 value

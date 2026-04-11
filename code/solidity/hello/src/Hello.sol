@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.28;
+pragma solidity ^0.8.33;
 
 import {console} from "forge-std/console.sol";
 
@@ -9,28 +9,31 @@ contract Hello {
     /// @param newName The new name stored in the contract.
     event NameChanged(address indexed changer, string newName);
 
-    string private myName;
+    string private name;
 
     constructor() {
-        myName = "Pepe";
+        name = "Pepe";
+
         console.log("Constructor of the Hello contract");
     }
 
-    function greet() public pure returns (string memory) {
-        return "Hello World!";
+    function greet() public view returns (string memory) {
+        return string.concat("Hello, ", name, "!");
     }
 
     /// @notice Update the stored name and emit an event.
-    function setMyName(string memory newName) public {
-        require(bytes(newName).length > 0, "Name cannot be empty");
-        myName = newName;
+    function setName(string memory newName) public {
+        require(bytes(newName).length > 0, "New name cannot be empty");
 
-        emit NameChanged(msg.sender, newName);
-        console.log("Name updated to:", newName);
+        name = newName;
+
+        emit NameChanged(msg.sender, name);
+
+        console.log("Name updated to:", name);
     }
 
-    function getMyName() public view returns (string memory) {
-        return myName;
+    function getName() public view returns (string memory) {
+        return name;
     }
 
     function getMaxUint256() public pure returns (uint256) {

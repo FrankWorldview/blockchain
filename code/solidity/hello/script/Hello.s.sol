@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.28;
+pragma solidity ^0.8.33;
 
 // Import Foundry's scripting utilities and console for logging
 import {Script} from "forge-std/Script.sol";
