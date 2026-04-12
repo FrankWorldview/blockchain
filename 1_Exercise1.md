@@ -119,7 +119,7 @@
   (Run the editor at the root folder of hello-app.)
 + Put `go.cjs` into your app root (i.e., hello-app).
   (You can copy this file from `/code/web/hello-app/go.cjs`.)
-+ Run `go.cjs` to extract the contract's ABI and address.
++ Run `go.cjs` to get the contract's ABI and address.
   ```
   mkdir src/abi
   node go.cjs
