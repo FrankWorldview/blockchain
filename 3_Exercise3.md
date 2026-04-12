@@ -72,7 +72,7 @@
 + Copy all files from `/code/web/fundraising-app` to your `fundraising-app` folder.
 + Put `go.cjs` into your app root (i.e., fundraising-app).
   (You can copy this file from `/code/web/fundraising-app/go.cjs`.)
-+ Run `go.cjs` to extract the contract's ABI and address.
++ Run `go.cjs` to get the contract's ABI and address.
   ```
   mkdir src/fundraising/abi
   node go.cjs
