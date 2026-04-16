@@ -95,12 +95,12 @@
   npm install ethers
   ```
 + Edit "vieweth.js".
-  (You can copy this file from `/smart_contracts/code/web/vieweth/vieweth.js`.)
+  (You can copy this file from `/code/web/vieweth/vieweth.js`.)
 + View the result.
   ```
   node vieweth
   ```
 
-![image](/smart_contracts/image/anvil.png)
+![image](/image/anvil.png)
 
-![image](/smart_contracts/image/vieweth.png)
+![image](/image/vieweth.png)
