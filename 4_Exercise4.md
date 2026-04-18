@@ -1,6 +1,10 @@
 # Exercise 4: Create Your Own Tokens
 
 ## Create, Test, and Deploy Your ERC‑20 Contract on Anvil
++ Enter the folder `Solidity`.
+  ```
+  cd Solidity
+  ```
 + Initialize a Foundry project.
    ```
    forge init erc20
