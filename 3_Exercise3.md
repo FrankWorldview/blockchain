@@ -34,9 +34,8 @@
 
 ## Interact with the FundraiserFactory and Fundraiser Contracts via React
 + Open a Git Bash (in Windows) or a terminal (in Mac).
-+ Create a folder `Web` and enter it.
++ Enter the folder `Web`.
   ```
-  mkdir Web
   cd Web
   ```
 + Create a React + Vite app. (Install with npm and start now? Choose "No".)
