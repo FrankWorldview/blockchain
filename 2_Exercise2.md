@@ -8,7 +8,7 @@
   ```
   cd Web
   ```
-+ Create a React + Vite app.
++ Create a React + Vite app. (Install with npm and start now? Choose "No".)
   ```
   npm create vite@latest transfer-app -- --template react
   ```
