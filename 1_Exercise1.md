@@ -79,11 +79,11 @@
   cast call $CONTRACT_ADDR "greet()(string)" --rpc-url http://127.0.0.1:8545
   cast call $CONTRACT_ADDR "getMaxUint256()(uint256)" --rpc-url http://127.0.0.1:8545
   cast call $CONTRACT_ADDR "sumUpTo(uint256)(uint256)" 100 --rpc-url http://127.0.0.1:8545
-  cast call $CONTRACT_ADDR "getMyName()(string)" --rpc-url http://127.0.0.1:8545
-  cast send $CONTRACT_ADDR "setMyName(string)" "Frank1" --rpc-url http://127.0.0.1:8545 --from 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266 --unlocked
-  cast call $CONTRACT_ADDR "getMyName()(string)" --rpc-url http://127.0.0.1:8545
-  cast send $CONTRACT_ADDR "setMyName(string)" "Frank2" --rpc-url http://127.0.0.1:8545 --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
-  cast call $CONTRACT_ADDR "getMyName()(string)" --rpc-url http://127.0.0.1:8545
+  cast call $CONTRACT_ADDR "getName()(string)" --rpc-url http://127.0.0.1:8545
+  cast send $CONTRACT_ADDR "setName(string)" "Frank1" --rpc-url http://127.0.0.1:8545 --from 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266 --unlocked
+  cast call $CONTRACT_ADDR "getName()(string)" --rpc-url http://127.0.0.1:8545
+  cast send $CONTRACT_ADDR "setName(string)" "Frank2" --rpc-url http://127.0.0.1:8545 --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
+  cast call $CONTRACT_ADDR "getName()(string)" --rpc-url http://127.0.0.1:8545
   ```
 
 ![image](/image/hello.png)
