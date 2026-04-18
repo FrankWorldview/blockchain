@@ -2,9 +2,8 @@
 
 ## Create, Test, and Deploy the FundraiserFactory Contract
 + Open a Git Bash (in Windows) or a terminal (in Mac).
-+ Create a folder `Solidity` and enter it.
++ Enter the folder `Solidity`.
   ```
-  mkdir Solidity
   cd Solidity
   ```
 + Initialize a Foundry project.
