@@ -271,20 +271,6 @@ At each step, the caller changes.
 
 ---
 
-## 🧠 Comparison
-
-- Internal call → same program flow
-- External call → message passing
-
-| Feature | Internal | External | Public |
-|--------|---------|---------|--------|
-| Context | Same | New | Both |
-| msg.sender | Same | Changes | Depends |
-| ABI | No | Yes | Depends |
-| Gas | Low | High | Depends |
-
----
-
 ## ✅ Use Cases
 
 ### 🔹 Use `external`
