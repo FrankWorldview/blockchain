@@ -79,20 +79,6 @@ contract Fundraiser is Ownable {
     }
 
     /**
-     * @dev Accepts ETH donations from users.
-     * Records the donation and emits an event.
-     */
-    function donate() public payable {
-        require(msg.value > 0, "Donation must be greater than 0");
-
-        _donations[msg.sender].push(Donation(msg.value, block.timestamp));
-        totalDonations += msg.value;
-        donationsCount++;
-
-        emit DonationReceived(msg.sender, msg.value);
-    }
-
-    /**
      * @dev Returns arrays of values and timestamps for all donations by the caller.
      */
     function myDonations()
@@ -128,20 +114,39 @@ contract Fundraiser is Ownable {
     }
 
     /**
+     * @dev Internal helper to record a donation.
+     */
+    function _recordDonation(address donor, uint256 amount) internal {
+        require(amount > 0, "Donation must be greater than 0");
+
+        _donations[donor].push(
+            Donation({value: amount, date: block.timestamp})
+        );
+
+        totalDonations += amount;
+        donationsCount++;
+
+        emit DonationReceived(donor, amount);
+    }
+
+    /**
+     * @dev Donate via explicit function call.
+     */
+    function donate() public payable {
+        _recordDonation(msg.sender, msg.value);
+    }
+
+    /**
      * @dev Fallback handler for receiving plain ETH transfers with no calldata.
      */
     receive() external payable {
-        totalDonations += msg.value;
-        donationsCount++;
-        emit DonationReceived(msg.sender, msg.value);
+        _recordDonation(msg.sender, msg.value);
     }
 
     /**
      * @dev Fallback handler for receiving ETH with unrecognized calldata.
      */
     fallback() external payable {
-        totalDonations += msg.value;
-        donationsCount++;
-        emit DonationReceived(msg.sender, msg.value);
+        revert("Fundraiser fallback(): Unknown function");
     }
 }

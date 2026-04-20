@@ -12,6 +12,8 @@ import {
   CardActionArea,
 } from '@mui/material';
 
+import LogoPepe from '../assets/logo-pepe.svg';
+
 const Receipts = () => {
   const [fund, setFund] = useState(null);
   const [date, setDate] = useState(null);
@@ -41,7 +43,7 @@ const Receipts = () => {
           <CardActionArea>
             <CardMedia
               component="img"
-              image="https://cryptopepes.wtf/_next/static/media/pepeetherface.c7cd1aa5.svg"
+              image={LogoPepe}
               alt="pepe"
             />
             <CardContent>

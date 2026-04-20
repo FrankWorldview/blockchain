@@ -203,59 +203,55 @@ function App() {
 
     return (
         <>
-            {/* Logo section */}
-            <div>
-                <a>
-                    <img src={LogoETH} className="logo" alt="Ethereum logo" />
-                </a>
-                <a>
-                    <img src={LogoPepe} className="logo react" alt="Pepe logo" />
-                </a>
-            </div>
+            <section id="center">
+                <div>
+                    <img src={LogoETH} width="150" alt="Ethereum logo" />
+                    <img src={LogoPepe} width="150" alt="Pepe logo" />
+                </div>
 
-            <h1>Transfer Ether</h1>
+                <h2>Transfer Ether</h2>
 
-            {/* Main UI Card */}
-            <div className="card">
-                <button onClick={connectWallet}>Connect MetaMask Wallet</button>
+                <div>
+                    <button onClick={connectWallet}>Connect MetaMask Wallet</button>
 
-                <p>My Wallet Address: {senderWallet || '(not connected)'}</p>
+                    <p>My Wallet Address: {senderWallet || '(not connected)'}</p>
 
-                <p>
-                    My Balance: {senderBalance} Wei = {fmtEth(senderBalance)} ETH
-                </p>
+                    <p>
+                        My Balance: {senderBalance} Wei = {fmtEth(senderBalance)} ETH
+                    </p>
 
-                <button
-                    onClick={transfer}
-                    disabled={!signer || !isValidAddress(receiverWallet) || !(transferAmount > 0)}
-                >
-                    Transfer
-                </button>
+                    <button
+                        onClick={transfer}
+                        disabled={!signer || !isValidAddress(receiverWallet) || !(transferAmount > 0)}
+                    >
+                        Transfer
+                    </button>
 
-                <p>
-                    Receiver Wallet Address:{' '}
-                    <input
-                        value={receiverWallet}
-                        onChange={(e) => setReceiverWallet(e.target.value.trim())}
-                        placeholder="0x… receiver address"
-                    />
-                </p>
+                    <p>
+                        Receiver Wallet Address:{' '}
+                        <input
+                            value={receiverWallet}
+                            onChange={(e) => setReceiverWallet(e.target.value.trim())}
+                            placeholder="0x… receiver address"
+                        />
+                    </p>
 
-                <p>
-                    Transfer Amount (Ether):{' '}
-                    <input
-                        value={transferAmount}
-                        onChange={(e) => setTransferAmount(Number(e.target.value))}
-                        type="number"
-                        min="0"
-                        step="0.0001"
-                    />
-                </p>
+                    <p>
+                        Transfer Amount (Ether):{' '}
+                        <input
+                            value={transferAmount}
+                            onChange={(e) => setTransferAmount(Number(e.target.value))}
+                            type="number"
+                            min="0"
+                            step="0.0001"
+                        />
+                    </p>
 
-                <p>
-                    Receiver Balance: {receiverBalance} Wei = {fmtEth(receiverBalance)} ETH
-                </p>
-            </div>
+                    <p>
+                        Receiver Balance: {receiverBalance} Wei = {fmtEth(receiverBalance)} ETH
+                    </p>
+                </div>
+            </section>
         </>
     );
 }

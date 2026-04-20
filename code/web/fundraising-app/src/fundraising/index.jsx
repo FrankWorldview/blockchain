@@ -130,7 +130,7 @@ const Fundraising = () => {
           Fundraising Campaigns
         </Typography>
 
-        <Box display="flex" justifyContent="center" mb={2}>
+        <Box display="flex" justifycontent="center">
           <Button onClick={connectWallet} variant="contained">
             {accounts.length > 0
               ? `Connected: ${accounts[0].slice(0, 6)}...${accounts[0].slice(-4)}`
@@ -138,10 +138,10 @@ const Fundraising = () => {
           </Button>
         </Box>
 
-        <Grid container spacing={2} justifyContent="center">
+        <Grid container spacing={2} justifycontent="center" sx={{ mt: 2 }}>
           {funds.map((fundraiser) => (
             <Grid
-              gridColumn={{
+              gridcolumn={{
                 xs: 'span 12',
                 sm: 'span 6',
                 md: 'span 4',

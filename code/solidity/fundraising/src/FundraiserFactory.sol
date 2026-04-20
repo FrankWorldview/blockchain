@@ -29,6 +29,9 @@ contract FundraiserFactory {
         string memory description,
         address payable beneficiary
     ) public {
+        require(beneficiary != address(0), "Invalid beneficiary");
+        require(bytes(name).length > 0, "Name required");
+
         Fundraiser fundraiser = new Fundraiser(
             name,
             url,
@@ -39,6 +42,7 @@ contract FundraiserFactory {
         );
 
         _fundraisers.push(fundraiser);
+
         emit FundraiserCreated(address(fundraiser), msg.sender);
     }
 
@@ -80,5 +84,19 @@ contract FundraiserFactory {
 
         // 回傳結果（ABI 編碼後供外部合約或前端使用）
         return collection;
+    }
+
+    /**
+     * @dev Fallback handler for receiving plain ETH transfers with no calldata.
+     */
+    receive() external payable {
+        revert("FundraiserFactory receive(): Direct ETH transfer not allowed");
+    }
+
+    /**
+     * @dev Fallback handler for receiving ETH with unrecognized calldata.
+     */
+    fallback() external payable {
+        revert("FundraiserFactory fallback(): Unknown function");
     }
 }

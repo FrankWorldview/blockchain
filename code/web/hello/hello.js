@@ -1,7 +1,5 @@
 const { ethers } = require("ethers");
-
 const { loadHelloArtifact } = require("./config");
-
 const myNewName = "NewPepe";
 
 async function main() {

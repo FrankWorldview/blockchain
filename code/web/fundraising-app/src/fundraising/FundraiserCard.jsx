@@ -2,8 +2,8 @@ import { useState, useEffect, useMemo } from 'react';
 import { ethers } from 'ethers';
 import cc from 'cryptocompare';
 
+import { Link } from 'react-router-dom';
 import Box from '@mui/material/Box';
-import Link from '@mui/material/Link';
 import Card from '@mui/material/Card';
 import Stack from '@mui/material/Stack';
 import Input from '@mui/material/Input';
@@ -17,7 +17,6 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 
-import { RouterLink } from '/src/components/router-link';
 import { ETHEREUM_URL } from './index.jsx';
 import fundraiserContractABI from './abi/Fundraiser-abi.json';
 
@@ -278,9 +277,7 @@ const FundraiserCard = ({ fundraiser }) => {
             {dateStr} — ${usd}
           </Typography>
           <Button variant="contained" color="primary" sx={{ mt: 0.5 }}>
-            <Link
-              component={RouterLink}
-              href="/fundraising/receipts"
+            <Link to="/fundraising/receipts"
               state={{ fund: contractData.fundName, date: tsSec, money: usd }}
               style={{ textDecoration: 'none', color: 'inherit' }}
             >
@@ -299,7 +296,7 @@ const FundraiserCard = ({ fundraiser }) => {
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Donate to {contractData.fundName}</DialogTitle>
         <DialogContent>
-          <Box display="flex" flexDirection="column" gap={2}>
+          <Box display="flex" flexdirection="column" gap={2}>
             {contractData.fundImageUrl && (
               <img
                 src={contractData.fundImageUrl}
@@ -364,7 +361,7 @@ const FundraiserCard = ({ fundraiser }) => {
           <Typography gutterBottom variant="h5">
             {contractData.fundName}
           </Typography>
-          <Stack spacing={2} alignItems="flex-start">
+          <Stack spacing={2} alignitems="flex-start">
             <Typography variant="body2" color="text.secondary">
               Description: {contractData.fundDescription}
             </Typography>
