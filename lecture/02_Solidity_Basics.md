@@ -167,10 +167,10 @@ Two ways to observe contract state:
 ### Event Example
 
 ```solidity
-event Registered(address user, string domain);
+event Registered(address owner, string domain);
 
-function register(string memory name) public {
-    emit Registered(msg.sender, name);
+function register(string memory domain) public {
+    emit Registered(msg.sender, domain);
 }
 ```
 
