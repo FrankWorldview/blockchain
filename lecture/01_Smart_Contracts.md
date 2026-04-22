@@ -111,7 +111,7 @@ With blockchain:
 
 - Code runs on decentralized nodes
 - Execution is transparent
-- Hard to tamper
+- Data is tamper-resistant
 
 ---
 
