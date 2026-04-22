@@ -2,7 +2,7 @@
 // Provides easy interaction with Ethereum nodes via JSON-RPC
 const { ethers } = require("ethers");
 
-// RPC endpoint for your local Ethereum test node (e.g., Anvil, Ganache, Hardhat)
+// RPC endpoint for your local Ethereum test node (Anvil / Hardhat)
 const rpcURL = "http://127.0.0.1:8545";
 
 // Create a new provider instance that connects to the RPC endpoint
@@ -15,40 +15,63 @@ const targetAddress = "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266";
  * Retrieve and display general blockchain information:
  * - Chain ID (network identifier)
  * - Latest block number
- * - Current gas price (from EIP-1559 fee data)
+ * - EIP-1559 fee information
  * - ETH balance of a specific target address
  */
 async function getBlockchainInfo() {
     try {
-        // Get the network information (includes chainId)
+        // Get network information (includes chainId)
         const { chainId } = await provider.getNetwork();
-        console.log(`Chain ID: ${chainId}`);
+        console.log(`Chain ID: ${chainId.toString()}`);
 
         // Get the most recent block number on the blockchain
         const blockNumber = await provider.getBlockNumber();
         console.log(`Latest Block Number: ${blockNumber}`);
 
-        // Get current gas price / fee data
-        // Ethers v6 prefers getFeeData() over getGasPrice()
-        const feeData = await provider.getFeeData();
+        // Retrieve the latest block from the connected Ethereum node
+        // "latest" = the most recently mined block
+        const block = await provider.getBlock("latest");
 
-        // Pick gas price or max fee per gas, whichever exists
-        // The ?? operator (Nullish Coalescing)
-        // ?? means “use the next value if the left side is null or undefined.”
-        const gasPriceLike = feeData.gasPrice ?? feeData.maxFeePerGas ?? 0n;
-
-        // Display gas price in both wei and gwei units
+        // baseFeePerGas:
+        // - Defined by EIP-1559
+        // - Determined by the network, not by the user
+        // - Changes dynamically depending on block congestion
+        // - Represents the minimum fee required for inclusion
+        // - May be null on non-EIP-1559 chains
         console.log(
-            `Current Gas Price: ${gasPriceLike} wei (${ethers.formatUnits(
-                gasPriceLike,
-                "gwei"
-            )} gwei)`
+            "baseFeePerGas:",
+            ethers.formatUnits(block.baseFeePerGas ?? 0n, "gwei"),
+            "gwei"
         );
 
-        // Get the ETH balance of the target address (returns BigInt in wei)
+        // Retrieve fee suggestions from the provider
+        // These are provider-estimated values for submitting a transaction;
+        // they are not fee values taken from a specific on-chain transaction
+        const feeData = await provider.getFeeData();
+
+        // maxFeePerGas:
+        // - The maximum total fee per gas the sender is willing to pay
+        // - Acts as an upper cap for base fee + priority fee
+        console.log(
+            "maxFeePerGas:",
+            ethers.formatUnits(feeData.maxFeePerGas ?? 0n, "gwei"),
+            "gwei"
+        );
+
+        // maxPriorityFeePerGas:
+        // - Also called the "tip"
+        // - Paid to the validator (or miner on older terminology)
+        // - Used to encourage faster transaction inclusion
+        console.log(
+            "maxPriorityFeePerGas:",
+            ethers.formatUnits(feeData.maxPriorityFeePerGas ?? 0n, "gwei"),
+            "gwei"
+        );
+
+        // Get the ETH balance of the target address (returned as BigInt in wei)
         const balance = await provider.getBalance(targetAddress);
 
-        // Convert balance from wei → ETH for easier reading
+        // Convert balance from wei to ETH for easier reading
         console.log(
             `Balance of ${targetAddress}: ${balance} wei (${ethers.formatEther(
                 balance
@@ -64,8 +87,8 @@ async function getBlockchainInfo() {
  * Display all available accounts from the connected Ethereum node
  * and their ETH balances.
  *
- * Works with local development nodes like Anvil, Hardhat, or Ganache
- * which automatically unlock and expose accounts via `eth_accounts`.
+ * Works with local development nodes like Anvil, Hardhat, or Ganache,
+ * which expose unlocked accounts through the `eth_accounts` RPC method.
  */
 async function getAllAccountBalances() {
     try {
@@ -99,10 +122,10 @@ async function getAllAccountBalances() {
  * - Then prints all local accounts and balances
  */
 async function main() {
-    console.log("==== Blockchain Info ====");
+    console.log("===== Blockchain Info =====");
     await getBlockchainInfo();
 
-    console.log("\n==== Account Info ====");
+    console.log("\n===== Account Info =====");
     await getAllAccountBalances();
 }
 
