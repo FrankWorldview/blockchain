@@ -148,7 +148,7 @@ mapping(address => uint256) balances;
 
 Key properties:
 
-- Every key has a default value (e.g., 0)
+- Every key in a mapping always returns a value. If a key has never been assigned, it automatically returns the default value of its type (e.g., 0 for uint256, false for bool).
 - No built-in way to:
   - get length
   - iterate over keys
