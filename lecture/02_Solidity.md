@@ -1,4 +1,6 @@
-# Solidity Basics (Berkeley DeFi Lecture 3, P17–P25)
+# Solidity Basics
+
+This page is based on [DeFi Learning](https://rdi.berkeley.edu/berkeley-defi/assets/material/Lecture%203%20Slides.pdf), P17-P25.
 
 ## 1. Overview
 
@@ -47,7 +49,7 @@ Solidity is:
 
 ---
 
-## 4. Mapping (Important!)
+## 4. Mapping
 
 Mapping is:
 
@@ -148,9 +150,9 @@ Define whether a function can modify state:
 Example:
 
 ```solidity
-function f1() public { }        // can modify state
-function f2() public view { }  // read only
-function f3() public pure { }  // no state access
+function f1() public { ... }  // can modify state
+function f2() public view {  ... }  // read only
+function f3() public pure { ... }  // no state access
 ```
 
 ---
@@ -186,22 +188,3 @@ Key idea:
 - Functions have visibility & mutability
 - Constructor runs only once
 - Events are critical for off-chain interaction
-
----
-
-## 11. Teaching Insight (你上課可以直接講)
-
-> Solidity is not just programming —  
-> it is programming **with constraints of a blockchain system**.
-
-- No iteration over mappings
-- No hidden data
-- Execution costs gas
-- Everything is public
-
----
-
-## 12. One-Line Summary
-
-> Smart contracts are programs,  
-> but **Solidity programs are shaped by blockchain constraints**.
