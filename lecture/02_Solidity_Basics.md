@@ -49,30 +49,7 @@ Solidity is:
 
 ---
 
-## 4. Mapping
-
-Mapping is:
-
-> A key-value storage (like a hash table)
-
-Example:
-
-```solidity
-mapping(address => uint256) balances;
-```
-
-Key properties:
-
-- Every key has a default value (e.g., 0)
-- No built-in way to:
-  - get length
-  - iterate over keys
-
-👉 You must track keys manually
-
----
-
-## 5. Function Structure
+## 4. Function Structure
 
 A Solidity function includes:
 
@@ -92,7 +69,7 @@ function getPrice(uint x) public view returns (uint) {
 
 ---
 
-## 6. Constructor
+## 5. Constructor
 
 A constructor is:
 
@@ -113,7 +90,7 @@ constructor(address initialOwner) {
 
 ---
 
-## 7. Visibility Modifiers
+## 6. Visibility Modifiers
 
 ### For Functions
 
@@ -132,7 +109,7 @@ constructor(address initialOwner) {
 
 ---
 
-## 8. Mutability Modifiers
+## 7. Mutability Modifiers
 
 Define whether a function can modify state:
 
@@ -154,6 +131,29 @@ function f1() public { ... }  // can modify state
 function f2() public view {  ... }  // read only
 function f3() public pure { ... }  // no state access
 ```
+
+---
+
+## 8. Mapping
+
+Mapping is:
+
+> A key-value storage (like a hash table)
+
+Example:
+
+```solidity
+mapping(address => uint256) balances;
+```
+
+Key properties:
+
+- Every key has a default value (e.g., 0)
+- No built-in way to:
+  - get length
+  - iterate over keys
+
+👉 You must track keys manually
 
 ---
 
@@ -184,7 +184,7 @@ Key idea:
 
 - Solidity is compiled → EVM bytecode
 - It is statically typed
-- Mapping is NOT iterable
 - Functions have visibility & mutability
 - Constructor runs only once
+- Mapping is NOT iterable
 - Events are critical for off-chain interaction
