@@ -134,6 +134,7 @@ Define whether a function can read or modify contract state.
 function f1() public { ... } // read & write state
 function f2() public view { ... } // read state only
 function f3() public pure { ... } // no state or context access
+```
 
 ---
 
