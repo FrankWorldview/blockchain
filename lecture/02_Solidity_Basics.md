@@ -111,26 +111,29 @@ constructor(address initialOwner) {
 
 ## 7. Mutability Modifiers
 
-Define whether a function can modify state:
+Define whether a function can read or modify contract state.
+
+> **State = contract storage (state variables)**  
+> It does **not** include execution context (e.g., `msg`, `block`).
 
 ### `public`
-- Can modify state
+- Can read and modify state
 
 ### `view`
 - Cannot modify state
-- Can read blockchain data
+- Can read state
 
 ### `pure`
 - Cannot read or modify state
+- Cannot access execution context (`msg`, `block`)
 - Pure computation only
 
-Example:
+### Example
 
 ```solidity
-function f1() public { ... }  // can modify state
-function f2() public view {  ... }  // read only
-function f3() public pure { ... }  // no state access
-```
+function f1() public { ... } // read & write state
+function f2() public view { ... } // read state only
+function f3() public pure { ... } // no state or context access
 
 ---
 
