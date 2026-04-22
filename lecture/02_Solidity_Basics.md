@@ -77,10 +77,10 @@ Key properties:
 A Solidity function includes:
 
 - Name
-- Arguments
-- Return types
+- Parameters
 - Visibility modifier
 - Mutability modifier
+- Return types
 
 Example:
 
