@@ -6,7 +6,7 @@ This page is based on [DeFi Learning](https://rdi.berkeley.edu/berkeley-defi/ass
 
 This section introduces the core components of Solidity programming:
 
-- Solidity vs EVM
+- Solidity vs. EVM
 - Data types
 - Functions
 - Constructors
