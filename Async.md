@@ -1,5 +1,12 @@
 # Asynchronous Operations in JavaScript
 
+## What are Asynchronous Operations?
+Asynchronous operations are tasks that start now but finish later, without blocking the rest of the program. They allow a program to continue running other tasks while waiting for results (e.g., network requests or blockchain calls).
+
+Start first, finish later — and don’t wait.
+
+Asynchronous = non-blocking execution.
+
 ## What is a Promise in JavaScript?
 A Promise in JavaScript is an object that represents the eventual completion (or failure) of an asynchronous operation and its resulting value. Promises are a way to handle asynchronous operations more effectively than traditional callback functions, providing a clearer and more manageable approach.
 
