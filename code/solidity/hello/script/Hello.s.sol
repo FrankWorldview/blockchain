@@ -7,7 +7,8 @@ import {Script} from "forge-std/Script.sol";
 // Import the Hello contract to be deployed
 import {Hello} from "../src/Hello.sol";
 
-// Script contract used for deploying the Hello contract with Foundry
+// Define a script contract inheriting from Foundry's Script contract
+// Used for deploying the Hello contract with Foundry
 contract HelloScript is Script {
     // Declare a public Hello contract instance
     Hello public hello;

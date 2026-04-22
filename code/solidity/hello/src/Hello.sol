@@ -10,7 +10,7 @@ import {console} from "forge-std/console.sol";
  * @title Hello
  * @notice A simple Solidity contract for teaching basic concepts.
  * @dev This contract is intentionally permissionless:
- *      anyone can call setName() and update the stored name.
+ *      Anyone can call setName() and update the stored name.
  *      This is useful for demonstrating open/public write access,
  *      but it is NOT appropriate for sensitive production data.
  */
@@ -47,7 +47,7 @@ contract Hello {
     /**
      * @notice Updates the stored name.
      * @dev This contract is intentionally permissionless:
-     *      anyone may call this function.
+     *      Anyone may call this function.
      *      calldata is used to avoid an unnecessary memory copy for external inputs.
      * @param newName The new name to store.
      */
@@ -84,7 +84,7 @@ contract Hello {
      * @dev This avoids a loop, which would cost more gas.
      *      In Solidity 0.8+, arithmetic overflow causes a revert automatically.
      * @param n The upper bound of the summation.
-     * @return The sum 1 + 2 + ... + n.
+     * @return The sum of 1 + 2 + ... + n.
      */
     function sumUpTo(uint256 n) external pure returns (uint256) {
         require(n > 0, "Input must be greater than 0");

@@ -1,55 +1,55 @@
 import { useEffect, useState, useMemo } from 'react';
 import { ethers } from 'ethers';
 
-// 靜態資源（圖片 + CSS）
+// Static assets (images + CSS)
 import reactLogo from './assets/react.svg';
 import viteLogo from './assets/vite.svg';
 import heroImg from './assets/hero.png';
 import './App.css';
 
-// ABI（合約介面）與已部署地址
+// Contract ABI and deployed address
 import helloABI from './abi/Hello-abi.json';
 import helloAddr from './abi/Hello-addr.json';
 
-// 本地區塊鏈節點（Anvil / Hardhat / Ganache）
+// Local blockchain node (Anvil / Hardhat)
 const RPC_URL = 'http://127.0.0.1:8545';
 
 function App() {
-  // ===== React state（用來存合約回傳資料） =====
-  const [text, setText] = useState('');       // greet()
-  const [name, setName] = useState('');       // getName()
-  const [number, setNumber] = useState('0');  // getMaxUint256()
-  const [sum, setSum] = useState('0');        // sumUpTo()
-  const [loading, setLoading] = useState(true); // UI loading 狀態
+  // ===== React state (stores data returned from the contract) =====
+  const [text, setText] = useState(''); // greet()
+  const [name, setName] = useState(''); // getName()
+  const [number, setNumber] = useState('0'); // getMaxUint256()
+  const [sum, setSum] = useState('0'); // sumUpTo()
+  const [loading, setLoading] = useState(true); // UI loading state
 
-  // ===== 建立 provider（只讀） =====
-  // useMemo：避免每次 render 都重新建立 provider
+  // ===== Create provider (read-only) =====
+  // useMemo prevents re-creating the provider on every render
   const provider = useMemo(
     () => new ethers.JsonRpcProvider(RPC_URL),
     []
   );
 
-  // 從 JSON 檔取出合約地址
+  // Extract contract address from JSON file
   const contractAddress = helloAddr?.address;
 
-  // ===== 讀取合約資料 =====
+  // ===== Fetch data from the contract =====
   const fetchContractData = async () => {
     try {
       setLoading(true);
 
-      // 防呆：確保 address 合法
+      // Guard: ensure the contract address is valid
       if (!contractAddress || !ethers.isAddress(contractAddress)) {
         throw new Error(`Invalid contract address: ${contractAddress}`);
       }
 
-      // 建立 contract instance（read-only）
+      // Create contract instance (read-only, using provider)
       const hello = new ethers.Contract(
         contractAddress,
         helloABI,
         provider
       );
 
-      // ===== 一個一個呼叫合約 view function =====
+      // ===== Call contract view functions =====
 
       // greet() → string
       const textResult = await hello.greet();
@@ -61,22 +61,23 @@ function App() {
 
       // getMaxUint256() → uint256 (BigInt in ethers v6)
       const numberResult = await hello.getMaxUint256();
-      setNumber(numberResult.toString()); // BigInt → string
+      setNumber(numberResult.toString()); // Convert BigInt → string
 
       // sumUpTo(100) → uint256
-      // 注意：ethers v6 建議用 BigInt (100n)
+      // Note: ethers v6 prefers BigInt (e.g., 100n)
       const sumResult = await hello.sumUpTo(100n);
       setSum(sumResult.toString());
 
     } catch (error) {
-      // 捕捉錯誤（RPC / ABI / address 錯誤）
+      // Handle errors (RPC / ABI / invalid address, etc.)
       console.error('Error fetching contract data:', error);
     } finally {
-      setLoading(false); // 不論成功或失敗都結束 loading
+      // End loading state regardless of success or failure
+      setLoading(false);
     }
   };
 
-  // ===== component mount 時執行一次 =====
+  // ===== Run once when the component mounts =====
   useEffect(() => {
     fetchContractData();
   }, []);
@@ -85,7 +86,7 @@ function App() {
   return (
     <section id="center">
 
-      {/* Hero 區塊（純 UI） */}
+      {/* Hero section (UI only) */}
       <div className="hero">
         <img src={heroImg} className="base" width="170" height="179" alt="Hero" />
         <img src={reactLogo} className="framework" alt="React logo" />
@@ -95,17 +96,17 @@ function App() {
       <h2>Hello App</h2>
 
       <div>
-        {/* 顯示合約地址 */}
+        {/* Display contract address */}
         <p>
           <strong>Contract address</strong>: {contractAddress}
         </p>
 
-        {/* loading 狀態 */}
+        {/* Loading state */}
         {loading ? (
           <p>Loading...</p>
         ) : (
           <>
-            {/* 顯示合約回傳資料 */}
+            {/* Display contract data */}
             <p><strong>greet()</strong>: {text}</p>
             <p><strong>getName()</strong>: {name}</p>
             <p><strong>getMaxUint256()</strong>: {number}</p>

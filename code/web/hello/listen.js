@@ -1,18 +1,19 @@
 const { ethers } = require("ethers");
 const { loadHelloArtifact } = require("./config");
 
-async function main() {
+function main() {
     try {
         // Web socket provider
         const wsUrl = "ws://127.0.0.1:8545";
         const provider = new ethers.WebSocketProvider(wsUrl);
 
-        // Load config
+        // Load the contract ABI and address
         const { helloABI, helloAddress } = loadHelloArtifact();
 
         console.log("✅ Contract address:", helloAddress);
         console.log("⏳ Listening for NameChanged events...\n");
 
+        // Create a contract instance to interact with the deployed Hello contract
         const hello = new ethers.Contract(helloAddress, helloABI, provider);
 
         // Subscribe to the NameChanged event and execute the callback whenever the event is emitted on-chain

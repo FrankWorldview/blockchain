@@ -12,7 +12,7 @@ contract HelloTest is Test {
     // Declare an instance of the Hello contract
     Hello public hello;
 
-    // Run before each test – deploys a fresh instance of Hello
+    // Run before each test in order to deploy a fresh instance of Hello
     function setUp() public {
         hello = new Hello();
     }
