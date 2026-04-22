@@ -69,13 +69,13 @@ Solidity needs data location for **reference types** to determine:
 
 ## 🧾 Comparison Table
 
-| Feature        | `storage`      | `memory`            | `calldata`           |
-|----------------|----------------|----------------------|------------------------|
-| Lives in       | Blockchain     | RAM (during function) | Call data (stack)     |
-| Persistent?    | ✅ Yes         | ❌ No               | ❌ No                |
-| Modifiable?    | ✅ Yes         | ✅ Yes              | ❌ No (read-only)    |
-| Gas Cost       | Moderate/High  | Moderate             | ✅ Lowest            |
-| Use Case       | State vars     | Internal logic       | External inputs       |
+| Feature        | `storage`              | `memory`                          | `calldata`                          |
+|----------------|------------------------|------------------------------------|--------------------------------------|
+| Lives in       | Blockchain (persistent)| RAM (temporary, during execution) | Call data (read-only input area)     |
+| Persistent?    | ✅ Yes                 | ❌ No                             | ❌ No                                |
+| Modifiable?    | ✅ Yes                 | ✅ Yes                            | ❌ No (read-only)                    |
+| Gas Cost       | High                   | Moderate                          | ✅ Lowest                            |
+| Use Case       | State variables        | Internal computation              | External function inputs             |
 
 ---
 
