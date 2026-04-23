@@ -74,11 +74,7 @@ function getPrice(uint x) public view returns (uint) {
 A constructor is:
 
 > Executed only once when the contract is deployed
-
-Used to:
-
-- Initialize state
-- Set initial parameters
+> Used to initialize the contract’s state
 
 Example:
 
