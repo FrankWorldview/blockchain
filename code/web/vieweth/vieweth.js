@@ -49,15 +49,6 @@ async function getBlockchainInfo() {
         // they are not fee values taken from a specific on-chain transaction
         const feeData = await provider.getFeeData();
 
-        // maxFeePerGas:
-        // - The maximum total fee per gas the sender is willing to pay
-        // - Acts as an upper cap for base fee + priority fee
-        console.log(
-            "maxFeePerGas:",
-            ethers.formatUnits(feeData.maxFeePerGas ?? 0n, "gwei"),
-            "gwei"
-        );
-
         // maxPriorityFeePerGas:
         // - Also called the "tip"
         // - Paid to the validator (or miner on older terminology)
@@ -65,6 +56,15 @@ async function getBlockchainInfo() {
         console.log(
             "maxPriorityFeePerGas:",
             ethers.formatUnits(feeData.maxPriorityFeePerGas ?? 0n, "gwei"),
+            "gwei"
+        );
+
+        // maxFeePerGas:
+        // - The maximum total fee per gas the sender is willing to pay
+        // - Acts as an upper cap for base fee + priority fee
+        console.log(
+            "maxFeePerGas:",
+            ethers.formatUnits(feeData.maxFeePerGas ?? 0n, "gwei"),
             "gwei"
         );
 
