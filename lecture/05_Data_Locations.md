@@ -24,19 +24,18 @@ calldata → (copy if needed) → memory → (write if needed) → storage
 
 ---
 
-## 🔹 `storage`
+## 🔹 `calldata`
 
-- **Location**: Contract’s persistent on-chain storage
-- **Lifetime**: Permanent (until modified or deleted)
-- **Mutable**: ✅ Yes
-- **Used For**: State variables and persistent data structures
+- **Location**: Read-only, external function arguments
+- **Lifetime**: Temporary, tied to the function call
+- **Mutable**: ❌ No (read-only)
+- **Used For**: `external` function parameters, especially arrays and strings
 
 ```solidity
-uint[] public numbers;
-
-function update(uint index, uint newValue) public {
-    uint[] storage nums = numbers;
-    nums[index] = newValue; // changes on-chain
+function greet(string[] calldata names) external {
+    for (uint i = 0; i < names.length; i++) {
+        emit Greeting(names[i]);
+    }
 }
 ```
 
@@ -61,18 +60,19 @@ function double(uint[] memory input) public pure returns (uint[] memory) {
 
 ---
 
-## 🔹 `calldata`
+## 🔹 `storage`
 
-- **Location**: Read-only, external function arguments
-- **Lifetime**: Temporary, tied to the function call
-- **Mutable**: ❌ No (read-only)
-- **Used For**: `external` function parameters, especially arrays and strings
+- **Location**: Contract’s persistent on-chain storage
+- **Lifetime**: Permanent (until modified or deleted)
+- **Mutable**: ✅ Yes
+- **Used For**: State variables and persistent data structures
 
 ```solidity
-function greet(string[] calldata names) external {
-    for (uint i = 0; i < names.length; i++) {
-        emit Greeting(names[i]);
-    }
+uint[] public numbers;
+
+function update(uint index, uint newValue) public {
+    uint[] storage nums = numbers;
+    nums[index] = newValue; // changes on-chain
 }
 ```
 
