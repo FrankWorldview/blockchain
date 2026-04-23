@@ -6,10 +6,10 @@
 
 ## 🧠 Why Does Solidity Require Data Location?
 
-Solidity needs data location for **reference types** to determine:
-- Whether to **allocate memory** (temporary copy)
+Solidity needs data location for **reference types**:
+- **Read from calldata** (cheapest, read-only)
+- **Allocate memory** (temporary copy)
 - **Access storage** (permanent state)
-- Or **read from calldata** (cheapest, read-only)
 
 ---
 
