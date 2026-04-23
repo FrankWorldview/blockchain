@@ -131,14 +131,7 @@ Legal nuance is hard to encode
 
 ---
 
-## 10. Punchline
-
-> Smart contracts are vending machines —  
-> but with millions of dollars inside and no customer service.
-
----
-
-## 11. Why This Matters
+## 10. Why This Matters
 
 Smart contracts enable:
 

@@ -63,6 +63,8 @@
   ```
   code .
   ```
++ Edit `config.js`. (Change the two paths, according to your environment.)
+  (You can copy this file from `/code/web/hello/config.js`.)
 + View the result.
   ```
   node hello
@@ -70,8 +72,8 @@
 + Edit `listen.js`. (Subscribe to the NameChanged event.) (You can copy this file from `/code/web/hello/listen.js`.)
 + View the result.
   ```
-  node hello
   node listen
+  node hello
   ```
 + Interact with the contract uisng the `cast` command.
   ```
