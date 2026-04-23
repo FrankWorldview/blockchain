@@ -15,6 +15,7 @@ Solidity needs data location for **reference types** to determine:
 
 ## Data Flow in EVM
 
+```
 Transaction
    ↓
 calldata (input, read-only)
@@ -22,6 +23,7 @@ calldata (input, read-only)
 memory (temporary, mutable)
    ↓
 storage (persistent, expensive)
+```
 
 > Data flows only when necessary to minimize gas usage.
 
@@ -162,4 +164,3 @@ function setName(string memory name) public { ... }
 | `calldata`        | Read-only request input     |
 | `memory`          | RAM (temporary, fast)       |
 | `storage`         | Writing to disk (permanent) |
-```
