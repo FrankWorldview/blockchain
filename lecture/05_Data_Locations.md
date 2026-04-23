@@ -6,28 +6,11 @@
 
 ## 🧠 Why Does Solidity Require Data Location?
 
-Solidity needs data location for **reference types**:
-- **Read from calldata** (cheapest, read-only)
-- **Allocate memory** (temporary copy)
-- **Access storage** (permanent state)
+Solidity requires a data location for **reference types** to determine whether to:
 
----
-
-## Data Flow in EVM
-
-```
-Transaction
-   ↓
-calldata (input, read-only)
-   ↓
-memory (temporary, mutable)
-   ↓
-storage (persistent, expensive)
-```
-
-> Data flows only when necessary to minimize gas usage.
-
----
+- Read from **calldata** (input, read-only)
+- Allocate **memory** (temporary, mutable)
+- Access **storage** (persistent, on-chain state)
 
 ## 1. Calldata
 
