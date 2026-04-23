@@ -75,7 +75,7 @@ A constructor is:
 
 > Executed only once when the contract is deployed
 
-> Used to initialize the contract’s state
+> Used to initialize the contract’s state (state variables)
 
 Example:
 
