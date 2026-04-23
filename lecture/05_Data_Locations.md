@@ -1,80 +1,6 @@
 # Data Locations in Solidity
 
-In Solidity, data locations tell the compiler where variables reside — whether they are stored persistently on the blockchain or temporarily in memory. Choosing the right location affects **gas efficiency, mutability**, and **security**. Solidity requires that reference types (like arrays, structs, and strings) specify a data location explicitly.
-
----
-
-## EVM Data Areas (Conceptual View)
-
-```
-Transaction
-     ↓
-[ calldata ]   ← your input parameters live here (read-only)
-[  memory  ]   ← temporary execution space (allocated when needed)
-[  storage ]   ← persistent data on the blockchain
-```
-
-- **calldata**: input data, read-only, cheapest  
-- **memory**: temporary, mutable, medium cost  
-- **storage**: persistent, most expensive  
-
-### Execution Flow (Simplified)
-
-calldata → (copy if needed) → memory → (write if needed) → storage
-
----
-
-## 🔹 `calldata`
-
-- **Location**: Read-only, external function arguments
-- **Lifetime**: Temporary, tied to the function call
-- **Mutable**: ❌ No (read-only)
-- **Used For**: `external` function parameters, especially arrays and strings
-
-```solidity
-function greet(string[] calldata names) external {
-    for (uint i = 0; i < names.length; i++) {
-        emit Greeting(names[i]);
-    }
-}
-```
-
----
-
-## 🔹 `memory`
-
-- **Location**: Temporary RAM during function execution
-- **Lifetime**: Exists only during the current function call
-- **Mutable**: ✅ Yes
-- **Used For**: Temporary variables and return values
-
-```solidity
-function double(uint[] memory input) public pure returns (uint[] memory) {
-    uint[] memory result = new uint[](input.length);
-    for (uint i = 0; i < input.length; i++) {
-        result[i] = input[i] * 2;
-    }
-    return result;
-}
-```
-
----
-
-## 🔹 `storage`
-
-- **Location**: Contract’s persistent on-chain storage
-- **Lifetime**: Permanent (until modified or deleted)
-- **Mutable**: ✅ Yes
-- **Used For**: State variables and persistent data structures
-
-```solidity
-uint[] public numbers;
-
-function update(uint index, uint newValue) public {
-    uint[] storage nums = numbers;
-    nums[index] = newValue; // changes on-chain
-}
-```
+> Data location is not just syntax — it reflects how the EVM manages data and gas.
 
 ---
 
@@ -87,15 +13,112 @@ Solidity needs data location for **reference types** to determine:
 
 ---
 
+## Data Flow in EVM
+
+Transaction
+   ↓
+calldata (input, read-only)
+   ↓
+memory (temporary, mutable)
+   ↓
+storage (persistent, expensive)
+
+> Data flows only when necessary to minimize gas usage.
+
+---
+
+## 1. Calldata
+
+**Definition**  
+Calldata is a read-only area where function arguments are stored.
+
+**Key Features**
+- Read-only (immutable)
+- No additional memory allocation
+- Cheapest option
+- Used in external function parameters
+
+**Example**
+```solidity
+function setName(string calldata newName) external {
+    // newName lives in calldata
+}
+```
+
+**Why it exists**  
+Calldata avoids unnecessary copying and reduces gas usage.
+
+---
+
+## 2. Memory
+
+**Definition**  
+Memory is a temporary area used during contract execution.
+
+**Key Features**
+- Mutable (can modify)
+- Exists only during execution
+- Automatically cleared after execution
+- Medium gas cost
+
+**Example**
+```solidity
+function process(string calldata input) external {
+    string memory temp = input; // copy from calldata
+}
+```
+
+**Why it exists**  
+Memory allows modification of data during execution.
+
+---
+
+## 3. Storage
+
+**Definition**  
+Storage is the persistent data area on the blockchain.
+
+**Key Features**
+- Permanent
+- Stored on-chain
+- Most expensive
+- Shared across transactions
+
+**Example**
+```solidity
+string public name;
+
+function setName(string calldata newName) external {
+    name = newName; // write to storage
+}
+```
+
+**Why it exists**  
+Storage maintains contract state across transactions.
+
+---
+
+## Gas Cost Summary
+
+calldata < memory << storage
+
+---
+
+## Execution Flow (Simplified)
+
+calldata → (copy if needed) → memory → (write if needed) → storage
+
+---
+
 ## 🧾 Comparison Table
 
-| Feature        | `storage`              | `memory`                          | `calldata`                          |
-|----------------|------------------------|------------------------------------|--------------------------------------|
-| Lives in       | Blockchain (persistent)| RAM (temporary, during execution) | Call data (read-only input area)     |
-| Persistent?    | ✅ Yes                 | ❌ No                             | ❌ No                                |
-| Modifiable?    | ✅ Yes                 | ✅ Yes                            | ❌ No (read-only)                    |
-| Gas Cost       | High                   | Moderate                          | ✅ Lowest                            |
-| Use Case       | State variables        | Internal computation              | External function inputs             |
+| Feature        | `calldata`                          | `memory`                          | `storage`              |
+|----------------|--------------------------------------|------------------------------------|------------------------|
+| Lives in       | Call data (read-only input area)     | RAM (temporary, during execution) | Blockchain (persistent)|
+| Persistent?    | ❌ No                                | ❌ No                             | ✅ Yes                 |
+| Modifiable?    | ❌ No (read-only)                    | ✅ Yes                            | ✅ Yes                 |
+| Gas Cost       | ✅ Lowest                            | Moderate                          | High                   |
+| Use Case       | External function inputs             | Internal computation              | State variables        |
 
 ---
 
@@ -103,9 +126,9 @@ Solidity needs data location for **reference types** to determine:
 
 | Use Case                               | Best Choice |
 |----------------------------------------|-------------|
-| Reading/writing state variables        | `storage`   |
-| Temporary data inside a function       | `memory`    |
 | External function input (e.g., arrays) | `calldata`  |
+| Temporary data inside a function       | `memory`    |
+| Reading/writing state variables        | `storage`   |
 
 ---
 
@@ -136,6 +159,7 @@ function setName(string memory name) public { ... }
 
 | Solidity Location | Analogy                     |
 |-------------------|------------------------------|
-| `storage`         | Writing to disk (permanent) |
-| `memory`          | RAM (temporary, fast)       |
 | `calldata`        | Read-only request input     |
+| `memory`          | RAM (temporary, fast)       |
+| `storage`         | Writing to disk (permanent) |
+```
