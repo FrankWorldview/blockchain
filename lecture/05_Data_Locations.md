@@ -12,6 +12,8 @@ Solidity requires a data location for **reference types** to determine whether t
 - Allocate **memory** (temporary, mutable)
 - Access **storage** (persistent, on-chain state)
 
+---
+
 ## 1. Calldata
 
 **Definition**  
