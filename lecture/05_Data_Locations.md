@@ -4,6 +4,24 @@ In Solidity, data locations tell the compiler where variables reside — whether
 
 ---
 
+## EVM Data Areas (Conceptual View)
+
+Transaction
+   ↓
+[ calldata ]   ← your input parameters live here (read-only)
+[ memory   ]   ← temporary execution space (allocated when needed)
+[ storage  ]   ← persistent data on the blockchain
+
+- **calldata**: input data, read-only, cheapest  
+- **memory**: temporary, mutable, medium cost  
+- **storage**: persistent, most expensive  
+
+### Execution Flow (Simplified)
+
+calldata → (copy if needed) → memory → (write if needed) → storage
+
+---
+
 ## 🔹 `storage`
 
 - **Location**: Contract’s persistent on-chain storage
