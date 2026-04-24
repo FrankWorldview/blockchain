@@ -5,7 +5,6 @@
 + [Foundry Full Course](https://github.com/Cyfrin/foundry-full-course-cu)
 + [Solidity cheetsheet](https://docs.soliditylang.org/en/v0.8.28/cheatsheet.html)
 + [Ethers.js documents](https://docs.ethers.org/v6/)
-+ [Mastering Ethereum: 2nd Edition](https://github.com/ethereumbook/ethereumbook)
 
 # Supplements
 + [Ethereum basics](https://docs.alchemy.com/docs/ethereum-basics)
