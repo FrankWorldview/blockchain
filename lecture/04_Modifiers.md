@@ -138,10 +138,3 @@ function transferOwnership(address newOwner) public onlyOwner {
 ## Conclusion
 
 Modifiers in Solidity allow developers to enforce constraints, define access levels, and optimize contract structure. Understanding and applying them appropriately is key to writing secure and efficient smart contracts.
-
----
-
-## References
-
-- [Solidity Documentation](https://docs.soliditylang.org/)
-- [OpenZeppelin Contracts](https://docs.openzeppelin.com/contracts/)
