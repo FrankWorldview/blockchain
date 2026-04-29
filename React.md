@@ -102,15 +102,26 @@ function LogCountChange() {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    // When count changes → component re-renders → then this effect runs
-    console.log(`Count changed to ${count}`);
+    // ✅ Runs AFTER re-render → sees UPDATED value
+    console.log("After re-render (new value):", count);
   }, [count]);
 
   return (
     <div>
       <p>{count}</p>
 
-      <button onClick={() => setCount(count + 1)}>
+      <button
+        onClick={() => {
+          // 👇 Current render value
+          console.log("Before update:", count);
+
+          // 👇 Schedule state update (NOT immediate)
+          setCount(count + 1);
+
+          // ⚠️ Still old value (same render)
+          console.log("Still old (same render):", count);
+        }}
+      >
         Increase
       </button>
     </div>
