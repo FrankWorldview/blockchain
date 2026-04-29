@@ -165,7 +165,7 @@ Two ways to observe contract state:
 1. View functions (read state)
 2. Event logs (listen to activity)
 
-### Event Example
+### Event Example (Domain Name Registration)
 
 ```solidity
 event Registered(address owner, string domain);
