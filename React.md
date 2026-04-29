@@ -128,7 +128,6 @@ Calling setState (setXXX) does NOT immediately update the UI.
 
 React will:
 
-```text
 1. Schedule updates (may be batched)
 2. Re-render the component
 3. Then `useEffect` runs
@@ -140,9 +139,7 @@ Multiple setState calls may be batched together, resulting in a single re-render
 
 ## React Update Flow (Simplified)
 
-```text
 setState → schedule updates (may be batched) → re-render → then `useEffect` runs
-```
 
 ---
 
