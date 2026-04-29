@@ -50,7 +50,52 @@ Reference types store data indirectly and refer to a data location (`storage`, `
 
 ---
 
+## 4. Reference Types: Memory → Memory (Copied Reference)
 
+When a memory reference type is passed to another function, the reference is copied.  
+This means the caller and callee may initially point to the same underlying memory data.
+
+### Modify element → affects caller
+
+```solidity
+function foo(uint[] memory arr) internal {
+    arr[0] = 999;
+}
+
+function test1() public pure returns (uint) {
+    uint[] memory a = new uint[](1);
+    a[0] = 1;
+
+    foo(a);
+
+    return a[0]; // 999
+}
+```
+
+👉 `arr[0] = 999` modifies the shared underlying memory data.
+
+### Reassign → does NOT affect caller
+
+```solidity
+function foo2(uint[] memory arr) internal {
+    arr = new uint[](10);
+}
+
+function test2() public pure returns (uint) {
+    uint[] memory a = new uint[](1);
+    a[0] = 1;
+
+    foo2(a);
+
+    return a[0]; // still 1
+}
+```
+
+👉 `arr = new uint[](10)` only changes where `arr` points.  
+👉 The caller’s variable `a` still points to the original memory data.
+
+> Memory → Memory: the reference is copied.  
+> Modifying shared data may affect the caller, but reassigning the reference does not.
 
 ---
 
