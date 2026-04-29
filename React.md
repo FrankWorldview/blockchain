@@ -10,7 +10,7 @@ function Hello() {
 }
 ```
 
-👉 When React runs this function, it returns UI and displays it on the screen.
+👉 When React runs this function, it returns UI (JSX), which React uses to update the screen.
 
 ---
 
@@ -32,8 +32,8 @@ useState lets you store and update state inside a functional component.
 const [state, setState] = useState(initialValue);
 ```
 
-- state → current value  
-- setState → function to update the value  
+- state → current value
+- setState → function to update the value
 
 ### Example
 
@@ -48,11 +48,11 @@ function Count() {
     <div>
       <p>Count: {count}</p>
 
-      {/* 
+      {/*
         Clicking this:
         → calls setCount
-        → schedules an update
-        → triggers re-render
+        → schedules a state update (may be batched)
+        → triggers a re-render
       */}
       <button onClick={() => setCount(count + 1)}>
         Increase
@@ -87,9 +87,9 @@ useEffect(() => {
 }, [dependencies]);
 ```
 
-- [] → runs once after mount  
-- [count] → runs when count changes  
-- no array → runs after every render  
+- [] → runs once after mount
+- [count] → runs when count changes
+- no array → runs after every render
 
 ---
 
@@ -102,7 +102,7 @@ function LogCountChange() {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    // Runs after re-render when count changes
+    // Runs after render when count changes
     console.log(`Count changed to ${count}`);
   }, [count]);
 
@@ -122,33 +122,27 @@ export default LogCountChange;
 
 ---
 
-## Important Concept (Simplified)
+## Important Concept
 
 Calling setState (setXXX) does NOT immediately update the UI.
 
 React will:
 
 ```text
-1. schedule updates (may batch multiple updates)
+1. schedule updates (may be batched)
 2. re-render the component
-3. run useEffect
-```
+3. then useEffect runs
 
----
-
-## Key Idea
-
-```text
 Multiple setState calls may be batched together,
 resulting in a single re-render.
 ```
 
 ---
 
-## One-line Takeaway
+## React Update Flow (Simplified)
 
 ```text
-setState → schedule (batched) → re-render → useEffect
+setState → schedule updates (may be batched) → re-render → then useEffect runs
 ```
 
 ---
@@ -160,4 +154,5 @@ setState → schedule (batched) → re-render → useEffect
 | useState    | Manage state        |
 | useEffect   | Handle side effects |
 
-With Hooks, functional components can manage state and side effects.
+With Hooks, functional components can manage state and side effects,
+making them as powerful as class components.
