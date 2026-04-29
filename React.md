@@ -1,6 +1,8 @@
+# React Hooks
+
 Hooks contain reusable code logic that is separate from the component tree. They allow us to hook up functionality to our components. React ships with several built-in hooks we can use out of the box. `useState` and `useEffect` are two of the most commonly used hooks in React, enabling you to add state and manage side effects in functional components. Here’s a quick breakdown of each:
 
-# useState
+## useState
 + Purpose: useState allows you to create and manage state within functional components.
 + Usage: You use useState to store data that may change over time and needs to trigger re-renders when updated. Examples include form inputs, toggles, counters, or any dynamic content.
 
@@ -31,7 +33,7 @@ export default Counter;
 
 In this example, count is the state variable managed by useState, and setCount updates it. Every time setCount is called, React re-renders the component with the updated count.
 
-# useEffect
+## useEffect
 + Purpose: useEffect is used to handle side effects in functional components, which are tasks that need to happen outside of rendering (such as fetching data from an API, subscribing to events (like WebSocket or keyboard listeners), setting a timer, manipulating DOM elements, or interacting with local storage).
 + Usage: useEffect takes a function that runs "after" each render. You can control when the effect runs by providing dependencies in an array as the second argument.
   - No dependencies ([]): Runs only once on component mount.
