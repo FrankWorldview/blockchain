@@ -44,15 +44,15 @@ Reference types store data indirectly and refer to a data location (`storage`, `
 | `memory`  | Function parameters & local variables| Temporary, exists during function execution     |
 | `calldata`| External function inputs             | Read-only, non-modifiable input data            |
 
-> Type = what data is  
-> Location = where data lives  
+> Type = what data is
+> Location = where data lives
 > Data location applies only to reference types
 
 ---
 
-## 4. Reference Types: Memory → Memory (Shallow Copy: Copy Reference)
+## 4. Reference Types: Memory → Memory (Shallow Copy: Reference is Copied)
 
-When a memory reference type is passed to another function, the reference is copied.  
+When a memory reference type is passed to another function, the reference is copied.
 This means the caller and callee may initially point to the same underlying memory data.
 
 ### Modify element → affects caller
@@ -91,15 +91,15 @@ function test2() public pure returns (uint) {
 }
 ```
 
-👉 `arr = new uint[](10)` only changes where `arr` points.  
+👉 `arr = new uint[](10)` only changes where `arr` points.
 👉 The caller’s variable `a` still points to the original memory data.
 
-> Memory → Memory: the reference is copied.  
+> Memory → Memory: the reference is copied.
 > Modifying shared data may affect the caller, but reassigning the reference does not.
 
 ---
 
-## 5. Reference Types: Storage → Memory (Deep Copy: Copy Data)
+## 5. Reference Types: Storage → Memory (Deep Copy: Independent Data)
 
 ```solidity
 uint[] public nums;
@@ -120,5 +120,5 @@ function bar() public {
 
 ## Summary
 
-> Value types are always copied.  
+> Value types are always copied.
 > Reference types may share or copy data depending on location.
