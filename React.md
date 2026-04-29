@@ -93,7 +93,7 @@ useEffect(() => {
 
 ---
 
-## Example: Effect on State Change
+## Example: Side Effect Triggered by State Change
 
 ```javascript
 import { useState, useEffect } from 'react';
@@ -129,12 +129,14 @@ Calling a state setter (e.g., `setState` or `setCount`) does NOT immediately upd
 React will:
 
 1. schedule state updates (may be batched)
-2. re-render the component
+2. re-render the component (state is updated here)
 3. then `useEffect` runs
 
 Multiple state updates may be batched together, resulting in a single re-render.
 
-👉 `setState` → schedule state updates (may be batched) → re-render → then `useEffect` runs
+State is updated when React re-renders the component, not when setState is called.
+
+👉 `setState` → schedule state updates (may be batched) → re-render (state is updated here) → then `useEffect` runs
 
 ---
 
