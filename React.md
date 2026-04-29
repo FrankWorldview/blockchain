@@ -122,7 +122,7 @@ export default LogCountChange;
 
 ---
 
-## Important Concept
+## React Update Flow
 
 Calling setState (setXXX) does NOT immediately update the UI.
 
@@ -133,13 +133,8 @@ React will:
 3. Then `useEffect` runs
 
 Multiple setState calls may be batched together, resulting in a single re-render.
-```
 
----
-
-## React Update Flow (Simplified)
-
-setState → schedule updates (may be batched) → re-render → then `useEffect` runs
+👉 setState → schedule updates (may be batched) → re-render → then `useEffect` runs
 
 ---
 
