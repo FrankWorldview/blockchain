@@ -111,11 +111,5 @@ function bar() public {
 
 ## Summary
 
-- Value types are always copied  
-- Reference types may share or copy data depending on location  
-- storage → persistent, shared data  
-- memory → temporary (may be shared or copied)  
-- calldata → read-only input data  
-
 > Value types are always copied.  
 > Reference types may share or copy data depending on location.
