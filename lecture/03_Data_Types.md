@@ -50,7 +50,7 @@ Reference types store data indirectly and refer to a data location (`storage`, `
 
 ---
 
-## 4. Reference Types: Memory → Memory (Copied Reference)
+## 4. Reference Types: Memory → Memory (Shallow Copy: Copy Reference)
 
 When a memory reference type is passed to another function, the reference is copied.  
 This means the caller and callee may initially point to the same underlying memory data.
@@ -99,7 +99,7 @@ function test2() public pure returns (uint) {
 
 ---
 
-## 5. Reference Types: Storage → Memory (Always Copy)
+## 5. Reference Types: Storage → Memory (Deep Copy: Copy Data)
 
 ```solidity
 uint[] public nums;
