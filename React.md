@@ -32,8 +32,8 @@ Hooks are special React functions that let functional components use features su
 const [state, setState] = useState(initialValue);
 ```
 
-- state → current value
-- setState → function to update the value
+- state → current state value
+- setState → state setter function used to update the state value
 
 ### Example
 
