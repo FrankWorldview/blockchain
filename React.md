@@ -10,7 +10,7 @@ function Hello() {
 }
 ```
 
-👉 When React runs this function, it returns UI, which React uses to update the screen.
+👉 When React runs this function, it returns JSX, which React uses to update the screen.
 
 ---
 
@@ -41,7 +41,7 @@ const [state, setState] = useState(initialValue);
 import { useState } from 'react';
 
 function Count() {
-  // Create state variable
+  // Create a state variable
   const [count, setCount] = useState(0);
 
   return (
@@ -49,7 +49,7 @@ function Count() {
       <p>Count: {count}</p>
 
       {/*
-        Clicking this:
+        Clicking this button:
         → calls setCount
         → schedules a state update (may be batched)
         → triggers a re-render
@@ -70,7 +70,7 @@ export default Count;
 
 ### Purpose
 
-`useEffect` is used for side effects (something that happens outside rendering):
+`useEffect` is used for side effects (something that happens outside rendering), for example:
 
 - Logging
 - API calls
@@ -102,7 +102,7 @@ function LogCountChange() {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    // Runs after a re-render when count changes
+    // When count changes → component re-renders → then this effect runs
     console.log(`Count changed to ${count}`);
   }, [count]);
 
@@ -131,7 +131,7 @@ React will:
 ```text
 1. Schedule updates (may be batched)
 2. Re-render the component
-3. Then useEffect runs
+3. Then `useEffect` runs
 
 Multiple setState calls may be batched together, resulting in a single re-render.
 ```
@@ -141,7 +141,7 @@ Multiple setState calls may be batched together, resulting in a single re-render
 ## React Update Flow (Simplified)
 
 ```text
-setState → schedule updates (may be batched) → re-render → then useEffect runs
+setState → schedule updates (may be batched) → re-render → then `useEffect` runs
 ```
 
 ---
@@ -150,7 +150,7 @@ setState → schedule updates (may be batched) → re-render → then useEffect 
 
 | Hook        | Purpose             |
 |-------------|---------------------|
-| useState    | Manage state        |
-| useEffect   | Handle side effects |
+| `useState`    | Manage state        |
+| `useEffect`   | Handle side effects |
 
 With Hooks, functional components can manage state and side effects.
