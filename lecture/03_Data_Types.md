@@ -59,16 +59,18 @@ b[0] = 999;
 
 **2. Function call behavior**
 
+## Function Call Behavior (Memory Arrays)
+
+- Modifying elements may affect the caller:
+
 ```solidity
 function foo(uint[] memory arr) internal {
     arr[0] = 999;
 }
 ```
 
-- Modifying elements (e.g., `arr[0]`) may affect the caller
-
 ```solidity
-function test() public pure returns (uint) {
+function test1() public pure returns (uint) {
     uint[] memory a = new uint[](1);
     a[0] = 1;
 
@@ -78,7 +80,9 @@ function test() public pure returns (uint) {
 }
 ```
 
-- Reassigning the variable does NOT:
+---
+
+- Reassigning the variable does NOT affect the caller:
 
 ```solidity
 function foo2(uint[] memory arr) internal {
@@ -86,6 +90,22 @@ function foo2(uint[] memory arr) internal {
     arr[0] = 999;
 }
 ```
+
+```solidity
+function test2() public pure returns (uint) {
+    uint[] memory a = new uint[](1);
+    a[0] = 1;
+
+    foo2(a);
+
+    return a[0]; // 👉 still 1
+}
+```
+
+### Key Takeaway
+
+- Modifying elements → affects caller (shared underlying memory)
+- Reassigning variable → does NOT affect caller (new memory allocated)
 
 ---
 
