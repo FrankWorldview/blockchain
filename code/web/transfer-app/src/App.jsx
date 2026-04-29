@@ -6,31 +6,58 @@ import LogoETH from './assets/logo-eth.svg';
 import LogoPepe from './assets/logo-pepe.svg';
 
 function App() {
-    // React state hooks
-    const [provider, setProvider] = useState(null);
-    const [signer, setSigner] = useState(null);
+    // ===== State: blockchain connection =====
+    const [provider, setProvider] = useState(null); // Read-only wallet provider
+    const [signer, setSigner] = useState(null); // Signer can send transactions
+
+    // ===== State: sender =====
     const [senderWallet, setSenderWallet] = useState('');
-    const [senderBalance, setSenderBalance] = useState('0');
+    const [senderBalance, setSenderBalance] = useState('0'); // Wei as string
+
+    // ===== State: receiver =====
     const [receiverWallet, setReceiverWallet] = useState('');
-    const [receiverBalance, setReceiverBalance] = useState('0');
-    const [transferAmount, setTransferAmount] = useState(1);
+    const [receiverBalance, setReceiverBalance] = useState('0'); // Wei as string
 
-    // typeof window !== 'undefined':
-    // Ensure we're running in a browser.
-    // !!window.ethereum:
-    // Coerce the presence of an injected Ethereum provider into a boolean (true if available, false if not).
-    const hasProvider = (typeof window !== 'undefined') && (!!window.ethereum);
+    // ===== State: transaction input =====
+    // Use string, not number, to avoid floating-point precision problems
+    const [transferAmount, setTransferAmount] = useState('1');
 
-    // Helper guards
+    // ===== State: transaction status =====
+    const [isTransferring, setIsTransferring] = useState(false);
+    const [txHash, setTxHash] = useState('');
+    const [txStatus, setTxStatus] = useState('');
+
+    // ===== Check if MetaMask / wallet provider exists =====
+    const hasProvider =
+        typeof window !== 'undefined' && !!window.ethereum;
+
+    // ===== Validate Ethereum address =====
     const isValidAddress = (addr) => ethers.isAddress(addr);
 
-    // Formatters
+    // ===== Convert Wei -> ETH for display =====
     const fmtEth = (weiStr) => {
-        try { return parseFloat(ethers.formatEther(weiStr)).toFixed(4); }
-        catch { return '0.0000'; }
+        try {
+            return parseFloat(ethers.formatEther(weiStr)).toFixed(4);
+        } catch {
+            return '0.0000';
+        }
     };
 
-    // Connect to MetaMask wallet
+    // ===== Validate ETH amount =====
+    function isValidEthAmount(value) {
+        try {
+            if (!value) return false;
+
+            // parseEther throws if the string format is invalid
+            ethers.parseEther(value);
+
+            return true;
+        } catch {
+            return false;
+        }
+    }
+
+    // ===== Connect MetaMask wallet =====
     async function connectWallet() {
         if (!hasProvider) {
             alert('MetaMask not installed');
@@ -38,158 +65,158 @@ function App() {
         }
 
         try {
+            // Create provider connected to MetaMask
             const ethProvider = new ethers.BrowserProvider(window.ethereum);
-            const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
 
-            if (!accounts || accounts.length === 0) {
-                throw new Error('No accounts found. MetaMask might be locked.');
-            }
+            // Ask user to connect wallet
+            await window.ethereum.request({ method: 'eth_requestAccounts' });
 
-            const signer = await ethProvider.getSigner();
+            // Get signer from currently selected MetaMask account
+            const newSigner = await ethProvider.getSigner();
+            const addr = await newSigner.getAddress();
 
+            // Save connection state
             setProvider(ethProvider);
-            setSigner(signer);
-
-            const addr = await signer.getAddress();
+            setSigner(newSigner);
             setSenderWallet(addr);
 
-            // Auto-refresh sender balance immediately after connecting
-            const bal = await ethProvider.getBalance(addr);
-            setSenderBalance(bal.toString());
-        } catch (err) {
-            console.error('MetaMask not connected:', err);
-            alert('Failed to connect MetaMask');
-        }
-    }
-
-    // Refresh balance of sender wallet (used by effects and after tx)
-    async function refreshSenderBalance() {
-        try {
-            if (!provider || !isValidAddress(senderWallet)) return;
-
-            const balance = await provider.getBalance(senderWallet);
+            // Fetch sender balance immediately
+            const balance = await ethProvider.getBalance(addr);
             setSenderBalance(balance.toString());
-        } catch (err) {
-            console.error(err);
-            alert('Error occurred when getting sender balance');
+        } catch (error) {
+            console.error('Connect wallet failed:', error);
+            alert('Failed to connect wallet');
         }
     }
 
-    // Refresh balance of receiver wallet (used by effects and after tx)
+    // ===== Refresh sender balance =====
+    async function refreshSenderBalance() {
+        if (!provider || !isValidAddress(senderWallet)) return;
+
+        const balance = await provider.getBalance(senderWallet);
+        setSenderBalance(balance.toString());
+    }
+
+    // ===== Refresh receiver balance =====
     async function refreshReceiverBalance() {
-        try {
-            if (!provider || !isValidAddress(receiverWallet)) return;
+        if (!provider || !isValidAddress(receiverWallet)) return;
 
-            const balance = await provider.getBalance(receiverWallet);
-            setReceiverBalance(balance.toString());
-        } catch (err) {
-            console.error(err);
-            alert('Error occurred when getting receiver balance');
-        }
+        const balance = await provider.getBalance(receiverWallet);
+        setReceiverBalance(balance.toString());
     }
 
-    // Send Ether
+    // ===== Send ETH transaction =====
     async function transfer() {
-        if (!signer || !senderWallet) {
+        if (!signer) {
             alert('Wallet not connected');
             return;
         }
+
         if (!isValidAddress(receiverWallet)) {
-            alert('Receiver address is invalid');
+            alert('Invalid receiver address');
             return;
         }
-        if (typeof transferAmount !== 'number' || !isFinite(transferAmount) || transferAmount <= 0) {
-            alert('Please enter a valid transfer amount');
+
+        if (!isValidEthAmount(transferAmount)) {
+            alert('Invalid amount');
             return;
         }
 
         try {
-            const tx = {
+            setIsTransferring(true);
+            setTxHash('');
+            setTxStatus('Preparing transaction...');
+
+            // 1️⃣ Prepare transaction request
+            // This object describes the transaction, but it has NOT been sent yet.
+            const txRequest = {
                 to: receiverWallet,
-                value: ethers.parseEther(transferAmount.toString()),
+                value: ethers.parseEther(transferAmount), // ETH string -> Wei bigint
             };
 
-            // Estimate gas (simulation requires explicit `from`)
-            const gasEstimate = await (provider ?? new ethers.BrowserProvider(window.ethereum)).estimateGas({
-                ...tx,
-                from: senderWallet,
-            });
-            console.log('Estimated gas:', gasEstimate.toString());
+            setTxStatus('Waiting for wallet confirmation...');
 
-            // Send transaction via signer
-            const txResponse = await signer.sendTransaction({ ...tx, gasLimit: gasEstimate }); // 交易已送出，但未確認
-            console.log('Transaction sent:', txResponse.hash);
+            // 2️⃣ Send transaction
+            // txResponse means the transaction has been signed and broadcast.
+            const txResponse = await signer.sendTransaction(txRequest);
 
-            const receipt = await txResponse.wait(); // 交易已確認上鏈
-            console.log('Transaction confirmed:', receipt);
+            setTxHash(txResponse.hash);
+            setTxStatus('Transaction sent. Waiting to be mined...');
 
-            // Auto-refresh balances after transaction
+            console.log('Transaction hash:', txResponse.hash);
+
+            // 3️⃣ Wait for confirmation
+            // receipt means the transaction has been included in a block.
+            const receipt = await txResponse.wait();
+
+            console.log('Transaction receipt:', receipt);
+            console.log('Confirmed in block:', receipt.blockNumber);
+
+            setTxStatus(`Confirmed in block ${receipt.blockNumber}`);
+
+            // Balances should be refreshed after the transaction is mined.
             await refreshSenderBalance();
             await refreshReceiverBalance();
-            alert('Transfer successful!');
-        } catch (err) {
-            console.error(err);
-            alert('Transfer failed: ' + (err?.shortMessage || err?.message || 'Unknown error'));
+
+            alert('Transfer successful');
+        } catch (error) {
+            console.error('Transfer failed:', error);
+            setTxStatus('Transaction failed or rejected');
+            alert('Transfer failed or rejected');
+        } finally {
+            setIsTransferring(false);
         }
     }
 
-    // Log sender balance when updated
+    // ===== Handle MetaMask account / chain changes =====
     useEffect(() => {
-        console.log('Sender balance:', senderBalance);
-    }, [senderBalance]);
-
-    // Listen for MetaMask account changes and sync app state accordingly
-    useEffect(() => {
-        // If there is no injected provider (e.g., no MetaMask), do nothing
         if (!hasProvider) return;
 
-        // Handler runs whenever MetaMask emits "accountsChanged"
         const handleAccountsChanged = async (accounts) => {
-            try {
-                console.log('Account changed:', accounts);
+            console.log('Accounts changed:', accounts);
 
-                // If no accounts are connected to this site (locked / disconnected),
-                // reset local app state back to "not connected"
-                if (!accounts || accounts.length === 0) {
-                    setSigner(null);
-                    setSenderWallet('');
-                    setSenderBalance('0');
-                    return;
-                }
-
-                // Recreate fresh provider/signer each time to avoid stale references
-                const newProvider = new ethers.BrowserProvider(window.ethereum);
-                const newSigner = await newProvider.getSigner();
-
-                // Use signer as the single source of truth for the active address
-                const addr = await newSigner.getAddress();
-
-                // Update app state with the new provider/signer/address
-                setProvider(newProvider);
-                setSigner(newSigner);
-                setSenderWallet(addr);
-
-                // Fetch and store the latest balance for the new address
-                const bal = await newProvider.getBalance(addr);
-                setSenderBalance(bal.toString());
-            } catch (err) {
-                // Don’t crash the app if the RPC/provider hiccups; just log a warning
-                console.warn('accountsChanged handler error:', err);
+            // User disconnected wallet or locked MetaMask
+            if (!accounts || accounts.length === 0) {
+                setProvider(null);
+                setSigner(null);
+                setSenderWallet('');
+                setSenderBalance('0');
+                setTxHash('');
+                setTxStatus('');
+                return;
             }
+
+            // Re-create provider and signer to avoid stale wallet state
+            const newProvider = new ethers.BrowserProvider(window.ethereum);
+            const newSigner = await newProvider.getSigner();
+            const addr = await newSigner.getAddress();
+
+            setProvider(newProvider);
+            setSigner(newSigner);
+            setSenderWallet(addr);
+
+            const balance = await newProvider.getBalance(addr);
+            setSenderBalance(balance.toString());
         };
 
-        // Subscribe to MetaMask account change events
-        window.ethereum.on('accountsChanged', handleAccountsChanged);
+        const handleChainChanged = (chainId) => {
+            console.log('Chain changed:', chainId);
 
-        // Unsubscribe on cleanup to avoid memory leaks / duplicate handlers
+            // Reload is the safest beginner-friendly approach.
+            // It clears stale provider/signer/network state.
+            window.location.reload();
+        };
+
+        window.ethereum.on('accountsChanged', handleAccountsChanged);
+        window.ethereum.on('chainChanged', handleChainChanged);
+
         return () => {
             window.ethereum.removeListener('accountsChanged', handleAccountsChanged);
+            window.ethereum.removeListener('chainChanged', handleChainChanged);
         };
-
-        // Depend on hasProvider so we (re)register if the provider appears after mount
     }, [hasProvider]);
 
-    // Auto-refresh receiver balance whenever a valid address is entered/changed
+    // ===== Auto-refresh receiver balance when receiver address changes =====
     useEffect(() => {
         if (!provider) return;
 
@@ -202,57 +229,83 @@ function App() {
     }, [receiverWallet, provider]);
 
     return (
-        <>
-            <section id="center">
-                <div>
-                    <img src={LogoETH} width="150" alt="Ethereum logo" />
-                    <img src={LogoPepe} width="150" alt="Pepe logo" />
-                </div>
+        <section id="center">
+            {/* Logos */}
+            <div>
+                <img src={LogoETH} width="120" alt="Ethereum logo" />
+                <img src={LogoPepe} width="120" alt="Pepe logo" />
+            </div>
 
-                <h2>Transfer Ether</h2>
+            <h2>Transfer Ether</h2>
 
-                <div>
-                    <button onClick={connectWallet}>Connect MetaMask Wallet</button>
+            {/* Connect wallet */}
+            <button onClick={connectWallet} disabled={isTransferring}>
+                {signer ? 'Connected' : 'Connect MetaMask'}
+            </button>
 
-                    <p>My Wallet Address: {senderWallet || '(not connected)'}</p>
+            {/* Sender info */}
+            <p>My Wallet Address: {senderWallet || 'Not connected'}</p>
 
-                    <p>
-                        My Balance: {senderBalance} Wei = {fmtEth(senderBalance)} ETH
-                    </p>
+            <p>
+                My Balance: {senderBalance} Wei = {fmtEth(senderBalance)} ETH
+            </p>
 
-                    <button
-                        onClick={transfer}
-                        disabled={!signer || !isValidAddress(receiverWallet) || !(transferAmount > 0)}
-                    >
-                        Transfer
-                    </button>
+            {/* Receiver address input */}
+            <p>
+                <span>Receiver Wallet Address: </span>
+                <input
+                    value={receiverWallet}
+                    onChange={(e) => setReceiverWallet(e.target.value.trim())}
+                    placeholder="0x..."
+                    disabled={isTransferring}
+                />
+            </p>
 
-                    <p>
-                        Receiver Wallet Address:{' '}
-                        <input
-                            value={receiverWallet}
-                            onChange={(e) => setReceiverWallet(e.target.value.trim())}
-                            placeholder="0x… receiver address"
-                        />
-                    </p>
+            {/* Amount input */}
+            <p>
+                <span>Transfer Amount (Ether): </span>
+                <input
+                    value={transferAmount}
+                    onChange={(e) => setTransferAmount(e.target.value)}
+                    type="text"
+                    inputMode="decimal"
+                    placeholder="0.01"
+                    disabled={isTransferring}
+                />
+            </p>
 
-                    <p>
-                        Transfer Amount (Ether):{' '}
-                        <input
-                            value={transferAmount}
-                            onChange={(e) => setTransferAmount(Number(e.target.value))}
-                            type="number"
-                            min="0"
-                            step="0.0001"
-                        />
-                    </p>
+            {/* Transfer button */}
+            <button
+                onClick={transfer}
+                disabled={
+                    isTransferring ||
+                    !signer ||
+                    !isValidAddress(receiverWallet) ||
+                    !isValidEthAmount(transferAmount)
+                }
+            >
+                {isTransferring ? 'Processing...' : 'Transfer'}
+            </button>
 
-                    <p>
-                        Receiver Balance: {receiverBalance} Wei = {fmtEth(receiverBalance)} ETH
-                    </p>
-                </div>
-            </section>
-        </>
+            {/* Receiver balance */}
+            <p>
+                Receiver Balance: {receiverBalance} Wei = {fmtEth(receiverBalance)} ETH
+            </p>
+
+            {/* Transaction status */}
+            {txStatus && (
+                <p>
+                    Transaction Status: {txStatus}
+                </p>
+            )}
+
+            {/* Transaction hash */}
+            {txHash && (
+                <p>
+                    Transaction Hash: {txHash}
+                </p>
+            )}
+        </section>
     );
 }
 

@@ -45,17 +45,17 @@ async function main() {
 
         console.log("\n⏳ Sending transaction...");
 
-        // Send a transaction to update the name
-        const tx = await hello.setName(myNewName);
+        // 1️⃣ Send transaction (user signs → broadcast)
+        const txResponse = await hello.setName(myNewName);
 
-        // Transaction hash (can be used to track status)
-        console.log("Transaction hash:", tx.hash);
+        // 2️⃣ Track transaction
+        console.log("Tx hash:", txResponse.hash);
 
-        // Wait for the transaction to be mined (included in a block)
-        const receipt = await tx.wait();
+        // 3️⃣ Wait for confirmation (block inclusion)
+        const receipt = await txResponse.wait();
 
-        // Show which block confirmed the transaction
-        console.log("Mined in block:", receipt.blockNumber);
+        // 4️⃣ Confirm result
+        console.log("Confirmed in block:", receipt.blockNumber);
 
         // Verify the state change by reading again
         const updatedName = await hello.getName();
