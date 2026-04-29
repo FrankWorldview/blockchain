@@ -115,10 +115,10 @@ The actual lifecycle flow:
 4. Inside useEffect: setMessage(...) is called
 5. React re-renders again with new message
 
-# Key Differences Between useState and useEffect
+## Key Differences Between useState and useEffect
 + Purpose: useState is for managing local state, while useEffect is for handling side effects.
 + Re-renders: useState triggers a re-render when the state changes, whereas useEffect does not cause re-renders by itself but runs after each render if dependencies have changed.
 + Together, useState and useEffect enable powerful, flexible control over data and actions in functional components, making them fundamental for managing state and lifecycle effects in React.
 
-# Note
+## Notes
 In React’s [Strict Mode](https://react.dev/reference/react/StrictMode), certain functions—particularly lifecycle methods and those associated with hooks like useState and useEffect—are intentionally invoked twice to help identify potential issues within your application. This double invocation serves as a stress test and is designed not to break your code. Instead, it enhances the reliability and predictability of your components by encouraging developers to write code that can handle multiple executions without unexpected side effects.
