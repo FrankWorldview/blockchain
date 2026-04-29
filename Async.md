@@ -6,6 +6,7 @@ Asynchronous operations are tasks that start now but finish later, without block
 Start first, finish later — and don’t wait.
 
 Synchronous: wait → then continue
+
 Asynchronous: continue → result comes later
 
 ---
@@ -65,44 +66,49 @@ myPromise
 
 ---
 
-## Promise Chaining
-```javascript
-// Function that returns a Promise (async task)
+const shouldSucceed = true;
+
+// Function that returns a Promise
 function fetchData() {
     return new Promise((resolve, reject) => {
 
+        // Simulate async operation
         setTimeout(() => {
-            // Simulate success
-            resolve("Fetched data");
-        }, 3000);
 
+            if (shouldSucceed) {
+                // ✅ Resolve with data
+                resolve("Fetched data");
+            } else {
+                // ❌ Reject with error
+                reject("Error: Failed to fetch data");
+            }
+
+        }, 3000);
     });
 }
 
 // Normal (synchronous) function
 function processFetchedData(data) {
-    // Process data and return result
     return `${data} - Processed`;
 }
 
 // Chain multiple steps
 fetchData()
-    .then(data => {
-        // Step 1: receive resolved value
-        console.log(data);
+    .then(fetchedData => {
+        // Step 1: handle fetched data
+        console.log(fetchedData);
 
-        // Return value → passed to next .then()
-        return processFetchedData(data);
+        // The returned value becomes the input of the next .then()
+        return processFetchedData(fetchedData);
     })
-    .then(result => {
-        // Step 2: receive processed result
-        console.log(result);
+    .then(processedData => {
+        // Step 2: receive processed data
+        console.log(processedData);
     })
     .catch(error => {
         // If ANY step fails → jump here
-        console.error(error);
+        console.error("Error:", error);
     });
-```
 
 👉 Rule:
 If ANY step fails → jump directly to `.catch()`
@@ -121,28 +127,6 @@ An `async` function ALWAYS returns a Promise.
 
 ---
 
-## Important Example
-```javascript
-async function hello() {
-    // Even though we return a normal value,
-    // JavaScript automatically wraps it in a Promise
-    return "Hello";
-}
-
-// Using .then() to access the result
-hello().then(result => {
-    console.log(result); // "Hello"
-});
-```
-
-👉 This is equivalent to:
-```javascript
-function hello() {
-    return Promise.resolve("Hello");
-}
-```
-
----
 
 ## Example Using async / await
 ```javascript
@@ -197,6 +181,7 @@ States:
 - Rejected
 
 `.then()` → handle success
+
 `.catch()` → handle error
 
 `async` always returns a Promise
