@@ -50,7 +50,7 @@ Reference types store data indirectly and refer to a data location (`storage`, `
 
 ---
 
-## 4. Reference Type Variable Location: Memory → Memory (Always Share)
+## 4. Reference Types: Memory → Memory (May Share Underlying Data)
 
 ### Modify element → affects caller
 
@@ -90,7 +90,7 @@ function test2() public pure returns (uint) {
 
 ---
 
-## 5. Reference Variable Location: Storage → Memory (Always Copy)
+## 5. Reference Types: Storage → Memory (Always Copy)
 
 ```solidity
 uint[] public nums;
