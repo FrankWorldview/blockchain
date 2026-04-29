@@ -6,6 +6,7 @@ Asynchronous operations are tasks that start now but finish later, without block
 Start first, finish later — and don’t wait.
 
 Synchronous: wait → then continue
+
 Asynchronous: continue → result comes later
 
 ---
@@ -30,11 +31,10 @@ A Promise can be in one of three states:
 ```javascript
 // Create a Promise object
 let myPromise = new Promise((resolve, reject) => {
-
   // Simulate async task (e.g., API call)
   setTimeout(() => {
 
-    const success = true; // change to false to test failure
+    const success = true; // Change to false to test failure
 
     if (success) {
       // ✅ Task succeeded → resolve with value
@@ -44,7 +44,7 @@ let myPromise = new Promise((resolve, reject) => {
       reject("Operation failed!");
     }
 
-  }, 3000); // delay 3 seconds
+  }, 3000); // Delay 3 seconds
 });
 ```
 
@@ -96,7 +96,7 @@ function processFetchedData(data) {
 // Chain multiple steps
 fetchData()
     .then(fetchedData => {
-        // Step 1: handle fetched data
+        // Step 1: Handle fetched data
         console.log(fetchedData);
 
         // Even if this returns a normal value,
@@ -104,7 +104,7 @@ fetchData()
         return processFetchedData(fetchedData);
     })
     .then(processedData => {
-        // Step 2: receive processed data
+        // Step 2: Receive processed data
         console.log(processedData);
     })
     .catch(error => {
@@ -157,7 +157,6 @@ function processFetchedData(data) {
 
 // async function → ALWAYS returns a Promise
 async function fetchDataAndProcess() {
-
     try {
         // ⏳ Wait for Promise to resolve
         const fetchedData = await fetchData();
