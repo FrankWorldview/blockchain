@@ -41,10 +41,10 @@
 
 ![image](/image/transfer.png)
 
-## Note
+## Note (Maybe No Longer Needed)
 When you restart anvil, you may need to restart your browser and clear activity and nonce data in MetaMask.
 
-+ `Settings -> Advanced -> Clear activity tab data`.
-+ `Settings -> Developer tools -> Delete activity and nonce data`.
++ Firefox: `Settings -> Advanced -> Clear activity tab data`.
++ Chrome: `Settings -> Developer tools -> Delete activity and nonce data`.
 
 This can make sure the nonce data in anvil and in your MetaMask are consistent.
