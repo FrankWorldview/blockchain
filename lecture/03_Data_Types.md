@@ -59,8 +59,6 @@ b[0] = 999;
 
 **2. Function call behavior**
 
-## Function Call Behavior (Memory Arrays)
-
 - Modifying elements may affect the caller:
 
 ```solidity
