@@ -55,6 +55,8 @@ b[0] = 999;
 
 👉 `a[0]` will also become `999` because both variables refer to the same memory data.
 
+---
+
 **2. Function call behavior**
 
 ```solidity
@@ -64,11 +66,28 @@ function foo(uint[] memory arr) internal {
 ```
 
 - Modifying elements (e.g., `arr[0]`) may affect the caller
+
+```solidity
+function test() public pure returns (uint) {
+    uint[] memory a = new uint[](1);
+    a[0] = 1;
+
+    foo(a);
+
+    return a[0]; // 👉 returns 999
+}
+```
+
 - Reassigning the variable does NOT:
 
 ```solidity
-arr = new uint[](10); // does NOT affect caller
+function foo2(uint[] memory arr) internal {
+    arr = new uint[](10);
+    arr[0] = 999;
+}
 ```
+
+---
 
 **3. Storage → Memory creates a copy**
 
@@ -86,6 +105,8 @@ function bar() public {
 ```
 
 👉 `numbers` will NOT change because the data is copied into memory.
+
+---
 
 ### Summary
 
@@ -106,17 +127,6 @@ In functions, variables can be stored in one of the following locations:
 | `storage` | State variables        | Persistent, written to blockchain               |
 | `memory`  | Temporary variables    | Exists only during function execution           |
 | `calldata`| Function inputs (external)| Read-only, non-modifiable input data        |
-
----
-
-## Summary Table
-
-| Category             | Types                                           |
-|----------------------|-------------------------------------------------|
-| **Value Types**      | `uint`, `int`, `bool`, `address`, `bytes1`–`32`, `enum` |
-| **Reference Types**  | `string`, `bytes`, `array`, `mapping`, `struct` |
-| **User-Defined**     | `struct`, `enum`                                 |
-| **Data Locations**   | `storage`, `memory`, `calldata`                 |
 
 ---
 
