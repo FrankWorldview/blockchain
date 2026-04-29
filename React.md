@@ -2,7 +2,7 @@
 
 ## What is a Functional Component?
 
-A functional component is a JavaScript function that returns UI (JSX).
+A functional component is a JavaScript function that returns UI (in `JSX`).
 
 ```javascript
 function Hello() {
@@ -10,7 +10,7 @@ function Hello() {
 }
 ```
 
-👉 When React runs this function, it returns UI (JSX), which React uses to update the screen.
+👉 When React runs this function, it returns UI, which React uses to update the screen.
 
 ---
 
@@ -24,7 +24,7 @@ Hooks are special React functions that let functional components use features su
 
 ### Purpose
 
-useState lets you store and update state inside a functional component.
+`useState` lets you store and update state inside a functional component.
 
 ### Syntax
 
@@ -70,7 +70,7 @@ export default Count;
 
 ### Purpose
 
-useEffect is used for side effects:
+`useEffect` is used for side effects (something that happens outside rendering):
 
 - Logging
 - API calls
@@ -102,7 +102,7 @@ function LogCountChange() {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    // Runs after render when count changes
+    // Runs after a re-render when count changes
     console.log(`Count changed to ${count}`);
   }, [count]);
 
@@ -129,12 +129,11 @@ Calling setState (setXXX) does NOT immediately update the UI.
 React will:
 
 ```text
-1. schedule updates (may be batched)
-2. re-render the component
-3. then useEffect runs
+1. Schedule updates (may be batched)
+2. Re-render the component
+3. Then useEffect runs
 
-Multiple setState calls may be batched together,
-resulting in a single re-render.
+Multiple setState calls may be batched together, resulting in a single re-render.
 ```
 
 ---
@@ -154,5 +153,4 @@ setState → schedule updates (may be batched) → re-render → then useEffect 
 | useState    | Manage state        |
 | useEffect   | Handle side effects |
 
-With Hooks, functional components can manage state and side effects,
-making them as powerful as class components.
+With Hooks, functional components can manage state and side effects.
