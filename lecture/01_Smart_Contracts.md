@@ -33,13 +33,13 @@ Smart contracts aim to:
 
 Smart contracts follow simple logic:
 
-IF condition is met  
-THEN execute action  
+IF condition is met
+THEN execute action
 
 Example:
 
-IF payment received  
-THEN transfer asset  
+IF payment received
+THEN transfer asset
 
 ---
 
@@ -51,9 +51,9 @@ A classic analogy:
 
 ### How it works:
 
-1. Insert money  
-2. Select product  
-3. Machine delivers automatically  
+1. Insert money
+2. Select product
+3. Machine delivers automatically
 
 No trust required.
 

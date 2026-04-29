@@ -44,8 +44,8 @@ Solidity is:
 
 ### Basic Types
 
-- `uint` → unsigned 256-bit integer  
-- `int` → signed 256-bit integer  
+- `uint` → unsigned 256-bit integer
+- `int` → signed 256-bit integer
 
 ---
 
@@ -91,17 +91,17 @@ constructor(address initialOwner) {
 
 ### For Functions
 
-- `public` → anyone can call  
-- `internal` → only inside contract  
+- `public` → anyone can call
+- `internal` → only inside contract
 
 ### For Variables
 
-- `public` → auto-generated getter  
-- `private` → no getter  
+- `public` → auto-generated getter
+- `private` → no getter
 
 ⚠️ Important:
 
-> "private" does NOT mean secret  
+> "private" does NOT mean secret
 > Data is still visible on-chain
 
 ---
@@ -110,7 +110,7 @@ constructor(address initialOwner) {
 
 Define whether a function can read or modify contract state.
 
-> **State = contract storage (state variables)**  
+> **State = contract storage (state variables)**
 > It does **not** include execution context (e.g., `msg`, `block`).
 
 ### `public`

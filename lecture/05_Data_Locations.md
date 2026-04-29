@@ -16,7 +16,7 @@ Solidity requires a data location for **reference types** to determine whether t
 
 ## 1. Calldata
 
-**Definition**  
+**Definition**
 Calldata is a read-only area where function arguments are stored.
 
 **Key Features**
@@ -32,14 +32,14 @@ function setName(string calldata newName) external {
 }
 ```
 
-**Why it exists**  
+**Why it exists**
 Calldata avoids unnecessary copying and reduces gas usage.
 
 ---
 
 ## 2. Memory
 
-**Definition**  
+**Definition**
 Memory is a temporary area used during contract execution.
 
 **Key Features**
@@ -55,14 +55,14 @@ function process(string calldata input) external {
 }
 ```
 
-**Why it exists**  
+**Why it exists**
 Memory allows modification of data during execution.
 
 ---
 
 ## 3. Storage
 
-**Definition**  
+**Definition**
 Storage is the persistent data area on the blockchain.
 
 **Key Features**
@@ -80,7 +80,7 @@ function setName(string calldata newName) external {
 }
 ```
 
-**Why it exists**  
+**Why it exists**
 Storage maintains contract state across transactions.
 
 ---
