@@ -1,3 +1,151 @@
+# 03 Data Types
+
+## 1. Value Types
+
+Value types store their data directly. Assignments create independent copies.
+
+| Type | Example |
+|------|--------|
+| `uint` | `uint x = 10;` |
+| `bool` | `bool flag = true;` |
+| `address` | `address addr = msg.sender;` |
+| `bytes1 ~ bytes32` | `bytes32 hash;` |
+
+👉 Behavior:
+- Always copied
+- Modifying a variable does NOT affect others
+
+---
+
+## 2. Reference Types
+
+Reference types store data **indirectly**, meaning they refer to a data location (`storage`, `memory`, or `calldata`) rather than holding the data itself.
+
+| Type         | Description                                 | Example                            |
+|--------------|---------------------------------------------|------------------------------------|
+| `string`     | Dynamic UTF-8 encoded text                  | `string name = "Alice";`          |
+| `bytes`      | Dynamic byte array                          | `bytes data = "0x1234";`          |
+| `array`      | Fixed-size or dynamic list of elements      | `uint[] numbers;`                 |
+| `mapping`    | Key-value store                             | `mapping(address => uint) balances;` |
+| `struct`     | Group of related variables                  | `struct Person { string name; uint age; }` |
+
+Reference types do not store their data directly. Instead, they refer to a data location.
+
+> ⚠️ Solidity does **not strictly follow** pass-by-value or pass-by-reference. Behavior depends on **data location and context**.
+
+---
+
+## 3. Data Locations *(not data types)*
+
+| Location  | Applies To                          | Description                                     |
+|-----------|--------------------------------------|-------------------------------------------------|
+| `storage` | State variables, local references    | Persistent, written to blockchain               |
+| `memory`  | Function parameters & local variables| Temporary, exists during function execution     |
+| `calldata`| External function inputs             | Read-only, non-modifiable input data            |
+
+> Type = what data is  
+> Location = where data lives
+
+---
+
+## 4. Important Notes (Memory Behavior)
+
+### 4.1 Memory is NOT simply "by value"
+
+```solidity
+uint[] memory a = new uint[](1);
+uint[] memory b = a;
+
+b[0] = 999;
+```
+
+👉 `a[0]` will also become `999`  
+👉 Because both variables refer to the same underlying memory data
+
+---
+
+### 4.2 Function call behavior
+
+```solidity
+function foo(uint[] memory arr) internal {
+    arr[0] = 999;
+}
+```
+
+- Modifying elements (e.g., `arr[0]`) may affect the caller
+
+```solidity
+function test1() public pure returns (uint) {
+    uint[] memory a = new uint[](1);
+    a[0] = 1;
+
+    foo(a);
+
+    return a[0]; // 👉 returns 999
+}
+```
+
+- Reassigning the variable does NOT affect the caller:
+
+```solidity
+function foo2(uint[] memory arr) internal {
+    arr = new uint[](10);
+    arr[0] = 999;
+}
+
+function test2() public pure returns (uint) {
+    uint[] memory a = new uint[](1);
+    a[0] = 1;
+
+    foo2(a);
+
+    return a[0]; // 👉 still 1
+}
+```
+
+---
+
+### 4.3 Storage → Memory creates a copy
+
+```solidity
+uint[] public numbers;
+
+function foo(uint[] memory arr) internal {
+    arr[0] = 999;
+}
+
+function bar() public {
+    numbers.push(1);
+    foo(numbers); // storage → memory
+}
+```
+
+👉 `numbers` will NOT change because the data is copied into memory
+
+---
+
+## Summary
+
+- Value types → always copied  
+- Reference types → refer to data location  
+- storage → persistent, shared data  
+- memory → temporary (may be shared or copied depending on context)  
+- calldata → read-only input data
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Data Types in Solidity
 
 ## Introduction
@@ -126,31 +274,13 @@ function bar() public {
 
 ---
 
-### Summary
+## Summary
 
-- **storage** = persistent, shared data
-- **memory** = temporary data (may be shared or copied depending on context)
-- **calldata** = read-only input data
-
-> Key idea: Behavior depends on **data location**, not simply "by value" or "by reference".
-
----
-
-## 3. Data Locations
-
-In functions, variables can be stored in one of the following locations:
-
-| Location  | Applies To            | Description                                     |
-|-----------|------------------------|-------------------------------------------------|
-| `storage` | State variables        | Persistent, written to blockchain               |
-| `memory`  | Temporary variables    | Exists only during function execution           |
-| `calldata`| Function inputs (external)| Read-only, non-modifiable input data        |
-
----
-
-## Conclusion
-
-Choosing the correct data type in Solidity is essential for efficient and secure smart contract development. Understanding how data is stored and manipulated enables better gas optimization and contract logic design.
+- Value types → always copied  
+- Reference types → refer to data location  
+- storage → persistent, shared data  
+- memory → temporary (may be shared or copied depending on context)  
+- calldata → read-only input data
 
 ---
 
