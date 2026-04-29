@@ -99,8 +99,7 @@ fetchData()
         // Step 1: Handle fetched data
         console.log(fetchedData);
 
-        // Even if this returns a normal value,
-        // it is automatically wrapped into a Promise
+        // The returned value is passed to the next .then()
         return processFetchedData(fetchedData);
     })
     .then(processedData => {
@@ -155,7 +154,7 @@ function processFetchedData(data) {
     return `${data} - Processed`;
 }
 
-// async function → ALWAYS returns a Promise
+// async function ALWAYS returns a Promise
 async function fetchDataAndProcess() {
     try {
         // ⏳ Wait for Promise to resolve
@@ -188,6 +187,7 @@ States:
 - Rejected
 
 `.then()` → handle success
+
 `.catch()` → handle error
 
 `async` always returns a Promise
