@@ -50,43 +50,7 @@ Reference types store data indirectly and refer to a data location (`storage`, `
 
 ---
 
-## 4. Reference Types: Memory → Memory (May Share Underlying Data)
 
-### Modify element → affects caller
-
-```solidity
-function foo(uint[] memory arr) internal {
-    arr[0] = 999;
-}
-
-function test1() public pure returns (uint) {
-    uint[] memory a = new uint[](1);
-    a[0] = 1;
-
-    foo(a);
-
-    return a[0]; // 999
-}
-```
-
-### Reassign → does NOT affect caller
-
-```solidity
-function foo2(uint[] memory arr) internal {
-    arr = new uint[](10);
-}
-
-function test2() public pure returns (uint) {
-    uint[] memory a = new uint[](1);
-    a[0] = 1;
-
-    foo2(a);
-
-    return a[0]; // still 1
-}
-```
-
-> Memory → Memory: shared underlying data (reference copied)
 
 ---
 
