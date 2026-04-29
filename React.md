@@ -124,17 +124,17 @@ export default LogCountChange;
 
 ## React Update Flow
 
-Calling setState (setXXX) does NOT immediately update the UI.
+Calling a state setter (e.g., `setState` or `setCount`) does NOT immediately update the UI.
 
 React will:
 
-1. Schedule updates (may be batched)
-2. Re-render the component
-3. Then `useEffect` runs
+1. schedule updates (may be batched)
+2. re-render the component
+3. then `useEffect` runs
 
-Multiple setState calls may be batched together, resulting in a single re-render.
+Multiple state updates may be batched together, resulting in a single re-render.
 
-👉 setState → schedule updates (may be batched) → re-render → then `useEffect` runs
+👉 `setState` → schedule updates (may be batched) → re-render → then `useEffect` runs
 
 ---
 
