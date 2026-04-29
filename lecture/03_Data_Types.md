@@ -45,7 +45,9 @@ Reference types store data indirectly and refer to a data location (`storage`, `
 | `calldata`| External function inputs             | Read-only, non-modifiable input data            |
 
 > Type = what data is
+
 > Location = where data lives
+
 > Data location applies only to reference types
 
 ---
