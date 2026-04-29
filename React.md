@@ -1,10 +1,22 @@
 # React Hooks
 
+## What is a Functional Component?
+
+A functional component is a JavaScript function that returns UI (JSX).
+
+```javascript
+function Hello() {
+  return <h1>Hello React</h1>;
+}
+```
+
+👉 When React runs this function, it returns UI and displays it on the screen.
+
+---
+
 ## What are Hooks?
 
 Hooks are special React functions that let functional components use features such as state and side effects.
-
-A functional component is a JavaScript function that returns UI.
 
 ---
 
