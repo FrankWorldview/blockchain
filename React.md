@@ -1,4 +1,4 @@
-`useState` and `useEffect` are two of the most commonly used hooks in React, enabling you to add state and manage side effects in functional components. Here’s a quick breakdown of each:
+Hooks contain reusable code logic that is separate from the component tree. They allow us to hook up functionality to our components. React ships with several built-in hooks we can use out of the box. `useState` and `useEffect` are two of the most commonly used hooks in React, enabling you to add state and manage side effects in functional components. Here’s a quick breakdown of each:
 
 # useState
 + Purpose: useState allows you to create and manage state within functional components.
