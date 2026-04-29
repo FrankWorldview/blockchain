@@ -11,15 +11,18 @@ Asynchronous: continue → result comes later
 ---
 
 ## What is a Promise in JavaScript?
-A Promise represents a future value — the result of an asynchronous operation that will arrive later.
+A Promise is an object that represents a future value — the result of an asynchronous operation that will arrive later.
+
+A Promise does NOT contain the value immediately.
 
 ---
 
 ## States of a Promise
 A Promise can be in one of three states:
-- `Pending`: The operation is still ongoing
-- `Fulfilled`: The operation completed successfully
-- `Rejected`: The operation failed
+
+- `Pending`: still running
+- `Fulfilled`: succeeded
+- `Rejected`: failed
 
 ---
 
@@ -28,20 +31,20 @@ A Promise can be in one of three states:
 // Create a Promise object
 let myPromise = new Promise((resolve, reject) => {
 
-  // Simulate an asynchronous task (e.g., API call)
+  // Simulate async task (e.g., API call)
   setTimeout(() => {
 
-    const success = true; // change to false to simulate failure
+    const success = true; // change to false to test failure
 
     if (success) {
-      // ✅ Task succeeded → resolve the Promise with a value
+      // ✅ Task succeeded → resolve with value
       resolve("Operation succeeded!");
     } else {
-      // ❌ Task failed → reject the Promise with an error
+      // ❌ Task failed → reject with error
       reject("Operation failed!");
     }
 
-  }, 3000); // wait 3 seconds
+  }, 3000); // delay 3 seconds
 });
 ```
 
@@ -51,12 +54,12 @@ let myPromise = new Promise((resolve, reject) => {
 ```javascript
 myPromise
   .then(result => {
-    // Runs if Promise is fulfilled (resolve)
-    console.log(result);
+    // Runs when Promise is fulfilled
+    console.log(result); // "Operation succeeded!"
   })
   .catch(error => {
-    // Runs if Promise is rejected
-    console.log(error);
+    // Runs when Promise is rejected
+    console.log(error); // "Operation failed!"
   });
 ```
 
@@ -64,60 +67,52 @@ myPromise
 
 ## Promise Chaining
 ```javascript
-const shouldSucceed = true;
-
-// Function that returns a Promise
+// Function that returns a Promise (async task)
 function fetchData() {
     return new Promise((resolve, reject) => {
 
-        // Simulate async operation
         setTimeout(() => {
-
-            if (shouldSucceed) {
-                // ✅ Resolve with data
-                resolve("Fetched data");
-            } else {
-                // ❌ Reject with error
-                reject("Error: Failed to fetch data");
-            }
-
+            // Simulate success
+            resolve("Fetched data");
         }, 3000);
+
     });
 }
 
 // Normal (synchronous) function
 function processFetchedData(data) {
+    // Process data and return result
     return `${data} - Processed`;
 }
 
 // Chain multiple steps
 fetchData()
-    .then(fetchedData => {
-        // Step 1: handle fetched data
-        console.log(fetchedData);
+    .then(data => {
+        // Step 1: receive resolved value
+        console.log(data);
 
         // Return value → passed to next .then()
-        return processFetchedData(fetchedData);
+        return processFetchedData(data);
     })
-    .then(processedData => {
-        // Step 2: receive processed data
-        console.log(processedData);
+    .then(result => {
+        // Step 2: receive processed result
+        console.log(result);
     })
     .catch(error => {
         // If ANY step fails → jump here
-        console.error("Error:", error);
+        console.error(error);
     });
 ```
 
-Important:
-If any step throws an error, the chain jumps directly to `.catch()`.
+👉 Rule:
+If ANY step fails → jump directly to `.catch()`
 
 ---
 
 ## Why async and await?
-Promise chains can become hard to read when there are many `.then()` calls.
+`.then()` chains can become hard to read.
 
-async/await is a cleaner way to write Promise chains.
+`async/await` is cleaner syntax for working with Promises.
 
 ---
 
@@ -126,58 +121,86 @@ An `async` function ALWAYS returns a Promise.
 
 ---
 
-## Example Using async and await
+## Important Example
 ```javascript
-const shouldSucceed = true;
+async function hello() {
+    // Even though we return a normal value,
+    // JavaScript automatically wraps it in a Promise
+    return "Hello";
+}
 
-// Same Promise-based function
+// Using .then() to access the result
+hello().then(result => {
+    console.log(result); // "Hello"
+});
+```
+
+👉 This is equivalent to:
+```javascript
+function hello() {
+    return Promise.resolve("Hello");
+}
+```
+
+---
+
+## Example Using async / await
+```javascript
+// Function that returns a Promise
 function fetchData() {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
 
         setTimeout(() => {
-
-            if (shouldSucceed) {
-                resolve("Fetched data");
-            } else {
-                reject("Error: Failed to fetch data");
-            }
-
+            resolve("Fetched data");
         }, 3000);
+
     });
 }
 
-// Synchronous processing function
+// Normal function
 function processFetchedData(data) {
     return `${data} - Processed`;
 }
 
-// async function → ALWAYS returns a Promise
+// async function → always returns a Promise
 async function fetchDataAndProcess() {
 
     try {
-        // ⏳ Wait for Promise to resolve
-        const fetchedData = await fetchData();
-        console.log(fetchedData);
+        // ⏳ Wait until Promise resolves
+        const data = await fetchData();
 
-        // Continue like normal synchronous code
-        const processedData = processFetchedData(fetchedData);
-        console.log(processedData);
+        // Now we can use it like synchronous code
+        console.log(data);
+
+        const result = processFetchedData(data);
+        console.log(result);
 
     } catch (error) {
-        // Handle error (same as .catch())
-        console.error("Error:", error);
+        // Handles ANY error (like .catch())
+        console.error(error);
     }
 }
 
-// Run the async function
+// Execute the async function
 fetchDataAndProcess();
 ```
 
 ---
 
 ## Summary
-Promise = future value
-async/await = nicer syntax for Promise
 
-Promises help manage asynchronous operations clearly.
-async/await makes the code easier to read and maintain.
+Promise = object representing a future value
+
+States:
+- Pending
+- Fulfilled
+- Rejected
+
+`.then()` → handle success
+`.catch()` → handle error
+
+`async` always returns a Promise
+
+`await` pauses execution until Promise resolves
+
+async/await = cleaner syntax for Promises
