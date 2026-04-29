@@ -128,13 +128,13 @@ Calling a state setter (e.g., `setState` or `setCount`) does NOT immediately upd
 
 React will:
 
-1. schedule updates (may be batched)
+1. schedule state updates (may be batched)
 2. re-render the component
 3. then `useEffect` runs
 
 Multiple state updates may be batched together, resulting in a single re-render.
 
-👉 `setState` → schedule updates (may be batched) → re-render → then `useEffect` runs
+👉 `setState` → schedule state updates (may be batched) → re-render → then `useEffect` runs
 
 ---
 
