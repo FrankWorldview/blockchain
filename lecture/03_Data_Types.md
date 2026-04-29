@@ -136,7 +136,7 @@ function bar() public {
 
 ---
 
-## 3. Data Location
+## 3. Data Locations
 
 In functions, variables can be stored in one of the following locations:
 
