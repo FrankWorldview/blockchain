@@ -52,7 +52,7 @@ Reference types store data indirectly and refer to a data location (`storage`, `
 
 ---
 
-## 4. Memory Behavior (Reference Types)
+## 4. Variable Location: Memory → Memory: Maybe Shared or Copy
 
 ### Modify element → affects caller
 
@@ -90,7 +90,7 @@ function test2() public pure returns (uint) {
 
 ---
 
-## 5. Storage → Memory Copy
+## 5. Variable Location: Storage → Memory: Copy
 
 ```solidity
 uint[] public nums;
@@ -112,9 +112,7 @@ function bar() public {
 ## Summary
 
 - Value types are copied
-- Reference types depend on data location
+- Whether reference types are copied depends on data location
 - storage → persistent, shared data
 - memory → temporary (may be shared or copied)
 - calldata → read-only input data
-
-> Value types are copied. Reference types depend on location.
