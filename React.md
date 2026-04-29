@@ -1,4 +1,4 @@
-# React Hooks
+# React Hooks (Clean Teaching Version)
 
 ## What are Hooks?
 Hooks are special React functions that let functional components use features such as state and side effects.
@@ -23,7 +23,7 @@ const [state, setState] = useState(initialValue);
 import { useState } from 'react';
 
 function Counter() {
-  // Declare state variable "count" with initial value 0
+  // Create state variable
   const [count, setCount] = useState(0);
 
   return (
@@ -31,7 +31,7 @@ function Counter() {
       {/* Display current count */}
       <p>Count: {count}</p>
 
-      {/* When clicked, update state */}
+      {/* Update state when clicked */}
       <button onClick={() => setCount(count + 1)}>
         Increase
       </button>
@@ -42,10 +42,6 @@ function Counter() {
 export default Counter;
 ```
 
-### Key Idea
-- Calling setState does NOT immediately update the UI
-- React schedules a re-render
-
 ---
 
 ## useEffect
@@ -54,14 +50,13 @@ export default Counter;
 useEffect is used for side effects (things outside rendering):
 
 - API calls
-- Event listeners
+- Logging
 - Timers
-- Local storage
-- DOM manipulation
+- Event listeners
 
 ---
 
-## Dependency Array (IMPORTANT)
+## Dependency Array
 
 ```javascript
 useEffect(() => {
@@ -69,120 +64,94 @@ useEffect(() => {
 }, [dependencies]);
 ```
 
-- [] → runs ONCE after mount
+- [] → runs once after mount
 - [count] → runs when count changes
-- no array → runs after EVERY render
+- no array → runs after every render
 
 ---
 
-## Example 1: Run Once
-
-```javascript
-import { useEffect, useState } from 'react';
-
-function FetchDataOnMount() {
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    console.log("Fetching data...");
-
-    // Fetch API data (side effect)
-    fetch("https://api.thecatapi.com/v1/images/search")
-      .then(res => res.json())
-      .then(data => setData(data)); // Update state
-
-    // Empty array → runs once only
-  }, []);
-
-  return (
-    <div>
-      {/* Show loading or data */}
-      <p>{data ? JSON.stringify(data) : "Loading..."}</p>
-    </div>
-  );
-}
-```
-
----
-
-## Example 2: Dependency-based Effect
+## Example: Effect on State Change
 
 ```javascript
 import { useState, useEffect } from 'react';
 
-function UpdateMessageOnCountChange() {
+function LogCountChange() {
   const [count, setCount] = useState(0);
-  const [message, setMessage] = useState("Initial message");
 
   useEffect(() => {
-    console.log(`Count changed: ${count}`);
-
-    // Update message based on new count
-    setMessage(`Msg: Count is now ${count}`);
-
-    // ⚠️ This logs OLD value!
-    // Because this effect sees the message from the current render
-    console.log("Message:", message);
-
-  }, [count]); // Runs when count changes
+    // Runs after render when count changes
+    console.log(`Count changed to ${count}`);
+  }, [count]);
 
   return (
     <div>
-      <p>{message}</p>
+      <p>{count}</p>
 
-      {/* Update count → triggers effect */}
+      {/* Trigger state change */}
       <button onClick={() => setCount(count + 1)}>
-        Increase Count
+        Increase
       </button>
     </div>
   );
 }
+
+export default LogCountChange;
 ```
 
 ---
 
-## Actual Lifecycle Flow (CRITICAL)
+## ⚠️ Important Concept: React Rendering is NOT Immediate
+
+Calling setState does NOT immediately update the UI.
+
+React follows this process:
 
 ```text
-1. User clicks → setCount(...)
-2. React schedules a state update
-3. React re-renders with new count
-4. React updates the DOM (paint)
-5. useEffect runs (because count changed)
-6. Inside useEffect → setMessage(...)
-7. React schedules another update
-8. React re-renders with new message
+schedule → render → commit → paint → effect
 ```
 
-### Key Insight
-- useEffect runs AFTER render + paint
-- setState inside useEffect → causes another render
+### Explanation
+
+1. schedule  
+   setState(...) is called → React schedules an update
+
+2. render  
+   React calculates the new UI (virtual DOM)
+
+3. commit  
+   React updates the real DOM
+
+4. paint  
+   Browser draws the UI on screen
+
+5. effect  
+   useEffect runs AFTER paint
 
 ---
 
-## Common Pitfall
+## Key Takeaway
 
-Updating state inside useEffect can cause:
-
-👉 extra render cycles  
-👉 potential infinite loops (if not careful)
+```text
+setState → NOT immediate
+useEffect → runs after render + paint
+```
 
 ---
 
-## Strict Mode Note
+## Strict Mode (Development Only)
 
-In React Strict Mode (development only):
+In React Strict Mode:
 
-- React may run effects twice (setup + cleanup)
-- This helps detect bugs with side effects
+- Effects may run twice
+- This helps detect bugs
 
 ---
 
 ## Summary
 
-| Hook       | Purpose                  |
-|------------|--------------------------|
-| useState   | Manage state             |
-| useEffect  | Handle side effects      |
+| Hook       | Purpose             |
+|------------|---------------------|
+| useState   | Manage state        |
+| useEffect  | Handle side effects |
 
-Together, they let functional components behave like full React components.
+With Hooks, functional components can manage state and side effects, making them as powerful as class components.
