@@ -24,7 +24,7 @@ Value types are stored directly in memory or on the stack. They are copied when 
 
 ## 2. Reference Types
 
-Reference types store references to the actual data in memory or storage.
+Reference types store data **indirectly**, meaning they refer to a data location (`storage`, `memory`, or `calldata`) rather than holding the data itself.
 
 | Type         | Description                                 | Example                            |
 |--------------|---------------------------------------------|------------------------------------|
@@ -34,13 +34,67 @@ Reference types store references to the actual data in memory or storage.
 | `mapping`    | Key-value store                             | `mapping(address => uint) balances;` |
 | `struct`     | Group of related variables                  | `struct Person { string name; uint age; }` |
 
-Reference types do not store their data directly. Instead, they **store a reference (a pointer)** to where the data resides. However, **whether they are passed by reference or by value depends on their data location**:
+Reference types do not store their data directly. Instead, they refer to a data location. However, Solidity does **not strictly follow** pass-by-value or pass-by-reference semantics. The behavior depends on the **data location and context**.
 
-| Data Location | Behaviour | Description |
+| Data Location | Behavior | Description |
 |----------------|------------|--------------|
-| **storage** | 🔗 by reference | Points to the same persistent data stored on the blockchain. Modifying one reference changes the original data. |
-| **memory** | 📋 by value | Creates a temporary copy of the data when passed between functions. Modifications do not affect the original. |
-| **calldata** | 🔒 by reference (read-only) | References external input data directly without copying. Cannot be modified. |
+| **storage** | 🔗 reference | Points to persistent blockchain data. Modifying it affects the original data. |
+| **memory** | 📋 temporary (sometimes shared, sometimes copied) | Used for temporary data during execution. Assignments may share the same underlying data, but copying occurs when converting from `storage`. |
+| **calldata** | 🔒 read-only reference | Refers to external input data. Cannot be modified and typically avoids copying. |
+
+### Important Notes
+
+**1. Memory is NOT simply "by value"**
+
+```solidity
+uint[] memory a = new uint[](1);
+uint[] memory b = a;
+
+b[0] = 999;
+```
+
+👉 `a[0]` will also become `999` because both variables refer to the same memory data.
+
+**2. Function call behavior**
+
+```solidity
+function foo(uint[] memory arr) internal {
+    arr[0] = 999;
+}
+```
+
+- Modifying elements (e.g., `arr[0]`) may affect the caller
+- Reassigning the variable does NOT:
+
+```solidity
+arr = new uint[](10); // does NOT affect caller
+```
+
+**3. Storage → Memory creates a copy**
+
+```solidity
+uint[] public numbers;
+
+function foo(uint[] memory arr) internal {
+    arr[0] = 999;
+}
+
+function bar() public {
+    numbers.push(1);
+    foo(numbers); // storage → memory
+}
+```
+
+👉 `numbers` will NOT change because the data is copied into memory.
+
+### Summary
+
+- **storage** = persistent, shared data
+- **memory** = temporary data (may be shared or copied depending on context)
+- **calldata** = read-only input data
+
+> Key idea: Behavior depends on **data location**, not simply "by value" or "by reference".
+
 
 ---
 
