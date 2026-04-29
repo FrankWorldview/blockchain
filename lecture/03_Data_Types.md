@@ -2,6 +2,135 @@
 
 ## 1. Value Types
 
+Value types are stored directly in memory or on the stack. They are copied when assigned or passed to functions.
+
+| Type         | Description                                 | Example                            |
+|--------------|---------------------------------------------|------------------------------------|
+| `uint`       | Unsigned integer, from 8 bits to 256 bits, in steps of 8 (default: uint256)         | `uint x = 42;`                     |
+| `int`        | Signed integer, from 8 bits to 256 bits, in steps of 8 (default: int256)            | `int y = -42;`                     |
+| `bool`       | Boolean value (`true` or `false`)           | `bool isActive = true;`           |
+| `address`    | Ethereum address                            | `address owner = msg.sender;`     |
+| `bytes1`–`bytes32` | Fixed-size byte arrays               | `bytes32 hash = keccak256(...);`  |
+| `enum`       | User-defined enumeration                    | `enum State { Active, Inactive }` |
+| `byte`       | Deprecated alias for `bytes1`               |                                    |
+
+👉 Behavior:
+- Always copied
+- No shared underlying data
+
+---
+
+## 2. Reference Types
+
+Reference types store data indirectly and refer to a data location (`storage`, `memory`, or `calldata`).
+
+| Type         | Description                                 | Example                            |
+|--------------|---------------------------------------------|------------------------------------|
+| `string`     | Dynamic UTF-8 encoded text                  | `string name = "Alice";`          |
+| `bytes`      | Dynamic byte array                          | `bytes data = "0x1234";`          |
+| `array`      | Fixed-size or dynamic list of elements      | `uint[] numbers;`                 |
+| `mapping`    | Key-value store                             | `mapping(address => uint) balances;` |
+| `struct`     | Group of related variables                  | `struct Person { string name; uint age; }` |
+
+> Behavior depends on data location and context.
+
+---
+
+## 3. Data Locations (Not Types)
+
+| Location  | Applies To                          | Description                                     |
+|-----------|--------------------------------------|-------------------------------------------------|
+| `storage` | State variables, local references    | Persistent, written to blockchain               |
+| `memory`  | Function parameters & local variables| Temporary, exists during function execution     |
+| `calldata`| External function inputs             | Read-only, non-modifiable input data            |
+
+> Type = what data is  
+> Location = where data lives
+
+---
+
+## 4. Memory Behavior
+
+### Modify element → affects caller
+
+```solidity
+function foo(uint[] memory arr) internal {
+    arr[0] = 999;
+}
+
+function test1() public pure returns (uint) {
+    uint[] memory a = new uint[](1);
+    a[0] = 1;
+
+    foo(a);
+
+    return a[0]; // 999
+}
+```
+
+### Reassign → does NOT affect caller
+
+```solidity
+function foo2(uint[] memory arr) internal {
+    arr = new uint[](10);
+}
+
+function test2() public pure returns (uint) {
+    uint[] memory a = new uint[](1);
+    a[0] = 1;
+
+    foo2(a);
+
+    return a[0]; // still 1
+}
+```
+
+---
+
+## 5. Storage → Memory Copy
+
+```solidity
+uint[] public nums;
+
+function foo(uint[] memory arr) internal {
+    arr[0] = 999;
+}
+
+function bar() public {
+    nums.push(1);
+    foo(nums);
+}
+```
+
+👉 nums will NOT change
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 03 Data Types
+
+## 1. Value Types
+
 Value types store their data directly. Assignments create independent copies.
 
 | Type | Example |
