@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Solidity provides a rich set of data types for handling variables in smart contracts. These types are categorized into **Value Types**, **Reference Types**, and **Complex/User-Defined Types**. This document introduces each type and compares them in tables for clarity.
+Solidity provides a rich set of data types for handling variables in smart contracts. These types are categorized into **Value Types** and **Reference Types**. This document introduces each type and compares them in tables for clarity.
 
 ---
 
@@ -95,21 +95,9 @@ function bar() public {
 
 > Key idea: Behavior depends on **data location**, not simply "by value" or "by reference".
 
-
 ---
 
-## 3. Complex/User-Defined Types
-
-These are composed of other types and are created by developers.
-
-| Type     | Description                                     | Example                          |
-|----------|-------------------------------------------------|----------------------------------|
-| `struct` | Combines multiple variables into one type       | `struct Car { string model; uint year; }` |
-| `enum`   | Custom defined states or choices                | `enum Phase { Init, Ready, Done }` |
-
----
-
-## 4. Data Location
+## 3. Data Location
 
 In functions, variables can be stored in one of the following locations:
 
