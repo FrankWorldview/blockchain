@@ -25,15 +25,23 @@ A Promise can be in one of three states:
 
 ## Creating a Promise
 ```javascript
+// Create a Promise object
 let myPromise = new Promise((resolve, reject) => {
+
+  // Simulate an asynchronous task (e.g., API call)
   setTimeout(() => {
-    const success = true;
+
+    const success = true; // change to false to simulate failure
+
     if (success) {
+      // ✅ Task succeeded → resolve the Promise with a value
       resolve("Operation succeeded!");
     } else {
+      // ❌ Task failed → reject the Promise with an error
       reject("Operation failed!");
     }
-  }, 3000);
+
+  }, 3000); // wait 3 seconds
 });
 ```
 
@@ -43,9 +51,11 @@ let myPromise = new Promise((resolve, reject) => {
 ```javascript
 myPromise
   .then(result => {
+    // Runs if Promise is fulfilled (resolve)
     console.log(result);
   })
   .catch(error => {
+    // Runs if Promise is rejected
     console.log(error);
   });
 ```
@@ -56,31 +66,45 @@ myPromise
 ```javascript
 const shouldSucceed = true;
 
+// Function that returns a Promise
 function fetchData() {
     return new Promise((resolve, reject) => {
+
+        // Simulate async operation
         setTimeout(() => {
+
             if (shouldSucceed) {
+                // ✅ Resolve with data
                 resolve("Fetched data");
             } else {
+                // ❌ Reject with error
                 reject("Error: Failed to fetch data");
             }
+
         }, 3000);
     });
 }
 
+// Normal (synchronous) function
 function processFetchedData(data) {
     return `${data} - Processed`;
 }
 
+// Chain multiple steps
 fetchData()
     .then(fetchedData => {
+        // Step 1: handle fetched data
         console.log(fetchedData);
+
+        // Return value → passed to next .then()
         return processFetchedData(fetchedData);
     })
     .then(processedData => {
+        // Step 2: receive processed data
         console.log(processedData);
     })
     .catch(error => {
+        // If ANY step fails → jump here
         console.error("Error:", error);
     });
 ```
@@ -106,34 +130,46 @@ An `async` function ALWAYS returns a Promise.
 ```javascript
 const shouldSucceed = true;
 
+// Same Promise-based function
 function fetchData() {
     return new Promise((resolve, reject) => {
+
         setTimeout(() => {
+
             if (shouldSucceed) {
                 resolve("Fetched data");
             } else {
                 reject("Error: Failed to fetch data");
             }
+
         }, 3000);
     });
 }
 
+// Synchronous processing function
 function processFetchedData(data) {
     return `${data} - Processed`;
 }
 
+// async function → ALWAYS returns a Promise
 async function fetchDataAndProcess() {
+
     try {
+        // ⏳ Wait for Promise to resolve
         const fetchedData = await fetchData();
         console.log(fetchedData);
 
+        // Continue like normal synchronous code
         const processedData = processFetchedData(fetchedData);
         console.log(processedData);
+
     } catch (error) {
+        // Handle error (same as .catch())
         console.error("Error:", error);
     }
 }
 
+// Run the async function
 fetchDataAndProcess();
 ```
 
