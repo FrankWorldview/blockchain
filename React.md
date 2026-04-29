@@ -145,7 +145,7 @@ React will:
 
 Multiple state updates may be batched together, resulting in a single re-render.
 
-State is updated when React re-renders the component, not when setState is called.
+State is updated when React re-renders the component, not when `setState` is called.
 
 👉 `setState` → schedule state updates (may be batched) → re-render (state is updated here) → then `useEffect` runs
 
