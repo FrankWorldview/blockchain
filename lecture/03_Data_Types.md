@@ -1,4 +1,4 @@
-# 03 Data Types
+# Data Types
 
 ## 1. Value Types
 
