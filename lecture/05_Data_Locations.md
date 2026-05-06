@@ -121,11 +121,12 @@ calldata → (copy if needed) → memory → (write if needed) → storage
 
 ## 🧪 Type Rules: When You Must Specify Data Location
 
-You **must specify** location for these reference types:
-- `string`, `bytes`
+You **must specify** a data location for all **reference types**.
+- `string`
+- `bytes`
 - Arrays: `uint[]`, `string[]`, etc.
-- Structs like `MyStruct`
-- Mappings inside structs or nested mappings
+- Structs
+- Mappings (when applicable inside structs/storage references)
 
 You **do not need to specify** location for value types:
 - `uint`, `int`, `bool`, `address`, `bytes32`, `enum`
