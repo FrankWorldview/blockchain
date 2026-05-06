@@ -200,7 +200,7 @@ this.double(y);
 |----------|----------|
 | memory | ✅ yes |
 | calldata | ✅ yes |
-| storage | ❌ not for parameters |
+| storage | ❌ not allowed for public/external function parameters |
 
 ### Example
 
