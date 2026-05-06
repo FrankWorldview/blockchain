@@ -55,7 +55,7 @@ An **execution context** is the complete environment in which a function or cont
 - gas
 - the currently executing contract (`address(this)`)
 
-ABI encoding converts function calls and parameters into a standardized binary format that the EVM can understand.
+**ABI encoding** converts function calls and parameters into a standardized binary format that the EVM can understand.
 
 ### 🔑 Key Properties
 
@@ -253,7 +253,7 @@ msg.sender = address(this)
 
 ---
 
-## Cross-Contract Calls and `msg.sender`
+## Cross-Contract (External) Calls and `msg.sender`
 
 Consider the call chain:
 
