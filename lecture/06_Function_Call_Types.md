@@ -66,7 +66,7 @@ An **execution context** is the complete environment in which a function or cont
 | ABI | Required |
 | Gas | Higher |
 
-### ⚙️ Data Location: `calldata`
+### ⚙️ Data Passing with `calldata`
 
 - Read-only
 - Not copied into memory
@@ -126,8 +126,8 @@ An EOA (Externally Owned Account) cannot directly perform internal function call
 
 | Type | Behavior |
 |------|--------|
-| memory | Passed by value (copied) |
-| storage | Passed by reference |
+| memory | Passed as a copy (shallow copy for memory-to-memory, deep copy for storage-to-memory) |
+| storage | Passed by reference to persistent contract storage |
 
 ### Example
 
