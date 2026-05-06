@@ -14,10 +14,10 @@ Solidity requires a data location for **reference types** to determine whether t
 
 ---
 
-## 1. Calldata
+## 1. `calldata`
 
 **Definition**
-Calldata is a read-only area where function arguments are stored.
+**calldata** is a read-only area where function arguments are stored.
 
 **Key Features**
 - Read-only (immutable)
@@ -32,8 +32,8 @@ function setName(string calldata newName) external {
 }
 ```
 
-**Why it exists**
-Calldata avoids unnecessary copying and reduces gas usage.
+**Why it exists:**
+**calldata** avoids unnecessary copying and reduces gas usage. `calldata` is ideal for large arrays or structs that do not need modification.
 
 ---
 

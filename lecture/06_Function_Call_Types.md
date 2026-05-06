@@ -72,7 +72,7 @@ An **execution context** is the complete environment in which a function or cont
 - Not copied into memory
 - More gas-efficient
 
-👉 `calldata` is ideal for large arrays or structs that do not need modification
+👉 `calldata` is ideal for large arrays or structs that do not need modification.
 
 ### Example
 
