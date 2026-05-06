@@ -181,7 +181,7 @@ double(y);
 
 - Same execution context
 - No ABI encoding
-- Low gas cost
+- Lower gas cost
 
 #### ✅ External Call
 
@@ -252,7 +252,7 @@ msg.sender = address(this)
 
 ---
 
-## Cross-Contract (External) Calls and `msg.sender`
+## Cross-Contract Calls and `msg.sender`
 
 Consider the call chain:
 
@@ -311,6 +311,16 @@ At each step, the caller changes.
 - When a function must be:
   - internally reusable
   - externally accessible
+
+---
+
+## ⛽ Gas Cost Intuition
+
+### Data Locations
+calldata < memory < storage
+
+### Function Call Execution
+internal call (`X()`) < external call (`this.X()` or cross-contract calls)
 
 ---
 
