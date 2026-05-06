@@ -39,7 +39,7 @@ function setName(string calldata newName) external {
 
 ## 2. `memory`
 
-**Definition**
+**Definition:**
 `memory` is a temporary area used during contract execution.
 
 **Key Features**
@@ -62,7 +62,7 @@ function process(string calldata input) external {
 
 ## 3. `storage`
 
-**Definition**
+**Definition:**
 `storage` is the persistent data area on the blockchain.
 
 **Key Features**
