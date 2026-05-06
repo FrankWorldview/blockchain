@@ -46,6 +46,17 @@ function A() public {
 - Creates a **new execution context**
 - Requires **ABI encoding/decoding**
 
+An **execution context** is the complete environment in which a function or contract call is executed. It includes:
+- `msg.sender`
+- `msg.value`
+- calldata
+- memory
+- stack
+- gas
+- the currently executing contract (`address(this)`)
+
+ABI encoding converts function calls and parameters into a standardized binary format that the EVM can understand.
+
 ### 🔑 Key Properties
 
 | Property | Description |
@@ -91,6 +102,10 @@ function A() public {
     B(); // internal call
 }
 ```
+
+Internal calls are executed internally by the contract without creating an external transaction.
+
+An EOA (Externally Owned Account) cannot directly perform internal function calls because EOAs do not contain executable smart contract code.
 
 ### ⚙️ How It Works
 
