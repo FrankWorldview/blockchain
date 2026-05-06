@@ -16,9 +16,9 @@ Understanding these distinctions is essential for writing **efficient and secure
 
 Solidity provides three main function visibility types:
 
-- External（外部呼叫）
-- Internal（內部呼叫）
-- Public（公開函式，兼具兩者特性）
+- `external`（外部呼叫）
+- `internal`（內部呼叫）
+- `public`（公開函式，兼具兩者特性）
 
 ---
 
