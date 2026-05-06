@@ -16,8 +16,8 @@ Solidity requires a data location for **reference types** to determine whether t
 
 ## 1. `calldata`
 
-**Definition**
-**calldata** is a read-only area where function arguments are stored.
+**Definition:**
+`calldata` is a read-only area where function arguments are stored.
 
 **Key Features**
 - Read-only (immutable)
@@ -33,14 +33,14 @@ function setName(string calldata newName) external {
 ```
 
 **Why it exists:**
-**calldata** avoids unnecessary copying and reduces gas usage. `calldata` is ideal for large arrays or structs that do not need modification.
+`calldata` avoids unnecessary copying and reduces gas usage. Therefore, `calldata` is ideal for large arrays or structs that do not need modification.
 
 ---
 
-## 2. Memory
+## 2. `memory`
 
 **Definition**
-Memory is a temporary area used during contract execution.
+`memory` is a temporary area used during contract execution.
 
 **Key Features**
 - Mutable (can modify)
@@ -55,15 +55,15 @@ function process(string calldata input) external {
 }
 ```
 
-**Why it exists**
-Memory allows modification of data during execution.
+**Why it exists:**
+`memory` allows modification of data during execution.
 
 ---
 
-## 3. Storage
+## 3. `storage`
 
 **Definition**
-Storage is the persistent data area on the blockchain.
+`storage` is the persistent data area on the blockchain.
 
 **Key Features**
 - Permanent
@@ -80,20 +80,19 @@ function setName(string calldata newName) external {
 }
 ```
 
-**Why it exists**
-Storage maintains contract state across transactions.
+**Why it exists:** `storage` maintains contract state across transactions.
 
 ---
 
 ## Gas Cost Summary
 
-calldata < memory << storage
+`calldata` < `memory` << `storage`
 
 ---
 
 ## Execution Flow (Simplified)
 
-calldata → (copy if needed) → memory → (write if needed) → storage
+`calldata` → (copy if needed) → `memory` → (write if needed) → `storage`
 
 ---
 
