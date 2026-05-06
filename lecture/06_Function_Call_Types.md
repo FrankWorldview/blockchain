@@ -193,15 +193,6 @@ this.double(y);
 - ABI encoding required
 - Higher gas cost
 
-
-### ⚙️ Data Location Rules
-
-| Location | Supported |
-|----------|----------|
-| memory | ✅ yes |
-| calldata | ✅ yes |
-| storage | ❌ not allowed for public/external function parameters |
-
 ### Example
 
 ```solidity
@@ -217,6 +208,14 @@ contract PublicExample {
     }
 }
 ```
+
+### ⚙️ Data Passing
+
+| Location | Supported |
+|----------|----------|
+| memory | ✅ yes |
+| calldata | ✅ yes |
+| storage | ❌ not allowed for public/external function parameters |
 
 ---
 
