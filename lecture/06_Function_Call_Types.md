@@ -22,7 +22,7 @@ Solidity provides three main function visibility types:
 
 ---
 
-## 🔹 External Function Calls（外部呼叫）
+## 🔹 `external` Function Calls（外部呼叫）
 
 ### 📌 Definition
 
@@ -88,7 +88,7 @@ contract ExternalExample {
 
 ---
 
-## 🔹 Internal Function Calls（內部呼叫）
+## 🔹 `internal` Function Calls（內部呼叫）
 
 ### 📌 Definition
 
@@ -105,7 +105,7 @@ function A() public {
 
 Internal calls are executed internally by the contract without creating an external transaction.
 
-An EOA (Externally Owned Account) cannot directly perform internal function calls because EOAs do not contain executable smart contract code.
+An EOA (Externally Owned Account) cannot directly perform internal calls because EOAs do not contain executable smart contract code.
 
 ### ⚙️ How It Works
 
@@ -149,7 +149,7 @@ contract InternalExample {
 
 ---
 
-## 🔹 Public Function Calls（公開函式）
+## 🔹 `public` Function Calls（公開函式）
 
 ### 📌 Definition
 
