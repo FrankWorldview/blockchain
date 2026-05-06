@@ -23,7 +23,7 @@ Calldata is a read-only area where function arguments are stored.
 - Read-only (immutable)
 - No additional memory allocation
 - Cheapest option
-- Used in external function parameters
+- Commonly used for read-only function parameters, especially in external functions
 
 **Example**
 ```solidity
