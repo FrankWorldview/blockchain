@@ -17,6 +17,7 @@
 + [Console logging in Foundry](https://book.getfoundry.sh/reference/forge-std/console-log)
 + [WTF Solidity](https://github.com/AmazingAng/WTF-Solidity)
 + [Develop an NFT Collection](https://updraft.cyfrin.io/courses/advanced-foundry/how-to-create-an-NFT-collection/introduction-to-nfts)
++ [Develop an NFT Collection, By TA](https://github.com/jing-yuan-nccu/foundry-nft)
 + [JavaScript: Promise 介紹](https://www.casper.tw/development/2020/10/16/async-await/)
 + [JavaScript: async / await 介紹](https://www.casper.tw/development/2020/10/16/async-await/)
 + [React 是什麼？2025 完整新手學習指南](https://www.thisweb.dev/post/what-is-react)
