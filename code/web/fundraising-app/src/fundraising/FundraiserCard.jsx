@@ -122,8 +122,8 @@ const FundraiserCard = ({ fundraiser }) => {
         setExchangeRate(prices.USD);
         const eth = Number(ethers.formatEther(fundTotalDonationsWei));
         setTotalDonations((prices.USD * eth).toFixed(2));
-      } catch (err) {
-        console.error('Exchange rate fetch error:', err);
+      } catch (error) {
+        console.error('Exchange rate fetch error:', error);
       }
 
       // user-specific data：只有連上錢包時才查
@@ -148,8 +148,8 @@ const FundraiserCard = ({ fundraiser }) => {
         setUserDonations({ values: [], dates: [] });
         setIsOwner(false);
       }
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      console.error(error);
       alert('Failed to initialize ethers or contract');
     }
   };
@@ -206,9 +206,9 @@ const FundraiserCard = ({ fundraiser }) => {
       setOpen(false);
       setDonationAmount('');
       await init(); // refresh，會更新 myDonations
-    } catch (err) {
-      console.error('Donation failed:', err);
-      const msg = err?.shortMessage || err?.info?.error?.message || err?.message || 'Donation failed';
+    } catch (error) {
+      console.error('Donation failed:', error);
+      const msg = error?.shortMessage || error?.info?.error?.message || error?.message || 'Donation failed';
       alert(msg);
     }
   };
@@ -225,9 +225,9 @@ const FundraiserCard = ({ fundraiser }) => {
       alert('Withdrawal successful');
       setOpen(false);
       await init();
-    } catch (err) {
-      console.error('Withdrawal failed:', err);
-      const msg = err?.shortMessage || err?.info?.error?.message || err?.message || 'Withdrawal failed';
+    } catch (error) {
+      console.error('Withdrawal failed:', error);
+      const msg = error?.shortMessage || error?.info?.error?.message || error?.message || 'Withdrawal failed';
       alert(msg);
     }
   };
@@ -249,9 +249,9 @@ const FundraiserCard = ({ fundraiser }) => {
       setOpen(false);
       setNewFundBeneficiary('');
       await init();
-    } catch (err) {
-      console.error('Set beneficiary failed:', err);
-      const msg = err?.shortMessage || err?.info?.error?.message || err?.message || 'Set beneficiary failed';
+    } catch (error) {
+      console.error('Set beneficiary failed:', error);
+      const msg = error?.shortMessage || error?.info?.error?.message || error?.message || 'Set beneficiary failed';
       alert(msg);
     }
   };
